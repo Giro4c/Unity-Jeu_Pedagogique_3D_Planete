@@ -4,28 +4,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/**
+ * Newer Version : DragAndDrop
+ */
 public class DragCube : MonoBehaviour
 {
 
-    public Camera mainCamera;
-    
-    //private Vector2 mousePos;
+    private Camera mainCamera;
+    private Vector3 offset;
+
+    private Vector3 GetMouseWorldPos()
+    {
+        // Pixel coordinates (x, y)
+        Vector3 mousePoint = Input.mousePosition;
+        
+        // z coordinates of game object on screen
+        mousePoint.z = mainCamera.WorldToScreenPoint(transform.position).z;
+
+        return mainCamera.ScreenToWorldPoint(mousePoint);
+    }
+
+    private void OnMouseDown()
+    {
+        offset = transform.position - GetMouseWorldPos();
+    }
     
     private void OnMouseDrag()
     {
-        Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
-        transform.position = screenPos;
+        transform.position = GetMouseWorldPos() + offset;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        mainCamera = Camera.main;
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

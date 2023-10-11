@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4219561140628236}
   - component: {fileID: 6402180269394205462}
   - component: {fileID: 2185864506916419005}
-  - component: {fileID: -4960282701805844441}
+  - component: {fileID: -8462852556197211721}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -147,9 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc630030a3b9d544ad9091f49b6515a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 5
+  jumpForce: 10
   cubeBody: {fileID: 6402180269394205462}
---- !u!114 &-4960282701805844441
+--- !u!114 &-8462852556197211721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,6 +158,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6506978905030785028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183beefe7239dac49bd111838d4430dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f8d98f6bc622894c945451766489a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
