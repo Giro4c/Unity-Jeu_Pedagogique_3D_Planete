@@ -20,13 +20,32 @@ public class RotateCamera : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetMouseButton(0) && !Physics.Raycast(transform.position, Input.mousePosition, 100))
+        if (Input.GetMouseButton(0))
         {
-            Vector3 newAngle = transform.eulerAngles + ( speed * new Vector3(Input.GetAxis("Mouse Y"), -1 * Input.GetAxis("Mouse X"), 0));
-
-            newAngle.x = AdjustXAngleToBoundaries(newAngle.x);
-
-            transform.eulerAngles = newAngle;
+            // Verifying if there is no object in front of the mouse on the screen
+            RaycastHit hit;
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            // Does the ray intersect any objects excluding the player layer
+            if (!Physics.Raycast(mouseRay, out hit))
+            {
+                //Debug.Log("Did Not Hit");
+                
+                /* Change Camera angle :
+                 Mouse Up -> Look Up
+                 Mouse Down -> Look Down
+                 Mouse Left -> Look Right
+                 Mouse Right -> Look Left
+                */
+                Vector3 newAngle = transform.eulerAngles + ( speed * new Vector3(Input.GetAxis("Mouse Y"), -1 * Input.GetAxis("Mouse X"), 0));
+                newAngle.x = AdjustXAngleToBoundaries(newAngle.x);
+                transform.eulerAngles = newAngle;
+            }
+            else
+            {
+                Debug.Log("Did Hit");
+            }
+            
+            
 
         }
     }
