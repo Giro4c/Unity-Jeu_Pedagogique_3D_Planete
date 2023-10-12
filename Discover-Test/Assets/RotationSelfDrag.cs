@@ -11,6 +11,7 @@ public class GrabRotation : MonoBehaviour
         
     }
     
+    private Vector3 rotateAxis = new Vector3(-10, -10, 5);
     private float speedRotation = 11f;
 
     private void OnMouseDrag()
@@ -18,7 +19,7 @@ public class GrabRotation : MonoBehaviour
         float xRotate = Input.GetAxis("Mouse X") * speedRotation;
         //float yRotate = Input.GetAxis("Mouse Y") * speedRotation;
         
-        transform.Rotate(Vector3.down, xRotate);
+        transform.Rotate(rotateAxis, xRotate);
         //transform.Rotate(Vector3.right, yRotate);
     }
 
