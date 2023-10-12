@@ -10,10 +10,10 @@ public class Rotation : MonoBehaviour
         
     }
 
-    private float rotateSpeed = (float) 0.1;
+    private float rotateSpeed = 10f;
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, rotateSpeed, 0));
+        transform.Rotate(new Vector3(0, rotateSpeed * Time.deltaTime, 0));
     }
 }
