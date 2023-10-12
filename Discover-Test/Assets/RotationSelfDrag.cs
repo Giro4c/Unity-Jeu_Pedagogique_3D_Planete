@@ -11,7 +11,7 @@ public class GrabRotation : MonoBehaviour
         
     }
     
-    private Vector3 rotateAxis = new Vector3(-10, -10, 5);
+    private Vector3 rotateAxis = new Vector3(0, -23, 0);
     private float speedRotation = 11f;
 
     private void OnMouseDrag()

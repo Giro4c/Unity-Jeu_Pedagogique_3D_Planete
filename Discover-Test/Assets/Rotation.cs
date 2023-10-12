@@ -10,10 +10,15 @@ public class Rotation : MonoBehaviour
         
     }
 
+    private Vector3 rotateAxis = new Vector3(0, 23, 0);
     private float rotateSpeed = 10f;
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, rotateSpeed * Time.deltaTime, 0));
+        if (!Input.GetMouseButton(0))
+        {
+            transform.Rotate(rotateAxis, rotateSpeed * Time.deltaTime);
+        }
+        
     }
 }
