@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 116838462}
   - component: {fileID: 116838461}
   - component: {fileID: 116838460}
-  - component: {fileID: 116838464}
-  - component: {fileID: 116838465}
+  - component: {fileID: 116838466}
+  - component: {fileID: 116838467}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -230,26 +230,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23}
---- !u!114 &116838464
+--- !u!114 &116838466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116838459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1d23b0ead9d482409b4d08230302f1f, type: 3}
+  m_Script: {fileID: 11500000, guid: afd79130815bbf149b2280c199d11a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &116838465
+  colliderPlane: {fileID: 1837406607}
+--- !u!114 &116838467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116838459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4aaa97e29a920d7418b986fbd0a654c5, type: 3}
   m_Name: 
@@ -784,7 +785,7 @@ GameObject:
   - component: {fileID: 1837406609}
   - component: {fileID: 1837406608}
   - component: {fileID: 1837406607}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,8 +873,8 @@ Transform:
   m_GameObject: {fileID: 1837406606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.69, y: 0, z: -3.06}
-  m_LocalScale: {x: 9.099818, y: 9.099818, z: 9.099818}
+  m_LocalPosition: {x: -8.69, y: 0, z: 58.1}
+  m_LocalScale: {x: 9.099818, y: 9.099818, z: 22.338297}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
