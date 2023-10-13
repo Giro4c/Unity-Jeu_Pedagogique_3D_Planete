@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class OrbitMotion : MonoBehaviour
     public bool orbitActive = true;
     
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         if (orbitingObject == null)
         {
@@ -21,6 +22,27 @@ public class OrbitMotion : MonoBehaviour
         }
         SetOrbitingObjectPosition();
         StartCoroutine(AnimateOrbit());
+    }*/
+
+    private void OnEnable()
+    {
+        if (orbitingObject == null)
+        {
+            orbitActive = false;
+            return;
+        }
+        else
+        {
+            orbitActive = true;
+        }
+        SetOrbitingObjectPosition();
+        StartCoroutine(AnimateOrbit());
+    }
+
+    private void OnDisable()
+    {
+        orbitActive = false;
+        StopCoroutine(AnimateOrbit());
     }
 
     private void SetOrbitingObjectPosition()

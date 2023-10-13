@@ -136,7 +136,8 @@ GameObject:
   - component: {fileID: 116838461}
   - component: {fileID: 116838460}
   - component: {fileID: 116838465}
-  - component: {fileID: 116838464}
+  - component: {fileID: 116838466}
+  - component: {fileID: 116838467}
   m_Layer: 0
   m_Name: Planet Model
   m_TagString: Untagged
@@ -230,19 +231,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1986380520}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23}
---- !u!114 &116838464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116838459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 822080f8ca43b0143886fd94af15b9ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collider2DObject: {fileID: 0}
 --- !u!114 &116838465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +243,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d23b0ead9d482409b4d08230302f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateAxis: {x: 0, y: 23, z: 0}
+  rotatePeriod: 10
+  autoRotate: 1
+  rotateProgress: 0
+--- !u!114 &116838466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116838459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aaa97e29a920d7418b986fbd0a654c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateAxis: {x: 0, y: 23, z: 0}
+  speedRotation: 11
+--- !u!114 &116838467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116838459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1693e7cc4e5e0c249aa9938759dfa65b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationDragScript: {fileID: 0}
+  rotationAutoScript: {fileID: 0}
 --- !u!1 &162467481
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,18 +940,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986380519}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03e10a9add4ceac45abe18ec8704929e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   orbitingObject: {fileID: 116838463}
   orbitPath:
-    xAxis: 5
-    yAxis: 3
-    pointCenter: {x: 0, y: 0, z: 0}
+    xAxis: 35
+    yAxis: 15
   orbitProgress: 0
-  orbitPeriod: 3
+  orbitPeriod: 60
   orbitActive: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

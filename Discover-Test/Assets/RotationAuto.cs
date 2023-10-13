@@ -40,16 +40,28 @@ public class RotationAuto : MonoBehaviour
         yield return null;
     }
 
-    private void OnMouseDown()
+    /*private void OnMouseDown()
     {
-        Debug.Log("Mouse Down");
+        //Debug.Log("Mouse Down");
+        autoRotate = false;
+        StopCoroutine(AutoRotation());
+    }*/
+
+    private void OnDisable()
+    {
         autoRotate = false;
         StopCoroutine(AutoRotation());
     }
 
-    private void OnMouseUp()
+    /*private void OnMouseUp()
     {
-        Debug.Log("Mouse Up");
+        //Debug.Log("Mouse Up");
+        autoRotate = true;
+        StartCoroutine(AutoRotation());
+    }*/
+
+    private void OnEnable()
+    {
         autoRotate = true;
         StartCoroutine(AutoRotation());
     }
