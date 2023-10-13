@@ -40,10 +40,10 @@ public class RotateCamera : MonoBehaviour
                 newAngle.x = AdjustXAngleToBoundaries(newAngle.x);
                 transform.eulerAngles = newAngle;
             }
-            else
+            /*else
             {
                 Debug.Log("Did Hit");
-            }
+            }*/
             
             
 
