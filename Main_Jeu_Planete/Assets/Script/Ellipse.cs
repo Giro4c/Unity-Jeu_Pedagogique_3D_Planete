@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ellipse : MonoBehaviour
+[System.Serializable]
+public class Ellipse
 {
 
-    public float xAxis;
-    public float yAxis;
+    public float xAxis = 3f;
+    public float yAxis = 5f;
 
     // Constructors
     public Ellipse(float xAxis, float yAxis)
