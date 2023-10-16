@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!226 &22600000
+BillboardAsset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GPBSRHE_A_BillboardAsset
+  serializedVersion: 2
+  width: 1.8521014
+  bottom: -0.016378403
+  height: 1.8521014
+  imageTexCoords:
+  - {x: 0, y: 0, z: 0.25, w: 0.5}
+  vertices:
+  - {x: 0, y: 0}
+  - {x: 0.042, y: 0.426}
+  - {x: 0.265, y: 0.331}
+  - {x: 1, y: 0}
+  - {x: 0.958, y: 0.426}
+  - {x: 0.735, y: 0.331}
+  indices: 000003000400000004000100010004000500010005000200
+  material: {fileID: 2100000, guid: 79e7512cb1d74d84d98dccf106b5eb2a, type: 2}

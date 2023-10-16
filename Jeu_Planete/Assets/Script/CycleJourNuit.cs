@@ -22,4 +22,5 @@ public class CycleJourNuit : MonoBehaviour
                 GetComponent<Renderer>().SetPropertyBlock (mpb);
             
         }
+
 }
