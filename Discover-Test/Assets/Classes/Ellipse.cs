@@ -6,17 +6,11 @@ using UnityEngine;
 public class Ellipse
 {
 
-    public float xAxis;
-    public float yAxis;
+    public float xAxis = 3f;
+    public float yAxis = 5f;
 
     // Constructors
     public Ellipse(float xAxis, float yAxis)
-    {
-        this.xAxis = xAxis;
-        this.yAxis = yAxis;
-    }
-    
-    public Ellipse(float xAxis, float yAxis, Vector3 pointCenter)
     {
         this.xAxis = xAxis;
         this.yAxis = yAxis;
@@ -33,6 +27,45 @@ public class Ellipse
         float x = Mathf.Sin(angle) * xAxis;
         float y = Mathf.Cos(angle) * yAxis;
         return new Vector2(x, y);
+    }
+
+    public float FindProgressUsingX(float x, float y)
+    {
+        // Simple values verification
+        if (x >= xAxis)
+        {
+            return 0;
+        }
+        if (x <= xAxis * -1)
+        {
+            return 0.5f;
+        }
+
+        // Find progress
+        float angle = Mathf.Acos(x / xAxis);
+        float progress = angle / (Mathf.Deg2Rad * 360f);
+        if (y < 0) return (1f - progress)%1f;
+        return progress%1f;
+        
+    }
+    
+    public float FindProgressUsingY(float x, float y)
+    {
+        // Simple values verification
+        if (y >= yAxis)
+        {
+            return 0.25f;
+        }
+        if (y <= yAxis * -1)
+        {
+            return 0.75f;
+        }
+
+        // Find progress
+        float angle = Mathf.Asin(y / yAxis);
+        float progress = angle / (Mathf.Deg2Rad * 360f);
+        if (x < 0) return (0.5f - progress)%1f;
+        return progress;
     }
 
 }
