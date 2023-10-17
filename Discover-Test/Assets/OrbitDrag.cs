@@ -11,7 +11,7 @@ public class OrbitDrag : MonoBehaviour
     /**
      * Is the collider of the object model of the orbiting object.
      */
-    public Collider colliderPlanetModel;
+    public Collider colliderPlaneOrbit;
     //public float orbitSpeed = 11f;
     private Orbit orbit;
     private Camera mainCam;
@@ -45,13 +45,14 @@ public class OrbitDrag : MonoBehaviour
         {
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (colliderPlanetModel.Raycast(ray, out hit, 200))
+            if (colliderPlaneOrbit.Raycast(ray, out hit, 200))
             {
                 Vector3 point = ray.GetPoint(hit.distance);
                 Debug.Log("Mouse Pos in World X, Z : " + point.x + ", " + point.z);
                 Vector2 orbitPos = new Vector2(point.x - transform.position.x, point.z - transform.position.z);
                 Debug.Log("Mouse Pos in Orbit X, Y : " + orbitPos.x + ", " + orbitPos.y);
-                float newProgress = orbit.orbitPath.FindProgressUsingX(orbitPos.x, orbitPos.y);
+                float newProgress = orbit.orbitPath.FindProgress(orbitPos.x, orbitPos.y);
+                 
                 Debug.Log("New Progress = " + newProgress);
                 orbit.orbitProgress = newProgress;
                 orbit.SetOrbitingObjectPosition();

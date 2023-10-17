@@ -100,10 +100,16 @@ public class Ellipse
         return progress%1f;
     }
 
-    private void container(float x, float y)
+    public float FindProgress(float x, float y)
     {
-        
-
+        float baseLength = Mathf.Sqrt(x * x + y * y);
+        float angle = Mathf.Acos(x / baseLength);
+        if (Mathf.Asin(y / baseLength) < 0)
+        {
+            angle = (Mathf.Deg2Rad * 360f) - angle;
+        }
+        float progress = (Mathf.Rad2Deg * angle) / 360f;
+        return progress%1f;
     }
 
 }

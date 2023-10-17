@@ -25,6 +25,17 @@ public class RotationOrOrbitDetector : MonoBehaviour
         orbitDragScript.enabled = false;
     }
 
+    // Used for scripts that continue to run until certain action
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(1) && !orbitMotionScript.enabled)
+        {
+            //Debug.Log("Mouse Drop Right: activate OrbitMotion");
+            orbitDragScript.enabled = false;
+            orbitMotionScript.enabled = true;
+        }
+    }
+
     private void OnMouseOver()
     {
         // On Mouse Down
@@ -48,12 +59,7 @@ public class RotationOrOrbitDetector : MonoBehaviour
             rotationDragScript.enabled = false;
             rotationAutoScript.enabled = true;
         }
-        else if (Input.GetMouseButtonUp(1) && !orbitMotionScript.enabled)
-        {
-            //Debug.Log("Mouse Drop Right: activate OrbitMotion");
-            orbitDragScript.enabled = false;
-            orbitMotionScript.enabled = true;
-        }
+        
     }
 
     private void OnMouseExit()
@@ -62,18 +68,10 @@ public class RotationOrOrbitDetector : MonoBehaviour
         {
             rotationDragScript.enabled = false;
         }
-        if (orbitDragScript)
-        {
-            orbitDragScript.enabled = false;
-        }
 
         if (!rotationAutoScript)
         {
             rotationAutoScript.enabled = true;
-        }
-        if (!orbitMotionScript)
-        {
-            orbitMotionScript.enabled = true;
         }
         
     }
