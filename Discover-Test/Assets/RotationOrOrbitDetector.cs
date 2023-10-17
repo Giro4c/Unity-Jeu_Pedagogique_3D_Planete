@@ -10,7 +10,7 @@ public class RotationOrOrbitDetector : MonoBehaviour
     private RotationDrag rotationDragScript;
     private RotationAuto rotationAutoScript;
     private OrbitMotion orbitMotionScript;
-    //private OrbitDrag orbitDragScript;
+    private OrbitDrag orbitDragScript;
     
     // Start is called before the first frame update
     void Start()
@@ -21,8 +21,8 @@ public class RotationOrOrbitDetector : MonoBehaviour
         rotationAutoScript.enabled = true;
         orbitMotionScript = gameObject.GetComponentInParent<OrbitMotion>();
         orbitMotionScript.enabled = true;
-        //orbitDragScript = gameObject.GetComponentInParent<OrbitDrag>();
-        //orbitDragScript.enabled = false;
+        orbitDragScript = gameObject.GetComponentInParent<OrbitDrag>();
+        orbitDragScript.enabled = false;
     }
 
     private void OnMouseOver()
@@ -37,7 +37,7 @@ public class RotationOrOrbitDetector : MonoBehaviour
         else if (Input.GetMouseButton(1))
         {
             //Debug.Log("Mouse Clic Right");
-            //orbitDragScript.enabled = true;
+            orbitDragScript.enabled = true;
             orbitMotionScript.enabled = false;
         }
         
@@ -51,7 +51,7 @@ public class RotationOrOrbitDetector : MonoBehaviour
         else if (Input.GetMouseButtonUp(1) && !orbitMotionScript.enabled)
         {
             //Debug.Log("Mouse Drop Right: activate OrbitMotion");
-            //orbitDragScript.enabled = false;
+            orbitDragScript.enabled = false;
             orbitMotionScript.enabled = true;
         }
     }
@@ -62,10 +62,10 @@ public class RotationOrOrbitDetector : MonoBehaviour
         {
             rotationDragScript.enabled = false;
         }
-        /*if (orbitDragScript)
+        if (orbitDragScript)
         {
             orbitDragScript.enabled = false;
-        }*/
+        }
 
         if (!rotationAutoScript)
         {

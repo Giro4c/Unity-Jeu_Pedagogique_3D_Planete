@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateAxis: {x: 0, y: 23, z: 0}
-  rotatePeriod: 10
+  rotatePeriod: 30
   autoRotate: 1
   rotateProgress: 0
 --- !u!114 &116838466
@@ -438,7 +438,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 83
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -464,13 +464,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13366461, y: 0.10914144, z: -0.014812202, w: 0.98488706}
-  m_LocalPosition: {x: -21.89, y: 35.34, z: -44.88}
+  m_LocalRotation: {x: 0.22581965, y: 0.13870938, z: -0.057223108, w: 0.9625439}
+  m_LocalPosition: {x: -5.3, y: 54.5, z: -22.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 15.457, y: 12.647, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.782, y: 15.674, z: -3.051}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -892,7 +892,7 @@ Transform:
   m_GameObject: {fileID: 1837406606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.69, y: 0, z: 58.1}
+  m_LocalPosition: {x: -8.69, y: 0, z: 59.1}
   m_LocalScale: {x: 9.099818, y: 9.099818, z: 22.338297}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -909,6 +909,7 @@ GameObject:
   - component: {fileID: 1986380520}
   - component: {fileID: 1986380521}
   - component: {fileID: 1986380522}
+  - component: {fileID: 1986380523}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -959,10 +960,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbitingObject: {fileID: 116838463}
   orbitPath:
-    xAxis: 0
-    yAxis: 0
+    xAxis: 35
+    yAxis: 15
   orbitProgress: 0
-  orbitPeriod: 50
+  orbitPeriod: 100
+--- !u!114 &1986380523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986380519}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912065439337bfb46a80de43e16cf043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  colliderPlanetModel: {fileID: 116838460}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

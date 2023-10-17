@@ -6,7 +6,10 @@ using UnityEngine.TestTools;
 
 public class EllipseTest
 {
-    // A Test behaves as an ordinary method
+    
+    /* --------------------------------------- *
+     *               EVALUATE                  *
+     * --------------------------------------- */
     [Test]
     public void EllipseEvaluatePositiveAxises()
     {
@@ -80,8 +83,9 @@ public class EllipseTest
     }
     
     
-    
-    
+    /* ---------------------------------------------------- *
+     *                  FIND PROGRESS USING X               *
+     * ---------------------------------------------------- */
     
     
     [Test]
@@ -93,10 +97,10 @@ public class EllipseTest
         // Declare
         float x = 10;
         float y = 1;
+        float progress = 0f;
         
         // Tests
-        float progress = 0f;
-        Assert.AreEqual(progress, ellipse.FindProgressUsingX(x, y));
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingX(x, y)));
         
     }
     
@@ -112,8 +116,8 @@ public class EllipseTest
         float progress = 0.5f;
         
         // Tests
-        Assert.AreEqual(progress, ellipse.FindProgressUsingX(x, y));
-        
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingX(x, y)));
+
     }
     
     [Test]
@@ -128,8 +132,8 @@ public class EllipseTest
         float progress = 0.25f;
         
         // Tests
-        Assert.AreEqual(progress, ellipse.FindProgressUsingX(x, y));
-        
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingX(x, y)));
+
     }
     
     [Test]
@@ -144,8 +148,8 @@ public class EllipseTest
         float progress = 0.75f;
         
         // Tests
-        Assert.AreEqual(progress, ellipse.FindProgressUsingX(x, y));
-        
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingX(x, y)));
+
     }
     
     [Test]
@@ -161,8 +165,8 @@ public class EllipseTest
         float y = coordinates.y;
         
         // Tests
-        Assert.AreEqual(progress, ellipse.FindProgressUsingX(x, y));
-        
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingX(x, y)));
+
     }
     
     [Test]
@@ -178,8 +182,8 @@ public class EllipseTest
         float y = coordinates.y;
         
         // Tests
-        Assert.AreEqual(progress, ellipse.FindProgressUsingX(x, y));
-        
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingX(x, y)));
+
     }
     
     [Test]
@@ -192,14 +196,135 @@ public class EllipseTest
         
         // Declare
         float x = coordinates.x;
-        Debug.Log("X = " + x);
         float y = coordinates.y;
-        Debug.Log("Y = " + y);
         
         // Tests
-        Assert.AreEqual(progress, ellipse.FindProgressUsingX(x, y));
-        
-    }
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingX(x, y)));
 
+    }
+    
+    
+    /* ---------------------------------------------------- *
+     *                  FIND PROGRESS USING Y               *
+     * ---------------------------------------------------- */
+
+    [Test]
+    public void EllipseFindProgressUsingYProgress0()
+    {
+        // Constructor
+        Ellipse ellipse = new Ellipse(10, 5);
+        
+        // Declare
+        float x = 1f;
+        float y = 0f;
+        float progress = 0f;
+        
+        // Tests
+        Debug.Log(ellipse.FindProgressUsingY(x, y));
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingY(x, y)));
+
+    }
+    
+    [Test]
+    public void EllipseFindProgressUsingYProgressHalf()
+    {
+        // Constructor
+        Ellipse ellipse = new Ellipse(10, 5);
+        
+        // Declare
+        float x = -1f;
+        float y = 0f;
+        float progress = 0.5f;
+        
+        // Tests
+        Debug.Log(ellipse.FindProgressUsingY(x, y));
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingY(x, y)));
+
+    }
+    
+    [Test]
+    public void EllipseFindProgressUsingYProgressQuarter()
+    {
+        // Constructor
+        Ellipse ellipse = new Ellipse(10, 5);
+        
+        // Declare
+        float x = 1f;
+        float y = 5f;
+        float progress = 0.25f;
+        
+        // Tests
+        Debug.Log(ellipse.FindProgressUsingY(x, y));
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingY(x, y)));
+
+    }
+    
+    [Test]
+    public void EllipseFindProgressUsingYProgressMinusQuarter()
+    {
+        // Constructor
+        Ellipse ellipse = new Ellipse(10, 5);
+        
+        // Declare
+        float x = 1f;
+        float y = -5f;
+        float progress = 0.75f;
+        
+        // Tests
+        Debug.Log(ellipse.FindProgressUsingY(x, y));
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingY(x, y)));
+
+    }
+    
+    [Test]
+    public void EllipseFindProgressUsingYProgressOneNegativeXAxis()
+    {
+        // Constructor
+        Ellipse ellipse = new Ellipse(-10, 5);
+        float progress = 0.42f;
+        Vector2 coordinates = ellipse.Evaluate(progress);
+        
+        // Declare
+        float x = coordinates.x;
+        float y = coordinates.y;
+        
+        // Tests
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingY(x, y)));
+
+    }
+    
+    [Test]
+    public void EllipseFindProgressUsingYProgressOneNegativeYAxis()
+    {
+        // Constructor
+        Ellipse ellipse = new Ellipse(10, -5);
+        float progress = 0.42f;
+        Vector2 coordinates = ellipse.Evaluate(progress);
+        
+        // Declare
+        float x = coordinates.x;
+        float y = coordinates.y;
+        
+        // Tests
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingY(x, y)));
+
+    }
+    
+    [Test]
+    public void EllipseFindProgressUsingYProgressNegativeAxises()
+    {
+        // Constructor
+        Ellipse ellipse = new Ellipse(-10, -5);
+        float progress = 0.42f;
+        Vector2 coordinates = ellipse.Evaluate(progress);
+        
+        // Declare
+        float x = coordinates.x;
+        float y = coordinates.y;
+        
+        // Tests
+        Assert.True(Mathf.Approximately(progress,ellipse.FindProgressUsingY(x, y)));
+
+    }
     
 }

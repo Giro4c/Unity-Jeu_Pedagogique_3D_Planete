@@ -23,7 +23,7 @@ public class Ellipse
      */
     public Vector2 Evaluate(float t)
     {
-        float angle = Mathf.Deg2Rad * 360 * t;
+        float angle = Mathf.Deg2Rad * 360f * t;
         float x = Mathf.Cos(angle) * xAxis;
         float y = Mathf.Sin(angle) * yAxis;
         return new Vector2(x, y);
@@ -31,6 +31,16 @@ public class Ellipse
 
     public float FindProgressUsingX(float x, float y)
     {
+        // Verification if x and y values do not cause maths errors
+        if ((xAxis >= 0 && x > xAxis) || (xAxis < 0 && x < xAxis))
+        {
+            x = xAxis;
+        }
+        if ((yAxis >= 0 && y > yAxis) || (yAxis < 0 && y < yAxis))
+        {
+            y = yAxis;
+        }
+        
         float angleX = Mathf.Acos(x / xAxis);
         float verifAngleY = Mathf.Asin(y / yAxis);
         
@@ -55,23 +65,45 @@ public class Ellipse
         
     }
     
-    /*public float FindProgressUsingY(float x, float y)
+    public float FindProgressUsingY(float x, float y)
     {
-        // Simple values verification
-        if (y >= yAxis)
+        // Verification if x and y values do not cause maths errors
+        if ((xAxis >= 0 && x > xAxis) || (xAxis < 0 && x < xAxis))
         {
-            return 0.25f;
+            x = xAxis;
         }
-        if (y <= yAxis * -1)
+        if ((yAxis >= 0 && y > yAxis) || (yAxis < 0 && y < yAxis))
         {
-            return 0.75f;
+            y = yAxis;
         }
-
+        
+        float verifAngleX = Mathf.Acos(x / xAxis);
+        float angleY = Mathf.Asin(y / yAxis);
+        
+        // Verification if angle must be changed
+        if (verifAngleX <= Mathf.Deg2Rad * 90f)
+        {
+            if (angleY < 0)
+            {
+                angleY = (Mathf.Deg2Rad * 360f) + angleY;
+            }
+            //else: if (angleY >= 0) Do nothing;
+        }
+        else
+        {
+            angleY = (Mathf.Deg2Rad * 180f) - angleY;
+        }
+        
         // Find progress
-        float angle = Mathf.Asin(y / yAxis);
-        float progress = angle / (Mathf.Deg2Rad * 360f);
-        if (x < 0) return (0.5f - progress)%1f;
-        return progress;
-    }*/
+        float progress = (Mathf.Rad2Deg * angleY) / 360f;
+        
+        return progress%1f;
+    }
+
+    private void container(float x, float y)
+    {
+        
+
+    }
 
 }
