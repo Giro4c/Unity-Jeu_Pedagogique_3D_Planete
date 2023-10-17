@@ -908,6 +908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986380520}
   - component: {fileID: 1986380521}
+  - component: {fileID: 1986380522}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -943,13 +944,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e10a9add4ceac45abe18ec8704929e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orbitActive: 1
+--- !u!114 &1986380522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986380519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02db3223baf58eb40be70771224065d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   orbitingObject: {fileID: 116838463}
   orbitPath:
-    xAxis: 35
-    yAxis: 15
+    xAxis: 0
+    yAxis: 0
   orbitProgress: 0
-  orbitPeriod: 60
-  orbitActive: 1
+  orbitPeriod: 50
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
