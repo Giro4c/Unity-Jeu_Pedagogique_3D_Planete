@@ -24,7 +24,6 @@ public class Ellipse
     public Vector2 Evaluate(float t)
     {
         float angle = Mathf.Deg2Rad * 360 * t;
-        Debug.Log("Angle Progrès : " + 360 * t);
         float x = Mathf.Cos(angle) * xAxis;
         float y = Mathf.Sin(angle) * yAxis;
         return new Vector2(x, y);
@@ -33,10 +32,7 @@ public class Ellipse
     public float FindProgressUsingX(float x, float y)
     {
         float angleX = Mathf.Acos(x / xAxis);
-        Debug.Log("Angle X Deg Initial : " + Mathf.Rad2Deg * angleX);
         float verifAngleY = Mathf.Asin(y / yAxis);
-        Debug.Log(angleX);
-        Debug.Log(verifAngleY);
         
         // Verification if angle must be changed
         if (verifAngleY < 0)
@@ -52,12 +48,6 @@ public class Ellipse
         }
         //else: if (verifAngle >= 0) Do nothing;
         
-        Debug.Log("Angle X Rad : " + angleX);
-        Debug.Log("Angle Y Rad : " + verifAngleY);
-        Debug.Log("Angle X Deg : " + Mathf.Rad2Deg * angleX);
-        Debug.Log("Angle Y Deg : " + Mathf.Rad2Deg * verifAngleY);
-        
-        
         // Find progress
         float progress = (Mathf.Rad2Deg * angleX) / 360f;
         
@@ -65,7 +55,7 @@ public class Ellipse
         
     }
     
-    public float FindProgressUsingY(float x, float y)
+    /*public float FindProgressUsingY(float x, float y)
     {
         // Simple values verification
         if (y >= yAxis)
@@ -82,6 +72,6 @@ public class Ellipse
         float progress = angle / (Mathf.Deg2Rad * 360f);
         if (x < 0) return (0.5f - progress)%1f;
         return progress;
-    }
+    }*/
 
 }

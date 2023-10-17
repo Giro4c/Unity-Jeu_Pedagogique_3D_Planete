@@ -151,8 +151,6 @@ public class EllipseTest
     [Test]
     public void EllipseFindProgressUsingXProgressOneNegativeXAxis()
     {
-        Debug.Log("Test Negative X Axis");
-        
         // Constructor
         Ellipse ellipse = new Ellipse(-10, 5);
         float progress = 0.42f;
@@ -170,8 +168,6 @@ public class EllipseTest
     [Test]
     public void EllipseFindProgressUsingXProgressOneNegativeYAxis()
     {
-        Debug.Log("Test Negative Y Axis");
-        
         // Constructor
         Ellipse ellipse = new Ellipse(10, -5);
         float progress = 0.42f;
@@ -189,8 +185,6 @@ public class EllipseTest
     [Test]
     public void EllipseFindProgressUsingXProgressNegativeAxises()
     {
-        Debug.Log("Test Negative X and Y Axis");
-        
         // Constructor
         Ellipse ellipse = new Ellipse(-10, -5);
         float progress = 0.42f;
