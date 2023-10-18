@@ -3215,8 +3215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbitingObject: {fileID: 1388563904}
   orbitPath:
-    xAxis: 2
-    yAxis: 3
+    xAxis: 3
+    yAxis: 2
   orbitProgress: 0
   orbitPeriod: 20
   orbitActive: 1
