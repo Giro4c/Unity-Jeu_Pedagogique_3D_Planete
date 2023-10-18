@@ -42,7 +42,7 @@ public class CameraRotation : MonoBehaviour
             }
             else
             {
-                Debug.Log("Did Hit");
+                //Debug.Log("Did Hit");
             }
             
             
