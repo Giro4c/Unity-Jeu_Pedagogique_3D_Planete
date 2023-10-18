@@ -3,38 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(RotationCycle))]
 public class RotationAuto : MonoBehaviour
 {
-    public Vector3 rotateAxis = new Vector3(0, 23, 0);
-    public float rotatePeriod = 3f;
+    private RotationCycle rotationCycleScript;
     public bool autoRotate = true;
-    [Range(0f, 1f)] public float rotateProgress = 0f;
     
     // Start is called before the first frame update
     void Start()
     {
-        SetRotation();
-        StartCoroutine(AutoRotation());
+        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
     }
 
-    private void SetRotation()
-    {
-        transform.eulerAngles = new Vector3(0, 0, 23);
-        float angle = rotateProgress * 360;
-        transform.Rotate(rotateAxis, angle);
-    }
+    
     
     IEnumerator AutoRotation()
     {
-        float rotatorSpeed = 1f / rotatePeriod;
-        float angleAdded;
+        float rotatorSpeed = 1f / rotationCycleScript.rotatePeriod;
         while (autoRotate)
         {
-            rotateProgress += Time.deltaTime * rotatorSpeed;
-            rotateProgress %= 1f;
-            angleAdded = Time.deltaTime * rotatorSpeed * 360;
-            transform.Rotate(rotateAxis, angleAdded);
-            //SetRotation();
+            // Update progress
+            rotationCycleScript.rotateProgress += Time.deltaTime * rotatorSpeed;
+            rotationCycleScript.rotateProgress %= 1f;
+            
+            // Update Rotation
+            rotationCycleScript.SetRotation();
+            
             yield return null;
         }
         yield return null;
@@ -62,6 +56,7 @@ public class RotationAuto : MonoBehaviour
 
     private void OnEnable()
     {
+        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
         autoRotate = true;
         StartCoroutine(AutoRotation());
     }
