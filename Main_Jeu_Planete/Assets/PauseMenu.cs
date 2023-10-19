@@ -12,6 +12,9 @@ public class PauseMenu : MonoBehaviour
     }
     public void Home(string _sceneName)
     {
+        // Afficher le temps écoulé dans la console
+        Debug.Log("Temps écoulé : " + Timer.elapsedTimeStatic);
+
         SceneManager.LoadScene(_sceneName);
         Time.timeScale = 1;
     }
