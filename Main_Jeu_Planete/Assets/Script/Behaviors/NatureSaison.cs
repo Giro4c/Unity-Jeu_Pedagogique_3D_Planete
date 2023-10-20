@@ -10,7 +10,8 @@ public class NatureSaison : MonoBehaviour
     public List<GameObject> automne = new List<GameObject>();
     public List<GameObject> hiver = new List<GameObject>();
     public int index = 0;
-    [Range(0f, 4f)]public float slider;
+    public float totalObject;
+    [Range(0f, 13f)]public float slider;
     private int element = 0;
     
     public float sliderV()
@@ -27,8 +28,7 @@ public class NatureSaison : MonoBehaviour
 
             // Incrémente la valeur de texture en fonction du temps
             float texture = terrain.textureV();
-            slider += Time.deltaTime*7;
-
+            slider += Time.deltaTime*3;
             if (texture >= 10f)
             {
                 texture = 0;
@@ -38,7 +38,7 @@ public class NatureSaison : MonoBehaviour
 
             // Copiez les TreePrototypes actuels du terrain dans une liste modifiable
             List<TreePrototype> newTreePrototypes = new List<TreePrototype>(terrainData.treePrototypes);
-
+            totalObject = newTreePrototypes.Count;
             if (index >= 0 && index < newTreePrototypes.Count)
             {
                 GameObject saison;
@@ -83,25 +83,15 @@ public class NatureSaison : MonoBehaviour
     }
     public void incrementation()
     {
-        // Incrémente l'index et l'élément en fonction de la valeur de slider
-        if (slider >= 0f && slider < 1f)
-        {
-            index++;
-            element++;
-        }
-        else if (slider >= 1f && slider < 2f)
-        {
-            index += 2; // Incrémente de 2
-            element += 2; // Incrémente de 2
-        }
-        else if (slider >= 2f && slider < 3f)
-        {
-            index += 3; // Incrémente de 3
-            element += 3; // Incrémente de 3
-        }
+          // Calcul de l'incrémentation en fonction de la valeur de slider
+        int increment = Mathf.FloorToInt(slider); // Obtenez la partie entière de slider
 
-        // Assurez-vous que slider reste dans la plage [0, 4] en réinitialisant à 0 si supérieur à 4
-        if (slider > 4f)
+        // Incrémentation de l'index et de l'élément
+        index += increment;
+        element += increment;
+
+        // Réinitialisation de slider si supérieur à 13
+        if (slider > totalObject)
         {
             slider = 0f;
         }

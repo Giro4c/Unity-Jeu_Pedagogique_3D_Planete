@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class TerrainSaison : MonoBehaviour
 {
+
     public Terrain terrain; // Référence au composant Terrain
     public int index = 0; // Index du layer à modifier
     public List<Texture2D> texturePrincipal = new List<Texture2D>();
     public List<Texture2D> textureSecondaire = new List<Texture2D>();
     public List<Texture2D> textureTertiaire = new List<Texture2D>();
+     public List<Texture2D> normalEtMask = new List<Texture2D>();
     private int element ;
     public float speed; // vitesse du changement de texture
     [Range(0f, 10f)]public float texture; //changement de texture entre 0 et 1
-    public NatureSaison changement;
+    
     
     public float textureV()
     {
@@ -33,12 +35,16 @@ public class TerrainSaison : MonoBehaviour
 
             if(texture >=0f && texture < 5f){
                 element = 0;
+                terrainLayers[0].maskMapTexture = normalEtMask[1];
+                terrainLayers[0].normalMapTexture = normalEtMask[0];
             }
             if(texture >=5f && texture < 7.5f){
                element = 1;
             }
             if(texture >=7.5f && texture < 10f){
                 element = 2;
+                terrainLayers[0].maskMapTexture = normalEtMask[3];
+                terrainLayers[0].normalMapTexture = normalEtMask[2];
             }
             
             if (index >= 0 && index < terrainLayers.Length )
