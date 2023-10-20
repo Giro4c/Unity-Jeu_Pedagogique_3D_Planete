@@ -13,16 +13,6 @@ public class RotationCycle : MonoBehaviour
     {
         rotatingObject.localRotation = revolutionSelf.Evaluate(rotateProgress);
     }
-
-    public void AddAngleToRotation(float angle)
-    {
-        rotateProgress += angle / 360;
-        rotateProgress %= 1;
-        rotatingObject.Rotate(revolutionSelf.axis, angle);
-        rotateProgress = revolutionSelf.FindProgress(rotatingObject.localRotation);
-
-        
-    }
     
     
 }

@@ -71,7 +71,7 @@ public class RevolutionSelfTest
         RevolutionSelf revolutionSelf = new RevolutionSelf(Vector3.zero, Vector3.up);
         float progress = 0.98f;
         Quaternion quaterProgress = revolutionSelf.Evaluate(progress);
-        //Debug.Log("Expected " + progress + " Result " + revolutionSelf.FindProgress(quaterProgress));
+        
         Assert.True(Mathf.Approximately(progress, revolutionSelf.FindProgress(quaterProgress)));
     }
 

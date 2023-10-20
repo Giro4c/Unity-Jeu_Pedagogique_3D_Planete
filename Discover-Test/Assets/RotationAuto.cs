@@ -35,7 +35,6 @@ public class RotationAuto : MonoBehaviour
     private void OnEnable()
     {
         rotationCycleScript = gameObject.GetComponent<RotationCycle>();
-        //Debug.Log("Initial Rotation : " + transform.rotation);
         autoRotate = true;
         StartCoroutine(AutoRotation());
     }
