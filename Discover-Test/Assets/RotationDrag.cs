@@ -30,9 +30,19 @@ public class RotationDrag : MonoBehaviour
         while (active)
         {
             float xRotate = Input.GetAxis("Mouse X") * speedRotation * (-1);
+            xRotate %= 360f;
+            float newProgress = rotationCycleScript.rotateProgress + xRotate / 360f;
             
-            rotationCycleScript.rotateProgress += xRotate / 360;
-            rotationCycleScript.rotateProgress %= 1;
+            if (newProgress < 0)
+            {
+                newProgress += 1;
+            }
+            else if (newProgress >= 1)
+            {
+                newProgress %= 1f;
+            }
+
+            rotationCycleScript.rotateProgress = newProgress;
             
             rotationCycleScript.SetRotation();
             
