@@ -15,12 +15,13 @@ public class RotationDrag : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
+        
     }
     
    
     private void OnEnable()
     {
+        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
         active = true;
         StartCoroutine(DragAndRotate());
     }
@@ -36,26 +37,12 @@ public class RotationDrag : MonoBehaviour
     {
         while (active)
         {
-            
             float xRotate = Input.GetAxis("Mouse X") * speedRotation * (-1);
-            //Quaternion rotaB = transform.localRotation;
-            /*if (xRotate != 0)
-            {
-                Debug.Log("Rotation angle = " + xRotate);
-                Debug.Log("Euler angles Before : " + transform.eulerAngles);
-                Debug.Log("Quaternion Before : " + rotaB);
-            }*/
+            Debug.Log("New progress : " + (rotationCycleScript.rotateProgress + (xRotate / 360)));
+            rotationCycleScript.rotateProgress += xRotate / 360;
+            rotationCycleScript.rotateProgress %= 1;
             
-            transform.Rotate(rotationCycleScript.rotateAxis, xRotate);
-            rotationCycleScript.rotateProgress = rotationCycleScript.FindProgress();
-            //float angle = Quaternion.Angle(rotaB, transform.localRotation);
-            /*if (xRotate != 0)
-            {
-                Debug.Log("Euler angles After : " + transform.eulerAngles);
-                Debug.Log("Quaternion After : " + transform.localRotation);
-                Debug.Log("Angle found : " + angle);
-            }*/
-
+            rotationCycleScript.SetRotation();
             
             yield return null;
         }
@@ -67,9 +54,11 @@ public class RotationDrag : MonoBehaviour
         while (active)
         {
             float xRotate = Input.GetAxis("Mouse X") * speedRotation * (-1);
+            //float xRotate = Input.GetAxis("Mouse X") * speedRotation * (-1);
+
             //float yRotate = Input.GetAxis("Mouse Y") * speedRotation;
         
-            transform.Rotate(rotationCycleScript.rotateAxis, xRotate);
+            rotationCycleScript.AddAngleToRotation(xRotate);
             //transform.Rotate(Vector3.right, yRotate);
             yield return null;
         }

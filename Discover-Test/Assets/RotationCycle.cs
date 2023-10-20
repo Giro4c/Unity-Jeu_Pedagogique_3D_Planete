@@ -4,32 +4,25 @@ using UnityEngine;
 
 public class RotationCycle : MonoBehaviour
 {
-    public Vector3 initialRotation = new Vector3(0, 0, 23);
-    private Quaternion initialQuaternion;
-    public Vector3 rotateAxis = new Vector3(0, 23, 0);
+    public Transform rotatingObject;
+    public RevolutionSelf revolutionSelf;
     public float rotatePeriod = 3f;
     [Range(0f, 1f)] public float rotateProgress = 0f;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        transform.eulerAngles = initialRotation;
-        initialQuaternion = transform.localRotation;
-    }
-    
     public void SetRotation()
     {
-        transform.eulerAngles = initialRotation;
-        float angle = rotateProgress * 360;
-        transform.Rotate(rotateAxis, angle);
+        rotatingObject.localRotation = revolutionSelf.Evaluate(rotateProgress);
     }
 
-    public float FindProgress()
+    public void AddAngleToRotation(float angle)
     {
-        float angle = Quaternion.Angle(transform.localRotation, initialQuaternion);
-        //Debug.Log("Angle : " + angle);
-        float newProgress = angle / 360;
-        return newProgress%1;
+        rotateProgress += angle / 360;
+        rotateProgress %= 1;
+        rotatingObject.Rotate(revolutionSelf.axis, angle);
+        rotateProgress = revolutionSelf.FindProgress(rotatingObject.localRotation);
+
+        
     }
+    
     
 }

@@ -9,14 +9,6 @@ public class RotationAuto : MonoBehaviour
     private RotationCycle rotationCycleScript;
     public bool autoRotate = true;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
-    }
-
-    
-    
     IEnumerator AutoRotation()
     {
         float rotatorSpeed = 1f / rotationCycleScript.rotatePeriod;
@@ -34,29 +26,16 @@ public class RotationAuto : MonoBehaviour
         yield return null;
     }
 
-    /*private void OnMouseDown()
-    {
-        //Debug.Log("Mouse Down");
-        autoRotate = false;
-        StopCoroutine(AutoRotation());
-    }*/
-
     private void OnDisable()
     {
         autoRotate = false;
         StopCoroutine(AutoRotation());
     }
 
-    /*private void OnMouseUp()
-    {
-        //Debug.Log("Mouse Up");
-        autoRotate = true;
-        StartCoroutine(AutoRotation());
-    }*/
-
     private void OnEnable()
     {
         rotationCycleScript = gameObject.GetComponent<RotationCycle>();
+        //Debug.Log("Initial Rotation : " + transform.rotation);
         autoRotate = true;
         StartCoroutine(AutoRotation());
     }
