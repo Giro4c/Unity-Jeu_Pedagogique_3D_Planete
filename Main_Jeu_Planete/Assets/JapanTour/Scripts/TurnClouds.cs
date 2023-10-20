@@ -15,6 +15,7 @@ public class TurnClouds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //transform.localRotation.eulerAngles += direction * (speed * Time.deltaTime);
         transform.Rotate(direction * speed * Time.deltaTime);
     }
 }

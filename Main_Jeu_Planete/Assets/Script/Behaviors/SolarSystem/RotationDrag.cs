@@ -10,17 +10,10 @@ public class RotationDrag : MonoBehaviour
     private RotationCycle rotationCycleScript;
     public float speedRotation = 11f;
     private bool active = true;
-
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
-    }
-    
    
     private void OnEnable()
     {
+        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
         active = true;
         StartCoroutine(DragAndRotate());
     }
@@ -36,47 +29,30 @@ public class RotationDrag : MonoBehaviour
     {
         while (active)
         {
-            
+            // Find angle to add to the rotation
             float xRotate = Input.GetAxis("Mouse X") * speedRotation * (-1);
-            //Quaternion rotaB = transform.localRotation;
-            /*if (xRotate != 0)
-            {
-                Debug.Log("Rotation angle = " + xRotate);
-                Debug.Log("Euler angles Before : " + transform.eulerAngles);
-                Debug.Log("Quaternion Before : " + rotaB);
-            }*/
+            xRotate %= 360f;
             
-            transform.Rotate(rotationCycleScript.rotateAxis, xRotate);
-            rotationCycleScript.rotateProgress = rotationCycleScript.FindProgress();
-            //float angle = Quaternion.Angle(rotaB, transform.localRotation);
-            /*if (xRotate != 0)
+            // Calculate newProgress
+            float newProgress = rotationCycleScript.rotateProgress + xRotate / 360f;
+            
+            if (newProgress < 0)
             {
-                Debug.Log("Euler angles After : " + transform.eulerAngles);
-                Debug.Log("Quaternion After : " + transform.localRotation);
-                Debug.Log("Angle found : " + angle);
-            }*/
-
+                newProgress += 1;
+            }
+            else if (newProgress >= 1)
+            {
+                newProgress %= 1f;
+            }
+            rotationCycleScript.rotateProgress = newProgress;
+            
+            // Change object's rotation
+            rotationCycleScript.SetRotation();
             
             yield return null;
         }
         yield return null;
     }
     
-    private IEnumerator DragAndRotateOld()
-    {
-        while (active)
-        {
-            float xRotate = Input.GetAxis("Mouse X") * speedRotation * (-1);
-            //float yRotate = Input.GetAxis("Mouse Y") * speedRotation;
-        
-            transform.Rotate(rotationCycleScript.rotateAxis, xRotate);
-            //transform.Rotate(Vector3.right, yRotate);
-            yield return null;
-        }
-        yield return null;
-    }
-    
-    
-
     
 }
