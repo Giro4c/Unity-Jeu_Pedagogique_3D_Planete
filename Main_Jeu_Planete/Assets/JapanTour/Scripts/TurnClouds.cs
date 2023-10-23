@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TurnClouds : MonoBehaviour
 {
-    public float speed=1;
-    public Vector3 direction= Vector3.up;
+    public float speed = 1;
+    public Vector3 direction = Vector3.up;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,6 @@ public class TurnClouds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.localRotation.eulerAngles += direction * (speed * Time.deltaTime);
         transform.Rotate(direction * speed * Time.deltaTime);
     }
 }
