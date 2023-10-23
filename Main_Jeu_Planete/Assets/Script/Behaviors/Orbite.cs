@@ -7,7 +7,7 @@ public class Orbite : MonoBehaviour
     public Transform orbitingObject;
     public Ellipse orbitPath;
 
-    [Range(0f, 2f)] public float orbitProgress = 0f;
+    [Range(0f, 1f)] public float orbitProgress = 0f;
     public float orbitPeriod = 3f;
     public bool orbitActive = true;
     
@@ -39,7 +39,7 @@ public class Orbite : MonoBehaviour
         while (orbitActive)
         {
             orbitProgress += Time.deltaTime * orbitSpeed;
-            orbitProgress %= 2f;
+            orbitProgress %= 1f;
             SetOrbitingObjectPosition();
             yield return null;
         }

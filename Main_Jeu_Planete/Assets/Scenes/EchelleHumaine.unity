@@ -281,7 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92196999ee864f89ad084a31d2ca34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
 --- !u!1 &465834118
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,12 +334,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62ddf8648e374d7eaeb323f3a4a4f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrain: {fileID: 0}
+  terrain: {fileID: 465834122}
   index: 0
-  texturePrincipal: []
-  textureSecondaire: []
-  textureTertiaire: []
-  normalEtMask: []
+  texturePrincipal:
+  - {fileID: 2800000, guid: 5dc31812af7fb67479e543fff9ad114d, type: 3}
+  - {fileID: 2800000, guid: a667e05eb5f0f214d9a15b105f2fbd6f, type: 3}
+  - {fileID: 2800000, guid: f6ef05227d2b1d94186ee762b4c2f1ed, type: 3}
+  textureSecondaire:
+  - {fileID: 2800000, guid: a667e05eb5f0f214d9a15b105f2fbd6f, type: 3}
+  - {fileID: 2800000, guid: e61670a15bece3a43836ed8f3f71afc4, type: 3}
+  - {fileID: 2800000, guid: f6ef05227d2b1d94186ee762b4c2f1ed, type: 3}
+  textureTertiaire:
+  - {fileID: 2800000, guid: 99e79cc12b575d14fb40fd78a113fbd1, type: 3}
+  - {fileID: 2800000, guid: 2c2e2e72e1c1d744e99b379474f7d388, type: 3}
+  - {fileID: 2800000, guid: 202cacfffc0e22343a8ec232561b3ffd, type: 3}
+  normalEtMask:
+  - {fileID: 2800000, guid: 37b567a3d7e98984aa336221b207d38b, type: 3}
+  - {fileID: 2800000, guid: 722aaae2dfc560e458ff88c4c0f950f3, type: 3}
+  - {fileID: 0}
+  - {fileID: 2800000, guid: 7d952f98b46c0b4458ed99dddd9e71c9, type: 3}
   speed: 0
   texture: 0
 --- !u!154 &465834121
@@ -429,10 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b28c0fb8d9134d608218e43089e0f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neige: {fileID: 0}
-  pluie: {fileID: 0}
-  sonPluie: {fileID: 0}
-  changement: {fileID: 0}
+  neige: {fileID: 1890667143}
+  pluie: {fileID: 1340527689}
+  sonPluie: {fileID: 8300000, guid: e60b9243727bbb5428fbb3e7f7fe44cd, type: 3}
+  changement: {fileID: 465834120}
 --- !u!1001 &473990758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -506,6 +518,7 @@ GameObject:
   - component: {fileID: 1106913318}
   - component: {fileID: 1106913317}
   - component: {fileID: 1106913319}
+  - component: {fileID: 1106913320}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -613,11 +626,31 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &1106913320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106913316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15de97fe62a2f4ad1a50a240c7bd7807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: {x: 0, y: 1, z: 0}
+  speed: 6
 --- !u!4 &1323151061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010892824412, guid: 5ed4ce1f9abfa944fb0462b08c373c93,
     type: 3}
   m_PrefabInstance: {fileID: 473990758}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1340527689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000011296922826, guid: 5d00af152b0756b4d958edc9145555c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1559182121}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1559182121
 PrefabInstance:
@@ -697,6 +730,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d00af152b0756b4d958edc9145555c4, type: 3}
+--- !u!1 &1890667143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000012464414300, guid: 5ed4ce1f9abfa944fb0462b08c373c93,
+    type: 3}
+  m_PrefabInstance: {fileID: 473990758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
