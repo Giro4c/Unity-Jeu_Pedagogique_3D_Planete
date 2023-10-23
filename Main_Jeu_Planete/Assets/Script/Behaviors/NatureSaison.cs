@@ -13,6 +13,8 @@ public class NatureSaison : MonoBehaviour
     public float totalObject;
     [Range(0f, 13f)]public float slider;
     private int element = 0;
+
+    public Orbit orbit;
     
     public float sliderV()
     {
