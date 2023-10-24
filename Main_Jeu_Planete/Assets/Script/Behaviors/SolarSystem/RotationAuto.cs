@@ -10,11 +10,13 @@ public class RotationAuto : MonoBehaviour
     public bool autoRotate = true;
     public Transform target; // Référence au GameObject cible que vous voulez suivre
     public float rotationSpeed = 5.0f; // Vitesse de rotation
+    
     IEnumerator AutoRotation()
     {
-    
-            
-         if (target != null)
+        float rotatorSpeed = 1f / rotationCycleScript.rotatePeriod;
+        while (autoRotate)
+        {
+            if (target != null)
         {
             // Calculez la direction de la cible par rapport à la position actuelle de cet objet
             Vector3 directionToTarget = target.position - transform.position;
@@ -24,6 +26,9 @@ public class RotationAuto : MonoBehaviour
 
             // Appliquez la rotation en douceur en utilisant Slerp
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+            
+            yield return null;
         }
         yield return null;
     }
@@ -40,4 +45,5 @@ public class RotationAuto : MonoBehaviour
         autoRotate = true;
         StartCoroutine(AutoRotation());
     }
+
 }
