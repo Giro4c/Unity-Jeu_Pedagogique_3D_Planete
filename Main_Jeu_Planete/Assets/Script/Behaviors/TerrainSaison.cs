@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class TerrainSaison : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class TerrainSaison : MonoBehaviour
     public float speed; // vitesse du changement de texture
     [Range(0f, 10f)]public float texture; //changement de texture entre 0 et 1
     
+    public Orbit orbit;
+    private string saison = "hiver";
     
     public float textureV()
     {
@@ -22,10 +26,82 @@ public class TerrainSaison : MonoBehaviour
         return texture;
     }
 
-    void ChangementSol()
+    private void test()
     {
-        if (terrain != null)
+        print(terrain.terrainData.treePrototypes.Length);
+        for (int i = 0; i < terrain.terrainData.treePrototypes.Length; ++i)
         {
+            Debug.Log(terrain.terrainData.treePrototypes[i].prefab.ToString());
+        }
+    }
+
+    IEnumerator ChangeGround()
+    {
+        TerrainLayer[] terrainLayers = terrain.terrainData.terrainLayers;
+
+        while (true)
+        {
+            if (saison.Equals("hiver"))
+            {
+                if (orbit.orbitProgress < 0.875 && orbit.orbitProgress >= 0.125f)
+                {
+                    saison = "printemps";
+                    terrainLayers[0].maskMapTexture = normalEtMask[1];
+                    terrainLayers[0].normalMapTexture = normalEtMask[0];
+
+                    terrainLayers[0].diffuseTexture = texturePrincipal[0];
+                    terrainLayers[1].diffuseTexture = textureSecondaire[0];
+                    terrainLayers[2].diffuseTexture = textureTertiaire[0];
+                }
+            }
+            else if (saison.Equals("printemps"))
+            {
+                if (orbit.orbitProgress >= 0.375f)
+                {
+                    saison = "été";
+                    terrainLayers[0].maskMapTexture = normalEtMask[1];
+                    terrainLayers[0].normalMapTexture = normalEtMask[0];
+
+                    terrainLayers[0].diffuseTexture = texturePrincipal[0];
+                    terrainLayers[1].diffuseTexture = textureSecondaire[0];
+                    terrainLayers[2].diffuseTexture = textureTertiaire[0];
+                }
+            }
+            else if (saison.Equals("été"))
+            {
+                if (orbit.orbitProgress >= 0.625)
+                {
+                    saison = "automne";
+
+                    terrainLayers[0].diffuseTexture = texturePrincipal[1];
+                    terrainLayers[1].diffuseTexture = textureSecondaire[1];
+                    terrainLayers[2].diffuseTexture = textureTertiaire[1];
+                }
+            }
+            else if (saison.Equals("automne"))
+            {
+                if (orbit.orbitProgress >= 0.875)
+                {
+                    saison = "hiver";
+                    terrainLayers[0].maskMapTexture = normalEtMask[3];
+                    terrainLayers[0].normalMapTexture = normalEtMask[2];
+
+                    terrainLayers[0].diffuseTexture = texturePrincipal[2];
+                    terrainLayers[1].diffuseTexture = textureSecondaire[2];
+                    terrainLayers[2].diffuseTexture = textureTertiaire[2];
+                }
+            }
+            terrain.terrainData.terrainLayers = terrainLayers;
+            yield return null;
+        }
+
+        yield return null;
+    }
+
+    IEnumerator ChangementSol()
+    {
+        //if (terrain != null)
+        //{
             TerrainLayer[] terrainLayers = terrain.terrainData.terrainLayers;
         
             if(texture >=10f){
@@ -59,21 +135,28 @@ public class TerrainSaison : MonoBehaviour
                 terrain.terrainData.terrainLayers = terrainLayers;
                 element = 0;
                
-                Debug.Log("Terrain Layer modifié avec succès.");
+                //Debug.Log("Terrain Layer modifié avec succès.");
             }
-
-            else
+            /*else
             {
                 Debug.LogError("Index du Terrain Layer invalide.");
-            }
-        }
+            }*/
+        /*}
         else
         {
             Debug.LogError("La référence au terrain n'a pas été définie.");
-        }
+        }*/
+        yield return null;
     }
     void Update()
     {
-            ChangementSol();
+            //ChangementSol();
+            
+    }
+
+    private void Start()
+    {
+        test();
+        StartCoroutine(ChangeGround());
     }
 }

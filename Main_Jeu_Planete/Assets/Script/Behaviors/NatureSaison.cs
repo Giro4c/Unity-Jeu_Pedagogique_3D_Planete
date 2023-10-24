@@ -1,106 +1,172 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NatureSaison : MonoBehaviour
 {
-    public TerrainSaison terrain; // Référence au composant Terrain
+    public Terrain terrain; // Référence au composant Terrain
     public List<GameObject> printemps = new List<GameObject>();
     public List<GameObject> ete = new List<GameObject>();
     public List<GameObject> automne = new List<GameObject>();
     public List<GameObject> hiver = new List<GameObject>();
-    public int index = 0;
-    public float totalObject;
-    [Range(0f, 13f)]public float slider;
-    private int element = 0;
 
     public Orbit orbit;
+    private string saison = "hiver";
     
-    public float sliderV()
+
+    private void Start()
     {
-         slider += Time.deltaTime*7;
-         return slider;
+        SetUp();
+        StartCoroutine(Changement());
+    }
+    
+    IEnumerator Changement()
+    {
+        while (true)
+        {
+            if (ChangeSeason())
+            {
+                SetTreesSeason(saison);
+                print("Changement effectué.");
+            }
+            yield return null;
+        }
+        yield return null;
+    }
+    
+    private void SetUp()
+    {
+        SetUpSeason();
+        SetTreesSeason(saison);
     }
 
-    void Changement()
+    private void SetUpSeason()
     {
-        if (terrain.terrain != null)
+        // Printemps
+        if (0.125 <= orbit.orbitProgress && orbit.orbitProgress < 0.375)
         {
-            TerrainData terrainData = terrain.terrain.terrainData;
-
-            // Incrémente la valeur de texture en fonction du temps
-            float texture = terrain.textureV();
-            slider += Time.deltaTime*3;
-            if (texture >= 10f)
-            {
-                texture = 0;
-                slider = 0;
-               
-            }
-
-            // Copiez les TreePrototypes actuels du terrain dans une liste modifiable
-            List<TreePrototype> newTreePrototypes = new List<TreePrototype>(terrainData.treePrototypes);
-            totalObject = newTreePrototypes.Count;
-            if (index >= 0 && index < newTreePrototypes.Count)
-            {
-                GameObject saison;
-
-                // Sélectionnez le préfab d'arbre en fonction de la saison (printemps, été, automne, hiver)
-                if (texture >= 0f && texture < 2.5f)
-                {
-                    saison = printemps[element];
-                }
-                else if (texture >= 2.5f && texture < 5f)
-                {
-                    saison = ete[element];
-                }
-                else if (texture >= 5f && texture < 7.5f)
-                {
-                    saison = automne[element];
-                }
-                else
-                {
-                    saison = hiver[element];
-                }
-
-                // Modifiez le préfab d'arbre à l'index spécifié
-                newTreePrototypes[index].prefab = saison;
-            }
-            else
-            {
-                Debug.LogError("Index du préfab d'arbre à modifier invalide.");
-            }
-
-            // Appliquez les modifications aux TreePrototypes du terrain
-            terrainData.treePrototypes = newTreePrototypes.ToArray();
-            index = 0;
-            element = 0;
-
-            Debug.Log("Préfabs d'arbres du terrain modifiés avec succès.");
+            saison = "printemps";
         }
+        // Eté
+        else if (0.375 <= orbit.orbitProgress && orbit.orbitProgress < 0.625)
+        {
+            saison = "été";
+        }
+        // Automne
+        else if (0.625 <= orbit.orbitProgress && orbit.orbitProgress < 0.875)
+        {
+            saison = "automne";
+        }
+        // Hiver
         else
         {
-            Debug.LogError("La référence au terrain n'a pas été définie.");
+            saison = "hiver";
         }
     }
-    public void incrementation()
+
+    /// <summary>
+    /// Verifies if a season change is necessary / possible and changes the value of the string saison.
+    /// </summary>
+    /// <returns>True if the conditions for a season change are fulfilled, False otherwise.</returns>
+    private bool ChangeSeason()
     {
-          // Calcul de l'incrémentation en fonction de la valeur de slider
-        int increment = Mathf.FloorToInt(slider); // Obtenez la partie entière de slider
-
-        // Incrémentation de l'index et de l'élément
-        index += increment;
-        element += increment;
-
-        // Réinitialisation de slider si supérieur à 13
-        if (slider > totalObject)
+        if (saison.Equals("hiver"))
         {
-            slider = 0f;
+            if (orbit.orbitProgress >= 0.125f && orbit.orbitProgress < 0.875)
+            {
+                saison = "printemps";
+            }
+            else if (orbit.orbitProgress < 0.875 && orbit.orbitProgress > 0.125)
+            {
+                saison = "automne";
+            }
+            else return false;
         }
+        else if (saison.Equals("printemps"))
+        {
+            if (orbit.orbitProgress >= 0.375f)
+            {
+                saison = "été";
+            }
+            else if (orbit.orbitProgress < 0.125)
+            {
+                saison = "hiver";
+            }
+            else return false;
+        }
+        else if (saison.Equals("été"))
+        {
+            if (orbit.orbitProgress >= 0.625)
+            {
+                saison = "automne";
+            }
+            else if (orbit.orbitProgress < 0.375)
+            {
+                saison = "printemps";
+            }
+            else return false;
+        }
+        else if (saison.Equals("automne"))
+        {
+            if (orbit.orbitProgress >= 0.875)
+            {
+                saison = "hiver";
+            }
+            else if (orbit.orbitProgress < 0.625)
+            {
+                saison = "été";
+            }
+            else return false;
+        }
+        else return false;
+
+        // If we are still in the method, it means we fulfilled the conditions to change season
+        print("Saison : " + saison);
+        print("Orbit progress : " + orbit.orbitProgress);
+        return true;
     }
-    void Update()
+
+    /// <summary>
+    /// A method that changes all the TreePrototypes in a terrain to their counterpart in the given season.
+    /// </summary>
+    /// <param name="season">The name of the season for the terrain environment</param>
+    private void SetTreesSeason(string season)
     {
-        Changement();
-        incrementation();
+        // Copiez les TreePrototypes actuels du terrain dans une liste modifiable
+        List<TreePrototype> newTreePrototypes = new List<TreePrototype>(terrain.terrainData.treePrototypes);
+        // Verify which array of TreePrototypes to use depending on the season
+        if (saison.Equals("printemps"))
+        {
+            for (int i = 0; i < newTreePrototypes.Count; ++i)
+            {
+                newTreePrototypes[i].prefab = printemps[i];
+            }
+        }
+        else if (saison.Equals("été"))
+        {
+            for (int i = 0; i < newTreePrototypes.Count; ++i)
+            {
+                newTreePrototypes[i].prefab = ete[i];
+            }
+        }
+        else if (saison.Equals("automne"))
+        {
+            for (int i = 0; i < newTreePrototypes.Count; ++i)
+            {
+                newTreePrototypes[i].prefab = automne[i];
+            }
+        }
+        else if (saison.Equals("hiver"))
+        {
+            for (int i = 0; i < newTreePrototypes.Count; ++i)
+            {
+                newTreePrototypes[i].prefab = hiver[i];
+            }
+        }
+        // Appliquez les modifications aux TreePrototypes du terrain
+        terrain.terrainData.treePrototypes = newTreePrototypes.ToArray();
     }
+
+    
 }

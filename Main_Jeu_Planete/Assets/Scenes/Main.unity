@@ -6727,7 +6727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debf5198ab40b4fb4b628e8d5fe535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrain: {fileID: 1625613448}
+  terrain: {fileID: 1625613450}
   printemps:
   - {fileID: 5990392342737928700, guid: 3725948e645981c4d9e8be628c04c460, type: 3}
   - {fileID: 3229883213677602968, guid: 72aa72ec6309f564bb5bae03f92fc7a1, type: 3}
@@ -6784,9 +6784,6 @@ MonoBehaviour:
   - {fileID: 1340444983734504, guid: 111ca7543ae4dda478d59b75fd49c42f, type: 3}
   - {fileID: 1080536362236096, guid: 8a630ea472a2e784f8a2c36421eec4ff, type: 3}
   - {fileID: 1739204843991948, guid: 2b2b8d56ed83df240bb5c767170b8e31, type: 3}
-  index: 0
-  totalObject: 13
-  slider: 0
   orbit: {fileID: 1596661608}
 --- !u!114 &1625613448
 MonoBehaviour:
@@ -6821,6 +6818,7 @@ MonoBehaviour:
   - {fileID: 0}
   speed: 0.1
   texture: 0
+  orbit: {fileID: 1596661608}
 --- !u!154 &1625613449
 TerrainCollider:
   m_ObjectHideFlags: 0
