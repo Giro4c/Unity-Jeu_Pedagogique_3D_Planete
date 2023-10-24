@@ -5727,8 +5727,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatingObject: {fileID: 1388563904}
   revolutionSelf:
-    initialRotation: {x: 23, y: 0, z: 0}
-    axis: {x: 0, y: 1, z: 0}
+    initialRotation: {x: 0, y: 0, z: -23}
+    axis: {x: 0, y: -1, z: 0}
   rotatePeriod: 10
   rotateProgress: 0
 --- !u!1 &1444301902
@@ -6550,7 +6550,7 @@ Transform:
   m_GameObject: {fileID: 1596661604}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalPosition: {x: -0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8170,6 +8170,8 @@ GameObject:
   - component: {fileID: 1946092781}
   - component: {fileID: 1946092780}
   - component: {fileID: 1946092779}
+  - component: {fileID: 1946092782}
+  - component: {fileID: 1946092783}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -8277,6 +8279,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 32.095, y: -77.312, z: -41.459}
+--- !u!114 &1946092782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946092778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a86e4247f65544a19057e4836482981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationCycleSun: {fileID: 1946092783}
+  rotationCyclePlanet: {fileID: 1388563912}
+  orbitPlanet: {fileID: 1596661608}
+--- !u!114 &1946092783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946092778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db832d7f264fc48ab213298e32b656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotatingObject: {fileID: 1946092781}
+  revolutionSelf:
+    initialRotation: {x: -90, y: 0, z: 0}
+    axis: {x: 1, y: 0, z: 0}
+  rotatePeriod: 3
+  rotateProgress: 0
 --- !u!1 &1957699291
 GameObject:
   m_ObjectHideFlags: 0
