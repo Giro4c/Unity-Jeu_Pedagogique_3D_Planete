@@ -156,7 +156,7 @@ public class TerrainSaison : MonoBehaviour
 
     private void Start()
     {
-        test();
+        
         StartCoroutine(ChangeGround());
     }
 }
