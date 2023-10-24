@@ -47,7 +47,8 @@ half4 CTIURPFragmentPBR(InputData inputData, SurfaceData surfaceData,
 
     half4 shadowMask = CalculateShadowMask(inputData);
     AmbientOcclusionFactor aoFactor = CreateAmbientOcclusionFactor(inputData, surfaceData);
-    uint meshRenderingLayers = GetMeshRenderingLightLayer();
+    // Causes errors with shaders. Removed since vars is not used anyway.
+    //uint meshRenderingLayers = GetMeshRenderingLightLayer();
 
     Light mainLight = GetMainLight(inputData, shadowMask, aoFactor);
     half3 mainLightColor = mainLight.color;
