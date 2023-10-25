@@ -9,36 +9,28 @@ using UnityEngine.UI;
 
 public class CurrentMonth : MonoBehaviour
 {
-    [SerializeField] TMP_Text currentMonth;
-    [SerializeField] Slider monthSlider; // Assurez-vous d'avoir un champ Slider dans votre script
 
-    void Start()
-    {
-        DateTime date = DateTime.Now;
-        int currentMonth = date.Month;
+    [SerializeField] TMP_Text displayText; // RÃ©fÃ©rence Ã  l'objet TMP_Text
+    [SerializeField]  Slider textSlider;
+    public Orbit valueSlider;
+    public string[] mois;
 
-        // Définissez la valeur du slider sur le mois actuel
-        monthSlider.value = currentMonth;
-    }
-    // Update is called once per frame
+
     void Update()
     {
-        DateTime date = DateTime.Now;
-        CultureInfo culture = new CultureInfo("fr-FR"); // Culture française
-        string monthName = culture.DateTimeFormat.GetMonthName(date.Month);
-        monthName = culture.TextInfo.ToTitleCase(monthName);
-        currentMonth.text = monthName;
-    }
+        float sliderValue = valueSlider.orbitProgress;
+        textSlider.value = sliderValue;
 
-    public void OnSliderValueChanged()
-    {
-        int selectedMonth = Mathf.RoundToInt(monthSlider.value); // Récupérez la valeur du slider
-        Debug.Log("Mois sélectionné : " + selectedMonth);
+        for (int i = 0; i < mois.Length; i++)
+        {
+            float lowerBound = i / (float)mois.Length;
+            float upperBound = (i + 1) / (float)mois.Length;
 
-        // Mettez à jour le texte avec le nom du mois correspondant à la valeur du slider
-        CultureInfo culture = new CultureInfo("fr-FR");
-        string monthName = culture.DateTimeFormat.GetMonthName(selectedMonth);
-        monthName = culture.TextInfo.ToTitleCase(monthName);
-        currentMonth.text = monthName;
+            if (sliderValue >= lowerBound && sliderValue <= upperBound)
+            {
+                displayText.text = mois[i];
+                break; // Sort de la boucle une fois que le mois est trouvÃ©
+            }
+        }
     }
 }
