@@ -13,6 +13,10 @@ class DbInteraction
         $this->conn = $conn;
     }
 
+    public function getDbName(): string{
+        return $this->dbName;
+    }
+
     public function addInteraction(string $nomInteract, int $valeurInteract, bool $isEval, string $ipJoueur): void{
         $query = "INSERT INTO " . $this->dbName .
             " (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur) VALUES ('$nomInteract', $valeurInteract, $isEval, '$ipJoueur')";

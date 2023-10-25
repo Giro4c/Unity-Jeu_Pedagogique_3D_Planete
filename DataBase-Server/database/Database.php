@@ -1,15 +1,8 @@
 <?php
 
-/*
- * @author GeniusTom
- * @date = 28/09/20230
- * @title Class DataBase
- * @desc Create connection to database and actions
- */
-
 namespace database;
 
-use \GFramework\utilities\GReturn;
+use utilities\GReturn;
 
 class Database
 {

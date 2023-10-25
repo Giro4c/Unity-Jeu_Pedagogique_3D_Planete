@@ -15,6 +15,10 @@ class DbQuestion
         $this->conn = $conn;
     }
 
+    public function getDbName(): string{
+        return $this->dbName;
+    }
+
     public function getQuestionCorrect(int $numQues, int $idPartie): GReturn{
         $query = "SELECT * FROM " . $this->dbName . " WHERE Num_Ques = $numQues AND Id_Partie = $idPartie";
         $result = $this->conn->query($query)->fetch_assoc();
