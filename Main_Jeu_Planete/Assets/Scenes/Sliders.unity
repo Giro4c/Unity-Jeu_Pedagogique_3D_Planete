@@ -1979,8 +1979,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.297802, y: -0.0071596275, z: 0.0022335576, w: 0.95459825}
+  m_LocalPosition: {x: 0.2352642, y: 10.84139, z: -15.683085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2622,6 +2622,8 @@ MonoBehaviour:
   displayText: {fileID: 223844567}
   textSlider: {fileID: 1816198075}
   valueSlider: {fileID: 2120452621}
+  sphere: {fileID: 0}
+  isTrue: 0
   mois:
   - Janvier
   - "F\xE9vrier"
@@ -3390,6 +3392,7 @@ GameObject:
   - component: {fileID: 2120452622}
   - component: {fileID: 2120452621}
   - component: {fileID: 2120452620}
+  - component: {fileID: 2120452626}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -3514,6 +3517,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2120452626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120452619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc01276f6dfbb24bbcb9062049d2f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  colliderPlaneOrbit: {fileID: 2120452622}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
