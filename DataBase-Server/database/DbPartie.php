@@ -24,6 +24,28 @@ class DbPartie
         $this->conn->query($query);
     }
 
+    public function deleteOnGoingPartie(string $ipJoueur): void{
+        $query = "DELETE FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
+        $this->conn->query($query);
+    }
+
+    public function endPartie(string $ipJoueur, string $dateFin, int $MoyQuestions): void{
+        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = (Date_Fin - Date_Deb), Moy_Questions = $MoyQuestions "
+        . "WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
+        $this->conn->query($query);
+    }
+
+    public function getPartieInProgress(string $ipJoueur): array|null{
+        $query = "SELECT * FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
+        $result = $this->conn->query($query);
+        if ($result->num_rows == 0){
+            return null;
+        }
+        else {
+            return $result->fetch_assoc();
+        }
+    }
+
     public function verifyPartieInProgress(string $ipJoueur){
         $query = "SELECT COUNT(*) AS Counter FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
         return $this->conn->query($query)->fetch_assoc()["Counter"] > 0;
