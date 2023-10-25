@@ -1,51 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
+using System.Collections;
+using UnityEngine.UI; // Required when Using UI elements.
 using TMPro;
-using System.Globalization;
-using UnityEngine.UI;
 
-
-public class CurrentMonth : MonoBehaviour
+public class Example : MonoBehaviour 
 {
-
-    [SerializeField] TMP_Text displayText; // Référence à l'objet TMP_Text
-    [SerializeField]  Slider textSlider;
+    [SerializeField] private TMP_Text displayText;
+    [SerializeField] private Slider textSlider;
     public Orbit valueSlider;
-    public OrbitMotion sphere ; 
-    public OrbitDrag planete;
-    public bool isTrue;
+    private bool isTrue;
     public string[] mois;
 
-
-    void Update()
+    private void Update()
     {
-            if(Input.GetKeyDown("l"))
-            {
-                isTrue = true;
-            }
-            else if (Input.GetKeyDown("k"))
-            {
-                isTrue = false;
-            }
-            if(isTrue == true)
-            {
-                SliderDrag();
-                float orbitSpeed = 1f / valueSlider.orbitPeriod;
-                valueSlider.orbitProgress -=Time.deltaTime * orbitSpeed; 
-            }
-            else
-            {
-                SliderAuto();
-            }
-       
-       
+        isTrue = Input.GetMouseButton(0);
+
+        if (isTrue)
+        {
+            SliderDrag();
+        }
+        else
+        {
+            SliderAuto();
+        }
     }
 
     private void SliderAuto()
     {
         float sliderValue = valueSlider.orbitProgress;
+        UpdateTextFromSliderValue(sliderValue);
+    }
+
+    private void SliderDrag()
+    {
+        float sliderValue = textSlider.value;
+        valueSlider.orbitProgress = sliderValue;
+        UpdateTextFromSliderValue(sliderValue);
+    }
+
+    private void UpdateTextFromSliderValue(float sliderValue)
+    {
         textSlider.value = sliderValue;
 
         for (int i = 0; i < mois.Length; i++)
@@ -56,31 +50,7 @@ public class CurrentMonth : MonoBehaviour
             if (sliderValue >= lowerBound && sliderValue <= upperBound)
             {
                 displayText.text = mois[i];
-                break; // Sort de la boucle une fois que le mois est trouvé
-            }
-        }
-    }
-    
-    private void SliderDrag()
-    {
-        // Lisez la valeur actuelle du slider
-        float sliderValue = textSlider.value;
-        valueSlider.orbitProgress = sliderValue;
-        /*if(planete.orbitActive)
-        {
-            planete.DragOrbit();
-        }*/
-        
-
-        for (int i = 0; i < mois.Length; i++)
-        {
-            float lowerBound = i / (float)mois.Length;
-            float upperBound = (i + 1) / (float)mois.Length;
-
-            if (sliderValue >= lowerBound && sliderValue <= upperBound)
-            {
-                displayText.text = mois[i];
-                break; // Sort de la boucle une fois que le mois est trouvé
+                break;
             }
         }
     }
