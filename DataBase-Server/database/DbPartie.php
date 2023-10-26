@@ -29,6 +29,11 @@ class DbPartie
         $this->conn->query($query);
     }
 
+    public function abortOnGoingPartie(string $ipJoueur): void{
+        $query = "UPDATE " . $this->dbName . " SET Aborted = 1 WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Aborted = 0";
+        $this->conn->query($query);
+    }
+
     public function endPartie(string $ipJoueur, string $dateFin, int $MoyQuestions): void{
         $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = (Date_Fin - Date_Deb), Moy_Questions = $MoyQuestions "
         . "WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
@@ -36,7 +41,7 @@ class DbPartie
     }
 
     public function getPartieInProgress(string $ipJoueur): array|null{
-        $query = "SELECT * FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
+        $query = "SELECT * FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Aborted = 0";
         $result = $this->conn->query($query);
         if ($result->num_rows == 0){
             return null;
@@ -46,8 +51,8 @@ class DbPartie
         }
     }
 
-    public function verifyPartieInProgress(string $ipJoueur){
-        $query = "SELECT COUNT(*) AS Counter FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
+    public function verifyPartieInProgress(string $ipJoueur): bool{
+        $query = "SELECT COUNT(*) AS Counter FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Aborted = 0";
         return $this->conn->query($query)->fetch_assoc()["Counter"] > 0;
     }
 

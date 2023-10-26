@@ -47,7 +47,7 @@ class controllerGame
     }
 
     public function abortPartie(string $ip): void{
-        $this->dbPartie->deleteOnGoingPartie($ip);
+        $this->dbPartie->abortOnGoingPartie($ip);
     }
 
     public function endPartie(string $ip): void{
