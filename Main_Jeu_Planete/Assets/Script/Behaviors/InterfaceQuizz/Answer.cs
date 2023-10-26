@@ -11,19 +11,19 @@ public class Answer : MonoBehaviour
 
     public void Answers()
     {
-        if(isCorrect)
+        if (isCorrect)
         {
             Debug.Log("Vraie");
             Image buttonImage = myButton.GetComponent<Image>();
             buttonImage.color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
-        
+
         }
         else
         {
             Debug.Log("Faux");
             Image buttonImage = myButton.GetComponent<Image>();
             buttonImage.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-            
+
         }
     }
 }

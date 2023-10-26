@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class QcmVraiFaux : MonoBehaviour
 {
     public List<QuestionAndAnswer> QnA;
@@ -15,25 +14,63 @@ public class QcmVraiFaux : MonoBehaviour
     public Answer Faux;
     private Color originalColor;
 
+    private bool validationMode = false;
+
     private void Start()
     {
         generateQuestion();
     }
+
     public void correct()
     {
-       
-        
         if (QnA.Count != 0)
         {
-             QnA.RemoveAt(currentQuestion);
-            generateQuestion();
+            // Activer le mode validation
+            validationMode = true;
+
+            // Obtenir la réponse correcte
+            int correctAnswerIndex = QnA[currentQuestion].CorrectAnswer - 1;
+
+            // Mettre en vert la réponse correcte
+            Image correctButtonImage = options[correctAnswerIndex].GetComponent<Answer>().myButton.GetComponent<Image>();
+            correctButtonImage.color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+
+            // Désactiver les boutons de réponse
+            foreach (var option in options)
+            {
+                option.GetComponent<Button>().interactable = false;
+            }
+
+            // Ajouter une logique pour afficher la nouvelle question
+            // Par exemple, vous pourriez utiliser une coroutine pour afficher la nouvelle question après quelques secondes
+            StartCoroutine(ShowNextQuestion());
         }
         else
         {
             // Ajoutez une logique pour gérer la fin du quiz
             Debug.Log("Fin du quiz !");
         }
-          
+    }
+
+    IEnumerator ShowNextQuestion()
+    {
+        yield return new WaitForSeconds(3f); // Attendre 3 secondes avant de montrer la nouvelle question
+
+        // Réinitialiser les couleurs des boutons de réponse
+        foreach (var option in options)
+        {
+            Image buttonImage = option.GetComponent<Answer>().myButton.GetComponent<Image>();
+            originalColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            buttonImage.color = originalColor;
+            option.GetComponent<Button>().interactable = true;
+        }
+
+        // Passer à la prochaine question
+        QnA.RemoveAt(currentQuestion);
+        generateQuestion();
+
+        // Désactiver le mode validation
+        validationMode = false;
     }
 
     void SetAnswers()
@@ -42,22 +79,17 @@ public class QcmVraiFaux : MonoBehaviour
         {
             options[i].GetComponent<Answer>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = QnA[currentQuestion].Answer[i];
-            if(QnA[currentQuestion].CorrectAnswer == i+1)
+            if (QnA[currentQuestion].CorrectAnswer == i + 1)
             {
                 options[i].GetComponent<Answer>().isCorrect = true;
             }
         }
     }
+
     void generateQuestion()
     {
         currentQuestion = Random.Range(0, QnA.Count);
-        QuestionTxt.text = QnA[currentQuestion].Question; 
+        QuestionTxt.text = QnA[currentQuestion].Question;
         SetAnswers();
-        Image buttonImageV = Vraie.myButton.GetComponent<Image>();
-        Image buttonImageF = Faux.myButton.GetComponent<Image>();
-        originalColor = new Color(1.0f,1.0f,1.0f,1.0f);
-        buttonImageV.color = originalColor;
-        buttonImageF.color = originalColor;
-
     }
 }
