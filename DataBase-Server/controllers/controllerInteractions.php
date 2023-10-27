@@ -23,7 +23,7 @@ class controllerInteractions
     /**
      * @throws CannotDoException
      */
-    public function addInteration(string $ipJoueur, string $type, int $value, bool $is_Eval): void{
+    public function addInteration(string $ipJoueur, string $type, float $value, bool $is_Eval): void{
         if (in_array($type, $this->interactionTypes)){
             $this->dbInteraction->addInteraction($type, $value, $is_Eval, $ipJoueur);
         }

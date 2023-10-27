@@ -1,9 +1,9 @@
 <?php
-require("loaders/autoloader.php");
+require("../loaders/autoloader.php");
 $controller = new controllers\controllerInteractions($dbConn);
 
 if (isset($_GET["type"]) && isset($_GET["value"]) && isset($_GET["isEval"])){
-    $ip = '';
+    $ip = $_SERVER['REMOTE_ADDR'];
     $type = $_GET["type"];
     $value = $_GET["value"];
     $isEval = $_GET["isEval"];

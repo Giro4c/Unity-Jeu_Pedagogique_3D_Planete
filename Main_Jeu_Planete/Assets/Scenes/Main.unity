@@ -1686,8 +1686,9 @@ GameObject:
   m_Component:
   - component: {fileID: 253914874}
   - component: {fileID: 253914875}
+  - component: {fileID: 253914876}
   m_Layer: 5
-  m_Name: Rotation Slider
+  m_Name: Rotation Slider Decouv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1760,24 +1761,27 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1028110434}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 200
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Rotation, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 800
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &253914876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253914873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffaac36502c4cd248a8cb086fc03e815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Rotation
+  slider: {fileID: 253914875}
+  eval: 0
 --- !u!1 &272425688
 GameObject:
   m_ObjectHideFlags: 0
@@ -6293,8 +6297,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1368249244}
   - component: {fileID: 1368249245}
+  - component: {fileID: 1368249246}
   m_Layer: 5
-  m_Name: Month Slider
+  m_Name: Month Slider Decouv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6366,13 +6371,28 @@ MonoBehaviour:
   m_FillRect: {fileID: 355074909}
   m_HandleRect: {fileID: 1617026802}
   m_Direction: 0
-  m_MinValue: 1
-  m_MaxValue: 12
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1368249246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368249243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffaac36502c4cd248a8cb086fc03e815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Orbit
+  slider: {fileID: 1368249245}
+  eval: 0
 --- !u!1 &1372399828
 GameObject:
   m_ObjectHideFlags: 0

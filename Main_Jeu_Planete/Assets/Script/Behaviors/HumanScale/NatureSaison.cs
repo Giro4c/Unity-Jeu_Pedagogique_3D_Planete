@@ -28,7 +28,7 @@ public class NatureSaison : MonoBehaviour
             if (ChangeSeason())
             {
                 SetTreesSeason(saison);
-                print("Changement effectué.");
+                //print("Changement effectué.");
             }
             yield return null;
         }
@@ -122,8 +122,8 @@ public class NatureSaison : MonoBehaviour
         else return false;
 
         // If we are still in the method, it means we fulfilled the conditions to change season
-        print("Saison : " + saison);
-        print("Orbit progress : " + orbit.orbitProgress);
+        //print("Saison : " + saison);
+        //print("Orbit progress : " + orbit.orbitProgress);
         return true;
     }
 
