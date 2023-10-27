@@ -14,10 +14,20 @@ public class QcmVraiFaux : MonoBehaviour
     public Answer Vraie;
     public Answer Faux;
     private Color originalColor;
+  
 
     private void Start()
     {
         generateQuestion();
+    }
+    public void ActiveScript()
+    {
+        GetComponent<QcmVraiFaux>().enabled = true;
+        
+    }
+    public void DesactiveScript()
+    {
+        GetComponent<QcmVraiFaux>().enabled = false;
     }
     public void correct()
     {
@@ -25,7 +35,7 @@ public class QcmVraiFaux : MonoBehaviour
         
         if (QnA.Count != 0)
         {
-             QnA.RemoveAt(currentQuestion);
+            
             generateQuestion();
         }
         else
