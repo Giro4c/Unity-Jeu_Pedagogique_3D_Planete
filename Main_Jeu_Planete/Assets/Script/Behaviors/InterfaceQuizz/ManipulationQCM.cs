@@ -26,10 +26,12 @@ public class ManipulationQCM : MonoBehaviour
         evalSlider.value = val;
         position.orbitProgress = val;
     }
+    //Permet d'activer  le script
     public void ActiveScript()
     {
         GetComponent<ManipulationQCM>().enabled = true;
     }
+    //Permet de desactiver le script
     public void isNotActive()
     {
         GetComponent<ManipulationQCM>().enabled = false;
