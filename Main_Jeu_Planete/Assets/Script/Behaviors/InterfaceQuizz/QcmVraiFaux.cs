@@ -21,6 +21,16 @@ public class QcmVraiFaux : MonoBehaviour
         generateQuestion();
     }
 
+    public void ActiveScript()
+    {
+        GetComponent<QcmVraiFaux>().enabled = true;
+    }
+
+    public void DesactiveScript()
+    {
+        GetComponent<QcmVraiFaux>().enabled = false;
+    }
+
     public void correct()
     {
         if (QnA.Count != 0)
