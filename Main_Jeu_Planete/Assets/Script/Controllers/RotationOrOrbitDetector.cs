@@ -39,14 +39,14 @@ public class RotationOrOrbitDetector : MonoBehaviour
         // On Mouse Down
         if (Input.GetMouseButton(0))
         {
-            Debug.Log("Rotation Auto Disabled");
+            //Debug.Log("Rotation Auto Disabled");
             rotationDragScript.enabled = true;
             rotationAutoScript.enabled = false;
             orbitMotionScript.enabled = false;
         }
         else if (Input.GetMouseButton(1))
         {
-            Debug.Log("Orbit Auto Disabled");
+            //Debug.Log("Orbit Auto Disabled");
             orbitDragScript.enabled = true;
             orbitMotionScript.enabled = false;
         }
@@ -54,7 +54,7 @@ public class RotationOrOrbitDetector : MonoBehaviour
         // On Mouse Up
         if (Input.GetMouseButtonUp(0) && rotationDragScript.enabled)
         {
-            Debug.Log("Rotation Auto Enabled");
+            //Debug.Log("Rotation Auto Enabled");
             rotationDragScript.enabled = false;
             rotationAutoScript.enabled = true;
             orbitMotionScript.enabled = true;
