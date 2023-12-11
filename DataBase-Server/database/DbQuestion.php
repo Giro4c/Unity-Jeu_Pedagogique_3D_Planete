@@ -25,4 +25,21 @@ class DbQuestion
         return new GReturn("ok", content: $result);
     }
 
+    public function getCountCorrect(int $idPartie): int {
+        $query = "SELECT * FROM " . $this->dbName . " WHERE Id_Partie = $idPartie AND Reussite = 1";
+        $result = $this->conn->query($query)->fetch_assoc();
+        return count($result);
+    }
+
+    public function addQuestionAnswer(int $numQues, int $idParty, int $duration, bool $isCorrect): void{
+         if ($isCorrect){
+             $correct = 1;
+         }
+         else {
+             $correct = 0;
+         }
+         $query = "INSERT INTO " . $this->dbName . " VALUES ($numQues, $idParty, $duration, $correct)";
+         $this->conn->query($query);
+    }
+
 }

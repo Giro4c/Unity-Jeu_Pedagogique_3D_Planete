@@ -25,4 +25,15 @@ class DbQuesinterac
         return new GReturn("ok", content: $result);
     }
 
+    public function getRandomQInterac(int $howManyInterac = 0): array{
+        $query = "SELECT Num_Ques FROM " . $this->dbName;
+        $result = $this->conn->query($query)->fetch_all()['Num_Ques'];
+        shuffle($result);
+        $qNums = [];
+        for ($count = 0; $count < $howManyInterac; ++$count){
+            $qNums[] = $result[$count];
+        }
+        return $qNums;
+    }
+
 }
