@@ -9,36 +9,54 @@ using UnityEngine.UI;
 
 public class CurrentMonth : MonoBehaviour
 {
-    [SerializeField] TMP_Text currentMonth;
-    [SerializeField] Slider monthSlider; // Assurez-vous d'avoir un champ Slider dans votre script
+    [SerializeField] private TMP_Text displayText;
+    [SerializeField] public Slider textSlider;
+    public Orbit valueSlider;
+    private bool isTrue;
+    public string[] mois;
 
-    void Start()
+
+    private void Update()
     {
-        DateTime date = DateTime.Now;
-        int currentMonth = date.Month;
+        isTrue = Input.GetMouseButton(0);
 
-        // Définissez la valeur du slider sur le mois actuel
-        monthSlider.value = currentMonth;
+        if (isTrue)
+        {
+            SliderDrag();
+        }
+        else
+        {
+            SliderAuto();
+        }
     }
-    // Update is called once per frame
-    void Update()
+
+    public void SliderAuto()
     {
-        DateTime date = DateTime.Now;
-        CultureInfo culture = new CultureInfo("fr-FR"); // Culture française
-        string monthName = culture.DateTimeFormat.GetMonthName(date.Month);
-        monthName = culture.TextInfo.ToTitleCase(monthName);
-        currentMonth.text = monthName;
+        float sliderValue = valueSlider.orbitProgress;
+        UpdateTextFromSliderValue(sliderValue);
     }
 
-    public void OnSliderValueChanged()
+    private void SliderDrag()
     {
-        int selectedMonth = Mathf.RoundToInt(monthSlider.value); // Récupérez la valeur du slider
-        Debug.Log("Mois sélectionné : " + selectedMonth);
+        float sliderValue = textSlider.value;
+        valueSlider.orbitProgress = sliderValue;
+        UpdateTextFromSliderValue(sliderValue);
+    }
 
-        // Mettez à jour le texte avec le nom du mois correspondant à la valeur du slider
-        CultureInfo culture = new CultureInfo("fr-FR");
-        string monthName = culture.DateTimeFormat.GetMonthName(selectedMonth);
-        monthName = culture.TextInfo.ToTitleCase(monthName);
-        currentMonth.text = monthName;
+    public void UpdateTextFromSliderValue(float sliderValue)
+    {
+        textSlider.value = sliderValue;
+
+        for (int i = 0; i < mois.Length; i++)
+        {
+            float lowerBound = i / (float)mois.Length;
+            float upperBound = (i + 1) / (float)mois.Length;
+
+            if (sliderValue >= lowerBound && sliderValue <= upperBound)
+            {
+                displayText.text = mois[i];
+                break;
+            }
+        }
     }
 }
