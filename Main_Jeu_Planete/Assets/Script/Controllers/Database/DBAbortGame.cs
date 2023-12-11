@@ -3,29 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class DBAbortGame : MonoBehaviour
 {
-    private EventSystem eventSys;
     public Button buttonEnd;
     
     // Start is called before the first frame update
     void Start()
     {
-        eventSys = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-        
+        buttonEnd.onClick.AddListener(delegate { StartCoroutine(AbortGamePhp()); });
     }
     
     // Update is called once per frame
     void Update()
     {
-        // When button is clicked, activate load of php page.
-        buttonEnd.clicked += () =>
-        {
-            Debug.Log("Button End Game was pressed!");
-            StartCoroutine(AbortGamePhp());
-        };
+        
     }
 
     private IEnumerator AbortGamePhp()

@@ -1,31 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class DBNewGame : MonoBehaviour
 {
-    private EventSystem eventSys;
     public Button buttonStart;
     
     // Start is called before the first frame update
     void Start()
     {
-        eventSys = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-        
+        buttonStart.onClick.AddListener(delegate { StartCoroutine(NewGamePhp()); });
     }
     
     // Update is called once per frame
     void Update()
     {
-        // When button is clicked, activate load of php page.
-        buttonStart.clicked += () =>
-        {
-            Debug.Log("Button Start was pressed!");
-            StartCoroutine(NewGamePhp());
-        };
+        
     }
 
     private IEnumerator NewGamePhp()
