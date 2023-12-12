@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd0d1fea-564f-43e4-b056-0111022f438c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/controllerInteractions.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/controllerInteractions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loaders/classloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/loaders/classloader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/addInteraction.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/addInteraction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DbInteraction.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbInteraction.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

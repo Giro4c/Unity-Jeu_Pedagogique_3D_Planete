@@ -17,15 +17,9 @@ class DbInteraction
         return $this->dbName;
     }
 
-    public function addInteraction(string $nomInteract, float $valeurInteract, bool $isEval, string $ipJoueur): void{
-        if ($isEval){
-            $isEvalInt = 1;
-        }
-        else{
-            $isEvalInt = 0;
-        }
+    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur): void{
         $query = "INSERT INTO " . $this->dbName .
-            " (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur) VALUES ('$nomInteract', $valeurInteract,$isEvalInt, '$ipJoueur')";
+            " (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur) VALUES ('$nomInteract', $valeurInteract,$isEval, '$ipJoueur')";
         $this->conn->query($query);
     }
 
