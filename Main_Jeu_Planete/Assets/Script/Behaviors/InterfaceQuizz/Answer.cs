@@ -11,6 +11,7 @@ public class Answer : MonoBehaviour
 
     public void Answers()
     {
+        /*
         if (isCorrect)
         {
             Debug.Log("Vraie");
@@ -25,5 +26,9 @@ public class Answer : MonoBehaviour
             buttonImage.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
 
         }
+        */
+
+        Image buttonImage = myButton.GetComponent<Image>();
+        buttonImage.color = new Color(0.4f, 0.4f, 0.4f, 1.0f);
     }
 }
