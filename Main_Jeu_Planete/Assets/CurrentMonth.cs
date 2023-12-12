@@ -32,11 +32,11 @@ public class CurrentMonth : MonoBehaviour
 
     public void SliderAuto()
     {
-        float sliderValue = valueSlider.orbitProgress;
-        UpdateTextFromSliderValue(sliderValue);
+        textSlider.value = valueSlider.orbitProgress;
+        UpdateTextFromSliderValue(textSlider.value);
     }
 
-    private void SliderDrag()
+    public void SliderDrag()
     {
         float sliderValue = textSlider.value;
         valueSlider.orbitProgress = sliderValue;

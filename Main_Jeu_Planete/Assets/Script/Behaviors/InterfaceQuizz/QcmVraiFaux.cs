@@ -58,7 +58,7 @@ public class QcmVraiFaux : MonoBehaviour
             }
         }
     }
-    void generateQuestion()
+    public void generateQuestion()
     {
         currentQuestion = Random.Range(0, QnA.Count);
         QuestionTxt.text = QnA[currentQuestion].Question; 
