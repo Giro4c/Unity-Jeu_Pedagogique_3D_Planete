@@ -16,6 +16,7 @@ public class QcmVraiFaux : MonoBehaviour
     private bool validationMode = false;
     [SerializeField] GameObject panelToShow;
     [SerializeField] GameObject panelToHide;
+    public Timer timerScript;
 
     private void Start()
     {
@@ -51,6 +52,10 @@ public class QcmVraiFaux : MonoBehaviour
             {
                 option.GetComponent<Button>().interactable = false;
             }
+
+            // Enregistre le temps pris pour répondre à la question
+            float timeTaken = Timer.elapsedTimeStatic;
+            Debug.Log("Temps pris pour répondre à la question : " + timeTaken + " secondes");
 
             // Ajouter une logique pour afficher la nouvelle question
             // Par exemple, vous pourriez utiliser une coroutine pour afficher la nouvelle question après quelques secondes
@@ -110,6 +115,9 @@ public class QcmVraiFaux : MonoBehaviour
 
     void generateQuestion()
     {
+        // Réinitialise le timer à chaque nouvelle question
+        Timer.elapsedTimeStatic = 0f;
+
         currentQuestion = Random.Range(0, QnA.Count);
         QuestionTxt.text = QnA[currentQuestion].Question;
         SetAnswers();
