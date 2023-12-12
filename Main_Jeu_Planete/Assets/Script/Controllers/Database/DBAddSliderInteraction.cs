@@ -10,7 +10,7 @@ public class DBAddSliderInteraction : MonoBehaviour
 {
     public string type;
     public Slider slider;
-    [Range(0, 1)] public int eval = 0;
+    private IsEvaluation _isEvaluation;
     private EventSystem eventSys;
     //private int checkpoint = 0;
     
@@ -18,6 +18,7 @@ public class DBAddSliderInteraction : MonoBehaviour
     void Start()
     {
         eventSys = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        _isEvaluation = gameObject.GetComponent<IsEvaluation>();
         StartCoroutine(ControlLoad());
         //slider.onValueChanged.AddListener(delegate { SetIntermediateCheckpoint(); });
     }
@@ -55,7 +56,7 @@ public class DBAddSliderInteraction : MonoBehaviour
     {
         string floatValStr = "&value=" + slider.value;
         floatValStr = floatValStr.Replace(',', '.');
-        string url = "jeupedagogique.alwaysdata.net/views/addInteraction.php?type=Slider" + type + floatValStr + "&isEval=" + eval;
+        string url = "jeupedagogique.alwaysdata.net/views/addInteraction.php?type=Slider" + type + floatValStr + "&isEval=" + _isEvaluation.IsEvalInt();
         Debug.Log(url);
         UnityWebRequest wwwInteract = UnityWebRequest.Get(url);
         yield return wwwInteract.SendWebRequest();

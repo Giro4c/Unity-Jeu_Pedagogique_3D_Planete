@@ -8,7 +8,7 @@ public class DBAddPlanetInteractionOrbit : MonoBehaviour
     public string type = "DragOrbit";
     public Orbit orbit;
     public Collider planetCollider;
-    [Range(0, 1)] public int eval = 0;
+    private IsEvaluation _isEvaluation;
     
     private Camera camMain;
     
@@ -16,6 +16,7 @@ public class DBAddPlanetInteractionOrbit : MonoBehaviour
     void Start()
     {
         camMain = Camera.main;
+        _isEvaluation = gameObject.GetComponent<IsEvaluation>();
         StartCoroutine(ControlLoad());
     }
     
@@ -46,7 +47,7 @@ public class DBAddPlanetInteractionOrbit : MonoBehaviour
     {
         string strVarURLGet = "";
         strVarURLGet = "type=" + type + "&value=" + orbit.orbitProgress.ToString().Replace(',', '.');
-        string url = "jeupedagogique.alwaysdata.net/views/addInteraction.php?" + strVarURLGet + "&isEval=" + eval;
+        string url = "jeupedagogique.alwaysdata.net/views/addInteraction.php?" + strVarURLGet + "&isEval=" + _isEvaluation.IsEvalInt();
         Debug.Log(url);
         
         UnityWebRequest wwwInteract = UnityWebRequest.Get(url);
