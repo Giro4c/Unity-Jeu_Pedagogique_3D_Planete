@@ -18,4 +18,5 @@ require_once("../database/DbVraiFaux.php");
 
 // Controllers
 require_once("../controllers/controllerInteractions.php");
+require_once("../controllers/controllerQuestions.php");
 require_once("../controllers/controllerGame.php");
