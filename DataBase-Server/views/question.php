@@ -9,8 +9,3 @@ if (isset($_GET['qid'])){
 else{
     echo "URL not complete, cannot show question attributes";
 }
-
-
-$ip = $_SERVER['REMOTE_ADDR'];
-
-

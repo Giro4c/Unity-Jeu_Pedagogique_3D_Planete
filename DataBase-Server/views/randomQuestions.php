@@ -22,6 +22,4 @@ else{
     $nbVraiFaux = 0;
 }
 
-$ip = $_SERVER['REMOTE_ADDR'];
-
-echo $controller->getRandomQs();
+echo $controller->getRandomQs($nbQCM, $nbInteraction, $nbVraiFaux);
