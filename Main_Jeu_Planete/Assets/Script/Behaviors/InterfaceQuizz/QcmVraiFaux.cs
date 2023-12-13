@@ -35,6 +35,25 @@ public class QcmVraiFaux : MonoBehaviour
         GetComponent<QcmVraiFaux>().enabled = false;
     }
 
+    public void DisplayTempsPris()
+    {
+        for (int i = 0; i < tempsPris.Count; i++)
+        {
+            if (i == 0)
+            {
+                float tempsQuestion = tempsPris[i];
+                int indexQuestion = questionsRepondues[i];
+                Debug.Log($"Temps pris pour la question {indexQuestion + 1} : {tempsQuestion} secondes");
+            }
+            else
+            {
+                float tempsQuestion = tempsPris[i] - tempsPris[i - 1];
+                int indexQuestion = questionsRepondues[i];
+                Debug.Log($"Temps pris pour la question {indexQuestion + 1} : {tempsQuestion} secondes");
+            }
+        }
+    }
+
     public void correct()
     {
         if (QnA.Count != 0)
@@ -63,22 +82,8 @@ public class QcmVraiFaux : MonoBehaviour
             tempsPris.Add(timeTaken);
             questionsRepondues.Add(currentQuestion);
 
-            for (int i = 0; i < tempsPris.Count; i++)
-            {
-                if (i == 0)
-                {
-                    float tempsQuestion = tempsPris[i];
-                    int indexQuestion = questionsRepondues[i];
-                    Debug.Log($"Temps pris pour la question {indexQuestion + 1} : {tempsQuestion} secondes");
-                }
-                else
-                {
-                    float tempsQuestion = tempsPris[i] - tempsPris[i - 1];
-                    int indexQuestion = questionsRepondues[i];
-                    Debug.Log($"Temps pris pour la question {indexQuestion + 1} : {tempsQuestion} secondes");
-                }
-
-            }
+            // Appeler la fonction pour afficher le temps pris pour chaque question
+            DisplayTempsPris();
 
             // Ajouter une logique pour afficher la nouvelle question
             // Par exemple, vous pourriez utiliser une coroutine pour afficher la nouvelle question après quelques secondes
