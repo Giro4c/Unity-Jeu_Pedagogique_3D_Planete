@@ -25,6 +25,7 @@ public class ManipulationQCM : MonoBehaviour
     {  
         evalSlider.value = val;
         position.orbitProgress = val;
+        position.SetOrbitingObjectPosition();
     }
     //Permet d'activer  le script
     public void ActiveScript()

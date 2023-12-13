@@ -12,7 +12,7 @@ public class CurrentMonth : MonoBehaviour
     [SerializeField] private TMP_Text displayText;
     [SerializeField] public Slider textSlider;
     public Orbit valueSlider;
-    private bool isTrue;
+    public bool isTrue;
     public string[] mois;
 
 

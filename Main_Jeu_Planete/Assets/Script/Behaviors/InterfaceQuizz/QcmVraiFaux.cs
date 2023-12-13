@@ -14,7 +14,8 @@ public class QcmVraiFaux : MonoBehaviour
     public Answer Vraie;
     public Answer Faux;
     private Color originalColor;
-  
+    [SerializeField] GameObject panelToShow;
+    [SerializeField] GameObject panelToHide;
 
     private void Start()
     {
@@ -41,7 +42,19 @@ public class QcmVraiFaux : MonoBehaviour
         else
         {
             // Ajoutez une logique pour gérer la fin du quiz
-            Debug.Log("Fin du quiz !");
+            if (panelToHide != null)
+            {
+                // Désactivez le panneau actuel.
+                panelToHide.SetActive(false);
+            }
+
+            if (panelToShow != null)
+            {
+                // Activez le nouveau panneau.
+                panelToShow.SetActive(true);
+            }
+                Debug.Log("Fin du quiz !");
+            
         }
           
     }

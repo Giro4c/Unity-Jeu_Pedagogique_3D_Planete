@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InterractionPlaneteQCM : MonoBehaviour
+public class InteractionPlaneteQCM : MonoBehaviour
 {
     public List<QuestionAndAnswerInterraction> QnA;
     public TextMeshProUGUI QuestionTxt;
     public CurrentMonth slider;
+    public TextMeshProUGUI CorrectAnswer;
+    public Orbit orbit;
     public OrbitMotion position;
+
 
     private void Start()
     {
@@ -17,32 +20,36 @@ public class InterractionPlaneteQCM : MonoBehaviour
     }
     private void Update()
     {
-        position.orbitActive = false;
-        slider.SliderDrag();
+        if (slider.textSlider)
+        {
+            position.orbitActive = true;
+            slider.SliderAuto();
+            orbit.orbitProgress = slider.textSlider.value;
+            orbit.SetOrbitingObjectPosition();
+        }
+       
+            position.orbitActive = false;
+            slider.SliderDrag();
+            
+        
     }
 
-    public void ActiveScript()
-    {
-        GetComponent<QcmVraiFaux>().enabled = true;
-    }
-
-    public void DesactiveScript()
-    {
-        GetComponent<QcmVraiFaux>().enabled = false;
-    }
-
-    private void Valeur()
+    public void suivant()
     {  
         // Sélectionnez un élément de la liste (supposons que ce soit le premier élément)
-        if (QnA.Count > 0)
+        if (QnA.Count != 0)
         {
-            QuestionAndAnswerInterraction selectedQuestion = QnA[0];
+            generateQuestion();
+        }
+        else
+        {
+            Debug.Log("Fin du quizz");
         }
 
     }
 
     
-    public void Answer()
+    private void Answer()
     {
         
         // Utilisez un index valide pour accéder à un élément spécifique de la liste
@@ -50,9 +57,10 @@ public class InterractionPlaneteQCM : MonoBehaviour
         
         // Accédez à la propriété AnswerValue de l'élément sélectionné
             QnA[index].AnswerValue = slider.textSlider.value;
-        
+    
         if (QnA[index].AnswerValue >= QnA[index].CorrectAnswer1 && QnA[index].AnswerValue <= QnA[index].CorrectAnswer2 )
         {
+            CorrectAnswer.text = QnA[index].CorrectAnswerText;
             Debug.Log("Bonne réponse");
         }
         else
@@ -66,7 +74,8 @@ public class InterractionPlaneteQCM : MonoBehaviour
         if (QnA.Count > 0)
         {
             int currentQuestion = Random.Range(0, QnA.Count);
-            QuestionTxt.text = QnA[0].Question;
+            QuestionTxt.text = QnA[currentQuestion].Question;
+            Answer();
         }
         else
         {
