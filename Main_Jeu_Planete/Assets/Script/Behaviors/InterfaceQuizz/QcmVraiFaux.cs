@@ -16,7 +16,9 @@ public class QcmVraiFaux : MonoBehaviour
     private bool validationMode = false;
     [SerializeField] GameObject panelToShow;
     [SerializeField] GameObject panelToHide;
-    public Timer timerScript;
+    [SerializeField] Timer timerScript;
+    private List<float> tempsPris = new List<float>();
+    private List<int> questionsRepondues = new List<int>();
 
     private void Start()
     {
@@ -56,6 +58,27 @@ public class QcmVraiFaux : MonoBehaviour
             // Enregistre le temps pris pour répondre à la question
             float timeTaken = Timer.elapsedTimeStatic;
             Debug.Log("Temps pris pour répondre à la question : " + timeTaken + " secondes");
+
+            // Ajoute le temps pris à la liste
+            tempsPris.Add(timeTaken);
+            questionsRepondues.Add(currentQuestion);
+
+            for (int i = 0; i < tempsPris.Count; i++)
+            {
+                if (i == 0)
+                {
+                    float tempsQuestion = tempsPris[i];
+                    int indexQuestion = questionsRepondues[i];
+                    Debug.Log($"Temps pris pour la question {indexQuestion + 1} : {tempsQuestion} secondes");
+                }
+                else
+                {
+                    float tempsQuestion = tempsPris[i] - tempsPris[i - 1];
+                    int indexQuestion = questionsRepondues[i];
+                    Debug.Log($"Temps pris pour la question {indexQuestion + 1} : {tempsQuestion} secondes");
+                }
+
+            }
 
             // Ajouter une logique pour afficher la nouvelle question
             // Par exemple, vous pourriez utiliser une coroutine pour afficher la nouvelle question après quelques secondes
@@ -115,9 +138,6 @@ public class QcmVraiFaux : MonoBehaviour
 
     void generateQuestion()
     {
-        // Réinitialise le timer à chaque nouvelle question
-        Timer.elapsedTimeStatic = 0f;
-
         currentQuestion = Random.Range(0, QnA.Count);
         QuestionTxt.text = QnA[currentQuestion].Question;
         SetAnswers();
