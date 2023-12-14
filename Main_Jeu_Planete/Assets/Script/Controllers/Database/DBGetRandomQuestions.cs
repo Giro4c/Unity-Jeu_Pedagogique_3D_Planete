@@ -20,7 +20,7 @@ public class DBGetRandomQuestions : MonoBehaviour
     private IEnumerator GetRandomQuestions()
     {
         string strVarURLGet = "";
-        strVarURLGet = "qcm=" + nbQCM + "&interaction=" + nbInterac + "&vraifaux" + nbVF;
+        strVarURLGet = "qcm=" + nbQCM + "&interaction=" + nbInterac + "&vraifaux=" + nbVF;
         string url = "jeupedagogique.alwaysdata.net/views/randomQuestions.php?" + strVarURLGet;
         Debug.Log(url);
         
