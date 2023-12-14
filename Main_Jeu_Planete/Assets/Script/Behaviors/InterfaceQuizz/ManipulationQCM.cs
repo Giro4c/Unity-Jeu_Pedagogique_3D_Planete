@@ -45,7 +45,6 @@ public class ManipulationQCM : MonoBehaviour
             //Valeur du slider
             float val = 1f;
             ValeurSlider(val);
-            slider.UpdateTextFromSliderValue(val);
             
         }
         else if(currentQuest.currentQuestion == 1)
@@ -53,7 +52,6 @@ public class ManipulationQCM : MonoBehaviour
             //Valeur du slider
             float val = 0.4f;
             ValeurSlider(val);
-            slider.UpdateTextFromSliderValue(val);
             
         }
         else if(currentQuest.currentQuestion == 2)
@@ -61,7 +59,6 @@ public class ManipulationQCM : MonoBehaviour
             //Valeur du slider
             float val = 0.25f;
             ValeurSlider(val);
-            slider.UpdateTextFromSliderValue(val);
             
         }
         else if(currentQuest.currentQuestion == 3)
@@ -69,7 +66,6 @@ public class ManipulationQCM : MonoBehaviour
             //Valeur du slider
             float val = 0.7f;
             ValeurSlider(val);
-            slider.UpdateTextFromSliderValue(val);
            
         }
         else if(currentQuest.currentQuestion == 4)
@@ -77,12 +73,8 @@ public class ManipulationQCM : MonoBehaviour
             //Valeur du slider
             float val = 0.0f;
             ValeurSlider(val);
-            slider.UpdateTextFromSliderValue(val);
            
         }
-        else
-        {
-            slider.SliderAuto();
-        }
+        
     }
 }

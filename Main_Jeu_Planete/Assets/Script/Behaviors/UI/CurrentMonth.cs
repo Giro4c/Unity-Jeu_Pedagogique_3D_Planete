@@ -1,62 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 using TMPro;
-using System.Globalization;
-using UnityEngine.UI;
-
 
 public class CurrentMonth : MonoBehaviour
 {
     [SerializeField] private TMP_Text displayText;
-    [SerializeField] public Slider textSlider;
-    public Orbit valueSlider;
-    private bool isTrue;
+    public Orbit valueOrbit;
     public string[] mois;
 
-
-    private void Update()
+    private void Start()
     {
-        isTrue = Input.GetMouseButton(0);
-
-        if (isTrue)
-        {
-            SliderDrag();
-        }
-        else
-        {
-            SliderAuto();
-        }
+        
     }
 
-    public void SliderAuto()
+    void Update()
     {
-        float sliderValue = valueSlider.orbitProgress;
-        UpdateTextFromSliderValue(sliderValue);
-    }
-
-    private void SliderDrag()
-    {
-        float sliderValue = textSlider.value;
-        valueSlider.orbitProgress = sliderValue;
-        UpdateTextFromSliderValue(sliderValue);
-    }
-
-    public void UpdateTextFromSliderValue(float sliderValue)
-    {
-        textSlider.value = sliderValue;
-
         for (int i = 0; i < mois.Length; i++)
         {
             float lowerBound = i / (float)mois.Length;
             float upperBound = (i + 1) / (float)mois.Length;
 
-            if (sliderValue >= lowerBound && sliderValue <= upperBound)
+            if (valueOrbit.orbitProgress >= lowerBound && valueOrbit.orbitProgress <= upperBound)
             {
                 displayText.text = mois[i];
                 break;
             }
         }
     }
+
+    
+
+    
 }
