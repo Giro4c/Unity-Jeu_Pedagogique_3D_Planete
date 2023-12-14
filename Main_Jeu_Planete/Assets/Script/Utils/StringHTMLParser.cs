@@ -19,6 +19,8 @@ public class StringHTMLParser
     
     public string Between(string str , string firstString, string lastString)
     {
+        Debug.Log("First String : " + firstString);
+        Debug.Log("Last String : " + lastString);
         int pos1;
         int pos2;
         if (firstString == null || firstString.Equals(""))
@@ -29,6 +31,8 @@ public class StringHTMLParser
         {
             pos1 = str.IndexOf(firstString) + firstString.Length;
         }
+        Debug.Log("Position Dep : " + pos1);
+        
         if (lastString == null || lastString.Equals(""))
         {
             pos2 = str.Length;
@@ -37,6 +41,8 @@ public class StringHTMLParser
         {
             pos2 = str.IndexOf(lastString, pos1);
         }
+        Debug.Log("Position Stop : " + pos2);
+
         string finalString = str.Substring(pos1, pos2 - pos1);
         return finalString;
     }
@@ -47,11 +53,11 @@ public class StringHTMLParser
         string container = "<" + type;
         if (classContainer != null && ! classContainer.Equals(""))
         {
-            container = container + " " + classContainer;
+            container = container + " class=" + classContainer;
         }
         if (id != null && ! id.Equals(""))
         {
-            container = container + " " + id;
+            container = container + " id=" + id;
         }
 
         container = container + ">";

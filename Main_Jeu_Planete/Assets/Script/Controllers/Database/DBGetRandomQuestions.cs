@@ -38,9 +38,11 @@ public class DBGetRandomQuestions : MonoBehaviour
             int totCount = nbQCM + nbInterac + nbVF;
             string extratedVal;
             int[] list = new int[totCount];
+            print("Parsing html source");
             for (int count = 0; count < totCount; ++count)
             {
                 extratedVal = htmlParser.getHTMLContainerContent("li", null, count.ToString());
+                print(extratedVal);
                 list[count] = int.Parse(extratedVal);
             }
 
