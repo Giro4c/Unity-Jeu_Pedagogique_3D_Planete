@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cd0d1fea-564f-43e4-b056-0111022f438c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/controllerQuestions.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/controllerQuestions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/DbQcm.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbQcm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/DbQuesinterac.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbQuesinterac.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/DbTypeques.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbTypeques.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/DbVraiFaux.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbVraiFaux.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/randomQuestions.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/randomQuestions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +59,7 @@
       <workItem from="1702278921502" duration="3244000" />
       <workItem from="1702285006269" duration="1293000" />
       <workItem from="1702305174995" duration="8014000" />
-      <workItem from="1702543667322" duration="4045000" />
+      <workItem from="1702543667322" duration="6975000" />
     </task>
     <servers />
   </component>

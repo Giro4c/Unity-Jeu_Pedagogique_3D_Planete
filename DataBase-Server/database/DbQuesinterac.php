@@ -27,13 +27,16 @@ class DbQuesinterac
 
     public function getRandomQInterac(int $howManyInterac = 0): array{
         $query = "SELECT Num_Ques FROM " . $this->dbName;
-        $result = $this->conn->query($query)->fetch_all();
+        $result = $this->conn->query($query)->fetch_all(MYSQLI_ASSOC);
+
         shuffle($result);
-        $qNums = [];
+        $result = array_slice($result, 0, $howManyInterac);
+        // Remove arrays of size 1
         for ($count = 0; $count < $howManyInterac; ++$count){
-            $qNums[] = $result[$count];
+            $result[$count] = $result[$count]['Num_Ques'];
         }
-        return $qNums;
+
+        return $result;
     }
 
 }

@@ -27,13 +27,16 @@ class DbQcm
 
     public function getRandomQQCM(int $howManyQCM = 0): array{
         $query = "SELECT Num_Ques FROM " . $this->dbName;
-        $result = $this->conn->query($query)->fetch_all();
+        $result = $this->conn->query($query)->fetch_all(MYSQLI_ASSOC);
+
         shuffle($result);
-        $qNums = [];
+        $result = array_slice($result, 0, $howManyQCM);
+        // Remove arrays of size 1
         for ($count = 0; $count < $howManyQCM; ++$count){
-            $qNums[] = $result[$count];
+            $result[$count] = $result[$count]['Num_Ques'];
         }
-        return $qNums;
+
+        return $result;
     }
 
 }
