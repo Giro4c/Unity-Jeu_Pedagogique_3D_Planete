@@ -12,7 +12,7 @@ public class CurrentMonth : MonoBehaviour
     [SerializeField] private TMP_Text displayText;
     [SerializeField] public Slider textSlider;
     public Orbit valueSlider;
-    private bool isTrue;
+    public bool isTrue;
     public string[] mois;
 
 
@@ -32,11 +32,11 @@ public class CurrentMonth : MonoBehaviour
 
     public void SliderAuto()
     {
-        float sliderValue = valueSlider.orbitProgress;
-        UpdateTextFromSliderValue(sliderValue);
+        textSlider.value = valueSlider.orbitProgress;
+        UpdateTextFromSliderValue(textSlider.value);
     }
 
-    private void SliderDrag()
+    public void SliderDrag()
     {
         float sliderValue = textSlider.value;
         valueSlider.orbitProgress = sliderValue;
