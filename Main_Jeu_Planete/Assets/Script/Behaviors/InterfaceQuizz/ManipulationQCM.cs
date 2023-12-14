@@ -23,7 +23,6 @@ public class ManipulationQCM : MonoBehaviour
 
     private void ValeurSlider(float val)
     {  
-        evalSlider.value = val;
         position.orbitProgress = val;
         position.SetOrbitingObjectPosition();
     }

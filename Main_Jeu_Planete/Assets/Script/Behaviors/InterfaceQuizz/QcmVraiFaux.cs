@@ -16,28 +16,31 @@ public class QcmVraiFaux : MonoBehaviour
     private Color originalColor;
     [SerializeField] GameObject panelToShow;
     [SerializeField] GameObject panelToHide;
+    private int element;
 
     private void Start()
     {
         generateQuestion();
+        element = QnA.Count;
     }
+
     public void ActiveScript()
     {
         GetComponent<QcmVraiFaux>().enabled = true;
         
     }
+
     public void DesactiveScript()
     {
         GetComponent<QcmVraiFaux>().enabled = false;
     }
+
     public void correct()
     {
-       
-        
-        if (QnA.Count != 0)
+        if (element!= 0)
         {
-            
             generateQuestion();
+            element-=1;
         }
         else
         {
@@ -47,14 +50,12 @@ public class QcmVraiFaux : MonoBehaviour
                 // Désactivez le panneau actuel.
                 panelToHide.SetActive(false);
             }
-
             if (panelToShow != null)
             {
                 // Activez le nouveau panneau.
                 panelToShow.SetActive(true);
             }
                 Debug.Log("Fin du quiz !");
-            
         }
           
     }
@@ -81,6 +82,5 @@ public class QcmVraiFaux : MonoBehaviour
         originalColor = new Color(1.0f,1.0f,1.0f,1.0f);
         buttonImageV.color = originalColor;
         buttonImageF.color = originalColor;
-
     }
 }
