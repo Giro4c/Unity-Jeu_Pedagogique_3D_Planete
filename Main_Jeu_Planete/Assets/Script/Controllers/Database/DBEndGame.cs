@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DBEndGame : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class DBEndGame : MonoBehaviour
         {
             Debug.LogError(wwwEndGame.error);
         }
+ 
+        SceneManager.LoadScene("HomePage");
         
     }
     
