@@ -20,7 +20,7 @@ class controllerQuestions
 
     public function getRandomQs(int $howManyQCM = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): string{
         $totalQs = $howManyQCM + $howManyInterac + $howManyVraiFaux;
-        $numQs = $this->dbTypeques->getRandomQs();
+        $numQs = $this->dbTypeques->getRandomQs($howManyQCM, $howManyInterac, $howManyVraiFaux);
         ob_start(); ?>
     <ul>
         <?php for ($count = 0; $count < $totalQs; ++$count){?>

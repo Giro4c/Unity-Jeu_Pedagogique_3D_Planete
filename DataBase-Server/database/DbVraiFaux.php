@@ -27,7 +27,7 @@ class DbVraiFaux
 
     public function getRandomQVraiFaux(int $howManyVraiFaux = 0): array{
         $query = "SELECT Num_Ques FROM " . $this->dbName;
-        $result = $this->conn->query($query)->fetch_all()['Num_Ques'];
+        $result = $this->conn->query($query)->fetch_all();
         shuffle($result);
         $qNums = [];
         for ($count = 0; $count < $howManyVraiFaux; ++$count){

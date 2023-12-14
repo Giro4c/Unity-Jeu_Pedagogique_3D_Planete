@@ -47,10 +47,7 @@ class DbTypeques
     }
 
     public function getRandomQs(int $howManyQCM = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
-        $numQ = [];
-        $numQ += $this->dbQcm->getRandomQQCM($howManyQCM);
-        $numQ += $this->dbQuesinterac->getRandomQInterac($howManyInterac);
-        $numQ += $this->dbVraiFaux->getRandomQVraiFaux($howManyVraiFaux);
+        $numQ = array_merge($this->dbQcm->getRandomQQCM($howManyQCM), $this->dbQuesinterac->getRandomQInterac($howManyInterac), $this->dbVraiFaux->getRandomQVraiFaux($howManyVraiFaux)) ;
         return $numQ;
     }
 

@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd0d1fea-564f-43e4-b056-0111022f438c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/database/DbInteraction.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbInteraction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/controllerQuestions.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/controllerQuestions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DbQcm.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbQcm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DbQuesinterac.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbQuesinterac.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DbTypeques.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbTypeques.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DbVraiFaux.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DbVraiFaux.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/randomQuestions.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/randomQuestions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,19 +33,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Database&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Camille (HorsCo)/Desktop/Unity Projects/Unity-Jeu_Pedagogique_3D_Planete/DataBase-Server/views&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merge__All__2",
+    "last_opened_file_path": "C:/Users/Camille (HorsCo)/Desktop/Unity Projects/Unity-Jeu_Pedagogique_3D_Planete/DataBase-Server/views",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Camille (HorsCo)\Desktop\Unity Projects\Unity-Jeu_Pedagogique_3D_Planete\DataBase-Server\views" />
@@ -56,6 +62,7 @@
       <workItem from="1702278921502" duration="3244000" />
       <workItem from="1702285006269" duration="1293000" />
       <workItem from="1702305174995" duration="8014000" />
+      <workItem from="1702543667322" duration="4045000" />
     </task>
     <servers />
   </component>
