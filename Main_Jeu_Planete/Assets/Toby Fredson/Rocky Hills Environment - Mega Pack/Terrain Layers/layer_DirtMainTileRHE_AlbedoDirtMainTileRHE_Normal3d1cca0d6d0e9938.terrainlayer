@@ -7,7 +7,7 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: layer_DirtMainTileRHE_AlbedoDirtMainTileRHE_Normal3d1cca0d6d0e9938
-  m_DiffuseTexture: {fileID: 2800000, guid: 202cacfffc0e22343a8ec232561b3ffd, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 99e79cc12b575d14fb40fd78a113fbd1, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 6d7c6e263f04bde44836c06f57e02a6e, type: 3}
   m_MaskMapTexture: {fileID: 2800000, guid: 4ef6055afa4b43e45bebc9e5c14e9181, type: 3}
   m_TileSize: {x: 10, y: 10}
