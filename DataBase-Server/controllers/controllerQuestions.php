@@ -36,10 +36,13 @@ class controllerQuestions
     public function getHTMLAttributesQ(int $numQues): string{
         $qAttributes = $this->dbTypeques->getQAttributes($numQues);
         ob_start();
-        while ($attribute = current($qAttributes)) { ?>
+        while (true) {
+            $attribute = current($qAttributes);
+            if ($attribute == null) break;
+            ?>
             <p id="<?= key($qAttributes) ?>"><?= $attribute ?></p>
         <?php
-            next($array);
+            next($qAttributes);
         }
         $qHTML = ob_get_contents();
         ob_end_clean();
