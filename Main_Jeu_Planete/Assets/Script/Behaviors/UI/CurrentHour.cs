@@ -5,13 +5,13 @@ using System;
 using TMPro;
 
 
-public class Day : MonoBehaviour
+public class CurrentHour : MonoBehaviour
 {
-    [SerializeField] TMP_Text currentDay;
+    [SerializeField] TMP_Text currentHour;
 
     // Update is called once per frame
     void Update()
     {
-        currentDay.text = DateTime.Now.ToString("dd");
+        
     }
 }

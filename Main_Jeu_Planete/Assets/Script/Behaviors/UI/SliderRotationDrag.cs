@@ -4,12 +4,12 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class SliderOrbitDrag : MonoBehaviour
+public class SliderRotationDrag : MonoBehaviour
 {
     private EventSystem _eventSys;
-    public Orbit sliderValue;
-    public OrbitMotion orbitAutoChanger;
-    private SliderSyncOrbit _sliderAutoChanger;
+    public RotationCycle sliderValue;
+    public RotationAuto rotaAutoChanger;
+    private SliderSyncRotation _sliderAutoChanger;
     private Slider _slider;
 
     
@@ -18,12 +18,12 @@ public class SliderOrbitDrag : MonoBehaviour
     {
         _eventSys = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         _slider = gameObject.GetComponent<Slider>();
-        _sliderAutoChanger = gameObject.GetComponent<SliderSyncOrbit>();
-        if (sliderValue == null || orbitAutoChanger == null || _eventSys == null || _slider == null || _sliderAutoChanger == null)
+        _sliderAutoChanger = gameObject.GetComponent<SliderSyncRotation>();
+        if (sliderValue == null || rotaAutoChanger == null || _eventSys == null || _slider == null || _sliderAutoChanger == null)
         {
             enabled = false;
         }
-        // Start background task that detect if slider is clicked then released to update orbit and deactivate/reactivate orbit automatic changer (OrbitMotion)
+        // Start background task that detect if slider is clicked then released to update orbit and deactivate/reactivate orbit automatic changer (RotationAuto)
         Debug.Log("Start Coroutine ControlDrag");
         StartCoroutine(ControlDrag());
     }
@@ -39,25 +39,25 @@ public class SliderOrbitDrag : MonoBehaviour
             {
                 yield return null;
             }
-            print("Slider orbit is changed, there is action (Drag)");
-            // Deactivating OrbitMotion (orbit auto changer) and SliderSyncOrbit (slider auto changer)
-            orbitAutoChanger.enabled = false;
-            print("OrbitMotion disabled");
+            print("Slider rotation is changed, there is action (Drag)");
+            // Deactivating RotationAuto (rota auto changer) and SliderSyncRotation (slider auto changer)
+            rotaAutoChanger.enabled = false;
+            print("RotationAuto disabled");
             _sliderAutoChanger.enabled = false;
-            print("SliderSyncOrbit disabled");
+            print("SliderSyncRotation disabled");
             // There is an action on the slider (Drag) but waiting for the end of the action : release slider to get last changed value.
             while (! Input.GetMouseButtonUp(0))
             {
-                sliderValue.orbitProgress = _slider.value;
-                sliderValue.SetOrbitingObjectPosition();
+                sliderValue.rotateProgress = _slider.value;
+                sliderValue.SetRotation();
                 yield return null;
             }
-            print("Slider Orbit is released");
-            // Reactivating OrbitMotion (orbit auto changer) and SliderSyncOrbit (slider auto changer)
-            orbitAutoChanger.enabled = true;
-            print("OrbitMotion enabled");
+            print("Slider Rotation is released");
+            // Reactivating RotationAuto (rota auto changer) and SliderSyncRotation (slider auto changer)
+            rotaAutoChanger.enabled = true;
+            print("RotationAuto enabled");
             _sliderAutoChanger.enabled = true;
-            print("SliderSyncOrbit enabled");
+            print("SliderSyncRotation enabled");
             
         }
     }

@@ -2,11 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class SliderSyncOrbit : MonoBehaviour
+public class SliderSyncRotation : MonoBehaviour
 {
-    public Orbit sliderValue;
+    public RotationCycle sliderValue;
     private Slider _slider;
-
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +21,7 @@ public class SliderSyncOrbit : MonoBehaviour
     void Update()
     {
         // Slider is not clicked on -> Sync value with orbit
-        _slider.value = sliderValue.orbitProgress;
+        _slider.value = sliderValue.rotateProgress;
     }
 
     private void OnEnable()
