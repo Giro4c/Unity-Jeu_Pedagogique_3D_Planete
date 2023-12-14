@@ -7,7 +7,7 @@ public class StringHTMLParser
 {
     private string html;
     
-    StringHTMLParser(string html)
+    public StringHTMLParser(string html)
     {
         this.html = html;
     }
