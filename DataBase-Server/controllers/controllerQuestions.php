@@ -50,7 +50,7 @@ class controllerQuestions
     }
 
     public function addFinishedQuestion(int $numQues, int $idParty, int $duration, bool $isCorrect): void{
-
+        $this->dbQuestion->addQuestionAnswer($numQues, $idParty, $duration, $isCorrect);
     }
 
 }
