@@ -53,11 +53,11 @@ public class StringHTMLParser
         string container = "<" + type;
         if (classContainer != null && ! classContainer.Equals(""))
         {
-            container = container + " class=" + classContainer;
+            container = container + " class=\"" + classContainer + "\"";
         }
         if (id != null && ! id.Equals(""))
         {
-            container = container + " id=" + id;
+            container = container + " id=\"" + id + "\"";
         }
 
         container = container + ">";
