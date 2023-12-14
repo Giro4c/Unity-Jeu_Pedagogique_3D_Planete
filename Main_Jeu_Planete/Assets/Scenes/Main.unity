@@ -9297,6 +9297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1664383800}
   - component: {fileID: 1664383801}
+  - component: {fileID: 1664383802}
   m_Layer: 0
   m_Name: DBGame
   m_TagString: Untagged
@@ -9332,6 +9333,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonEnd: {fileID: 1167113577}
+--- !u!114 &1664383802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664383799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e2ec673fd8b524aa9a75666e23434b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonEndGame: {fileID: 593544829}
 --- !u!1 &1679804722
 GameObject:
   m_ObjectHideFlags: 0

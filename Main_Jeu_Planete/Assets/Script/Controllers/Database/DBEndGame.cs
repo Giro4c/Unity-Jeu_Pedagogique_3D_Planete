@@ -5,14 +5,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class DBAbortGame : MonoBehaviour
+public class DBEndGame : MonoBehaviour
 {
-    public Button buttonEnd;
+    public Button buttonEndGame;
     
     // Start is called before the first frame update
     void Start()
     {
-        buttonEnd.onClick.AddListener(delegate { StartCoroutine(AbortGamePhp()); });
+        buttonEndGame.onClick.AddListener(delegate { StartCoroutine(EndGamePhp()); });
     }
     
     // Update is called once per frame
@@ -21,24 +21,18 @@ public class DBAbortGame : MonoBehaviour
         
     }
 
-    private IEnumerator AbortGamePhp()
+    private IEnumerator EndGamePhp()
     {
-        string url = "jeupedagogique.alwaysdata.net/views/abortOnGoingGame.php";
+        string url = "jeupedagogique.alwaysdata.net/views/endGame.php";
         Debug.Log(url);
         
-        UnityWebRequest wwwAbortGame = UnityWebRequest.Get(url);
-        yield return wwwAbortGame.SendWebRequest();
-        if (wwwAbortGame.error != null)
+        UnityWebRequest wwwEndGame = UnityWebRequest.Get(url);
+        yield return wwwEndGame.SendWebRequest();
+        if (wwwEndGame.error != null)
         {
-            Debug.LogError(wwwAbortGame.error);
-        }
-        else
-        {
-            Debug.Log("Page Abort Game Loaded");
-            Debug.Log(wwwAbortGame.downloadHandler.text);
+            Debug.LogError(wwwEndGame.error);
         }
         
     }
-    
     
 }

@@ -21,7 +21,7 @@ public class DBGetRandomQuestions : MonoBehaviour
     {
         string strVarURLGet = "";
         strVarURLGet = "qcm=" + nbQCM + "&interaction=" + nbInterac + "&vraifaux=" + nbVF;
-        string url = "jeupedagogique.alwaysdata.net/views/randomQuestions.php?" + strVarURLGet;
+        string url = "jeupedagogique.alwaysdata.net/views/endGame.php?" + strVarURLGet;
         Debug.Log(url);
         
         UnityWebRequest wwwInteract = UnityWebRequest.Get(url);
