@@ -6,5 +6,5 @@ using UnityEngine;
 public class ListQuestions : MonoBehaviour
 {
     public int[] questionsIDs = Array.Empty<int>();
-
+    public string questionString;
 }

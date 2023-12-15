@@ -17,7 +17,7 @@ public class DBGetRandomQuestions : MonoBehaviour
         StartCoroutine(GetRandomQuestions());
     }
     
-    private IEnumerator GetRandomQuestions()
+    public IEnumerator GetRandomQuestions()
     {
         string strVarURLGet = "";
         strVarURLGet = "qcm=" + nbQCM + "&interaction=" + nbInterac + "&vraifaux=" + nbVF;
@@ -44,8 +44,9 @@ public class DBGetRandomQuestions : MonoBehaviour
                 extratedVal = htmlParser.getHTMLContainerContent("li", null, count.ToString());
                 print(extratedVal);
                 list[count] = int.Parse(extratedVal);
+                
             }
-
+            
             questions.questionsIDs = list;
 
         }
