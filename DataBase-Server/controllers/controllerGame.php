@@ -3,6 +3,7 @@
 namespace controllers;
 use database\DbJoueur;
 use database\DbPartie;
+use database\DbQuestion;
 use utilities\CannotDoException;
 
 class controllerGame
@@ -38,7 +39,7 @@ class controllerGame
         if($this->dbPartie->verifyPartieInProgress($ip)){
             $target = "DataBase " . $this->dbPartie->getDbName();
             $action = "Register new game";
-            $explanation = "There already is a game in progress: Player IPV4=" . $ip;
+            $explanation = "There already is a game in progress: Player IP=" . $ip;
             throw new CannotDoException($target, $action, $explanation);
         }
         else{
@@ -50,8 +51,18 @@ class controllerGame
         $this->dbPartie->abortOnGoingPartie($ip);
     }
 
-    public function endPartie(string $ip): void{
+    /**
+     * @throws CannotDoException
+     */
+    public function endPartie(string $ip, string $dateFin): void{
+        if(!$this->dbPartie->verifyPartieInProgress($ip)){
+            $target = "DataBase " . $this->dbPartie->getDbName();
+            $action = "End ongoing game";
+            $explanation = "There is no game in progress: Player IP=" . $ip;
+            throw new CannotDoException($target, $action, $explanation);
+        }
 
+        $this->dbPartie->endPartie($ip, $dateFin);
     }
 
 }

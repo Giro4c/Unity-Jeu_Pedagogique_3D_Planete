@@ -2,6 +2,8 @@
 
 namespace database;
 
+use utilities\CannotDoException;
+
 class DbPartie
 {
 
@@ -34,10 +36,21 @@ class DbPartie
         $this->conn->query($query);
     }
 
-    public function endPartie(string $ipJoueur, string $dateFin, int $MoyQuestions): void{
-        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = (Date_Fin - Date_Deb), Moy_Questions = $MoyQuestions "
-        . "WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
+    public function endPartie(string $ipJoueur, string $dateFin): void{
+        $dbQs = new DbQuestion($this->conn);
+        $idGame = $this->getPartieInProgress($ipJoueur)['Id_Partie'];
+        try {
+            $score = $dbQs->getPartyScore($idGame);
+        } catch (CannotDoException $e) {
+            $score = 0;
+        }
+        $score = round($score, 2);
+        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = TIMEDIFF(Date_Fin, Date_Deb), Moy_Questions = $score "
+        . "WHERE Id_Partie = $idGame";
         $this->conn->query($query);
+//        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = (Date_Fin - Date_Deb), Moy_Questions = $score "
+//            . "WHERE Id_Partie = $idGame";
+//        $this->conn->query($query);
     }
 
     public function getPartieInProgress(string $ipJoueur): array|null{

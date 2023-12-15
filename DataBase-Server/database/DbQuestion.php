@@ -2,6 +2,7 @@
 
 namespace database;
 
+use utilities\CannotDoException;
 use utilities\GReturn;
 
 class DbQuestion
@@ -25,10 +26,25 @@ class DbQuestion
         return new GReturn("ok", content: $result);
     }
 
-    public function getCountCorrect(int $idPartie): int {
-        $query = "SELECT * FROM " . $this->dbName . " WHERE Id_Partie = $idPartie AND Reussite = 1";
+    /**
+     * Gives the score for a party on a /10 notation.
+     * @param int $idPartie the id of the party whose score is searched
+     * @return float the score for the party on a /10 notation.
+     * @throws CannotDoException
+     */
+    public function getPartyScore(int $idPartie): float {
+        $query = "SELECT COUNT(*) AS Total, SUM(Reussite) AS Score FROM " . $this->dbName . " WHERE Id_Partie = $idPartie";
         $result = $this->conn->query($query)->fetch_assoc();
-        return count($result);
+        $count = $result['Total'];
+
+        if ($count == 0){
+            $target = "DataBase " . $this->dbName;
+            $action = "Calculate score for game party.";
+            $explanation = "Game party $idPartie has no questions answered.";
+            throw new CannotDoException($target, $action, $explanation);
+        }
+
+        return $result['Score'] * (10 / $count);
     }
 
     public function addQuestionAnswer(int $numQues, int $idParty, int $duration, bool $isCorrect): void{
