@@ -10,6 +10,7 @@ public class QcmVraiFaux : MonoBehaviour
     public GameObject[] options;
     public int currentQuestion;
     public TextMeshProUGUI QuestionTxt;
+    public ListQuestions question;
     public Answer Vraie;
     public Answer Faux;
     private Color originalColor;
@@ -98,8 +99,15 @@ public class QcmVraiFaux : MonoBehaviour
 
     void generateQuestion()
     {
+<<<<<<< Updated upstream
         currentQuestion = Random.Range(0, QnA.Count);
         QuestionTxt.text = QnA[currentQuestion].Question;
+=======
+        //currentQuestion = Random.Range(0, QnA.Count);
+        //QuestionTxt.text = QnA[currentQuestion].Question; 
+        //question.GetQuestions();
+        QuestionTxt.text = question.questionString;
+>>>>>>> Stashed changes
         SetAnswers();
     }
 }
