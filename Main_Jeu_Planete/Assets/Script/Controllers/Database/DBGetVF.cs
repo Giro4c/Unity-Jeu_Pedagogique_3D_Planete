@@ -2,22 +2,22 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class DBGetQuestion : MonoBehaviour
+public class DBGetVF : MonoBehaviour
 {
     public ListQuestions questions;
-    public DBGetRandomQuestions id;
+    public DBGetRandomVF id;
     public int[] idQuestion;
     public int qid;
 
     void Start()
     {
-        StartCoroutine(GetQuestions());
+        StartCoroutine(GetVF());
     }
 
-    IEnumerator GetQuestions()
+    IEnumerator GetVF()
     {
         // Obtenez les questions aléatoires
-        id.GetRandomQuestions();
+        id.GetRandomVF();
         idQuestion = questions.questionsIDs;
 
         // Initialisez qid à la première valeur dans idQuestion

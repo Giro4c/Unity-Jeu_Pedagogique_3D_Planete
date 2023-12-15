@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -376,13 +376,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1921297516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a2f74ca7b127f47bd7329d41c3218b, type: 3}
+  m_Script: {fileID: 11500000, guid: 11741609d64414f1795203ef7b890bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   questions: {fileID: 1921297519}
-  nbVF: 5
   nbQCM: 2
-  nbInterac: 3
 --- !u!114 &1921297519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +404,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1921297516}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf6f5066ec6644f3ac15a7bac712893, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b403fa734f7747e282f68cb64954870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   questions: {fileID: 1921297519}
