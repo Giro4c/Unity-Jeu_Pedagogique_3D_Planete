@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -7,41 +6,55 @@ public class DBGetQuestion : MonoBehaviour
 {
     public ListQuestions questions;
     public DBGetRandomQuestions id;
+    public int[] idQuestion;
     public int qid;
-    public int [] idQuestion;
 
-    // Start is called before the first frame update
     void Start()
     {
-        print("Starting coroutine for calling web page");
         StartCoroutine(GetQuestions());
     }
 
-     public IEnumerator GetQuestions()
+    IEnumerator GetQuestions()
     {
+        // Obtenez les questions aléatoires
         id.GetRandomQuestions();
         idQuestion = questions.questionsIDs;
-        string strVarURLGet = "";
-        strVarURLGet = "qid="+qid;
-        string url = "jeupedagogique.alwaysdata.net/views/question.php?" + strVarURLGet;
-        Debug.Log(url);
-        
-        UnityWebRequest wwwInteract = UnityWebRequest.Get(url);
-        yield return wwwInteract.SendWebRequest();
-        if (wwwInteract.error != null)
-        {
-            Debug.LogError(wwwInteract.error);
-        }
-        else // Pas d'erreur, la page est chargée
-        {
-            string test;
-            Debug.Log(wwwInteract.downloadHandler.text); // le texte de la page
-            // Init du parser
-            StringHTMLParser htmlParser = new StringHTMLParser(wwwInteract.downloadHandler.text);
-            Debug.Log(qid);
-            questions.questionString=wwwInteract.downloadHandler.text;
-            test = wwwInteract.downloadHandler.text;
 
+        // Initialisez qid à la première valeur dans idQuestion
+        qid = idQuestion[0];
+        string[] listQues = new string[idQuestion.Length];
+        for (int count = 0; count < idQuestion.Length; ++count)
+        {
+            // Utilisez la valeur de qid pour obtenir la question correspondante
+            string strVarURLGet = "qid=" + qid;
+            string url = "jeupedagogique.alwaysdata.net/views/question.php?" + strVarURLGet;
+            Debug.Log(url);
+
+            UnityWebRequest wwwInteract = UnityWebRequest.Get(url);
+            yield return wwwInteract.SendWebRequest();
+
+            if (wwwInteract.error != null)
+            {
+                Debug.LogError(wwwInteract.error);
+            }
+            else
+            {
+                // Utilisez wwwInteract.downloadHandler.text de la manière qui convient à votre logique
+                Debug.Log(qid);
+                Debug.Log(wwwInteract.downloadHandler.text);
+                
+                // Assurez-vous que vous utilisez correctement questions.questionString
+                listQues[count] = wwwInteract.downloadHandler.text;
+                Debug.Log(listQues[count]); // Ajout de point-virgule
+
+            }
+
+            // Passez à la prochaine valeur dans idQuestion
+            if (count < idQuestion.Length - 1)
+            {
+                qid = idQuestion[count + 1];
+            }
         }
+        questions.questionString = listQues;
     }
 }
