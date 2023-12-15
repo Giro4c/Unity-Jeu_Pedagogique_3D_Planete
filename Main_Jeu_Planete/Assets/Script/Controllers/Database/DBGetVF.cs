@@ -2,22 +2,22 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class DBGetQuestion : MonoBehaviour
+public class DBGetVF : MonoBehaviour
 {
     public ListQuestions questions;
-    public DBGetRandomQuestions id;
+    public DBGetRandomVF id;
     public int[] idQuestion;
     public int qid;
 
     void Start()
     {
-        StartCoroutine(GetQuestions());
+        StartCoroutine(GetVF());
     }
 
-    IEnumerator GetQuestions()
+    IEnumerator GetVF()
     {
         // Obtenez les questions aléatoires
-        id.GetRandomQuestions();
+        id.GetRandomVF();
         idQuestion = questions.questionsIDs;
 
         // Initialisez qid à la première valeur dans idQuestion
@@ -47,7 +47,7 @@ public class DBGetQuestion : MonoBehaviour
                 extratedVal = htmlParser.getHTMLContainerContent("p", null, "Enoncer");
                 print(extratedVal);
                 listQues[count] = extratedVal;
-                //Debug.Log(listQues[count]); // Ajout de point-virgule
+                Debug.Log(listQues[count]); // Ajout de point-virgule
             }
 
             // Passez à la prochaine valeur dans idQuestion

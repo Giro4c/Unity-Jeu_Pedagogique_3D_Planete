@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class DBGetRandomQuestions : MonoBehaviour
+public class DBGetRandomVF : MonoBehaviour
 {
     public ListQuestions questions;
     public int nbVF = 0;
-    public int nbQCM = 0;
-    public int nbInterac = 0;
     
     // Start is called before the first frame update
     void Start()
     {
         print("Starting coroutine for calling web page");
-        StartCoroutine(GetRandomQuestions());
+        StartCoroutine(GetRandomVF());
     }
     
-    public IEnumerator GetRandomQuestions()
+    public IEnumerator GetRandomVF()
     {
         string strVarURLGet = "";
-        strVarURLGet = "qcm=" + nbQCM + "&interaction=" + nbInterac + "&vraifaux=" + nbVF;
+        strVarURLGet = "&vraifaux=" + nbVF;
         string url = "jeupedagogique.alwaysdata.net/views/randomQuestions.php?" + strVarURLGet;
         Debug.Log(url);
         
@@ -35,7 +33,7 @@ public class DBGetRandomQuestions : MonoBehaviour
             Debug.Log(wwwInteract.downloadHandler.text); // le texte de la page
             // Init du parser
             StringHTMLParser htmlParser = new StringHTMLParser(wwwInteract.downloadHandler.text);
-            int totCount = nbQCM + nbInterac + nbVF;
+            int totCount = nbVF;
             string extratedVal;
             int[] list = new int[totCount];
             print("Parsing html source");
