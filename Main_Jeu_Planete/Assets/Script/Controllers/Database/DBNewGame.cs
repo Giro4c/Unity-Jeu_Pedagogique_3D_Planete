@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class DBNewGame : MonoBehaviour
 {
     public Button buttonStart;
+    [SerializeField] public string plateforme = "Windows";
     
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class DBNewGame : MonoBehaviour
 
     private IEnumerator NewGamePhp()
     {
-        string url = "jeupedagogique.alwaysdata.net/views/addNewGame.php";
+        string url = "jeupedagogique.alwaysdata.net/views/addNewGame.php?plateforme=" + plateforme;
         Debug.Log(url);
         
         UnityWebRequest wwwNewGame = UnityWebRequest.Get(url);
