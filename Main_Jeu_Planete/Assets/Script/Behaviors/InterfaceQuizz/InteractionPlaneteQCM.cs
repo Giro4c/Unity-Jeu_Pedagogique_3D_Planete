@@ -14,14 +14,14 @@ public class InteractionPlaneteQCM : MonoBehaviour
     public OrbitMotion position;
     public GameObject Correct;
     public  ListQuestions showQuestion;
-    private int element;
+    public int element;
     private int currentQuestion;
 
 
     private void Start()
     {
         generateQuestion();
-        element = QnA.Count;
+        element = showQuestion.questionString.Length;
     }
     private void Update()
     {
@@ -74,8 +74,8 @@ public class InteractionPlaneteQCM : MonoBehaviour
 
     private void generateQuestion()
     {
-            currentQuestion = Random.Range(0, QnA.Count);
-            QuestionTxt.text = QnA[currentQuestion].Question;
+            currentQuestion = Random.Range(0, showQuestion.questionString.Length);
+            QuestionTxt.text = showQuestion.questionString[currentQuestion];
             Answer();
             Debug.Log(QnA.Count);
             Correct.SetActive(false);

@@ -47,7 +47,7 @@ public class DBGetQuestion : MonoBehaviour
                 extratedVal = htmlParser.getHTMLContainerContent("p", null, "Enoncer");
                 print(extratedVal);
                 listQues[count] = extratedVal;
-                Debug.Log(listQues[count]); // Ajout de point-virgule
+                //Debug.Log(listQues[count]); // Ajout de point-virgule
             }
 
             // Passez à la prochaine valeur dans idQuestion
