@@ -13,6 +13,7 @@ public class InteractionPlaneteQCM : MonoBehaviour
     public Orbit orbit;
     public OrbitMotion position;
     public GameObject Correct;
+    public  ListQuestions showQuestion;
     private int element;
     private int currentQuestion;
 
