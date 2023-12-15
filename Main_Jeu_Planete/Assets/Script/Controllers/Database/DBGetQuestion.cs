@@ -42,17 +42,19 @@ public class DBGetQuestion : MonoBehaviour
                 // Utilisez wwwInteract.downloadHandler.text de la manière qui convient à votre logique
                 Debug.Log(qid);
                 Debug.Log(wwwInteract.downloadHandler.text);
-                
-                // Assurez-vous que vous utilisez correctement questions.questionString
-                listQues[count] = wwwInteract.downloadHandler.text;
+                StringHTMLParser htmlParser = new StringHTMLParser(wwwInteract.downloadHandler.text);
+                string extratedVal;
+                extratedVal = htmlParser.getHTMLContainerContent("p", null, "Enoncer");
+                print(extratedVal);
+                listQues[count] = extratedVal;
                 Debug.Log(listQues[count]); // Ajout de point-virgule
-
             }
 
             // Passez à la prochaine valeur dans idQuestion
             if (count < idQuestion.Length - 1)
             {
                 qid = idQuestion[count + 1];
+
             }
         }
         questions.questionString = listQues;
