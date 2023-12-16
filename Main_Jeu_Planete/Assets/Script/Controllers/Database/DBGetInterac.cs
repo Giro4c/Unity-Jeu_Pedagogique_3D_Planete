@@ -18,7 +18,7 @@ public class DBGetInterac : MonoBehaviour
     {
         // Obtenez les questions aléatoires
         id.GetRandomInterac();
-        idQuestion = questions.questionsIDs;
+        idQuestion = questions.questionsIDsInter;
 
         // Initialisez qid à la première valeur dans idQuestion
         qid = idQuestion[0];
@@ -57,6 +57,6 @@ public class DBGetInterac : MonoBehaviour
 
             }
         }
-        questions.questionString = listQues;
+        questions.questionStringInter = listQues;
     }
 }

@@ -9,7 +9,7 @@ public class QcmVraiFaux : MonoBehaviour
 {
     public List<QuestionAndAnswer> QnA;
     public GameObject[] options;
-    public int element;
+    public int elements;
     public int currentQuestion;
     public TextMeshProUGUI QuestionTxt;
     public Answer Vraie;
@@ -23,6 +23,7 @@ public class QcmVraiFaux : MonoBehaviour
     private void Start()
     {
         generateQuestion();
+        elements = 10;
     }
 
     public void ActiveScript()
@@ -38,11 +39,11 @@ public class QcmVraiFaux : MonoBehaviour
 
     public void correct()
     {
-        if (element!= 0)
+        if (elements!= 0)
         {
             generateQuestion();
-            element-=1;
-            Debug.Log(element);
+            elements-=1;
+            Debug.Log(elements);
         }
         else
         {
@@ -76,10 +77,9 @@ public class QcmVraiFaux : MonoBehaviour
     }
     public void generateQuestion()
     {
-        currentQuestion = Random.Range(0, showQuestion.questionString.Length);
-        QuestionTxt.text = showQuestion.questionString[currentQuestion];
-        Debug.Log(currentQuestion);
-        element = showQuestion.questionString.Length;
+        currentQuestion = Random.Range(0, showQuestion.questionStringMult.Length);
+        QuestionTxt.text = showQuestion.questionStringMult[currentQuestion];
+        Debug.Log(showQuestion.questionsIDsMult[currentQuestion]);
         SetAnswers();
         Image buttonImageV = Vraie.myButton.GetComponent<Image>();
         Image buttonImageF = Faux.myButton.GetComponent<Image>();

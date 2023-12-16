@@ -45,7 +45,7 @@ public class DBGetRandomVF : MonoBehaviour
                 
             }
             
-            questions.questionsIDs = list;
+            questions.questionsIDsVF = list;
 
         }
         

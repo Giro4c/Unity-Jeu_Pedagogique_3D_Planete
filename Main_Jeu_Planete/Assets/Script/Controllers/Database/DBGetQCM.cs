@@ -18,7 +18,7 @@ public class DBGetQCM : MonoBehaviour
     {
         // Obtenez les questions aléatoires
         id.GetRandomQCM();
-        idQuestion = questions.questionsIDs;
+        idQuestion = questions.questionsIDsMult;
 
         // Initialisez qid à la première valeur dans idQuestion
         qid = idQuestion[0];
@@ -57,6 +57,6 @@ public class DBGetQCM : MonoBehaviour
 
             }
         }
-        questions.questionString = listQues;
+        questions.questionStringMult = listQues;
     }
 }

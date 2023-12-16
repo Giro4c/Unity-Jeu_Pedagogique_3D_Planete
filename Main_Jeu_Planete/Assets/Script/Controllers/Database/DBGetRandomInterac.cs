@@ -45,7 +45,7 @@ public class DBGetRandomInterac : MonoBehaviour
                 
             }
             
-            questions.questionsIDs = list;
+            questions.questionsIDsInter = list;
 
         }
         

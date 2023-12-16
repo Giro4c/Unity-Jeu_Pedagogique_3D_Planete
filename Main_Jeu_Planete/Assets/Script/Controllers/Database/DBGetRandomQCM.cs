@@ -45,7 +45,7 @@ public class DBGetRandomQCM : MonoBehaviour
                 
             }
             
-            questions.questionsIDs = list;
+            questions.questionsIDsMult = list;
 
         }
         

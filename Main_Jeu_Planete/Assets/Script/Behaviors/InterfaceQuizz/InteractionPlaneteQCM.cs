@@ -13,52 +13,47 @@ public class InteractionPlaneteQCM : MonoBehaviour
     public Orbit orbit;
     public OrbitMotion position;
     public GameObject Correct;
-    public  ListQuestions showQuestion;
+    public ListQuestions showQuestion;
     public int element;
-    private int currentQuestion;
-
+    public int currentQuestion;
+    [SerializeField] GameObject panelToShow;
+    [SerializeField] GameObject panelToHide;
 
     private void Start()
     {
-        generateQuestion();
-        element = showQuestion.questionString.Length;
+        GenerateQuestion();
+        element = 10;
     }
+
     private void Update()
     {
         if (slider.textSlider)
         {
-            //position.orbitActive = true;
             orbit.orbitProgress = slider.textSlider.value;
             orbit.SetOrbitingObjectPosition();
         }
-            position.orbitActive = false;
-            slider.SliderDrag();
+        position.orbitActive = false;
+        slider.SliderDrag();
     }
 
-
-    public void suivant()
-    {  
-        // Sélectionnez un élément de la liste (tant que la liste ne vaut pas 0)
-        if (element!= 0)
+    public void Suivant()
+    {
+        if (element != 0)
         {
-            generateQuestion();
-            element-=1;
+            GenerateQuestion();
+            element -= 1;
         }
         else
         {
-            Debug.Log("Fin du quizz");
+            HandleEndOfQuiz();
         }
-
     }
 
-    
     public void Answer()
     {
-    
-        // Accédez à la propriété AnswerValue de l'élément sélectionné
-            QnA[currentQuestion].AnswerValue = slider.textSlider.value;
-    
-        if (QnA[currentQuestion].AnswerValue >= QnA[currentQuestion].CorrectAnswer1 && QnA[currentQuestion].AnswerValue <= QnA[currentQuestion].CorrectAnswer2 )
+        QnA[currentQuestion].AnswerValue = slider.textSlider.value;
+
+        if (IsAnswerCorrect())
         {
             CorrectAnswer.text = QnA[currentQuestion].CorrectAnswerText;
             Correct.SetActive(true);
@@ -72,13 +67,31 @@ public class InteractionPlaneteQCM : MonoBehaviour
         }
     }
 
-    private void generateQuestion()
+    private void GenerateQuestion()
     {
-            currentQuestion = Random.Range(0, showQuestion.questionString.Length);
-            QuestionTxt.text = showQuestion.questionString[currentQuestion];
-            Answer();
-            Debug.Log(QnA.Count);
-            Correct.SetActive(false);
-            
+        currentQuestion = Random.Range(0, showQuestion.questionStringInter.Length);
+        QuestionTxt.text = showQuestion.questionStringInter[currentQuestion];
+        //Debug.Log(showQuestion.questionStringInter.Length)
+        Answer();
+        Correct.SetActive(false);
+    }
+
+    private bool IsAnswerCorrect()
+    {
+        return QnA[currentQuestion].AnswerValue >= QnA[currentQuestion].CorrectAnswer1 &&
+               QnA[currentQuestion].AnswerValue <= QnA[currentQuestion].CorrectAnswer2;
+    }
+
+    private void HandleEndOfQuiz()
+    {
+        if (panelToHide != null)
+        {
+            panelToHide.SetActive(false);
+        }
+        if (panelToShow != null)
+        {
+            panelToShow.SetActive(true);
+        }
+        Debug.Log("Fin du quizz");
     }
 }

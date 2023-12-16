@@ -18,7 +18,7 @@ public class DBGetVF : MonoBehaviour
     {
         // Obtenez les questions aléatoires
         id.GetRandomVF();
-        idQuestion = questions.questionsIDs;
+        idQuestion = questions.questionsIDsVF;
 
         // Initialisez qid à la première valeur dans idQuestion
         qid = idQuestion[0];
@@ -57,6 +57,6 @@ public class DBGetVF : MonoBehaviour
 
             }
         }
-        questions.questionString = listQues;
+        questions.questionStringVF = listQues;
     }
 }

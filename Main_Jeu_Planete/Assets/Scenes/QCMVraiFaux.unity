@@ -333,6 +333,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55376566}
   m_CullTransparentMesh: 1
+--- !u!1 &69716067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 69716068}
+  - component: {fileID: 69716071}
+  - component: {fileID: 69716070}
+  - component: {fileID: 69716069}
+  m_Layer: 0
+  m_Name: BDQcmVraiFaux
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &69716068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69716067}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 819440908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &69716069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69716067}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c142b6846e4748acbbc734f996b66a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions: {fileID: 69716070}
+  id: {fileID: 69716071}
+  idQuestion: 
+  qid: 0
+--- !u!114 &69716070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69716067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf53386fffb8254984401dda703d52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionsIDsVF: 
+  questionsIDsMult: 
+  questionsIDsInter: 
+  questionStringVF: []
+  questionStringMult: []
+  questionStringInter: []
+--- !u!114 &69716071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69716067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d69937749d574bc19d71875011c5f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions: {fileID: 69716070}
+  nbVF: 5
 --- !u!1 &91480502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2529,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1213981715}
+      - m_Target: {fileID: 272425688}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -2458,6 +2540,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1213981715}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &392143454
 MonoBehaviour:
@@ -2563,37 +2657,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QnA:
-  - Question: "Quele est la saison o\xF9 la Terre est la plus \xE9loign\xE9 du soleil
-      ?"
-    Answer:
+  - Answer:
     - "\xC9t\xE9"
     - Automne
     - Hiver
     - Printemps
     CorrectAnswer: 3
-  - Question: "Quelle est la saison o\xF9 la Terre est la plus proche du soleil ?"
-    Answer:
+  - Answer:
     - "\xC9t\xE9"
     - Automne
     - Hiver
     - Printemps
     CorrectAnswer: 1
-  - Question: "Quelles saisons sont \xE0 distance \xE9gale du soleil ?"
-    Answer:
+  - Answer:
     - "\xC9t\xE9/Hiver"
     - "\xC9t\xE9/Printemps"
     - Hiver/Automne
     - Printemps/Automne
     CorrectAnswer: 4
-  - Question: Lors de quelle saison les jours sont-ils les plus longs ?
-    Answer:
+  - Answer:
     - "\xC9t\xE9"
     - Automne
     - Hiver
     - Printemps
     CorrectAnswer: 1
-  - Question: Lors de quelle saison les nuits sont-elles les plus longues
-    Answer:
+  - Answer:
     - "\xC9t\xE9"
     - Automne
     - Hiver
@@ -2604,10 +2692,14 @@ MonoBehaviour:
   - {fileID: 1381272767}
   - {fileID: 1543695136}
   - {fileID: 1350258251}
+  element: 0
   currentQuestion: 0
   QuestionTxt: {fileID: 1487084803}
   Vraie: {fileID: 1381272768}
   Faux: {fileID: 308269307}
+  showQuestion: {fileID: 503003548}
+  panelToShow: {fileID: 1213981715}
+  panelToHide: {fileID: 2072287695}
 --- !u!224 &417127918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2701,6 +2793,88 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 499978538}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &503003545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 503003546}
+  - component: {fileID: 503003549}
+  - component: {fileID: 503003548}
+  - component: {fileID: 503003547}
+  m_Layer: 0
+  m_Name: BDQcmMultiple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &503003546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503003545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 819440908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503003547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503003545}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b403fa734f7747e282f68cb64954870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions: {fileID: 503003548}
+  id: {fileID: 503003549}
+  idQuestion: 
+  qid: 0
+--- !u!114 &503003548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503003545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf53386fffb8254984401dda703d52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionsIDsVF: 
+  questionsIDsMult: 
+  questionsIDsInter: 
+  questionStringVF: []
+  questionStringMult: []
+  questionStringInter: []
+--- !u!114 &503003549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503003545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11741609d64414f1795203ef7b890bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions: {fileID: 503003548}
+  nbQCM: 3
 --- !u!1 &532006877
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,6 +3368,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563441310}
   m_CullTransparentMesh: 1
+--- !u!1 &566449552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 566449553}
+  - component: {fileID: 566449556}
+  - component: {fileID: 566449555}
+  - component: {fileID: 566449554}
+  m_Layer: 0
+  m_Name: BDQcmInteraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &566449553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566449552}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 819440908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &566449554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566449552}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447bc4756d44e4c33ab6a63bea802227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions: {fileID: 566449555}
+  id: {fileID: 566449556}
+  idQuestion: 
+  qid: 0
+--- !u!114 &566449555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566449552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf53386fffb8254984401dda703d52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionsIDsVF: 
+  questionsIDsMult: 
+  questionsIDsInter: 
+  questionStringVF: []
+  questionStringMult: []
+  questionStringInter: []
+--- !u!114 &566449556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566449552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2821e5284f9a348e984b911708ff92a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions: {fileID: 566449555}
+  nbInterac: 4
 --- !u!1 &579053906
 GameObject:
   m_ObjectHideFlags: 0
@@ -4201,42 +4457,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QnA:
-  - Question: "D'apr\xE8s la visualisation, sommes nous le jour ou la nuit ?"
-    Answer:
+  - Answer:
     - Jour
     - Nuit
     CorrectAnswer: 1
-  - Question: "La repr\xE9sentation de la terre correspond-elle aux donn\xE9es affich\xE9s
-      ?   \xC9t\xE9,6h00, jour"
-    Answer:
+  - Answer:
     - Vraie
     - Faux
     CorrectAnswer: 2
-  - Question: "La repr\xE9sentation de la terre correspond-elle aux donn\xE9es affich\xE9s
-      ?   Hiver, 12H00, Jour"
-    Answer:
+  - Answer:
     - Vraie
     - Faux
     CorrectAnswer: 1
-  - Question: "La repr\xE9sentation de la terre correspond-elle aux donn\xE9es affich\xE9s
-      ?   Printemps, 4H00, Nuit"
-    Answer:
+  - Answer:
     - Vraie
     - Faux
     CorrectAnswer: 2
-  - Question: "La repr\xE9sentation de la terre correspond-elle aux donn\xE9es affich\xE9s
-      ?    Automne, 10H00, Jour"
-    Answer:
+  - Answer:
     - Vraie
     - Faux
     CorrectAnswer: 1
   options:
   - {fileID: 539397227}
   - {fileID: 150035717}
+  element: 0
   currentQuestion: 0
   QuestionTxt: {fileID: 603188428}
   Vraie: {fileID: 539397228}
   Faux: {fileID: 150035722}
+  showQuestion: {fileID: 69716070}
+  panelToShow: {fileID: 2072287695}
+  panelToHide: {fileID: 272425688}
 --- !u!114 &807654767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4253,6 +4504,40 @@ MonoBehaviour:
   currentQuest: {fileID: 807654766}
   evalSlider: {fileID: 599396830}
   position: {fileID: 1596661608}
+--- !u!1 &819440904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 819440908}
+  m_Layer: 0
+  m_Name: Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &819440908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819440904}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 223.26, y: 6, z: 244.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 69716068}
+  - {fileID: 503003546}
+  - {fileID: 566449553}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &851342639
 GameObject:
   m_ObjectHideFlags: 0
@@ -9453,6 +9738,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1790388344}
+        m_TargetAssemblyTypeName: InteractionPlaneteQCM, Assembly-CSharp
+        m_MethodName: suivant
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1659487892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9894,13 +10191,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QnA:
-  - Question: PLacer la terre au bon endroit
-    AnswerValue: 0
+  - AnswerValue: 0
     CorrectAnswer1: 0.5
     CorrectAnswer2: 1
     CorrectAnswerText: 
-  - Question: Maoulida Raoul
-    AnswerValue: 0
+  - AnswerValue: 0
     CorrectAnswer1: 0.5
     CorrectAnswer2: 1
     CorrectAnswerText: 
@@ -9909,6 +10204,11 @@ MonoBehaviour:
   CorrectAnswer: {fileID: 951132884}
   orbit: {fileID: 1596661608}
   position: {fileID: 1596661606}
+  Correct: {fileID: 951132882}
+  showQuestion: {fileID: 566449555}
+  element: 0
+  panelToShow: {fileID: 635602038}
+  panelToHide: {fileID: 1213981715}
 --- !u!1 &1806157645
 GameObject:
   m_ObjectHideFlags: 0
@@ -10700,6 +11000,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 69716069}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 503003547}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 566449554}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1967179107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11328,3 +11664,4 @@ SceneRoots:
   - {fileID: 1448704259}
   - {fileID: 1505173723}
   - {fileID: 1806157649}
+  - {fileID: 819440908}
