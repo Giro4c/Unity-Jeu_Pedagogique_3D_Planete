@@ -6392,6 +6392,7 @@ GameObject:
   - component: {fileID: 1625613451}
   - component: {fileID: 1625613450}
   - component: {fileID: 1625613449}
+  - component: {fileID: 1625613452}
   - component: {fileID: 1625613448}
   - component: {fileID: 1625613447}
   - component: {fileID: 1625613446}
@@ -6417,7 +6418,7 @@ MonoBehaviour:
   neige: {fileID: 499978540}
   pluie: {fileID: 2103298981}
   sonPluie: {fileID: 8300000, guid: e60b9243727bbb5428fbb3e7f7fe44cd, type: 3}
-  changement: {fileID: 1625613448}
+  saisons: {fileID: 1625613452}
 --- !u!114 &1625613447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6487,7 +6488,7 @@ MonoBehaviour:
   - {fileID: 1340444983734504, guid: 111ca7543ae4dda478d59b75fd49c42f, type: 3}
   - {fileID: 1080536362236096, guid: 8a630ea472a2e784f8a2c36421eec4ff, type: 3}
   - {fileID: 1739204843991948, guid: 2b2b8d56ed83df240bb5c767170b8e31, type: 3}
-  orbit: {fileID: 1596661608}
+  saisons: {fileID: 1625613452}
 --- !u!114 &1625613448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6501,7 +6502,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 1625613450}
-  index: 0
   texturePrincipal:
   - {fileID: 2800000, guid: 5dc31812af7fb67479e543fff9ad114d, type: 3}
   - {fileID: 2800000, guid: a667e05eb5f0f214d9a15b105f2fbd6f, type: 3}
@@ -6519,9 +6519,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 722aaae2dfc560e458ff88c4c0f950f3, type: 3}
   - {fileID: 2800000, guid: a0aa2ef72c0bdaf46be46c997d3ff4a3, type: 3}
   - {fileID: 0}
-  speed: 0.1
-  texture: 0
-  orbit: {fileID: 1596661608}
+  saisons: {fileID: 1625613452}
 --- !u!154 &1625613449
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -6596,6 +6594,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1625613452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625613445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590805cb6b823964e8e3d1e0504f21fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbit: {fileID: 1596661608}
 --- !u!1 &1630185387
 GameObject:
   m_ObjectHideFlags: 0

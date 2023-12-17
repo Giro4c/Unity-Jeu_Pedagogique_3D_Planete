@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: layer_GrassLightSamllTileRHE_AlbedoGrassLightSamllTileRHE_Normal2023054508611406
-  m_DiffuseTexture: {fileID: 2800000, guid: f6ef05227d2b1d94186ee762b4c2f1ed, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: a0aa2ef72c0bdaf46be46c997d3ff4a3, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_DiffuseTexture: {fileID: 2800000, guid: a667e05eb5f0f214d9a15b105f2fbd6f, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 37b567a3d7e98984aa336221b207d38b, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 722aaae2dfc560e458ff88c4c0f950f3, type: 3}
   m_TileSize: {x: 10, y: 10}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}

@@ -9,8 +9,10 @@ public class NeigePluie : MonoBehaviour
     public AudioClip sonPluie;
    
     private AudioSource source;
-    private bool temps;
-    public TerrainSaison changement;
+    
+    public Saisons saisons;
+    private string saisonCurrent = "hiver";
+    
     // Start is called before the first frame update
    void Awake()
    {
@@ -20,39 +22,69 @@ public class NeigePluie : MonoBehaviour
 
     void Start()
     {
-        pluie.SetActive(false);
-        neige.SetActive(false);
-        temps = false;
-        source.clip = sonPluie;
-
+        SetUp();
+        StartCoroutine(ChangeWeather());
     }
+    
+    private void SetUp()
+    {
+        saisonCurrent = saisons.GetSaison();
+        source.clip = sonPluie;
+        SetWeather(saisons.GetSaison());
+    }
+    
+    
 
     // Update is called once per frame
     void Update()
     {
-        float texture = changement.textureV();
-        if (texture >=7.5f && texture < 10f)
+        
+    }
+    
+    private void SetAll()
+    {
+        saisonCurrent = saisons.GetSaison();
+        SetWeather(saisons.GetSaison());
+    }
+    
+    IEnumerator ChangeWeather()
+    {
+        while (true)
         {
-            temps = true;
+            if (!saisonCurrent.Equals(saisons.GetSaison()))
+            {
+                SetAll();
+                //print("Changement effectué.");
+            }
+            
+            yield return null;
+        }
+
+        yield return null;
+    }
+
+    private void SetWeather(string season)
+    {
+        if (season.Equals(saisons.GetWINTER()))
+        {
             neige.SetActive(true);
             pluie.SetActive(false);
             source.Pause();
-            
         }
-        else if (texture >=5f && texture < 7.5f)
+        else if (saisonCurrent.Equals(saisons.GetFALL()))
         {
             pluie.SetActive(true);
             if (!source.isPlaying)
             {
                 source.Play();
             }
-        
         }
         else
         {
             pluie.SetActive(false);
             neige.SetActive(false);
-            temps = false;
+            source.Pause();
         }
     }
+    
 }
