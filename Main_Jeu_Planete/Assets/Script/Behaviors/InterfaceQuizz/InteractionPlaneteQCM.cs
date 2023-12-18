@@ -8,7 +8,7 @@ public class InteractionPlaneteQCM : MonoBehaviour
 {
     public List<QuestionAndAnswerInterraction> QnA;
     public TextMeshProUGUI QuestionTxt;
-    public CurrentMonth slider;
+    
     public TextMeshProUGUI CorrectAnswer;
     public Orbit orbit;
     public OrbitMotion position;
@@ -27,13 +27,7 @@ public class InteractionPlaneteQCM : MonoBehaviour
 
     private void Update()
     {
-        if (slider.textSlider)
-        {
-            orbit.orbitProgress = slider.textSlider.value;
-            orbit.SetOrbitingObjectPosition();
-        }
-        position.orbitActive = false;
-        slider.SliderDrag();
+        
     }
 
     public void Suivant()
@@ -51,7 +45,7 @@ public class InteractionPlaneteQCM : MonoBehaviour
 
     public void Answer()
     {
-        QnA[currentQuestion].AnswerValue = slider.textSlider.value;
+        //QnA[currentQuestion].AnswerValue = slider.textSlider.value;
 
         if (IsAnswerCorrect())
         {
