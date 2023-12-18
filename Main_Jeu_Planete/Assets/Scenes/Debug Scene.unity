@@ -5733,7 +5733,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1388563903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c91a1346ccf700846b7f18cb139fa20f, type: 3}
+  m_Script: {fileID: 11500000, guid: be55a8ae88897b9458845621b5984896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1448704256
@@ -6379,14 +6379,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596661604}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b4f6c314bbdea74785bfd0bd15a4dee, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fc01276f6dfbb24bbcb9062049d2f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
   colliderPlaneOrbit: {fileID: 1980781550}
-  debugMarker: {fileID: 2116680982}
 --- !u!1 &1625613445
 GameObject:
   m_ObjectHideFlags: 0
