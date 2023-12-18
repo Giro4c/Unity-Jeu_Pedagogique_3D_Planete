@@ -12,6 +12,7 @@ public class QcmVraiFaux : MonoBehaviour
     public int elements;
     public int currentQuestion;
     public TextMeshProUGUI QuestionTxt;
+    public ListQuestions question;
     public Answer Vraie;
     public Answer Faux;
     private Color originalColor;
@@ -77,9 +78,10 @@ public class QcmVraiFaux : MonoBehaviour
     }
     public void generateQuestion()
     {
-        currentQuestion = Random.Range(0, showQuestion.questionStringMult.Length);
-        QuestionTxt.text = showQuestion.questionStringMult[currentQuestion];
-        Debug.Log(showQuestion.questionsIDsMult[currentQuestion]);
+        //currentQuestion = Random.Range(0, QnA.Count);
+        //QuestionTxt.text = QnA[currentQuestion].Question; 
+        //question.GetQuestions();
+        QuestionTxt.text = question.questionString;
         SetAnswers();
         Image buttonImageV = Vraie.myButton.GetComponent<Image>();
         Image buttonImageF = Faux.myButton.GetComponent<Image>();
