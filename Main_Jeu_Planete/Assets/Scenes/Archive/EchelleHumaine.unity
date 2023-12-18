@@ -293,6 +293,8 @@ GameObject:
   - component: {fileID: 465834123}
   - component: {fileID: 465834122}
   - component: {fileID: 465834121}
+  - component: {fileID: 465834126}
+  - component: {fileID: 465834125}
   - component: {fileID: 465834120}
   - component: {fileID: 465834119}
   - component: {fileID: 465834124}
@@ -315,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debf5198ab40b4fb4b628e8d5fe535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrain: {fileID: 465834120}
+  terrain: {fileID: 0}
   printemps:
   - {fileID: 5990392342737928700, guid: 3725948e645981c4d9e8be628c04c460, type: 3}
   - {fileID: 3229883213677602968, guid: 72aa72ec6309f564bb5bae03f92fc7a1, type: 3}
@@ -372,10 +374,7 @@ MonoBehaviour:
   - {fileID: 1340444983734504, guid: 111ca7543ae4dda478d59b75fd49c42f, type: 3}
   - {fileID: 1080536362236096, guid: 8a630ea472a2e784f8a2c36421eec4ff, type: 3}
   - {fileID: 1739204843991948, guid: 2b2b8d56ed83df240bb5c767170b8e31, type: 3}
-  index: 0
-  totalObject: 13
-  slider: 0
-  orbit: {fileID: 0}
+  saisons: {fileID: 465834125}
 --- !u!114 &465834120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +388,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 465834122}
-  index: 0
   texturePrincipal:
   - {fileID: 2800000, guid: 5dc31812af7fb67479e543fff9ad114d, type: 3}
   - {fileID: 2800000, guid: a667e05eb5f0f214d9a15b105f2fbd6f, type: 3}
@@ -407,8 +405,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 722aaae2dfc560e458ff88c4c0f950f3, type: 3}
   - {fileID: 2800000, guid: a0aa2ef72c0bdaf46be46c997d3ff4a3, type: 3}
   - {fileID: 0}
-  speed: 0.1
-  texture: 0
+  saisons: {fileID: 465834125}
 --- !u!154 &465834121
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -498,7 +495,38 @@ MonoBehaviour:
   neige: {fileID: 2139947554}
   pluie: {fileID: 2008343188}
   sonPluie: {fileID: 8300000, guid: e60b9243727bbb5428fbb3e7f7fe44cd, type: 3}
-  changement: {fileID: 465834120}
+  saisons: {fileID: 465834125}
+--- !u!114 &465834125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465834118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590805cb6b823964e8e3d1e0504f21fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbit: {fileID: 465834126}
+--- !u!114 &465834126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465834118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae1e4891a8c875498d1d8bfcb2d4d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbitingObject: {fileID: 0}
+  orbitPath:
+    xAxis: 0
+    yAxis: 0
+  orbitProgress: 0.01
+  orbitPeriod: 3
 --- !u!1001 &473990758
 PrefabInstance:
   m_ObjectHideFlags: 0
