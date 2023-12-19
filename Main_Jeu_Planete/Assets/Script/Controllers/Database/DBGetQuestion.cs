@@ -9,14 +9,12 @@ public class DBGetQuestion : MonoBehaviour
     public ShowQCM ShowQcm;
     public ShowInterac ShowInterac;
     public ShowVraiFaux ShowVraiFaux;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    private IEnumerator GetRandomQuestions(int qid)
+    public GameObject panelQcm;
+    public GameObject panelInterac;
+    public GameObject panelVraiFaux;
+
+    public IEnumerator GetQuestion(int qid)
     {
         string strVarURLGet = "";
         strVarURLGet = "qid=" + qid;
@@ -34,20 +32,34 @@ public class DBGetQuestion : MonoBehaviour
             Debug.Log(wwwInteract.downloadHandler.text); // le texte de la page
             // Init du parser
             StringHTMLParser htmlParser = new StringHTMLParser(wwwInteract.downloadHandler.text);
+            // Hide all panels
+            HideAllPanels();
+            // Retrieve type of question
             string type = htmlParser.getHTMLContainerContent("p", null, "Type");
             if (type.Equals("QCM"))
             {
-                
+                panelQcm.SetActive(true);
+                ShowQcm.showQuestion(htmlParser.GetHTML());
             }
             else if (type.Equals("QUESINTERAC"))
             {
-                
+                panelInterac.SetActive(true);
+                ShowInterac.showQuestion(htmlParser.GetHTML());
             }
             else if (type.Equals("VRAIFAUX"))
             {
-                
+                panelVraiFaux.SetActive(true);
+                ShowVraiFaux.showQuestion(htmlParser.GetHTML());
             }
 
         }
     }
+
+    private void HideAllPanels()
+    {
+        panelVraiFaux.SetActive(false);
+        panelQcm.SetActive(false);
+        panelInterac.SetActive(false);
+    }
+    
 }

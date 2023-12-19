@@ -6,6 +6,7 @@ public class RotationOrOrbitDetector : MonoBehaviour
     private RotationAuto rotationAutoScript;
     private OrbitMotion orbitMotionScript;
     private OrbitDrag orbitDragScript;
+    private bool detectorActivated = true;
     
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class RotationOrOrbitDetector : MonoBehaviour
     // Used for scripts that continue to run until certain action
     private void Update()
     {
-        
+        if (!detectorActivated) return;
         if (Input.GetMouseButtonUp(1) && !orbitMotionScript.enabled)
         {
             Debug.Log("Orbit Auto Enabled");
@@ -35,7 +36,7 @@ public class RotationOrOrbitDetector : MonoBehaviour
 
     private void OnMouseOver()
     {
-        //Debug.Log("Mouse Over");
+        if (!detectorActivated) return;
         // On Mouse Down
         if (Input.GetMouseButton(0))
         {
@@ -64,6 +65,7 @@ public class RotationOrOrbitDetector : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (!detectorActivated) return;
         if (rotationDragScript)
         {
             rotationDragScript.enabled = false;
@@ -75,5 +77,27 @@ public class RotationOrOrbitDetector : MonoBehaviour
             orbitMotionScript.enabled = true;
         }
         
+    }
+
+    public void ActivateDetector()
+    {
+        detectorActivated = true;
+    }
+
+    public void DeactivateDetector()
+    {
+        detectorActivated = false;
+    }
+
+    public void DeactivateAllScriptsOrbit()
+    {
+        orbitDragScript.enabled = false;
+        orbitMotionScript.enabled = false;
+    }
+    
+    public void DeactivateAllScriptsRotation()
+    {
+        rotationDragScript.enabled = false;
+        rotationAutoScript.enabled = false;
     }
 }

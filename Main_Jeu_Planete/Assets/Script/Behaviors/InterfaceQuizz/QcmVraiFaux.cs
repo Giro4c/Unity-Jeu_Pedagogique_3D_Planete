@@ -81,7 +81,7 @@ public class QcmVraiFaux : MonoBehaviour
         //currentQuestion = Random.Range(0, QnA.Count);
         //QuestionTxt.text = QnA[currentQuestion].Question; 
         //question.GetQuestions();
-        QuestionTxt.text = question.questionString;
+        //QuestionTxt.text = question.questionString;
         SetAnswers();
         Image buttonImageV = Vraie.myButton.GetComponent<Image>();
         Image buttonImageF = Faux.myButton.GetComponent<Image>();

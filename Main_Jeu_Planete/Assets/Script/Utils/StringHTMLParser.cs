@@ -12,6 +12,11 @@ public class StringHTMLParser
         this.html = html;
     }
 
+    public string GetHTML()
+    {
+        return html;
+    }
+
     public string getHTMLContainerContent(string type, string classContainer, string id)
     {
         return Between(html, buildContainerOP(type, classContainer, id), buildContainerED(type));
