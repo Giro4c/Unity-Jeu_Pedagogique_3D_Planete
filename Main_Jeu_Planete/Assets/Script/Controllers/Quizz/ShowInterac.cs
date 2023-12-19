@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
@@ -29,11 +30,15 @@ public class ShowInterac : MonoBehaviour
         QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
         string valExtrater = "";
         
+        // Change Culture info for String to float conversions
+        CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+        ci.NumberFormat.CurrencyDecimalSeparator = ".";
+        
         // Get correct answer
         valExtrater = parser.getHTMLContainerContent("p", null, "BonneRepValeur_orbit");
         if (valExtrater != null && !valExtrater.Equals("NULL"))
         {
-            corrector.correctOrbit = float.Parse(valExtrater);
+            corrector.correctOrbit = float.Parse(valExtrater, NumberStyles.Any, ci);
             corrector.verifyOrbit = true;
         }
         else
@@ -43,7 +48,7 @@ public class ShowInterac : MonoBehaviour
         valExtrater = parser.getHTMLContainerContent("p", null, "BonneRepValeur_rotation");
         if (valExtrater != null && !valExtrater.Equals("NULL"))
         {
-            corrector.correctRotation = float.Parse(valExtrater);
+            corrector.correctRotation = float.Parse(valExtrater, NumberStyles.Any, ci);
             corrector.verifyRotation = true;
         }
         else

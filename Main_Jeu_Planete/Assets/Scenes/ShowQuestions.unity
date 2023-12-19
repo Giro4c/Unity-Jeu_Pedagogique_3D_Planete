@@ -3206,9 +3206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questions: {fileID: 677455019}
-  nbVF: 1
-  nbQCM: 1
-  nbInterac: 1
+  nbVF: 4
+  nbQCM: 0
+  nbInterac: 0
 --- !u!1 &647989922
 GameObject:
   m_ObjectHideFlags: 0

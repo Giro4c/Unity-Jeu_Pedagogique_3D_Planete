@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
@@ -41,6 +42,10 @@ public class ShowVraiFaux : MonoBehaviour
             trueIsCorrectAnswer = false;
         }
         
+        // Change Culture info for String to float conversions
+        CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+        ci.NumberFormat.CurrencyDecimalSeparator = ".";
+        
         // Get Val Orbit
         valExtrater = parser.getHTMLContainerContent("p", null, "Valeur_orbit");
         if (valExtrater != null)
@@ -50,7 +55,7 @@ public class ShowVraiFaux : MonoBehaviour
             manager.DeactivateAllScriptsOrbit();
             // Change Orbit
             Debug.Log("Fixed orbit : " + valExtrater);
-            orbit.orbitProgress = float.Parse(valExtrater);
+            orbit.orbitProgress = float.Parse(valExtrater, NumberStyles.Any, ci);
             orbit.SetOrbitingObjectPosition();
             
         }
@@ -64,7 +69,7 @@ public class ShowVraiFaux : MonoBehaviour
             manager.DeactivateAllScriptsRotation();
             // Change Rotation
             Debug.Log("Fixed rotation : " + valExtrater);
-            rotation.rotateProgress = float.Parse(valExtrater);
+            rotation.rotateProgress = float.Parse(valExtrater, NumberStyles.Any, ci);
             rotation.SetRotation();
 
         }
