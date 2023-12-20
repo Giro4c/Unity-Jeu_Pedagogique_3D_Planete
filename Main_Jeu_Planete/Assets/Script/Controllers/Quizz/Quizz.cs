@@ -50,6 +50,7 @@ public class Quizz : MonoBehaviour
 
     public void End()
     {
+        getterQuestions.HideAllPanels();
         endPanel.SetActive(true);
     }
     

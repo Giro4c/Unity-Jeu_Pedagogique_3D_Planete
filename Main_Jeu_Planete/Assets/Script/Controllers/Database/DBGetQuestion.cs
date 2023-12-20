@@ -55,7 +55,7 @@ public class DBGetQuestion : MonoBehaviour
         }
     }
 
-    private void HideAllPanels()
+    public void HideAllPanels()
     {
         panelVraiFaux.SetActive(false);
         panelQcm.SetActive(false);

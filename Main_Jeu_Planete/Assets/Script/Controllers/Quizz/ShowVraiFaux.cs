@@ -56,6 +56,7 @@ public class ShowVraiFaux : MonoBehaviour
             // Change Orbit
             Debug.Log("Fixed orbit : " + valExtrater);
             orbit.orbitProgress = float.Parse(valExtrater, NumberStyles.Any, ci);
+            Debug.Log("New orbit : " + orbit.orbitProgress);
             orbit.SetOrbitingObjectPosition();
             
         }
