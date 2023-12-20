@@ -13,7 +13,7 @@ public class CorrectorInterac : QuestionCorrector
     public bool verifyOrbit = false;
     public bool verifyRotation = false;
     private float orbitMargin = (1f / 24f);
-    private float rotationMargin = (1f / 48f);
+    private float rotationMargin = (1f / 24f);
     // For answer and show Correction
     public Orbit orbit;
     public RotationCycle rotation;
@@ -60,8 +60,19 @@ public class CorrectorInterac : QuestionCorrector
         else
         {
             correctionText.text = "Mauvaise réponse";
-            orbit.orbitProgress = correctOrbit;
-            rotation.rotateProgress = correctRotation;
+            // Show correct orbit
+            if (verifyOrbit)
+            {
+                orbit.orbitProgress = correctOrbit;
+                orbit.SetOrbitingObjectPosition();
+            }
+            // Show correct rotation
+            if (verifyRotation)
+            {
+                rotation.rotateProgress = correctRotation;
+                rotation.SetRotation();
+            }
+            
         }
     }
     

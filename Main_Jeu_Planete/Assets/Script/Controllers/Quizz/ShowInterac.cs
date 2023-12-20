@@ -34,6 +34,7 @@ public class ShowInterac : MonoBehaviour
         
         // Get question ID
         valExtrater = parser.getHTMLContainerContent("p", null, "Num_Ques");
+        corrector.NewCorrector(int.Parse(valExtrater));
         
         // Get question text
         QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
