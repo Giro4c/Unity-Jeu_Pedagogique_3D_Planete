@@ -25,10 +25,18 @@ public class ShowInterac : MonoBehaviour
     
     public void showQuestion(string html)
     {
+        // Manage possible interactions
         manager.ActivateDetector();
+        manager.DeactivateAutoMotion();
+        
         StringHTMLParser parser = new StringHTMLParser(html);
-        QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
         string valExtrater = "";
+        
+        // Get question ID
+        valExtrater = parser.getHTMLContainerContent("p", null, "Num_Ques");
+        
+        // Get question text
+        QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
         
         // Change Culture info for String to float conversions
         CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();

@@ -19,6 +19,7 @@ public class CorrectorInterac : QuestionCorrector
     public RotationCycle rotation;
     // For showing correction
     public TextMeshProUGUI correctionText;
+    public RotationOrOrbitDetector manager;
     
     public override void VerifyCorrect()
     {
@@ -48,6 +49,10 @@ public class CorrectorInterac : QuestionCorrector
     
     public override void ShowCorrection()
     {
+        // Manage possible interactions after correction
+        manager.DeactivateAll();
+        
+        // Show correction
         if (IsCorrect())
         {
             correctionText.text = "Bonne réponse";

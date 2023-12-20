@@ -9,6 +9,7 @@ public class SliderRotationDrag : MonoBehaviour
     private EventSystem _eventSys;
     public RotationCycle sliderValue;
     public RotationAuto rotaAutoChanger;
+    private bool automotionActivated = true;
     private SliderSyncRotation _sliderAutoChanger;
     private Slider _slider;
 
@@ -54,11 +55,23 @@ public class SliderRotationDrag : MonoBehaviour
             }
             print("Slider Rotation is released");
             // Reactivating RotationAuto (rota auto changer) and SliderSyncRotation (slider auto changer)
-            rotaAutoChanger.enabled = true;
-            print("RotationAuto enabled");
+            if (automotionActivated)
+            {
+                rotaAutoChanger.enabled = true;
+                print("RotationAuto enabled");
+            }
             _sliderAutoChanger.enabled = true;
             print("SliderSyncRotation enabled");
             
         }
+    }
+    
+    public bool IsAutoMotionActivated()
+    {
+        return automotionActivated;
+    }
+    public void SetAutoMotion(bool val)
+    {
+        automotionActivated = val;
     }
 }

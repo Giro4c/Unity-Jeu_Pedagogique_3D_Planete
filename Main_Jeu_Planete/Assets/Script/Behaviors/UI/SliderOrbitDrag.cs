@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
@@ -9,6 +10,7 @@ public class SliderOrbitDrag : MonoBehaviour
     private EventSystem _eventSys;
     public Orbit sliderValue;
     public OrbitMotion orbitAutoChanger;
+    private bool automotionActivated = true;
     private SliderSyncOrbit _sliderAutoChanger;
     private Slider _slider;
 
@@ -54,11 +56,24 @@ public class SliderOrbitDrag : MonoBehaviour
             }
             print("Slider Orbit is released");
             // Reactivating OrbitMotion (orbit auto changer) and SliderSyncOrbit (slider auto changer)
-            orbitAutoChanger.enabled = true;
-            print("OrbitMotion enabled");
+            if (automotionActivated)
+            {
+                orbitAutoChanger.enabled = true;
+                print("OrbitMotion enabled");
+            }
             _sliderAutoChanger.enabled = true;
             print("SliderSyncOrbit enabled");
             
         }
+    }
+
+
+    public bool IsAutoMotionActivated()
+    {
+        return automotionActivated;
+    }
+    public void SetAutoMotion(bool val)
+    {
+        automotionActivated = val;
     }
 }
