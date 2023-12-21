@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShowQCM : MonoBehaviour
 {
@@ -11,31 +12,28 @@ public class ShowQCM : MonoBehaviour
     public TextMeshProUGUI Rep2;
     public TextMeshProUGUI Rep3;
     public TextMeshProUGUI Rep4;
-    public string correctAnswer;
+    public CorrectorQCU corrector;
     public RotationOrOrbitDetector manager;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     public void showQuestion(string html)
     {
-        manager.ActivateDetector();
+        // Manage possible interactions
+        manager.ActivateAll();
+        corrector.ResetChoiceSelection();
+        
         StringHTMLParser parser = new StringHTMLParser(html);
-        QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
         string valExtrater = "";
+        
+        // Get question ID and Reset Corrector
+        valExtrater = parser.getHTMLContainerContent("p", null, "Num_Ques");
+        corrector.NewCorrector(int.Parse(valExtrater));
+        
+        // Get question text
+        QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
         
         // Get correct answer
         valExtrater = parser.getHTMLContainerContent("p", null, "BonneRep");
-        correctAnswer = valExtrater;
+        corrector.correctAnswer = valExtrater;
         
         // Get Possible Answers
         Rep1.text = parser.getHTMLContainerContent("p", null, "Rep1");

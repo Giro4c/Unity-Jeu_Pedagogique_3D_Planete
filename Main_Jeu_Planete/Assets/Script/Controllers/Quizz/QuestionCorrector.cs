@@ -55,7 +55,7 @@ public abstract class QuestionCorrector : MonoBehaviour
     public IEnumerator AddQuestionAnswer()
     {
         string strVarURLGet = "";
-        strVarURLGet = "qid=" + qid + "&duration=" + Math.Ceiling(duration.TotalSeconds) + "&correct=";
+        strVarURLGet = "qid=" + qid + "&duration=" + Convert.ToInt32(duration.TotalSeconds) + "&correct=";
         if (correct)
         {
             strVarURLGet += "1";
@@ -82,7 +82,9 @@ public abstract class QuestionCorrector : MonoBehaviour
 
     public void NewCorrector(int qidNew)
     {
+        print("New qid : " + qidNew);
         qid = qidNew;
+        print("Changed qid : " + qid);
         correct = false;
         startTime = DateTime.Now;
         duration = TimeSpan.Zero;

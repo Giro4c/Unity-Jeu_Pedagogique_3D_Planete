@@ -12,8 +12,8 @@ public class CorrectorInterac : QuestionCorrector
     public float correctRotation = 0;
     public bool verifyOrbit = false;
     public bool verifyRotation = false;
-    private float orbitMargin = (1f / 24f);
-    private float rotationMargin = (1f / 24f);
+    public float orbitMargin = (1f / 24f);
+    public float rotationMargin = (1f / 24f);
     // For answer and show Correction
     public Orbit orbit;
     public RotationCycle rotation;

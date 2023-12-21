@@ -7,21 +7,8 @@ using UnityEngine;
 public class ShowInterac : MonoBehaviour
 {
     public TextMeshProUGUI QuestionTxt;
-    private Color originalColor;
     public CorrectorInterac corrector;
     public RotationOrOrbitDetector manager;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     public void showQuestion(string html)
     {
@@ -29,10 +16,11 @@ public class ShowInterac : MonoBehaviour
         manager.ActivateDetector();
         manager.DeactivateAutoMotion();
         
+        
         StringHTMLParser parser = new StringHTMLParser(html);
         string valExtrater = "";
         
-        // Get question ID
+        // Get question ID and Reset Corrector
         valExtrater = parser.getHTMLContainerContent("p", null, "Num_Ques");
         corrector.NewCorrector(int.Parse(valExtrater));
         
