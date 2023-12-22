@@ -36,6 +36,7 @@ public class ShowInterac : MonoBehaviour
         if (valExtrater != null && !valExtrater.Equals(""))
         {
             corrector.correctOrbit = float.Parse(valExtrater, NumberStyles.Any, ci);
+            corrector.correctOrbit %= 1f;
             corrector.verifyOrbit = true;
         }
         else
@@ -46,12 +47,34 @@ public class ShowInterac : MonoBehaviour
         if (valExtrater != null && !valExtrater.Equals(""))
         {
             corrector.correctRotation = float.Parse(valExtrater, NumberStyles.Any, ci);
+            corrector.correctRotation %= 1f;
             corrector.verifyRotation = true;
         }
         else
         {
             corrector.verifyRotation = false;
         }
+        
+        // Get margins
+        valExtrater = parser.getHTMLContainerContent("p", null, "Marge_Orbit");
+        if (valExtrater != null && !valExtrater.Equals(""))
+        {
+            corrector.orbitMargin = float.Parse(valExtrater, NumberStyles.Any, ci);
+            if (corrector.orbitMargin > 0.5f)
+            {
+                corrector.orbitMargin %= 0.5f;
+            }
+        }
+        valExtrater = parser.getHTMLContainerContent("p", null, "Marge_Rotation");
+        if (valExtrater != null && !valExtrater.Equals(""))
+        {
+            corrector.rotationMargin = float.Parse(valExtrater, NumberStyles.Any, ci);
+            if (corrector.rotationMargin > 0.5f)
+            {
+                corrector.rotationMargin %= 0.5f;
+            }
+        }
+        
         
     }
     

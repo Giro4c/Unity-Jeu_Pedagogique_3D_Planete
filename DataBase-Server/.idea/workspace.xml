@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd0d1fea-564f-43e4-b056-0111022f438c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/controllers/controllerQuestions.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/controllerQuestions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/New Terrain 9.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/New Terrain 9.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Scenes/CorrectionQuestions.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Scenes/CorrectionQuestions.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Script/Behaviors/UI/SliderOrbitDrag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Script/Behaviors/UI/SliderOrbitDrag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Script/Behaviors/UI/SliderRotationDrag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Script/Behaviors/UI/SliderRotationDrag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Script/Controllers/Quizz/ShowVraiFaux.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Script/Controllers/Quizz/ShowVraiFaux.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Toby Fredson/Rocky Hills Environment - Mega Pack/Terrain Layers/layer_DirtMainTileRHE_AlbedoDirtMainTileRHE_Normal3d1cca0d6d0e9938.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Toby Fredson/Rocky Hills Environment - Mega Pack/Terrain Layers/layer_DirtMainTileRHE_AlbedoDirtMainTileRHE_Normal3d1cca0d6d0e9938.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Toby Fredson/Rocky Hills Environment - Mega Pack/Terrain Layers/layer_GrassLightSamllTileBRHE_AlbedoGrassLightSamllTileRHE_Normal2023054508611406.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Toby Fredson/Rocky Hills Environment - Mega Pack/Terrain Layers/layer_GrassLightSamllTileBRHE_AlbedoGrassLightSamllTileRHE_Normal2023054508611406.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Toby Fredson/Rocky Hills Environment - Mega Pack/Terrain Layers/layer_GrassLightSamllTileRHE_AlbedoGrassLightSamllTileRHE_Normal2023054508611406.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Toby Fredson/Rocky Hills Environment - Mega Pack/Terrain Layers/layer_GrassLightSamllTileRHE_AlbedoGrassLightSamllTileRHE_Normal2023054508611406.terrainlayer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Script/Controllers/Quizz/ShowInterac.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Main_Jeu_Planete/Assets/Script/Controllers/Quizz/ShowInterac.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,19 +28,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "QuizzCorrection",
-    "last_opened_file_path": "C:/Users/Camille (HorsCo)/Desktop/Unity Projects/Unity-Jeu_Pedagogique_3D_Planete/DataBase-Server/views",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;QuizzCorrection&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Camille (HorsCo)/Desktop/Unity Projects/Unity-Jeu_Pedagogique_3D_Planete/DataBase-Server/views&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Camille (HorsCo)\Desktop\Unity Projects\Unity-Jeu_Pedagogique_3D_Planete\DataBase-Server\views" />
@@ -67,6 +60,7 @@
       <workItem from="1702543667322" duration="8955000" />
       <workItem from="1702572781074" duration="8658000" />
       <workItem from="1703231402782" duration="1272000" />
+      <workItem from="1703237769474" duration="4292000" />
     </task>
     <servers />
   </component>
