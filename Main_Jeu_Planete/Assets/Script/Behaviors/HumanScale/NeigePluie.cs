@@ -71,9 +71,10 @@ public class NeigePluie : MonoBehaviour
             pluie.SetActive(false);
             source.Pause();
         }
-        else if (saisonCurrent.Equals(saisons.GetFALL()))
+        else if (season.Equals(saisons.GetFALL()))
         {
             pluie.SetActive(true);
+            neige.SetActive(false);
             if (!source.isPlaying)
             {
                 source.Play();
