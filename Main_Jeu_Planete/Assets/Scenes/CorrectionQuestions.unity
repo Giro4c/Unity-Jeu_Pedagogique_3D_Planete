@@ -268,6 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 57828522}
   - component: {fileID: 57828521}
+  - component: {fileID: 57828523}
   m_Layer: 5
   m_Name: QuestionManager V
   m_TagString: Untagged
@@ -288,10 +289,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QuestionTxt: {fileID: 1414342651}
-  trueIsCorrectAnswer: 0
   orbit: {fileID: 1596661608}
-  manager: {fileID: 1444301905}
   rotation: {fileID: 1388563912}
+  corrector: {fileID: 57828523}
+  manager: {fileID: 1444301905}
 --- !u!4 &57828522
 Transform:
   m_ObjectHideFlags: 0
@@ -307,6 +308,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1881647926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &57828523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57828520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397ff8ae6c6ffe64788eaa9a50e0fa32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctAnswer: 
+  choices:
+  - {fileID: 559902599}
+  - {fileID: 1540771537}
 --- !u!1 &81807242
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +924,7 @@ GameObject:
   - component: {fileID: 239535698}
   - component: {fileID: 239535697}
   m_Layer: 5
-  m_Name: ButtonSuivant
+  m_Name: ButtonSuivant V
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -977,9 +994,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 677455018}
-        m_TargetAssemblyTypeName: QcmVraiFaux, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 677455023}
+        m_TargetAssemblyTypeName: Quizz, Assembly-CSharp
+        m_MethodName: Next
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -988,6 +1005,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 459962956}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 239535695}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &239535698
 MonoBehaviour:
@@ -2172,7 +2213,7 @@ GameObject:
   - component: {fileID: 459962959}
   - component: {fileID: 459962958}
   m_Layer: 5
-  m_Name: ButtonValider
+  m_Name: ButtonValider V
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2242,10 +2283,34 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 677455023}
-        m_TargetAssemblyTypeName: Quizz, Assembly-CSharp
-        m_MethodName: Next
+      - m_Target: {fileID: 57828523}
+        m_TargetAssemblyTypeName: QuestionCorrector, Assembly-CSharp
+        m_MethodName: Correct
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 459962956}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 239535695}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2918,7 +2983,7 @@ GameObject:
   - component: {fileID: 559902603}
   - component: {fileID: 559902602}
   - component: {fileID: 559902601}
-  - component: {fileID: 559902600}
+  - component: {fileID: 559902605}
   m_Layer: 5
   m_Name: Vrai
   m_TagString: Untagged
@@ -2926,21 +2991,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &559902600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559902599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bd32599756446c89b35776b38a982d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCorrect: 0
-  quizzManager: {fileID: 0}
-  myButton: {fileID: 559902601}
 --- !u!114 &559902601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2985,9 +3035,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 559902600}
-        m_TargetAssemblyTypeName: Answer, Assembly-CSharp
-        m_MethodName: Answers
+      - m_Target: {fileID: 559902605}
+        m_TargetAssemblyTypeName: Selected, Assembly-CSharp
+        m_MethodName: Selection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2995,7 +3045,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &559902602
 MonoBehaviour:
@@ -3055,6 +3105,18 @@ RectTransform:
   m_AnchoredPosition: {x: -135, y: -131}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &559902605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559902599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c756bf2b81fb2e94f81b6a967fc6ed3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &595972663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,6 +3269,8 @@ MonoBehaviour:
   correctRotation: 0
   verifyOrbit: 0
   verifyRotation: 0
+  orbitMargin: 0.041666668
+  rotationMargin: 0.041666668
   orbit: {fileID: 1596661608}
   rotation: {fileID: 1388563912}
   correctionText: {fileID: 762128363}
@@ -3256,8 +3320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questions: {fileID: 677455019}
-  nbVF: 0
-  nbQCM: 4
+  nbVF: 4
+  nbQCM: 0
   nbInterac: 0
 --- !u!1 &647989922
 GameObject:
@@ -3567,7 +3631,6 @@ MonoBehaviour:
   Rep4: {fileID: 2053064275}
   corrector: {fileID: 690639960}
   manager: {fileID: 1444301905}
-  choices: []
 --- !u!114 &690639960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7764,6 +7827,7 @@ GameObject:
   - component: {fileID: 1540771541}
   - component: {fileID: 1540771540}
   - component: {fileID: 1540771539}
+  - component: {fileID: 1540771543}
   m_Layer: 5
   m_Name: Faux
   m_TagString: Untagged
@@ -7814,7 +7878,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1540771540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1540771543}
+        m_TargetAssemblyTypeName: Selected, Assembly-CSharp
+        m_MethodName: Selection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1540771540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7873,6 +7949,18 @@ RectTransform:
   m_AnchoredPosition: {x: 135, y: -131}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1540771543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540771537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c756bf2b81fb2e94f81b6a967fc6ed3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1550917492
 GameObject:
   m_ObjectHideFlags: 0
@@ -11227,7 +11315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Valider
+  m_text: Suivant
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

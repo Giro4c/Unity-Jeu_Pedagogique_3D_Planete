@@ -7,40 +7,30 @@ using UnityEngine;
 public class ShowVraiFaux : MonoBehaviour
 {
     public TextMeshProUGUI QuestionTxt;
-    private Color originalColor;
-    public bool trueIsCorrectAnswer;
     public Orbit orbit;
-    public RotationOrOrbitDetector manager;
     public RotationCycle rotation;
+    public CorrectorQCU corrector;
+    public RotationOrOrbitDetector manager;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void showQuestion(string html)
     {
+        // Manage possible interactions
+        manager.ActivateAll();
+        corrector.ResetChoiceSelection();
+        
         StringHTMLParser parser = new StringHTMLParser(html);
-        QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
         string valExtrater = "";
+        
+        // Get question ID and Reset Corrector
+        valExtrater = parser.getHTMLContainerContent("p", null, "Num_Ques");
+        corrector.NewCorrector(int.Parse(valExtrater));
+        
+        // Get question text
+        QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
         
         // Get correct answer
         valExtrater = parser.getHTMLContainerContent("p", null, "BonneRep");
-        if (valExtrater.Equals("VRAI"))
-        {
-            trueIsCorrectAnswer = true;
-        }
-        else
-        {
-            trueIsCorrectAnswer = false;
-        }
+        corrector.correctAnswer = valExtrater;
         
         // Change Culture info for String to float conversions
         CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
@@ -48,7 +38,8 @@ public class ShowVraiFaux : MonoBehaviour
         
         // Get Val Orbit
         valExtrater = parser.getHTMLContainerContent("p", null, "Valeur_orbit");
-        if (valExtrater != null)
+        Debug.Log("Valeur extraite orbit -" + valExtrater + "-");
+        if (valExtrater != null && !valExtrater.Equals(""))
         {
             // Deactivation OrbitMotion and OrbitDrag
             manager.DeactivateDetector();
@@ -63,7 +54,8 @@ public class ShowVraiFaux : MonoBehaviour
         
         // Get Val Rotation
         valExtrater = parser.getHTMLContainerContent("p", null, "Valeur_rotation");
-        if (valExtrater != null)
+        Debug.Log("Valeur extraite rota -" + valExtrater + "-");
+        if (valExtrater != null && !valExtrater.Equals(""))
         {
             // Deactivation RotationAuto and RotationDrag
             manager.DeactivateDetector();

@@ -33,7 +33,7 @@ public class ShowInterac : MonoBehaviour
         
         // Get correct answer
         valExtrater = parser.getHTMLContainerContent("p", null, "BonneRepValeur_orbit");
-        if (valExtrater != null && !valExtrater.Equals("NULL"))
+        if (valExtrater != null && !valExtrater.Equals(""))
         {
             corrector.correctOrbit = float.Parse(valExtrater, NumberStyles.Any, ci);
             corrector.verifyOrbit = true;
@@ -43,7 +43,7 @@ public class ShowInterac : MonoBehaviour
             corrector.verifyOrbit = false;
         }
         valExtrater = parser.getHTMLContainerContent("p", null, "BonneRepValeur_rotation");
-        if (valExtrater != null && !valExtrater.Equals("NULL"))
+        if (valExtrater != null && !valExtrater.Equals(""))
         {
             corrector.correctRotation = float.Parse(valExtrater, NumberStyles.Any, ci);
             corrector.verifyRotation = true;

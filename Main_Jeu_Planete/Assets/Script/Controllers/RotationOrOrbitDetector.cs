@@ -119,14 +119,12 @@ public class RotationOrOrbitDetector : MonoBehaviour
     {
         orbitDragScript.enabled = false;
         orbitMotionScript.enabled = false;
-        sliderOrbitScript.enabled = false;
     }
     
     public void DeactivateAllScriptsRotation()
     {
         rotationDragScript.enabled = false;
         rotationAutoScript.enabled = false;
-        sliderRotationScript.enabled = false;
     }
 
     public void ActivateAutoMotion()

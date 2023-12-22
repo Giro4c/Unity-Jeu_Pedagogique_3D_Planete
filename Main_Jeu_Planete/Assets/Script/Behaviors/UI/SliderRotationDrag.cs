@@ -13,6 +13,7 @@ public class SliderRotationDrag : MonoBehaviour
     private SliderSyncRotation _sliderAutoChanger;
     private Slider _slider;
 
+    private Coroutine _currentRoutine;
     
     // Start is called before the first frame update
     void Start()
@@ -25,8 +26,8 @@ public class SliderRotationDrag : MonoBehaviour
             enabled = false;
         }
         // Start background task that detect if slider is clicked then released to update orbit and deactivate/reactivate orbit automatic changer (RotationAuto)
-        Debug.Log("Start Coroutine ControlDrag");
-        StartCoroutine(ControlDrag());
+        //Debug.Log("Start Coroutine ControlDrag");
+        //StartCoroutine(ControlDrag());
     }
     
     private IEnumerator ControlDrag()
@@ -64,6 +65,21 @@ public class SliderRotationDrag : MonoBehaviour
             print("SliderSyncRotation enabled");
             
         }
+    }
+    
+    private void OnEnable()
+    {
+        // Start background task that detect if slider is clicked then released to update orbit and deactivate/reactivate orbit automatic changer (RotationAuto)
+        Debug.Log("SliderRotationDrag enabled, Starting coroutine");
+        _currentRoutine = StartCoroutine(ControlDrag());
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("SliderRotationDrag disabled, Stopping coroutine");
+        StopCoroutine(_currentRoutine);
+        Debug.Log("Coroutine stopped");
+        print("enabled = " + enabled);
     }
     
     public bool IsAutoMotionActivated()

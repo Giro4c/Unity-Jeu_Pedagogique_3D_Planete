@@ -38,7 +38,7 @@ class controllerQuestions
         ob_start();
         while (true) {
             $attribute = current($qAttributes);
-            if ($attribute == null) break;
+            if ($attribute == null && key($qAttributes) == null) break;
             ?>
             <p id="<?= key($qAttributes) ?>"><?= $attribute ?></p>
         <?php
