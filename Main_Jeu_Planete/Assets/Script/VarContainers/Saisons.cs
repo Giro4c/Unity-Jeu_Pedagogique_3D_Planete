@@ -6,12 +6,25 @@ public class Saisons : MonoBehaviour
 {
     
     public Orbit orbit;
-    private string _saison = "hiver";
 
+    // Constants for seasons names
     private const string WINTER = "hiver";
     private const string FALL = "automne";
     private const string SUMMER = "été";
     private const string SPRING = "printemps";
+    
+    // Constants for seasons start and end
+    
+    /// <p>Offset for the start of the year. Is the difference of progress between 1st January (Year start)
+    /// and 21st December (Winter solstice / Start of winter)</p>
+    private const float _START_YEAR_OFFSET = (2f / 73f);
+    private const float _WINTER_START = 0f /*- _START_YEAR_OFFSET*/;
+    private const float _SPRING_START = 0.25f /*- _START_YEAR_OFFSET*/;
+    private const float _SUMMER_START = 0.5f /*- _START_YEAR_OFFSET*/;
+    private const float _FALL_START = 0.75f /*- _START_YEAR_OFFSET*/;
+    
+    // Current season
+    private string _saison = WINTER;
 
     public string GetWINTER()
     {
@@ -50,17 +63,17 @@ public class Saisons : MonoBehaviour
     private void SetUpSeason()
     {
         // Printemps
-        if (0.125 <= orbit.orbitProgress && orbit.orbitProgress < 0.375)
+        if (_SPRING_START <= orbit.orbitProgress && orbit.orbitProgress < _SUMMER_START)
         {
             _saison = SPRING;
         }
         // Eté
-        else if (0.375 <= orbit.orbitProgress && orbit.orbitProgress < 0.625)
+        else if (_SUMMER_START <= orbit.orbitProgress && orbit.orbitProgress < _FALL_START)
         {
             _saison = SUMMER;
         }
         // Automne
-        else if (0.625 <= orbit.orbitProgress && orbit.orbitProgress < 0.875)
+        else if (_FALL_START <= orbit.orbitProgress && orbit.orbitProgress < _WINTER_START)
         {
             _saison = FALL;
         }
@@ -79,23 +92,23 @@ public class Saisons : MonoBehaviour
     {
         if (_saison.Equals(WINTER))
         {
-            if (orbit.orbitProgress >= 0.125f && orbit.orbitProgress < 0.875)
-            {
-                _saison = SPRING;
-            }
-            else if (orbit.orbitProgress < 0.875 && orbit.orbitProgress > 0.125)
+            if (orbit.orbitProgress >= _FALL_START)
             {
                 _saison = FALL;
+            }
+            else if (orbit.orbitProgress >= _SPRING_START)
+            {
+                _saison = SPRING;
             }
             else return false;
         }
         else if (_saison.Equals(SPRING))
         {
-            if (orbit.orbitProgress >= 0.375f)
+            if (orbit.orbitProgress >= _SUMMER_START)
             {
                 _saison = SUMMER;
             }
-            else if (orbit.orbitProgress < 0.125)
+            else if (orbit.orbitProgress < _SPRING_START)
             {
                 _saison = WINTER;
             }
@@ -103,11 +116,11 @@ public class Saisons : MonoBehaviour
         }
         else if (_saison.Equals(SUMMER))
         {
-            if (orbit.orbitProgress >= 0.625)
+            if (orbit.orbitProgress >= _FALL_START)
             {
                 _saison = FALL;
             }
-            else if (orbit.orbitProgress < 0.375)
+            else if (orbit.orbitProgress < _SUMMER_START)
             {
                 _saison = SPRING;
             }
@@ -115,21 +128,19 @@ public class Saisons : MonoBehaviour
         }
         else if (_saison.Equals(FALL))
         {
-            if (orbit.orbitProgress >= 0.875)
-            {
-                _saison = WINTER;
-            }
-            else if (orbit.orbitProgress < 0.625)
+            if (orbit.orbitProgress < _FALL_START && orbit.orbitProgress >= _SUMMER_START)
             {
                 _saison = SUMMER;
+            }
+            else if (orbit.orbitProgress >= _WINTER_START && orbit.orbitProgress < _FALL_START)
+            {
+                _saison = WINTER;
             }
             else return false;
         }
         else return false;
 
         // If we are still in the method, it means we fulfilled the conditions to change season
-        //print("Saison : " + saison);
-        //print("Orbit progress : " + orbit.orbitProgress);
         return true;
     }
     

@@ -8,9 +8,6 @@ public class JourNuitEchellehumaine : MonoBehaviour
     public RotationCycle rotationCyclePlanet; // Référence au script RotationCycle de la planète vue à l'echelle humaine
     public Orbit orbitPlanet; // Référence au script Orbit de la planète vue à l'echelle humaine
     
-    //public float rotationSpeed = 10f; // Vitesse de rotation
-    //private float rotatorSpeed ;
-
     private void Start()
     {
         if (rotationCycleSun == null)
