@@ -288,10 +288,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QuestionTxt: {fileID: 1414342651}
-  trueIsCorrectAnswer: 0
   orbit: {fileID: 1596661608}
-  manager: {fileID: 1444301905}
   rotation: {fileID: 1388563912}
+  corrector: {fileID: 0}
+  manager: {fileID: 1444301905}
 --- !u!4 &57828522
 Transform:
   m_ObjectHideFlags: 0
@@ -1164,6 +1164,7 @@ GameObject:
   - component: {fileID: 366498101}
   - component: {fileID: 366498106}
   - component: {fileID: 366498107}
+  - component: {fileID: 366498108}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1331,6 +1332,24 @@ WindZone:
   m_WindTurbulence: 1
   m_WindPulseMagnitude: 0.5
   m_WindPulseFrequency: 0.01
+--- !u!114 &366498108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366498100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Device: 0
+  m_PoseSource: 2
+  m_PoseProviderComponent: {fileID: 0}
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_UseRelativeTransform: 1
 --- !u!1 &366661748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,6 +3216,8 @@ MonoBehaviour:
   correctRotation: 0
   verifyOrbit: 0
   verifyRotation: 0
+  orbitMargin: 0
+  rotationMargin: 0
   orbit: {fileID: 1596661608}
   rotation: {fileID: 1388563912}
   correctionText: {fileID: 762128363}
@@ -3554,7 +3575,7 @@ MonoBehaviour:
   Rep2: {fileID: 934720424}
   Rep3: {fileID: 542050596}
   Rep4: {fileID: 2053064275}
-  correctAnswer: 
+  corrector: {fileID: 0}
   manager: {fileID: 1444301905}
 --- !u!1 &742472138
 GameObject:
