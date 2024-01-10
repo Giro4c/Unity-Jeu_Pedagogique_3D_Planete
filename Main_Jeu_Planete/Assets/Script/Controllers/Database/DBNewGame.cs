@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class DBNewGame : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class DBNewGame : MonoBehaviour
     void Start()
     {
         buttonStart.onClick.AddListener(delegate { StartCoroutine(NewGamePhp()); });
+
+        // Vérifier si la réalité virtuelle est activée
+        if (XRSettings.enabled)
+        {
+            plateforme = "XR";
+        }
     }
     
     // Update is called once per frame
