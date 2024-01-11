@@ -1,16 +1,25 @@
+using Unity.VRTemplate;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class RotationOrOrbitDetectorXR : MonoBehaviour
 {
+    [SerializeField] private ActionBasedController actionBasedController;
+    [SerializeField] private XRRayInteractor rayInteractor;
+    [SerializeField] private Collider planet;
+    private RaycastHit hit;
+    
+    
     // SolarSystem
-    private RotationDrag rotationDragScript;
-    private RotationAuto rotationAutoScript;
-    private OrbitMotion orbitMotionScript;
-    private OrbitDrag orbitDragScript;
+    [SerializeField] private RotationDragXR rotationDragScript;
+    [SerializeField] private XRKnob rotationKnob;
+    [SerializeField] private RotationAuto rotationAutoScript;
+    [SerializeField] private OrbitMotion orbitMotionScript;
+    [SerializeField] private OrbitDragXR orbitDragScript;
     // Sliders
-    private SliderOrbitDrag sliderOrbitScript;
-    private SliderRotationDrag sliderRotationScript;
+    [SerializeField] private SliderOrbitDragXR sliderOrbitScript;
+    [SerializeField] private SliderRotationDragXR sliderRotationScript;
     
     private bool detectorActivated = true;
     private bool automotionActivated = true;
@@ -18,90 +27,87 @@ public class RotationOrOrbitDetectorXR : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Script RotationOrOrbitDetector activé.");
-        rotationDragScript = gameObject.GetComponent<RotationDrag>();
         rotationDragScript.enabled = false;
-        rotationAutoScript = gameObject.GetComponent<RotationAuto>();
         rotationAutoScript.enabled = true;
-        orbitMotionScript = gameObject.GetComponentInParent<OrbitMotion>();
         orbitMotionScript.enabled = true;
-        orbitDragScript = gameObject.GetComponentInParent<OrbitDrag>();
         orbitDragScript.enabled = false;
-        sliderOrbitScript = GameObject.Find("Month Slider").GetComponent<SliderOrbitDrag>();
         sliderOrbitScript.enabled = true;
-        sliderRotationScript = GameObject.Find("Hour Slider").GetComponent<SliderRotationDrag>();
         sliderRotationScript.enabled = true;
     }
 
     // Used for scripts that continue to run until certain action
     private void Update()
     {
+        ActivationsCheck();
+        DeactivationsCheck();
+    }
+
+    private void ActivationsCheck()
+    {
         if (!detectorActivated) return;
-        if (Input.GetMouseButtonUp(1) && !orbitMotionScript.enabled)
+        if (rayInteractor.TryGetCurrent3DRaycastHit(out hit) && hit.collider.Equals(planet))
         {
+            // Action on planet orbit
+            if (actionBasedController.uiPressAction.action.IsPressed())
+            {
+                // Orbit Drab enabled
+                orbitDragScript.enabled = true;
+                // Orbit Motion disabled
+                orbitMotionScript.enabled = false;
+            }
             
+            // Action on planet rotation
+            if (actionBasedController.selectAction.action.IsPressed())
+            {
+                // Rotation Drag enabled (update progress depending on Knob)
+                rotationDragScript.enabled = true;
+                // Rotation Auto disabled
+                rotationAutoScript.enabled = false;
+                // Orbit Motion disabled
+                orbitMotionScript.enabled = false;
+            }
+        }
+        
+    }
+
+    private void DeactivationsCheck()
+    {
+        // Action on planet orbit
+        if (actionBasedController.uiPressAction.action.WasReleasedThisFrame() && orbitDragScript.enabled)
+        {
+            // Orbit Drag disabled
             orbitDragScript.enabled = false;
+            
             if (automotionActivated)
             {
+                // Orbit Motion enabled
                 orbitMotionScript.enabled = true;
-                //Debug.Log("Orbit Auto Enabled");
             }
             
         }
-    }
-
-    private void OnMouseOver()
-    {
-        if (!detectorActivated) return;
-        // On Mouse Down
-        if (Input.GetMouseButton(0))
-        {
-            //Debug.Log("Rotation Auto Disabled");
-            rotationDragScript.enabled = true;
-            rotationAutoScript.enabled = false;
-            orbitMotionScript.enabled = false;
-        }
-        else if (Input.GetMouseButton(1))
-        {
-            //Debug.Log("Orbit Auto Disabled");
-            orbitDragScript.enabled = true;
-            orbitMotionScript.enabled = false;
-        }
         
-        // On Mouse Up
-        if (Input.GetMouseButtonUp(0) && rotationDragScript.enabled)
+        // Action on planet rotation
+        if (actionBasedController.selectAction.action.WasReleasedThisFrame() && rotationDragScript.enabled)
         {
-            //Debug.Log("Rotation Auto Enabled");
+            // Rotation Drag disabled
             rotationDragScript.enabled = false;
+            
             if (automotionActivated)
             {
+                // Rotation Auto enabled
                 rotationAutoScript.enabled = true;
+                // Orbit Motion enabled
                 orbitMotionScript.enabled = true;
             }
             
         }
-        
-    }
-
-    private void OnMouseExit()
-    {
-        if (!detectorActivated) return;
-        if (rotationDragScript)
-        {
-            rotationDragScript.enabled = false;
-        }
-
-        if (automotionActivated && !rotationAutoScript)
-        {
-            rotationAutoScript.enabled = true;
-            orbitMotionScript.enabled = true;
-        }
-        
     }
 
     public void ActivateDetector()
     {
         detectorActivated = true;
+        // Activate Knob
+        rotationKnob.enabled = true;
         // Reactivate sliders scripts
         sliderRotationScript.enabled = true;
         sliderOrbitScript.enabled = true;
@@ -110,6 +116,8 @@ public class RotationOrOrbitDetectorXR : MonoBehaviour
     public void DeactivateDetector()
     {
         detectorActivated = false;
+        // Deactivate Knob
+        rotationKnob.enabled = false;
         // Deactivate sliders scripts
         sliderRotationScript.enabled = false;
         sliderOrbitScript.enabled = false;
