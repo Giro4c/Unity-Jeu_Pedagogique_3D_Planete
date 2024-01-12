@@ -4,17 +4,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-[RequireComponent(typeof(RotationCycle))]
 public class RotationDragXR : MonoBehaviour
 {
 
-    private RotationCycle rotationCycleScript;
-    public float speedRotation = 11f;
+    [SerializeField] private RotationCycle rotationCycleScript;
     private bool active = true;
-   
+    
+    private void Start()
+    {
+        if (rotationCycleScript == null)
+        {
+            rotationCycleScript = gameObject.GetComponent<RotationCycle>();
+        }
+        else
+        {
+            enabled = false;
+        }
+    }
+
     private void OnEnable()
     {
-        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
+        if (rotationCycleScript == null)
+        {
+            active = false;
+            enabled = false;
+            return;
+        }
         active = true;
         StartCoroutine(DragAndRotate());
     }
@@ -31,18 +46,15 @@ public class RotationDragXR : MonoBehaviour
         
         while (active)
         {
-            // Calculate newProgress
-            float newProgress = rotationCycleScript.revolutionSelf.FindProgress(transform.rotation);
+            // Test avec local position
             
+            float newProgress = rotationCycleScript.revolutionSelf.FindProgress(transform.localRotation);
             rotationCycleScript.rotateProgress = newProgress;
-        
-            // Not Change object's rotation : already changed by grabbing
-            //rotationCycleScript.SetRotation();
-        
+            
             yield return null;
             
         }
-        yield return null;
+        
     }
     
     

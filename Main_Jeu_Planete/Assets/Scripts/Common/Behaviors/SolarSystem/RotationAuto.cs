@@ -3,12 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(RotationCycle))]
 public class RotationAuto : MonoBehaviour
 {
-    private RotationCycle rotationCycleScript;
+    [SerializeField] private RotationCycle rotationCycleScript;
     public bool autoRotate = true;
-    
+
+    private void Start()
+    {
+        if (rotationCycleScript == null)
+        {
+            rotationCycleScript = gameObject.GetComponent<RotationCycle>();
+        }
+        else
+        {
+            enabled = false;
+        }
+    }
+
     IEnumerator AutoRotation()
     {
         float rotatorSpeed = 1f / rotationCycleScript.rotatePeriod;
@@ -34,7 +45,12 @@ public class RotationAuto : MonoBehaviour
 
     private void OnEnable()
     {
-        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
+        if (rotationCycleScript == null)
+        {
+            autoRotate = false;
+            enabled = false;
+            return;
+        }
         autoRotate = true;
         StartCoroutine(AutoRotation());
     }
