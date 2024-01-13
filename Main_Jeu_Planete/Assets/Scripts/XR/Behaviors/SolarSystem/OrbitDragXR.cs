@@ -7,7 +7,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class OrbitDragXR : MonoBehaviour
 {
 
-    public bool active = true;
+    private bool active = true;
+    public bool rightActive = true;
+    public bool leftActive = true;
+
+    
     /**
      * Is the collider of the object model of the orbiting object.
      */
