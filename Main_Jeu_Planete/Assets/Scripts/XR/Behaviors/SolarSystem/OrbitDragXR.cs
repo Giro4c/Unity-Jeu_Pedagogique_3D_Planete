@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
-[RequireComponent(typeof(Orbit))]
 public class OrbitDragXR : MonoBehaviour
 {
 
@@ -11,24 +11,35 @@ public class OrbitDragXR : MonoBehaviour
     /**
      * Is the collider of the object model of the orbiting object.
      */
-    public Collider colliderPlaneOrbit;
-    //public float orbitSpeed = 11f;
-    private Orbit orbit;
-    private Camera mainCam;
+    [SerializeField] private Collider colliderPlaneOrbit;
+    [SerializeField] private Orbit orbit;
+
+    [Header("Ray Interactors")]
+    [SerializeField] private XRRayInteractor rayInteractorRight;
+    [SerializeField] private XRRayInteractor rayInteractorLeft;
+    
+    private void Start()
+    {
+        if (orbit == null)
+        {
+            orbit = gameObject.GetComponent<Orbit>();
+            if (orbit == null || (rayInteractorRight == null && rayInteractorLeft == null))
+            {
+                active = false;
+                enabled = false;
+            }
+        }
+    }
     
     private void OnEnable()
     {
-        mainCam = Camera.main;
-        orbit = gameObject.GetComponent<Orbit>();
-        if (orbit.orbitingObject == null)
+        if (orbit == null || (rayInteractorRight == null && rayInteractorLeft == null) || orbit.orbitingObject == null)
         {
             active = false;
+            enabled = false;
             return;
         }
-        else
-        {
-            active = true;
-        }
+        active = true;
         StartCoroutine(DragOrbit());
     }
 
@@ -40,24 +51,39 @@ public class OrbitDragXR : MonoBehaviour
     
     IEnumerator DragOrbit()
     {
+        RaycastHit hit;
         while (active)
         {
-            Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (colliderPlaneOrbit.Raycast(ray, out hit, 200))
+            if (rayInteractorRight.TryGetCurrent3DRaycastHit(out hit) && hit.collider.Equals(colliderPlaneOrbit))
             {
-                Vector3 point = ray.GetPoint(hit.distance);
-                Vector2 orbitPos = new Vector2(point.x - transform.position.x, point.z - transform.position.z);
-                float newProgress = orbit.orbitPath.FindProgress(orbitPos.x, orbitPos.y);
-                
-                orbit.orbitProgress = newProgress;
-                orbit.SetOrbitingObjectPosition();
+                SetOrbitToHitPoint(hit);
+            }
+            else if (rayInteractorLeft.TryGetCurrent3DRaycastHit(out hit) && hit.collider.Equals(colliderPlaneOrbit))
+            {
+                SetOrbitToHitPoint(hit);
             }
             yield return null;
         }
 
-        yield return null;
     }
-    
+
+    /// <summary>
+    /// Changes the orbit progress and the position of the orbiting object based on the hit point of a Raycast with the orbit plane collider.
+    /// </summary>
+    /// <param name="hit">The RaycastHit containing all infos on the raycast collision.</param>
+    private void SetOrbitToHitPoint(RaycastHit hit)
+    {
+        // Calculates the local position of the collision point based on the transform of the orbit plane's collider.
+        Vector3 hitPoint = hit.point;
+        Vector3 orbitPos = colliderPlaneOrbit.transform.InverseTransformPoint(hitPoint);
+        
+        // Determines new orbit progress and update value
+        float newProgress = orbit.orbitPath.FindProgress(orbitPos.x, orbitPos.z);
+        orbit.orbitProgress = newProgress;
+
+        // Changes the position of the orbiting object
+        orbit.SetOrbitingObjectPosition();
+        
+    }
     
 }

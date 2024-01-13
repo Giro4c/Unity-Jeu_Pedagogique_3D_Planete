@@ -3,43 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Orbit))]
 public class OrbitMotion : MonoBehaviour
 {
-    /*
-     public Transform orbitingObject;
-    public Ellipse orbitPath;
-
-    [Range(0f, 1f)] public float orbitProgress = 0f;
-    public float orbitPeriod = 3f;
-    */
-    public bool orbitActive = true;
-    private Orbit orbit;
     
-    // Start is called before the first frame update
-    /*void Start()
+    public bool orbitActive = true;
+    [SerializeField] private Orbit orbit;
+    
+    private void Start()
     {
-        if (orbitingObject == null)
+        if (orbit == null)
         {
-            orbitActive = false;
-            return;
+            orbit = gameObject.GetComponent<Orbit>();
+            if (orbit == null)
+            {
+                orbitActive = false;
+                enabled = false;
+            }
         }
-        SetOrbitingObjectPosition();
-        StartCoroutine(AnimateOrbit());
-    }*/
+    }
 
     private void OnEnable()
     {
-        orbit = gameObject.GetComponent<Orbit>();
-        if (orbit.orbitingObject == null)
+        if (orbit == null || orbit.orbitingObject == null)
         {
             orbitActive = false;
+            enabled = false;
             return;
         }
-        else
-        {
-            orbitActive = true;
-        }
+        orbitActive = true;
         orbit.SetOrbitingObjectPosition();
         StartCoroutine(AnimateOrbit());
     }
@@ -49,12 +40,6 @@ public class OrbitMotion : MonoBehaviour
         orbitActive = false;
         StopCoroutine(AnimateOrbit());
     }
-
-    /*private void SetOrbitingObjectPosition()
-    {
-        Vector2 orbitPos = orbitPath.Evaluate(orbitProgress);
-        orbitingObject.localPosition = new Vector3(orbitPos.x, 0, orbitPos.y);
-    }*/
 
     IEnumerator AnimateOrbit()
     {

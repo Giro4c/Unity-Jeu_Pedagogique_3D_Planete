@@ -13,11 +13,13 @@ public class RotationAuto : MonoBehaviour
         if (rotationCycleScript == null)
         {
             rotationCycleScript = gameObject.GetComponent<RotationCycle>();
+            if (rotationCycleScript == null)
+            {
+                autoRotate = false;
+                enabled = false;
+            }
         }
-        else
-        {
-            enabled = false;
-        }
+        
     }
 
     IEnumerator AutoRotation()

@@ -15,10 +15,11 @@ public class RotationDragXR : MonoBehaviour
         if (rotationCycleScript == null)
         {
             rotationCycleScript = gameObject.GetComponent<RotationCycle>();
-        }
-        else
-        {
-            enabled = false;
+            if (rotationCycleScript == null)
+            {
+                active = false;
+                enabled = false;
+            }
         }
     }
 
