@@ -8,8 +8,8 @@ public class OrbitDragXR : MonoBehaviour
 {
 
     private bool active = true;
-    public bool rightActive = true;
-    public bool leftActive = true;
+    /*public bool rightActive = true;
+    public bool leftActive = true;*/
 
     
     /**

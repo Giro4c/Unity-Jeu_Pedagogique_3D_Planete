@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Serialization;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class DBAddPlanetInteractionOrbitXR : MonoBehaviour
 {
@@ -10,30 +12,37 @@ public class DBAddPlanetInteractionOrbitXR : MonoBehaviour
     public Collider planetCollider;
     private IsEvaluation _isEvaluation;
     
-    private Camera camMain;
+    [Header("Right Hand")]
+    [SerializeField] private ActionBasedController controllerRight;
+    [SerializeField] private XRRayInteractor rayInteractorRight;
+    
+    [Header("Left Hand")]
+    [SerializeField] private ActionBasedController controllerLeft;
+    [SerializeField] private XRRayInteractor rayInteractorLeft;
     
     // Start is called before the first frame update
     void Start()
     {
-        camMain = Camera.main;
         _isEvaluation = gameObject.GetComponent<IsEvaluation>();
-        StartCoroutine(ControlLoad());
+        StartCoroutine(ControlLoad(controllerRight, rayInteractorRight));
+        StartCoroutine(ControlLoad(controllerLeft, rayInteractorLeft));
     }
     
-    private IEnumerator ControlLoad()
+    private IEnumerator ControlLoad(ActionBasedController controller, XRRayInteractor rayInteractor)
     {
+        RaycastHit hit;
         while (true)
         {
             print("No action on orbit planet");
             // There is no action on the slider
-            RaycastHit hit;
-            while (! (Input.GetMouseButton(1) && planetCollider.Raycast(camMain.ScreenPointToRay(Input.mousePosition), out hit, 100)))
+            
+            while (! (controller.uiPressAction.action.IsPressed() && rayInteractor.TryGetCurrent3DRaycastHit(out hit) && hit.collider.Equals(planetCollider)))
             {
                 yield return null;
             }
             print("Planet orbit is changed, there is action (Drag Right)");
             // There is an action on the planet (Drag Right) but waiting for the end of the action : release planet to get last changed value.
-            while (! Input.GetMouseButtonUp(1))
+            while (controller.uiPressAction.action.IsPressed())
             {
                 yield return null;
             }

@@ -1,6 +1,7 @@
 using Unity.VRTemplate;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class RotationOrOrbitDetectorXR : MonoBehaviour
@@ -8,8 +9,8 @@ public class RotationOrOrbitDetectorXR : MonoBehaviour
     [SerializeField] private Collider planet;
     
     [Header("Controllers")]
-    [SerializeField] private ActionBasedController actionBasedControllerRight;
-    [SerializeField] private ActionBasedController actionBasedControllerLeft;
+    [SerializeField] private ActionBasedController controllerRight;
+    [SerializeField] private ActionBasedController controllerLeft;
     
     [Header("Ray Interactors")]
     [SerializeField] private XRRayInteractor rayInteractorRight;
@@ -57,7 +58,7 @@ public class RotationOrOrbitDetectorXR : MonoBehaviour
         if (rayInteractorRight.TryGetCurrent3DRaycastHit(out hit) && hit.collider.Equals(planet))
         {
             // Action on planet orbit
-            if (actionBasedControllerRight.uiPressAction.action.IsPressed())
+            if (controllerRight.uiPressAction.action.IsPressed())
             {
                 // Orbit Drab enabled
                 orbitDragScript.enabled = true;
@@ -66,7 +67,7 @@ public class RotationOrOrbitDetectorXR : MonoBehaviour
             }
             
             // Action on planet rotation
-            if (actionBasedControllerRight.selectAction.action.IsPressed())
+            if (controllerRight.selectAction.action.IsPressed())
             {
                 // Rotation Drag enabled (update progress depending on Knob)
                 rotationDragScript.enabled = true;
@@ -79,7 +80,7 @@ public class RotationOrOrbitDetectorXR : MonoBehaviour
         if (rayInteractorLeft.TryGetCurrent3DRaycastHit(out hit) && hit.collider.Equals(planet))
         {
             // Action on planet orbit
-            if (actionBasedControllerLeft.uiPressAction.action.IsPressed())
+            if (controllerLeft.uiPressAction.action.IsPressed())
             {
                 // Orbit Drab enabled
                 orbitDragScript.enabled = true;
@@ -88,7 +89,7 @@ public class RotationOrOrbitDetectorXR : MonoBehaviour
             }
             
             // Action on planet rotation
-            if (actionBasedControllerLeft.selectAction.action.IsPressed())
+            if (controllerLeft.selectAction.action.IsPressed())
             {
                 // Rotation Drag enabled (update progress depending on Knob)
                 rotationDragScript.enabled = true;
@@ -104,7 +105,7 @@ public class RotationOrOrbitDetectorXR : MonoBehaviour
     private void DeactivationsCheck()
     {
         // Action on planet orbit
-        if ((actionBasedControllerRight.uiPressAction.action.WasReleasedThisFrame() || actionBasedControllerLeft.uiPressAction.action.WasReleasedThisFrame()) && orbitDragScript.enabled)
+        if ((controllerRight.uiPressAction.action.WasReleasedThisFrame() || controllerLeft.uiPressAction.action.WasReleasedThisFrame()) && orbitDragScript.enabled)
         {
             // Orbit Drag disabled
             orbitDragScript.enabled = false;
@@ -118,7 +119,7 @@ public class RotationOrOrbitDetectorXR : MonoBehaviour
         }
         
         // Action on planet rotation
-        if ((actionBasedControllerRight.selectAction.action.WasReleasedThisFrame() || actionBasedControllerLeft.selectAction.action.WasReleasedThisFrame()) && rotationDragScript.enabled)
+        if ((controllerRight.selectAction.action.WasReleasedThisFrame() || controllerLeft.selectAction.action.WasReleasedThisFrame()) && rotationDragScript.enabled)
         {
             // Rotation Drag disabled
             rotationDragScript.enabled = false;

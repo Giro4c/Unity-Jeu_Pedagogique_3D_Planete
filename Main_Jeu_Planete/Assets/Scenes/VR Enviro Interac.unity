@@ -1736,7 +1736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2736478854845186207, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2853412522427425234, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_RaycastMask.m_Bits
@@ -1816,7 +1816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6396743587534923916, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_Name
-      value: Ray Interactor R
+      value: Ray Interactor
       objectReference: {fileID: 0}
     - target: {fileID: 7179462289238023466, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1913,6 +1913,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &292073132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2607312474088619353, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+  m_PrefabInstance: {fileID: 292073127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &292073133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2871854917430088266, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+  m_PrefabInstance: {fileID: 292073127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &351803925
@@ -2060,7 +2082,7 @@ GameObject:
   - component: {fileID: 366661749}
   - component: {fileID: 366661750}
   - component: {fileID: 366661751}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DBGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3128,7 +3150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 462094942}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4480,7 +4502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 636017413}
   - component: {fileID: 636017414}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DBQuizz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7865,7 +7887,7 @@ GameObject:
   - component: {fileID: 1201927227}
   - component: {fileID: 1201927226}
   - component: {fileID: 1201927225}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DBInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7880,8 +7902,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201927218}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.3907311, z: -0, w: 0.9205049}
-  m_LocalPosition: {x: -17.389725, y: -91.770615, z: 129.46944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7914,6 +7936,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: Orbit
   slider: {fileID: 911829058}
+  controllerRight: {fileID: 292073130}
+  controllerLeft: {fileID: 292073133}
 --- !u!114 &1201927226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7928,6 +7952,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: Rotation
   slider: {fileID: 818556791}
+  controllerRight: {fileID: 292073130}
+  controllerLeft: {fileID: 292073133}
 --- !u!114 &1201927227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7941,8 +7967,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: DragRotation
-  rotationCycle: {fileID: 0}
-  planetCollider: {fileID: 0}
+  rotationCycle: {fileID: 229744270}
+  planetCollider: {fileID: 679485968}
+  controllerRight: {fileID: 292073130}
+  rayInteractorRight: {fileID: 292073129}
+  controllerLeft: {fileID: 292073133}
+  rayInteractorLeft: {fileID: 292073132}
 --- !u!114 &1201927228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7957,7 +7987,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: DragOrbit
   orbit: {fileID: 1596661608}
-  planetCollider: {fileID: 0}
+  planetCollider: {fileID: 679485968}
+  controllerRight: {fileID: 292073130}
+  rayInteractorRight: {fileID: 292073129}
+  controllerLeft: {fileID: 292073133}
+  rayInteractorLeft: {fileID: 292073132}
 --- !u!1 &1242747491
 GameObject:
   m_ObjectHideFlags: 0
@@ -8004,7 +8038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1287474222}
   - component: {fileID: 1287474223}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Current Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8020,7 +8054,7 @@ Transform:
   m_GameObject: {fileID: 1287474220}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -100, y: -23.57627, z: -100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8121,13 +8155,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1376003330}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DataBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1376003330
 Transform:
   m_ObjectHideFlags: 0
@@ -8137,7 +8171,7 @@ Transform:
   m_GameObject: {fileID: 1376003329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 121.00293, y: 97.130615, z: -20.267841}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8744,9 +8778,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b721c06ef4345ec42a0353ef3d795048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionBasedController: {fileID: 292073130}
-  rayInteractor: {fileID: 292073129}
   planet: {fileID: 679485968}
+  controllerRight: {fileID: 292073130}
+  controllerLeft: {fileID: 292073133}
+  rayInteractorRight: {fileID: 292073129}
+  rayInteractorLeft: {fileID: 292073132}
   rotationDragScript: {fileID: 229744268}
   rotationKnob: {fileID: 679485966}
   rotationAutoScript: {fileID: 229744269}
@@ -9185,7 +9221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1531434277}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TimeData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9201,7 +9237,7 @@ Transform:
   m_GameObject: {fileID: 1531434276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100, y: 23.57627, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9856,10 +9892,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c4c1f7ff2ed0846a37128c888854dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
   colliderPlaneOrbit: {fileID: 1980781550}
   orbit: {fileID: 1596661608}
-  _rayInteractor: {fileID: 292073129}
+  rayInteractorRight: {fileID: 292073129}
+  rayInteractorLeft: {fileID: 292073132}
 --- !u!114 &1596661608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9887,7 +9923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1603714919}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Interactables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11579,7 +11615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1832628453}
   - component: {fileID: 1832628454}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CurrentMonth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11595,7 +11631,7 @@ Transform:
   m_GameObject: {fileID: 1832628451}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -100, y: -23.57627, z: -100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12258,7 +12294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationCycleSun: {fileID: 1946092783}
-  rotationCyclePlanet: {fileID: 0}
+  rotationCyclePlanet: {fileID: 229744270}
   orbitPlanet: {fileID: 1596661608}
 --- !u!114 &1946092783
 MonoBehaviour:
@@ -14034,6 +14070,6 @@ SceneRoots:
   - {fileID: 1295241156}
   - {fileID: 462094942}
   - {fileID: 1603714919}
+  - {fileID: 1956689047}
   - {fileID: 1376003330}
   - {fileID: 1531434277}
-  - {fileID: 1956689047}
