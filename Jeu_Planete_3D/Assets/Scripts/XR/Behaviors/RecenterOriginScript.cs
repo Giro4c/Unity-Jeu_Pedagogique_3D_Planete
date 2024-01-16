@@ -1,19 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class RecenterOriginScript : MonoBehaviour
 {
-    public Transform head;
-    public Transform origin;
-    public Transform target;
+    //public Transform head;
+    private Transform _origin;
+    [SerializeField] private Transform target;
     
-    public InputActionProperty recenterButton;
+    public InputActionProperty recenterButtonR;
+    public InputActionProperty recenterButtonL;
+    
 
-    public void Recenter()
+    private void Start()
     {
-        Vector3 offset = head.position - origin.position;
+        _origin = transform;
+        if (target == null)
+        {
+            enabled = false;
+        }
+    }
+
+    private void Recenter()
+    {
+        /*Vector3 offset = head.position - origin.position;
         offset.y = 0;
         origin.position = target.position - offset;
 
@@ -24,13 +37,22 @@ public class RecenterOriginScript : MonoBehaviour
 
         float angle = Vector3.SignedAngle(cameraForward, targetForward, Vector3.up);
 
-        origin.RotateAround(head.position, Vector3.up, angle);
+        origin.RotateAround(head.position, Vector3.up, angle);*/
+
+        _origin.position = target.position;
+        _origin.rotation = target.rotation;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(recenterButton.action.WasPressedThisFrame())
+        if (recenterButtonR.action.WasPressedThisFrame())
+        {
+            Recenter();
+        }
+
+        if (recenterButtonL.action.WasPressedThisFrame())
         {
             Recenter();
         }
