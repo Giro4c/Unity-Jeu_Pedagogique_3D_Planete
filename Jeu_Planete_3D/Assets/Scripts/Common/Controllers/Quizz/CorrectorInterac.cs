@@ -19,7 +19,7 @@ public class CorrectorInterac : QuestionCorrector
     public RotationCycle rotation;
     // For showing correction
     public TextMeshProUGUI correctionText;
-    public RotationOrOrbitDetector manager;
+    public Detector manager;
     
     public override void VerifyCorrect()
     {

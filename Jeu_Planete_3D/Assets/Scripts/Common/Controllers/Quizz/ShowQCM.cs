@@ -13,7 +13,7 @@ public class ShowQCM : MonoBehaviour
     public TextMeshProUGUI Rep3;
     public TextMeshProUGUI Rep4;
     public CorrectorQCU corrector;
-    public RotationOrOrbitDetector manager;
+    public Detector manager;
     
     public void showQuestion(string html)
     {

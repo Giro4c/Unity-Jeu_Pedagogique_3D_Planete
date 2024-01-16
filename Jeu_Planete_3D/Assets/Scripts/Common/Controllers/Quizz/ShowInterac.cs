@@ -8,7 +8,7 @@ public class ShowInterac : MonoBehaviour
 {
     public TextMeshProUGUI QuestionTxt;
     public CorrectorInterac corrector;
-    public RotationOrOrbitDetector manager;
+    public Detector manager;
     
     public void showQuestion(string html)
     {
