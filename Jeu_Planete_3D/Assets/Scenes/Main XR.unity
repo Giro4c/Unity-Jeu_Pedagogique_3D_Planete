@@ -12272,8 +12272,8 @@ MonoBehaviour:
   rotationAutoScript: {fileID: 229744269}
   orbitMotionScript: {fileID: 1596661606}
   orbitDragScript: {fileID: 1596661607}
-  sliderOrbitScript: {fileID: 0}
-  sliderRotationScript: {fileID: 0}
+  sliderOrbitScript: {fileID: 547067518}
+  sliderRotationScript: {fileID: 1652192293}
 --- !u!114 &1454571313
 MonoBehaviour:
   m_ObjectHideFlags: 0

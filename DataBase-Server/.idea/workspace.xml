@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd0d1fea-564f-43e4-b056-0111022f438c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Scenes/HomePage VR.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Scenes/HomePage VR.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Scripts/Common/Controllers/Database/DBNewGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Scripts/Common/Controllers/Database/DBNewGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
@@ -63,7 +64,7 @@
       <workItem from="1702572781074" duration="8658000" />
       <workItem from="1703231402782" duration="1272000" />
       <workItem from="1703237769474" duration="6535000" />
-      <workItem from="1705438703308" duration="390000" />
+      <workItem from="1705438703308" duration="987000" />
     </task>
     <servers />
   </component>
