@@ -77,7 +77,6 @@ public abstract class QuestionCorrector : MonoBehaviour
         {
             Debug.Log(wwwInteract.downloadHandler.text);
         }
-        yield return null;
     }
 
     public void NewCorrector(int qidNew)

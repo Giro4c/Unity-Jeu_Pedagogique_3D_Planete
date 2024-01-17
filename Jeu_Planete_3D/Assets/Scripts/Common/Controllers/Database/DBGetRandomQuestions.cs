@@ -25,37 +25,39 @@ public class DBGetRandomQuestions : MonoBehaviour
         Debug.Log(url);
         
         UnityWebRequest wwwInteract = UnityWebRequest.Get(url);
+        
         yield return wwwInteract.SendWebRequest();
+        
+        string webPage = "";
+        // Checks if error
         if (wwwInteract.error != null)
         {
             Debug.LogError(wwwInteract.error);
+            /* In case of emergency if its impossible to connect to the host since the start,
+             read the expected html page content for a known question and store the value for later used*/
+            TextAsset questionTextAsset = Resources.Load<TextAsset>("WebEmergency/initQuizz");
+            webPage = questionTextAsset.text;
         }
-        else // Pas d'erreur, la page est chargée
+        else // No error, Web Page is loaded
         {
             Debug.Log(wwwInteract.downloadHandler.text); // le texte de la page
-            // Init du parser
-            StringHTMLParser htmlParser = new StringHTMLParser(wwwInteract.downloadHandler.text);
-            int totCount = nbQCM + nbInterac + nbVF;
-            string extratedVal;
-            int[] list = new int[totCount];
-            print("Parsing html source");
-            for (int count = 0; count < totCount; ++count)
-            {
-                extratedVal = htmlParser.getHTMLContainerContent("li", null, count.ToString());
-                print(extratedVal);
-                list[count] = int.Parse(extratedVal);
-            }
-
-            questions.questionsIDs = list;
-
+            webPage = wwwInteract.downloadHandler.text;
         }
         
-        
-    }
+        StringHTMLParser htmlParser = new StringHTMLParser(webPage);
+        int totCount = nbQCM + nbInterac + nbVF;
+        string extratedVal;
+        int[] list = new int[totCount];
+        print("Parsing html source");
+        for (int count = 0; count < totCount; ++count)
+        {
+            extratedVal = htmlParser.getHTMLContainerContent("li", null, count.ToString());
+            print(extratedVal);
+            list[count] = int.Parse(extratedVal);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        questions.questionsIDs = list;
         
     }
+    
 }

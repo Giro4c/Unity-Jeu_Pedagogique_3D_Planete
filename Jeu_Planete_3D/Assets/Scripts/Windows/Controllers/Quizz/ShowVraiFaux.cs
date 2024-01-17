@@ -10,7 +10,7 @@ public class ShowVraiFaux : MonoBehaviour
     public Orbit orbit;
     public RotationCycle rotation;
     public CorrectorQCU corrector;
-    public Detector manager;
+    public RotationOrOrbitDetector manager;
     
     public void showQuestion(string html)
     {

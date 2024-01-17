@@ -1,33 +1,18 @@
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
-public abstract class Detector : MonoBehaviour
+public interface Detector
 {
 
-    public bool detectorActivated = true;
-    public bool automotionActivated = true;
-    
-    public virtual void ActivateDetector()
-    {
-        detectorActivated = true;
-    }
+    void ActivateDetector();
 
-    public virtual void DeactivateDetector()
-    {
-        detectorActivated = false;
-    }
+    void DeactivateDetector();
 
-    public virtual void ActivateAutoMotion()
-    {
-        automotionActivated = true;
-    }
-    
-    public virtual void DeactivateAutoMotion()
-    {
-        automotionActivated = false;
-    }
+    void ActivateAutoMotion();
 
-    public void ActivateAll()
+    void DeactivateAutoMotion();
+
+    void ActivateAll()
     {
         ActivateDetector();
         ActivateAutoMotion();
@@ -39,8 +24,8 @@ public abstract class Detector : MonoBehaviour
         DeactivateAutoMotion();
     }
 
-    public abstract void DeactivateAllScriptsOrbit();
+    public void DeactivateAllScriptsOrbit();
 
-    public abstract void DeactivateAllScriptsRotation();
+    public void DeactivateAllScriptsRotation();
     
 }

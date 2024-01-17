@@ -4,8 +4,11 @@ using UnityEngine.Assertions.Must;
 using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class RotationOrOrbitDetectorXR : Detector
+public class RotationOrOrbitDetectorXR : MonoBehaviour
 {
+    public bool detectorActivated = true;
+    public bool automotionActivated = true;
+    
     [SerializeField] private Collider planet;
     
     [Header("Controllers")]
@@ -29,6 +32,8 @@ public class RotationOrOrbitDetectorXR : Detector
     [Header("Sliders Scripts")]
     [SerializeField] private SliderOrbitDragXR sliderOrbitScript;
     [SerializeField] private SliderRotationDragXR sliderRotationScript;
+    
+    
     
     // Start is called before the first frame update
     void Start()
@@ -131,9 +136,9 @@ public class RotationOrOrbitDetectorXR : Detector
         }
     }
 
-    public override void ActivateDetector()
+    public void ActivateDetector()
     {
-        base.ActivateDetector();
+        detectorActivated = true;
         // Activate Knob
         rotationKnob.enabled = true;
         // Reactivate sliders scripts
@@ -141,9 +146,9 @@ public class RotationOrOrbitDetectorXR : Detector
         sliderOrbitScript.enabled = true;
     }
 
-    public override void DeactivateDetector()
+    public void DeactivateDetector()
     {
-        base.DeactivateDetector();
+        detectorActivated = false;
         // Deactivate Knob
         rotationKnob.enabled = false;
         // Deactivate sliders scripts
@@ -151,21 +156,23 @@ public class RotationOrOrbitDetectorXR : Detector
         sliderOrbitScript.enabled = false;
     }
 
-    public override void DeactivateAllScriptsOrbit()
+    public void DeactivateAllScriptsOrbit()
     {
         orbitDragScript.enabled = false;
         orbitMotionScript.enabled = false;
     }
     
-    public override void DeactivateAllScriptsRotation()
+    public void DeactivateAllScriptsRotation()
     {
         rotationDragScript.enabled = false;
         rotationAutoScript.enabled = false;
+        rotationKnob.enabled = false;
+
     }
 
-    public override void ActivateAutoMotion()
+    public void ActivateAutoMotion()
     {
-        base.ActivateAutoMotion();
+        automotionActivated = true;
         
         orbitMotionScript.enabled = true;
         rotationAutoScript.enabled = true;
@@ -173,14 +180,26 @@ public class RotationOrOrbitDetectorXR : Detector
         sliderOrbitScript.SetAutoMotion(true);
     }
     
-    public override void DeactivateAutoMotion()
+    public void DeactivateAutoMotion()
     {
-        base.DeactivateAutoMotion();
+        automotionActivated = false;
         
         orbitMotionScript.enabled = false;
         rotationAutoScript.enabled = false;
         sliderRotationScript.SetAutoMotion(false);
         sliderOrbitScript.SetAutoMotion(false);
+    }
+    
+    public void ActivateAll()
+    {
+        ActivateDetector();
+        ActivateAutoMotion();
+    }
+
+    public void DeactivateAll()
+    {
+        DeactivateDetector();
+        DeactivateAutoMotion();
     }
     
 }

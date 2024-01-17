@@ -1,0 +1,8 @@
+            <p id="Num_Ques">8</p>
+                    <p id="Enoncer">Placer la Terre en hiver.</p>
+                    <p id="BonneRepValeur_orbit">0.125</p>
+                    <p id="Marge_Orbit">0.125</p>
+                    <p id="BonneRepValeur_rotation"></p>
+                    <p id="Marge_Rotation"></p>
+                    <p id="Type">QUESINTERAC</p>
+        

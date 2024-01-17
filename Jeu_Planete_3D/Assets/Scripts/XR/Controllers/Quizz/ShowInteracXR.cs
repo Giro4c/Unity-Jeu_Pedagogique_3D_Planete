@@ -4,15 +4,15 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 
-public class ShowInterac : MonoBehaviour
+public class ShowInteracXR : MonoBehaviour
 {
     public TextMeshProUGUI QuestionTxt;
-    public CorrectorInterac corrector;
-    public Detector manager;
+    public CorrectorInteracXR corrector;
+    public RotationOrOrbitDetectorXR manager;
     
     public void showQuestion(string html)
     {
-        // Manage possible interactions
+        // Manage possible 
         manager.ActivateDetector();
         manager.DeactivateAutoMotion();
         

@@ -5,7 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CorrectorInterac : QuestionCorrector
+public class CorrectorInteracXR : QuestionCorrector
 {
     // For Verifications
     public float correctOrbit = 0;
@@ -19,7 +19,7 @@ public class CorrectorInterac : QuestionCorrector
     public RotationCycle rotation;
     // For showing correction
     public TextMeshProUGUI correctionText;
-    public Detector manager;
+    public RotationOrOrbitDetectorXR manager;
     
     public override void VerifyCorrect()
     {
