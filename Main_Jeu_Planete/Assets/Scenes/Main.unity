@@ -8230,7 +8230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596661604}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.35020733, z: 0, w: 0.9366723}
   m_LocalPosition: {x: -0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8238,7 +8238,7 @@ Transform:
   - {fileID: 1388563904}
   - {fileID: 1967249836}
   m_Father: {fileID: 1693524282}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -41, z: 0}
 --- !u!114 &1596661606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8251,6 +8251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48564e9908fc9264a950c7c7f44fa481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orbitActive: 1
+  orbit: {fileID: 1596661608}
 --- !u!114 &1596661607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8397,8 +8399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356ba3cda42ce4e4d80a690e45d2d3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  semiMajorAxis: 3
-  semiMinorAxis: 2
+  ellipse:
+    xAxis: 3
+    yAxis: 2
   segments: 100
   axisColor: {r: 0.9150943, g: 0.030215396, b: 0.030215396, a: 1}
   lineRenderer: {fileID: 1596661609}
@@ -10846,13 +10849,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980781549}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.36296126, z: -0, w: 0.9318043}
+  m_LocalPosition: {x: 0.0000013906142, y: 0, z: -0.0000013075635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1596661605}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 42.564, z: 0}
 --- !u!114 &1967249837
 MonoBehaviour:
   m_ObjectHideFlags: 0
