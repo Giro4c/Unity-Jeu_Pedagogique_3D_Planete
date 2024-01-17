@@ -6,9 +6,7 @@ public class CycleJourNuit : MonoBehaviour
 {
         [SerializeField] private Renderer render;
         [SerializeField] private MaterialPropertyBlock mpb;
-
-        [Range (-1f, 1f)]
-        [SerializeField] float cycle = 0.1f;
+        public RotationCycle cycle;
 
         void OnEnable () {
             render = GetComponent<Renderer> ();
@@ -18,7 +16,7 @@ public class CycleJourNuit : MonoBehaviour
             
                 //change the Material properties
                 render.GetPropertyBlock (mpb);
-                mpb.SetFloat ("_Rotation", cycle);
+                mpb.SetFloat ("_Rotation", cycle.rotatePeriod/10);
                 GetComponent<Renderer>().SetPropertyBlock (mpb);
             
         }
