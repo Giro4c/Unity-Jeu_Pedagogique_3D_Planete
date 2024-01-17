@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class DBEndGame : MonoBehaviour
 {
+    public string homeSceneName = "HomePage";
     public Button buttonEndGame;
     
     // Start is called before the first frame update
@@ -34,7 +35,7 @@ public class DBEndGame : MonoBehaviour
             Debug.LogError(wwwEndGame.error);
         }
  
-        SceneManager.LoadScene("HomePage");
+        SceneManager.LoadScene(homeSceneName);
         
     }
     

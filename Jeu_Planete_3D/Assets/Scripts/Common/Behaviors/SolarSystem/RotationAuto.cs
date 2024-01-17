@@ -6,7 +6,7 @@ using UnityEngine;
 public class RotationAuto : MonoBehaviour
 {
     [SerializeField] private RotationCycle rotationCycleScript;
-    public bool autoRotate = true;
+    private bool autoRotate = true;
 
     private void Start()
     {

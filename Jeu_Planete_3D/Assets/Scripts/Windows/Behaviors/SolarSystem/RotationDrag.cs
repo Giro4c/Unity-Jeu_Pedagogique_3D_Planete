@@ -3,17 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(RotationCycle))]
 public class RotationDrag : MonoBehaviour
 {
 
-    private RotationCycle rotationCycleScript;
+    [SerializeField] private RotationCycle rotationCycle;
     public float speedRotation = 11f;
     private bool active = true;
    
+    private void Start()
+    {
+        if (rotationCycle == null)
+        {
+            rotationCycle = gameObject.GetComponent<RotationCycle>();
+            if (rotationCycle == null)
+            {
+                active = false;
+                enabled = false;
+            }
+        }
+    }
+    
     private void OnEnable()
     {
-        rotationCycleScript = gameObject.GetComponent<RotationCycle>();
+        if (rotationCycle == null)
+        {
+            active = false;
+            enabled = false;
+            return;
+        }
         active = true;
         StartCoroutine(DragAndRotate());
     }
@@ -34,7 +51,7 @@ public class RotationDrag : MonoBehaviour
             xRotate %= 360f;
             
             // Calculate newProgress
-            float newProgress = rotationCycleScript.rotateProgress + xRotate / 360f;
+            float newProgress = rotationCycle.rotateProgress + xRotate / 360f;
             
             if (newProgress < 0)
             {
@@ -44,10 +61,10 @@ public class RotationDrag : MonoBehaviour
             {
                 newProgress %= 1f;
             }
-            rotationCycleScript.rotateProgress = newProgress;
+            rotationCycle.rotateProgress = newProgress;
             
             // Change object's rotation
-            rotationCycleScript.SetRotation();
+            rotationCycle.SetRotation();
             
             yield return null;
         }

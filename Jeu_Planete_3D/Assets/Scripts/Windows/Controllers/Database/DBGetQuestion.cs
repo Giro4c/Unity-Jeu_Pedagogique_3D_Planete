@@ -15,8 +15,6 @@ public class DBGetQuestion : MonoBehaviour
     public GameObject panelInterac;
     public GameObject panelVraiFaux;
 
-    public TextMeshProUGUI showContent;
-
     public IEnumerator GetQuestion(int qid)
     {
         string strVarURLGet = "";
@@ -43,7 +41,6 @@ public class DBGetQuestion : MonoBehaviour
             webPage = wwwInteract.downloadHandler.text;
         }
 
-        showContent.text = webPage;
         // Init du parser
         StringHTMLParser htmlParser = new StringHTMLParser(webPage);
         // Hide all panels

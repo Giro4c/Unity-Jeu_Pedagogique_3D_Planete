@@ -3,34 +3,64 @@ using UnityEngine.Assertions.Must;
 
 public class RotationOrOrbitDetector : MonoBehaviour
 {
-    // SolarSystem
-    private RotationDrag rotationDragScript;
-    private RotationAuto rotationAutoScript;
-    private OrbitMotion orbitMotionScript;
-    private OrbitDrag orbitDragScript;
-    // Sliders
-    private SliderOrbitDrag sliderOrbitScript;
-    private SliderRotationDrag sliderRotationScript;
     
     public bool detectorActivated = true;
     public bool automotionActivated = true;
+    
+    [Header("Rotation Scripts")]
+    [SerializeField] private RotationDrag rotationDragScript;
+    [SerializeField] private RotationAuto rotationAutoScript;
+    
+    [Header("Orbit Scripts")]
+    [SerializeField] private OrbitMotion orbitMotionScript;
+    [SerializeField] private OrbitDrag orbitDragScript;
+    
+    [Header("Sliders Scripts")]
+    [SerializeField] private SliderOrbitDrag sliderOrbitScript;
+    [SerializeField] private SliderRotationDrag sliderRotationScript;
     
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Script RotationOrOrbitDetector activé.");
-        rotationDragScript = gameObject.GetComponent<RotationDrag>();
+        // Rotation Drag
+        if (!rotationDragScript)
+        {
+            rotationDragScript = gameObject.GetComponent<RotationDrag>();
+        }
         rotationDragScript.enabled = false;
-        rotationAutoScript = gameObject.GetComponent<RotationAuto>();
+        // Rotation Auto
+        if (!rotationAutoScript)
+        {
+            rotationAutoScript = gameObject.GetComponent<RotationAuto>();
+        }
         rotationAutoScript.enabled = true;
-        orbitMotionScript = gameObject.GetComponentInParent<OrbitMotion>();
+        // Orbit Motion
+        if (!orbitMotionScript)
+        {
+            orbitMotionScript = gameObject.GetComponentInParent<OrbitMotion>();
+        }
         orbitMotionScript.enabled = true;
-        orbitDragScript = gameObject.GetComponentInParent<OrbitDrag>();
+        // Orbit Drag
+        if (!orbitDragScript)
+        {
+            orbitDragScript = gameObject.GetComponentInParent<OrbitDrag>();
+        }
         orbitDragScript.enabled = false;
-        sliderOrbitScript = GameObject.Find("Month Slider").GetComponent<SliderOrbitDrag>();
+        // Slider Orbit
+        if (!sliderOrbitScript)
+        {
+            sliderOrbitScript = GameObject.Find("Month Slider").GetComponent<SliderOrbitDrag>();
+        }
         sliderOrbitScript.enabled = true;
-        sliderRotationScript = GameObject.Find("Hour Slider").GetComponent<SliderRotationDrag>();
+        sliderOrbitScript.SetAutoMotion(true);
+        // Slider Rotation
+        if (!sliderRotationScript)
+        {
+            sliderRotationScript = GameObject.Find("Hour Slider").GetComponent<SliderRotationDrag>();
+        }
         sliderRotationScript.enabled = true;
+        sliderRotationScript.SetAutoMotion(true);
     }
 
     // Used for scripts that continue to run until certain action
