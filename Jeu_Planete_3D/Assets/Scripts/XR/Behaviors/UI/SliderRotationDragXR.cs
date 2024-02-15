@@ -18,6 +18,8 @@ public class SliderRotationDragXR : MonoBehaviour
     private Slider _slider;
 
     private Coroutine _currentRoutine;
+    [SerializeField] private Renderer render;
+    [SerializeField] private MaterialPropertyBlock mpb;
     
     // Start is called before the first frame update
     void Start()
@@ -55,7 +57,9 @@ public class SliderRotationDragXR : MonoBehaviour
             while (_actionBasedController.uiPressAction.action.IsInProgress() /*_actionBasedController.uiPressAction.action.IsPressed()*/)
             {
                 sliderValue.rotateProgress = _slider.value;
-                sliderValue.SetRotation();
+                render.GetPropertyBlock (mpb);
+                mpb.SetFloat ("_RotationProgress", sliderValue.rotateProgress);
+                render.SetPropertyBlock (mpb);
                 yield return null;
             }
             print("Slider Rotation is released");
@@ -73,6 +77,7 @@ public class SliderRotationDragXR : MonoBehaviour
     
     private void OnEnable()
     {
+        mpb = new MaterialPropertyBlock ();
         // Start background task that detect if slider is clicked then released to update orbit and deactivate/reactivate orbit automatic changer (RotationAuto)
         Debug.Log("SliderRotationDrag enabled, Starting coroutine");
         _currentRoutine = StartCoroutine(ControlDrag());

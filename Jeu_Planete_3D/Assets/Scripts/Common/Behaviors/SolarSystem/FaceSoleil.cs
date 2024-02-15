@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class CycleJourNuit : MonoBehaviour
 {
-        [SerializeField] private Renderer render;
-        [SerializeField] private MaterialPropertyBlock mpb;
+    
+    public Transform target; // Référence au GameObject cible que vous voulez suivre
+    
 
-        [Range (-1f, 1f)]
-        [SerializeField] float cycle = 0.1f;
+    void Update()
+    {
+        if (target != null)
+        {
+            // Utiliser la fonction LookAt pour faire tourner l'objet pour qu'il regarde vers le target
+            transform.LookAt(target);
+            float face = -90f;
+            Vector3 rotationOffset = new Vector3(0f, face, 0f); // Décalage de rotation
 
-        void OnEnable () {
-            render = GetComponent<Renderer> ();
-            mpb = new MaterialPropertyBlock ();
+            // Ajouter un décalage de rotation supplémentaire
+            transform.Rotate(rotationOffset);
         }
-        void Update () {
-            
-                //change the Material properties
-                render.GetPropertyBlock (mpb);
-                mpb.SetFloat ("_Rotation", cycle);
-                GetComponent<Renderer>().SetPropertyBlock (mpb);
-            
-        }
+    }
 
 }

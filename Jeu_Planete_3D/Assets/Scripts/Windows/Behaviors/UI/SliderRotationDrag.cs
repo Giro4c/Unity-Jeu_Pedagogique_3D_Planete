@@ -56,8 +56,6 @@ public class SliderRotationDrag : MonoBehaviour
                 render.GetPropertyBlock (mpb);
                 mpb.SetFloat ("_RotationProgress", sliderValue.rotateProgress);
                 render.SetPropertyBlock (mpb);
-                
-                
                 yield return null;
             }
             print("Slider Rotation is released");
