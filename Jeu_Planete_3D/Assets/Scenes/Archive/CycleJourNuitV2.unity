@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 1954567097}
   - component: {fileID: 1954567096}
   - component: {fileID: 1954567098}
-  - component: {fileID: 1954567101}
+  - component: {fileID: 1954567099}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -903,7 +903,7 @@ MonoBehaviour:
   rotationCycle: {fileID: 1954567097}
   speedRotation: 11
   render: {fileID: 1954567093}
---- !u!114 &1954567101
+--- !u!114 &1954567099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bb911b4b98647cbb34567cd5d737f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 28782722}
+  target: {fileID: 0}
 --- !u!1 &2057047069
 GameObject:
   m_ObjectHideFlags: 0

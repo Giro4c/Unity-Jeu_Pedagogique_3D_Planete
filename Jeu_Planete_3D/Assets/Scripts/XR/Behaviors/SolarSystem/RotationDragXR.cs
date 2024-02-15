@@ -9,8 +9,7 @@ public class RotationDragXR : MonoBehaviour
 
     [SerializeField] private RotationCycle rotationCycleScript;
     private bool active = true;
-    [SerializeField] private Renderer render;
-    [SerializeField] private MaterialPropertyBlock mpb;
+
     private void Start()
     {
         if (rotationCycleScript == null)
@@ -26,8 +25,7 @@ public class RotationDragXR : MonoBehaviour
 
     private void OnEnable()
     {
-        render = GetComponent<Renderer> ();
-        mpb = new MaterialPropertyBlock ();
+
         if (rotationCycleScript == null)
         {
             active = false;
@@ -54,11 +52,6 @@ public class RotationDragXR : MonoBehaviour
             
             float newProgress = rotationCycleScript.revolutionSelf.FindProgress(transform.localRotation);
             rotationCycleScript.rotateProgress = newProgress;
-            // Change object's rotation
-            render.GetPropertyBlock (mpb);
-            
-            mpb.SetFloat ("_RotationProgress", rotationCycleScript.rotateProgress);
-            GetComponent<Renderer>().SetPropertyBlock (mpb);
             
             yield return null;
             

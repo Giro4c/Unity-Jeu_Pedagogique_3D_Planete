@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CycleJourNuit : MonoBehaviour
+public class FaceSoleil : MonoBehaviour
 {
     
     public Transform target; // Référence au GameObject cible que vous voulez suivre
+    [SerializeField] private Renderer render;
+    [SerializeField] private MaterialPropertyBlock mpb;
+    public RotationCycle rotationCycleScript;
     
+        private void OnEnable()
+    {
+        
+        mpb = new MaterialPropertyBlock ();
+    }
 
     void Update()
     {
@@ -19,6 +27,11 @@ public class CycleJourNuit : MonoBehaviour
 
             // Ajouter un décalage de rotation supplémentaire
             transform.Rotate(rotationOffset);
+
+            render.GetPropertyBlock (mpb);
+            mpb.SetFloat("_RotationPeriod", rotationCycleScript.rotatePeriod);
+            mpb.SetFloat ("_RotationProgress", rotationCycleScript.rotateProgress);
+            GetComponent<Renderer>().SetPropertyBlock (mpb);
         }
     }
 
