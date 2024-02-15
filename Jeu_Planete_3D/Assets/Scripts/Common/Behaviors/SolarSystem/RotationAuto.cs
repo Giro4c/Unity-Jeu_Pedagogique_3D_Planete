@@ -7,6 +7,8 @@ public class RotationAuto : MonoBehaviour
 {
     [SerializeField] private RotationCycle rotationCycleScript;
     private bool autoRotate = true;
+    [SerializeField] private Renderer render;
+    [SerializeField] private MaterialPropertyBlock mpb;
 
     private void Start()
     {
@@ -31,8 +33,10 @@ public class RotationAuto : MonoBehaviour
             rotationCycleScript.rotateProgress += Time.deltaTime * rotatorSpeed;
             rotationCycleScript.rotateProgress %= 1f;
             
-            // Update Rotation
-            rotationCycleScript.SetRotation();
+            render.GetPropertyBlock (mpb);
+            mpb.SetFloat("_RotationPeriod", rotationCycleScript.rotatePeriod);
+            mpb.SetFloat ("_RotationProgress", rotationCycleScript.rotateProgress);
+            GetComponent<Renderer>().SetPropertyBlock (mpb);
             
             yield return null;
         }
@@ -47,6 +51,8 @@ public class RotationAuto : MonoBehaviour
 
     private void OnEnable()
     {
+        render = GetComponent<Renderer> ();
+        mpb = new MaterialPropertyBlock ();
         if (rotationCycleScript == null)
         {
             autoRotate = false;

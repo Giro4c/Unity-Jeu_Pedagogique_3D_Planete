@@ -9,6 +9,8 @@ public class RotationDrag : MonoBehaviour
     [SerializeField] private RotationCycle rotationCycle;
     public float speedRotation = 11f;
     private bool active = true;
+    [SerializeField] private Renderer render;
+    [SerializeField] private MaterialPropertyBlock mpb;
    
     private void Start()
     {
@@ -25,6 +27,8 @@ public class RotationDrag : MonoBehaviour
     
     private void OnEnable()
     {
+        render = GetComponent<Renderer> ();
+        mpb = new MaterialPropertyBlock ();
         if (rotationCycle == null)
         {
             active = false;
@@ -64,7 +68,10 @@ public class RotationDrag : MonoBehaviour
             rotationCycle.rotateProgress = newProgress;
             
             // Change object's rotation
-            rotationCycle.SetRotation();
+            render.GetPropertyBlock (mpb);
+            mpb.SetFloat("_RotationPeriod", speedRotation);
+            mpb.SetFloat ("_RotationProgress", rotationCycle.rotateProgress);
+            GetComponent<Renderer>().SetPropertyBlock (mpb);
             
             yield return null;
         }
