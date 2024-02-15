@@ -56,8 +56,8 @@ public class RotationDragXR : MonoBehaviour
             rotationCycleScript.rotateProgress = newProgress;
             // Change object's rotation
             render.GetPropertyBlock (mpb);
-            mpb.SetFloat("_RotationPeriod", speedRotation);
-            mpb.SetFloat ("_RotationProgress", rotationCycle.rotateProgress);
+            
+            mpb.SetFloat ("_RotationProgress", rotationCycleScript.rotateProgress);
             GetComponent<Renderer>().SetPropertyBlock (mpb);
             
             yield return null;
