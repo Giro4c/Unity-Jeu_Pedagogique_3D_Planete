@@ -23,7 +23,7 @@ public class FaceSoleil : MonoBehaviour
             // Utiliser la fonction LookAt pour faire tourner l'objet pour qu'il regarde vers le target
             transform.LookAt(target);
             float face = -90f;
-            Vector3 rotationOffset = new Vector3(0f, face, 0f); // Décalage de rotation
+            Vector3 rotationOffset = new Vector3(23f, face, 0f); // Décalage de rotation
             transform.Rotate(rotationOffset);
            
         }
