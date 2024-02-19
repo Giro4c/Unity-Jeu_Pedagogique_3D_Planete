@@ -9,9 +9,9 @@ class Quesinterac extends Question
     protected $BonneRepValeur_rotation;
     protected $Marge_Rotation;
 
-    public function __construct($Num_Ques, $BonneRepValeur_orbit, $Marge_Orbit, $BonneRepValeur_rotation, $Marge_Rotation)
+    public function __construct($Num_Ques, $Enonce, $Type, $BonneRepValeur_orbit, $Marge_Orbit, $BonneRepValeur_rotation, $Marge_Rotation)
     {
-        parent::__construct($Num_Ques, '', '');
+        parent::__construct($Num_Ques, $Enonce, $Type);
         $this->BonneRepValeur_orbit = $BonneRepValeur_orbit;
         $this->BonneRepValeur_rotation = $BonneRepValeur_rotation;
         $this->Marge_Orbit = $Marge_Orbit;

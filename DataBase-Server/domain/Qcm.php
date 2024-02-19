@@ -10,9 +10,9 @@ class Qcm extends Question
     protected $Rep4;
     protected $BonneRep;
 
-    public function __construct($Num_Ques, $Rep1, $Rep2, $Rep3, $Rep4, $BonneRep)
+    public function __construct($Num_Ques, $Enonce, $Type, $Rep1, $Rep2, $Rep3, $Rep4, $BonneRep)
     {
-        parent::__construct($Num_Ques, '', '');
+        parent::__construct($Num_Ques, $Enonce, $Type);
         $this->Rep1 = $Rep1;
         $this->Rep3 = $Rep3;
         $this->Rep2 = $Rep2;
