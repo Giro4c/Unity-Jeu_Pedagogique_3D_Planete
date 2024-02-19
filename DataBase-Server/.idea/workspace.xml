@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd0d1fea-564f-43e4-b056-0111022f438c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/domain/Qcm.php" beforeDir="false" afterPath="$PROJECT_DIR$/domain/Qcm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/Quesinterac.php" beforeDir="false" afterPath="$PROJECT_DIR$/domain/Quesinterac.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/VraiFaux.php" beforeDir="false" afterPath="$PROJECT_DIR$/domain/VraiFaux.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/control/controllerGame.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/control/controllerInteractions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/control/controllerQuestions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/DataAccess.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/View.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/ViewInteractions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/ViewPartie.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/ViewQuestions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/ViewRandomQuestion.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/DataAccessInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/PartieChecking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loaders/autoloader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loaders/classloader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/CannotDoException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/GReturn.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,17 +48,26 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Refactoring-PHP",
-    "last_opened_file_path": "C:/Users/Camille (HorsCo)/Desktop/Unity Projects/Unity-Jeu_Pedagogique_3D_Planete/DataBase-Server/views",
+    "last_opened_file_path": "/Users/maxime/Documents/BUT 2/S3/SAE_3.01/Unity-Jeu_Pedagogique_3D_Planete/DataBase-Server/control",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/control" />
       <recent name="C:\Users\Camille (HorsCo)\Desktop\Unity Projects\Unity-Jeu_Pedagogique_3D_Planete\DataBase-Server\views" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.14015.96" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -63,21 +85,11 @@
       <workItem from="1703231402782" duration="1272000" />
       <workItem from="1703237769474" duration="6535000" />
       <workItem from="1705438703308" duration="987000" />
+      <workItem from="1708350518400" duration="4813000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/views/randomQuestions.php</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
