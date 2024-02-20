@@ -7,8 +7,9 @@ if (isset($_GET["type"]) && isset($_GET["value"]) && isset($_GET["isEval"])){
     $type = $_GET["type"];
     $value = $_GET["value"];
     $isEval = $_GET["isEval"];
+    $dateInteract = date('Y-m-d H:i:s');
     try{
-        $controller->addInteration($ip, $type, (float) $value, $isEval);
+        $controller->addInteration($ip, $type, (float) $value, $isEval, $dateInteract);
     }
     catch (\utilities\CannotDoException $e){
         $report = $e->getReport();

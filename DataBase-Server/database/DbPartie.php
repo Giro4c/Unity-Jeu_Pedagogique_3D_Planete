@@ -32,12 +32,12 @@ class DbPartie
     }
 
     public function abortOnGoingPartie(string $ipJoueur): void{
-        $query = "UPDATE " . $this->dbName . " SET Aborted = 1 WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Aborted = 0";
+        $query = "UPDATE " . $this->dbName . " SET Abandon = 1 WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
         $this->conn->query($query);
     }
 
     public function endPartie(string $ipJoueur, string $dateFin): void{
-        $dbQs = new DbQuestion($this->conn);
+        $dbQs = new DbReponseUser($this->conn);
         $idGame = $this->getPartieInProgress($ipJoueur)['Id_Partie'];
         try {
             $score = $dbQs->getPartyScore($idGame);
@@ -45,8 +45,8 @@ class DbPartie
             $score = 0;
         }
         $score = round($score, 2);
-        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = TIMEDIFF(Date_Fin, Date_Deb), Moy_Questions = $score "
-        . "WHERE Id_Partie = $idGame";
+        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Moy_Questions = $score "
+            . "WHERE Id_Partie = $idGame";
         $this->conn->query($query);
 //        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = (Date_Fin - Date_Deb), Moy_Questions = $score "
 //            . "WHERE Id_Partie = $idGame";
@@ -54,7 +54,7 @@ class DbPartie
     }
 
     public function getPartieInProgress(string $ipJoueur): array|null{
-        $query = "SELECT * FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Aborted = 0";
+        $query = "SELECT * FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
         $result = $this->conn->query($query);
         if ($result->num_rows == 0){
             return null;
@@ -65,7 +65,7 @@ class DbPartie
     }
 
     public function verifyPartieInProgress(string $ipJoueur): bool{
-        $query = "SELECT COUNT(*) AS Counter FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Aborted = 0";
+        $query = "SELECT COUNT(*) AS Counter FROM " . $this->dbName . " WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
         return $this->conn->query($query)->fetch_assoc()["Counter"] > 0;
     }
 

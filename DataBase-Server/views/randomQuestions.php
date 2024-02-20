@@ -3,11 +3,11 @@ require("../loaders/autoloader.php");
 $controller = new controllers\controllerQuestions($dbConn);
 
 // Determining how many questions of each type to retrieve
-if (isset($_GET['qcm'])){
-    $nbQCM = $_GET['qcm'];
+if (isset($_GET['qcu'])){
+    $nbQCU = $_GET['qcu'];
 }
 else{
-    $nbQCM = 0;
+    $nbQCU = 0;
 }
 //var_dump($nbQCM);
 if (isset($_GET['interaction'])){
@@ -25,4 +25,4 @@ else{
 }
 //var_dump($nbVraiFaux);
 
-echo $controller->getRandomQs($nbQCM, $nbInteraction, $nbVraiFaux);
+echo $controller->getRandomQs($nbQCU, $nbInteraction, $nbVraiFaux);

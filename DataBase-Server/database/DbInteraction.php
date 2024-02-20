@@ -5,7 +5,7 @@ namespace database;
 class DbInteraction
 {
 
-    private string $dbName = "INTERATION";
+    private string $dbName = "INTERACTION";
 
     private \mysqli $conn;
 
@@ -17,9 +17,9 @@ class DbInteraction
         return $this->dbName;
     }
 
-    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur): void{
+    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): void{
         $query = "INSERT INTO " . $this->dbName .
-            " (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur) VALUES ('$nomInteract', $valeurInteract,$isEval, '$ipJoueur')";
+            " (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur, Date_Inte) VALUES ('$nomInteract', $valeurInteract,$isEval, '$ipJoueur', '$dateInteract')";
         $this->conn->query($query);
     }
 

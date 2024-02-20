@@ -2,60 +2,61 @@
 
 namespace database;
 
-use utilities\CannotDoException;
 use utilities\GReturn;
 
 class DbQuestion
 {
 
     private string $dbName = "QUESTION";
+    private DbQcu $dbQcu;
+    private DbQuesinterac $dbQuesinterac;
+    private DbVraiFaux $dbVraiFaux;
 
     private \mysqli $conn;
 
-     public function __construct($conn){
+    public function __construct($conn){
         $this->conn = $conn;
+        $this->dbQcu = new DbQcu($conn);
+        $this->dbQuesinterac = new DbQuesinterac($conn);
+        $this->dbVraiFaux = new DbVraiFaux($conn);
     }
 
     public function getDbName(): string{
         return $this->dbName;
     }
 
-    public function getQuestionCorrect(int $numQues, int $idPartie): GReturn{
-        $query = "SELECT * FROM " . $this->dbName . " WHERE Num_Ques = $numQues AND Id_Partie = $idPartie";
-        $result = $this->conn->query($query)->fetch_assoc();
-        return new GReturn("ok", content: $result);
+    public function getQBasics(int $numQues): array{
+        $query = "SELECT * FROM " . $this->dbName . " WHERE Num_Ques = $numQues";
+        $basics = $this->conn->query($query)->fetch_assoc();
+        return $basics;
     }
 
-    /**
-     * Gives the score for a party on a /10 notation.
-     * @param int $idPartie the id of the party whose score is searched
-     * @return float the score for the party on a /10 notation.
-     * @throws CannotDoException
-     */
-    public function getPartyScore(int $idPartie): float {
-        $query = "SELECT COUNT(*) AS Total, SUM(Reussite) AS Score FROM " . $this->dbName . " WHERE Id_Partie = $idPartie";
-        $result = $this->conn->query($query)->fetch_assoc();
-        $count = $result['Total'];
+    public function getQAttributes(int $numQues): array{
+        $basics = $this->getQBasics($numQues);
 
-        if ($count == 0){
-            $target = "DataBase " . $this->dbName;
-            $action = "Calculate score for game party.";
-            $explanation = "Game party $idPartie has no questions answered.";
-            throw new CannotDoException($target, $action, $explanation);
+        if ($basics['Type'] == 'QCU'){
+            $result = $this->dbQcu->getQQCU($numQues)->getContent();
         }
+        else if ($basics['Type'] == 'QUESINTERAC'){
+            $result = $this->dbQuesinterac->getQInteraction($numQues)->getContent();
+        }
+        else if ($basics['Type'] == 'VRAIFAUX'){
+            $result = $this->dbVraiFaux->getQVraiFaux($numQues)->getContent();
+        }
+        while (true) {
+            $attribute = current($basics);
+            if ($attribute == null && key($basics) == null) break;
 
-        return $result['Score'] * (10 / $count);
+            $result[key($basics)] = $attribute;
+
+            next($basics);
+        }
+        return $result;
     }
 
-    public function addQuestionAnswer(int $numQues, int $idParty, int $duration, bool $isCorrect): void{
-         if ($isCorrect){
-             $correct = 1;
-         }
-         else {
-             $correct = 0;
-         }
-         $query = "INSERT INTO " . $this->dbName . " VALUES ($numQues, $idParty, $duration, $correct)";
-         $this->conn->query($query);
+    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
+        $numQ = array_merge($this->dbQcu->getRandomQQCU($howManyQCU), $this->dbQuesinterac->getRandomQInterac($howManyInterac), $this->dbVraiFaux->getRandomQVraiFaux($howManyVraiFaux)) ;
+        return $numQ;
     }
 
 }

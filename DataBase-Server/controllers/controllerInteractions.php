@@ -23,9 +23,9 @@ class controllerInteractions
     /**
      * @throws CannotDoException
      */
-    public function addInteration(string $ipJoueur, string $type, float $value, int $is_Eval): void{
+    public function addInteration(string $ipJoueur, string $type, float $value, int $is_Eval, string $dateInterac): void{
         if (in_array($type, $this->interactionTypes)){
-            $this->dbInteraction->addInteraction($type, $value, $is_Eval, $ipJoueur);
+            $this->dbInteraction->addInteraction($type, $value, $is_Eval, $ipJoueur, $dateInterac);
         }
         else{
             $target = "DataBase " . $this->dbInteraction->getDbName();
