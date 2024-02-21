@@ -2,9 +2,12 @@
 
 namespace gui;
 
+include_once "View.php";
 class ViewQuestions extends View
 {
-    public function displayQuestionAttributes(Question $questionData){
+    public function __construct($layout){
+
+        parent::__construct($layout);
 
     }
 }

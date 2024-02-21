@@ -2,9 +2,12 @@
 
 namespace gui;
 
+include_once "View.php";
 class ViewRandomQuestion extends View
 {
-    public function displayRandomQuestions(array $questions){
+    public function __construct($layout){
+
+        parent::__construct($layout);
 
     }
 }
