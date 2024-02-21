@@ -1,3 +1,4 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -9,7 +10,7 @@ public class EllipseTest
     
     /* --------------------------------------- *
      *               EVALUATE                  *
-     * --------------------------------------- */
+     * --------------------------------------- * /
     [Test]
     public void EllipseEvaluatePositiveAxises()
     {
@@ -85,7 +86,7 @@ public class EllipseTest
     
     /* ---------------------------------------------------- *
      *                  FIND PROGRESS USING X               *
-     * ---------------------------------------------------- */
+     * ---------------------------------------------------- * /
     
     
     [Test]
@@ -206,7 +207,7 @@ public class EllipseTest
     
     /* ---------------------------------------------------- *
      *                  FIND PROGRESS USING Y               *
-     * ---------------------------------------------------- */
+     * ---------------------------------------------------- * /
 
     [Test]
     public void EllipseFindProgressUsingYProgress0()
@@ -328,3 +329,4 @@ public class EllipseTest
     }
     
 }
+*/

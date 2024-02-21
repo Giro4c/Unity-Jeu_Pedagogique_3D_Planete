@@ -1493,6 +1493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f882105c1624929a1d8d631f7476753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  linkWeb:
+    host: jeupedagogique.alwaysdata.net/views/
   buttonEnd: {fileID: 2067986629}
 --- !u!114 &366661751
 MonoBehaviour:
@@ -7027,7 +7029,6 @@ GameObject:
   - component: {fileID: 1388563912}
   - component: {fileID: 1388563911}
   - component: {fileID: 1444301904}
-  - component: {fileID: 1388563905}
   - component: {fileID: 1444301905}
   m_Layer: 0
   m_Name: Terre
@@ -7052,20 +7053,6 @@ Transform:
   - {fileID: 1861631405}
   m_Father: {fileID: 1596661605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1388563905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388563903}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1bb911b4b98647cbb34567cd5d737f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  render: {fileID: 1388563908}
-  cycle: 1
 --- !u!135 &1388563907
 SphereCollider:
   m_ObjectHideFlags: 0
