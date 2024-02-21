@@ -10,6 +10,7 @@ public class FaceSoleil : MonoBehaviour
     [SerializeField] private MaterialPropertyBlock mpb;
     public RotationCycle rotationCycleScript;
     
+    
         private void OnEnable()
     {
         
@@ -31,7 +32,7 @@ public class FaceSoleil : MonoBehaviour
             
 
             render.GetPropertyBlock (mpb);
-            mpb.SetFloat("_RotationPeriod", rotationCycleScript.rotatePeriod);
+            
             mpb.SetFloat ("_RotationProgress", rotationCycleScript.rotateProgress);
             GetComponent<Renderer>().SetPropertyBlock (mpb);
     }
