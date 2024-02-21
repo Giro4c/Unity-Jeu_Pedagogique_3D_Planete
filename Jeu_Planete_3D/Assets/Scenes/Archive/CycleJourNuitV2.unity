@@ -1339,16 +1339,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954567091}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86b337119f4b04e16ba082979989e67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   terre: {fileID: 1954567091}
-  lineWidth: 0.1
-  lineLength: 3
-  inclinationAngle: 23
-  lineColor: {r: 0, g: 1, b: 0, a: 1}
+  lineWidth: 0.01
+  lineLength: 2
 --- !u!1 &2057047069
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,23 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class AxeTerre : MonoBehaviour
 { 
     // Référence au GameObject représentant la Terre
     public GameObject terre;
 
     // Épaisseur de la ligne
-    public float lineWidth = 0.1f;
+    public float lineWidth = 0.01f;
 
     // Longueur de la ligne
     public float lineLength = 2.0f;
-
-    // Angle d'inclinaison en degrés
-    public float inclinationAngle = 23f;
-
-    // Couleur de la ligne
-    public Color lineColor = Color.green;
 
     private LineRenderer lineRenderer;
 
@@ -47,11 +40,6 @@ public class AxeTerre : MonoBehaviour
         lineRenderer.startWidth = lineWidth;
         lineRenderer.endWidth = lineWidth;
         lineRenderer.positionCount = 2;
-        lineRenderer.startColor = lineColor;
-        lineRenderer.endColor = lineColor;
-
-        // Incline la ligne autour de l'axe X
-        verticalLine.transform.rotation = Quaternion.Euler(inclinationAngle, 0f, 0f);
     }
 
     void Update()
@@ -59,8 +47,8 @@ public class AxeTerre : MonoBehaviour
         if (terre != null && lineRenderer != null)
         {
             // Met à jour la position de la ligne pour suivre la Terre
-            lineRenderer.SetPosition(0, terre.transform.position + Vector3.down * lineLength / 2);
-            lineRenderer.SetPosition(1, terre.transform.position + Vector3.up * lineLength / 2);
+            lineRenderer.SetPosition(0, terre.transform.position + Vector3.down * lineLength / 2+ new Vector3(-0.4f, 0f, 0f));
+            lineRenderer.SetPosition(1, terre.transform.position + Vector3.up * lineLength / 2 + new Vector3(0.4f, 0f, 0f));
         }
     }
 }

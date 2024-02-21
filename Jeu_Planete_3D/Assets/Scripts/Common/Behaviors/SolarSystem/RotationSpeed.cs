@@ -27,7 +27,6 @@ public class RotationSpeed : MonoBehaviour
         // Initialisez la valeur du slider avec la valeur actuelle de RotationPeriod
         slider.value = rotationCycleScript.rotatePeriod;
     }
-
     // Cette fonction est appelée chaque fois que la valeur du slider est modifiée
     public void OnSliderValueChanged()
     {
