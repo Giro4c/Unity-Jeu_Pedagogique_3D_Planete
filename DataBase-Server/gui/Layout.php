@@ -5,15 +5,15 @@ class Layout
 {
     protected $templateFile;
 
-    public function __construct( $templateFile )
+    public function __construct($templateFile)
     {
         $this->templateFile = $templateFile;
     }
 
-    public function display( $title,$nav , $content )
+    public function display($title, $content)
     {
         $page = file_get_contents( $this->templateFile );
-        $page = str_replace( ['%title%','%nav%','%content%'], [$title,$nav,$content], $page);
+        $page = str_replace( ['%title%','%content%'], [$title, $content], $page);
         echo $page;
     }
 

@@ -6,6 +6,8 @@ include_once 'controllers/controllerGame.php';
 include_once 'controllers/controllerInteractions.php';
 include_once 'controllers/controllerQuestions.php';
 
+include_once 'service/PartieChecking.php';
+
 include_once 'gui/Layout.php';
 include_once 'gui/ViewRandomQuestion.php';
 include_once 'gui/ViewInteractions.php';
@@ -15,6 +17,7 @@ include_once 'gui/ViewQuestions.php';
 use controllers\{controllerGame, controllerQuestions, controllerInteractions};
 use data\DataAccess;
 use gui\{Layout, ViewInteractions, ViewPartie, ViewQuestions, ViewRandomQuestion};
+use service\PartieChecking;
 
 
 if (session_id() == '') {
@@ -35,6 +38,9 @@ $controllerGame = new ControllerGame($data);
 $controllerInte = new ControllerInteractions($data);
 $controllerQuestions = new ControllerQuestions($data);
 
+// initilisation du cas d'utilisation PartieChecking
+$partieChecking = new PartieChecking();
+
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -54,9 +60,10 @@ if ('index.php/addInteraction' == $uri) {
             $report = str_replace('\n', '<br />', $report);
             echo '<p>', $report, '</p>';
         }
+        $interaction = "$ip, $type";
 
         $layout = new Layout("gui/layout.html");
-        $viewInterac = new ViewInteractions($layout);
+        $viewInterac = new ViewInteractions($layout, $interaction);
 
         $viewInterac->display();
     } else {
@@ -67,6 +74,13 @@ elseif ( '/index.php/abordOnGoingGame' == $uri){
 
     $ip = $_SERVER['REMOTE_ADDR'];
     $controllerGame->abortPartie($ip);
+
+    $partieStatus = "Partie abandonner";
+    $date = date('Y-m-d H:i:s');
+    $layout = new Layout('gui/layout.html');
+    $viewPartie = new ViewPartie($layout, $partieStatus, $ip, $date);
+
+    $viewPartie->display();
 }
 elseif ( '/index.php/NewGame' == $uri){
 
@@ -88,6 +102,13 @@ elseif ( '/index.php/NewGame' == $uri){
             $report = str_replace( '\n', '<br />', $report );
             echo '<p>', $report, '</p>';
         }
+
+        $partieStatus = "Nouvelle partie";
+        $layout = new Layout('gui/layout.html');
+        $viewPartie = new ViewPartie($layout, $partieStatus, $ip, $date);
+
+        $viewPartie->display();
+
     }
     else{
         echo "URL not complete, cannot register new player or game.";
@@ -112,7 +133,12 @@ elseif ( '/index.php/endGame' == $uri){
 
     try{
         $controllerGame->endPartie($ip, $date);
-        echo 'Done, no errors.';
+
+        $partieStatus = "Fin de partie";
+        $layout = new Layout('gui/layout.html');
+        $viewPartie = new ViewPartie($layout, $partieStatus, $ip, $date);
+
+        $viewPartie->display();
     } catch (\utilities\CannotDoException $e){
         $report = $e->getReport();
         $report = str_replace( '\n', '<br />', $report );
@@ -124,7 +150,12 @@ elseif ( '/index.php/question' == $uri){
 
     // See if there is an indicated question in the url
     if (isset($_GET['qid'])){
-        echo $controllerQuestions->getHTMLAttributesQ($_GET['qid']);
+        $question = $controllerQuestions->getHTMLAttributesQ($_GET['qid']);
+
+        $layout = new Layout('gui/layout.html');
+        $viewQuestion = new ViewQuestions($layout, $question);
+
+        $viewQuestion->display();
     }
     else{
         echo "URL not complete, cannot show question attributes";
@@ -152,7 +183,12 @@ elseif ( '/index.php/randomQuestions' == $uri){
         $nbVraiFaux = 0;
     }
 
-    echo $controllerQuestions->getRandomQs($nbQCU, $nbInteraction, $nbVraiFaux);
+    $nbRandomQs = $controllerQuestions->getRandomQs($nbQCU, $nbInteraction, $nbVraiFaux);
+
+    $layout = new Layout('gui/layout.html');
+    $viewRandomQs = new ViewRandomQuestion($layout, $nbRandomQs);
+
+    $viewRandomQs->display();
 }
 else {
     header('Status: 404 Not Found');
