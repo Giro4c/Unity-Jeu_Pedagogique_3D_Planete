@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class RotationAuto : MonoBehaviour
 {
     [SerializeField] private RotationCycle rotationCycleScript;
-    [SerializeField] private Slider rotationSpeedSlider;
     private bool autoRotate = true;
 
 
@@ -31,7 +30,7 @@ public class RotationAuto : MonoBehaviour
         while (autoRotate)
         {
             // Use slider value to adjust rotation speed
-            float rotatorSpeed = 1f / rotationSpeedSlider.value;
+            float rotatorSpeed = 1f / rotationCycleScript.rotatePeriod;
             // Update progress
             rotationCycleScript.rotateProgress += Time.deltaTime * rotatorSpeed;
             rotationCycleScript.rotateProgress %= 1f;

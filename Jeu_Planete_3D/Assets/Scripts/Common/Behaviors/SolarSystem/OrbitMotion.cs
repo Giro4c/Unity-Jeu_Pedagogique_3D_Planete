@@ -47,9 +47,10 @@ public class OrbitMotion : MonoBehaviour
         {
             orbit.orbitPeriod = 0.1f;
         }
-        float orbitSpeed = 1f / orbit.orbitPeriod;
+        
         while (orbitActive)
         {
+            float orbitSpeed = 1f / orbit.orbitPeriod;
             orbit.orbitProgress += Time.deltaTime * orbitSpeed;
             orbit.orbitProgress %= 1f;
             orbit.SetOrbitingObjectPosition();

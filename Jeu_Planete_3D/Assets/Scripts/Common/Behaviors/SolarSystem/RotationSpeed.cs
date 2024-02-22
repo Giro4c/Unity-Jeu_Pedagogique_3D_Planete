@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class RotationSpeed : MonoBehaviour
 {
     public RotationCycle rotationCycleScript; // Référence au script RotationCycle
+    public Orbit orbit;
     public Slider slider; // Référence au slider pour contrôler la vitesse
 
     private void Start()
@@ -26,11 +27,13 @@ public class RotationSpeed : MonoBehaviour
 
         // Initialisez la valeur du slider avec la valeur actuelle de RotationPeriod
         slider.value = rotationCycleScript.rotatePeriod;
+        slider.value = orbit.orbitPeriod;
     }
     // Cette fonction est appelée chaque fois que la valeur du slider est modifiée
     public void OnSliderValueChanged()
     {
         // Mettez à jour la vitesse de RotationPeriod avec la valeur actuelle du slider
         rotationCycleScript.rotatePeriod = slider.value;
+        orbit.orbitPeriod = slider.value;
     }
 }
