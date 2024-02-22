@@ -2,7 +2,7 @@
 
 namespace domain;
 
-class Qcm extends Question
+class Qcu extends Question
 {
     protected $Rep1;
     protected $Rep2;

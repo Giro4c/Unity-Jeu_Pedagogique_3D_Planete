@@ -10,7 +10,7 @@ class ViewRandomQuestion extends View
         parent::__construct($layout);
 
         $this->title = 'Random question';
-
-        $this->content = "<p>$nbRandomQs</p>";
+        $json = array("Random question" => $nbRandomQs);
+        $this->content = json_encode($json, JSON_PRETTY_PRINT);
     }
 }
