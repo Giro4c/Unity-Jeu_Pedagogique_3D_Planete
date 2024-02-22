@@ -16,34 +16,42 @@ public class ShowQCM : MonoBehaviour
     public CorrectorQCU corrector;
     public RotationOrOrbitDetector manager;
 
-    public void showQuestion(string html)
-    {
+    public void showQuestion(string json)
+    { 
+        
+        QuestionDataQCM questionDataQCM = JsonUtility.FromJson<QuestionDataQCM>(json);
+
         // Manage possible interactions
         manager.ActivateAll();
         corrector.ResetChoiceSelection();
-
-        //debug.text = html;
-        StringHTMLParser parser = new StringHTMLParser(html);
-        string valExtrater = "";
         
         // Get question ID and Reset Corrector
-        valExtrater = parser.getHTMLContainerContent("p", null, "Num_Ques");
-        corrector.NewCorrector(int.Parse(valExtrater));
-        
+        corrector.NewCorrector(questionDataQCM.Num_Ques);
         
         // Get question text
-        QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
+        QuestionTxt.text = questionDataQCM.Enoncer;
         
         // Get correct answer
-        valExtrater = parser.getHTMLContainerContent("p", null, "BonneRep");
-        corrector.correctAnswer = valExtrater;
+        corrector.correctAnswer = questionDataQCM.BonneRep;
         
         // Get Possible Answers
-        Rep1.text = parser.getHTMLContainerContent("p", null, "Rep1");
-        Rep2.text = parser.getHTMLContainerContent("p", null, "Rep2");
-        Rep3.text = parser.getHTMLContainerContent("p", null, "Rep3");
-        Rep4.text = parser.getHTMLContainerContent("p", null, "Rep4");
+        Rep1.text = questionDataQCM.Rep1;
+        Rep2.text = questionDataQCM.Rep2;
+        Rep3.text = questionDataQCM.Rep3;
+        Rep4.text = questionDataQCM.Rep4;
         
     }
     
+}
+
+[System.Serializable]
+public class QuestionDataQCM
+{
+    public int Num_Ques; // ID de la question
+    public string Enoncer; // Texte de la question
+    public string BonneRep; // Bonne réponse
+    public string Rep1; // Réponse 1
+    public string Rep2; // Réponse 2
+    public string Rep3; // Réponse 3
+    public string Rep4; // Réponse 4
 }

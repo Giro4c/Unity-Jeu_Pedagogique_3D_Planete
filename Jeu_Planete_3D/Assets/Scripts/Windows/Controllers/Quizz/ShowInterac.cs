@@ -9,32 +9,26 @@ public class ShowInterac : MonoBehaviour
     public TextMeshProUGUI QuestionTxt;
     public CorrectorInterac corrector;
     public RotationOrOrbitDetector manager;
-    
-    public void showQuestion(string html)
+
+    public void showQuestion(string jsonString)
     {
+        // Deserialize JSON string into QuestionDataInterac object
+        QuestionDataInterac questionDataInterac = JsonUtility.FromJson<QuestionDataInterac>(jsonString);
+
         // Manage possible 
         manager.ActivateDetector();
         manager.DeactivateAutoMotion();
-        
-        StringHTMLParser parser = new StringHTMLParser(html);
-        string valExtrater = "";
-        
+
         // Get question ID and Reset Corrector
-        valExtrater = parser.getHTMLContainerContent("p", null, "Num_Ques");
-        corrector.NewCorrector(int.Parse(valExtrater));
-        
+        corrector.NewCorrector(questionDataInterac.numQuestion);
+
         // Get question text
-        QuestionTxt.text = parser.getHTMLContainerContent("p", null, "Enoncer");
-        
-        // Change Culture info for String to float conversions
-        CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
-        ci.NumberFormat.CurrencyDecimalSeparator = ".";
-        
-        // Get correct answer
-        valExtrater = parser.getHTMLContainerContent("p", null, "BonneRepValeur_orbit");
-        if (valExtrater != null && !valExtrater.Equals(""))
+        QuestionTxt.text = questionDataInterac.enoncer;
+
+        // Set correct answer for orbit
+        if (!string.IsNullOrEmpty(questionDataInterac.bonneRepValeur_orbit))
         {
-            corrector.correctOrbit = float.Parse(valExtrater, NumberStyles.Any, ci);
+            corrector.correctOrbit = float.Parse(questionDataInterac.bonneRepValeur_orbit);
             corrector.correctOrbit %= 1f;
             corrector.verifyOrbit = true;
         }
@@ -42,10 +36,11 @@ public class ShowInterac : MonoBehaviour
         {
             corrector.verifyOrbit = false;
         }
-        valExtrater = parser.getHTMLContainerContent("p", null, "BonneRepValeur_rotation");
-        if (valExtrater != null && !valExtrater.Equals(""))
+
+        // Set correct answer for rotation
+        if (!string.IsNullOrEmpty(questionDataInterac.bonneRepValeur_rotation))
         {
-            corrector.correctRotation = float.Parse(valExtrater, NumberStyles.Any, ci);
+            corrector.correctRotation = float.Parse(questionDataInterac.bonneRepValeur_rotation);
             corrector.correctRotation %= 1f;
             corrector.verifyRotation = true;
         }
@@ -53,28 +48,34 @@ public class ShowInterac : MonoBehaviour
         {
             corrector.verifyRotation = false;
         }
-        
+
         // Get margins
-        valExtrater = parser.getHTMLContainerContent("p", null, "Marge_Orbit");
-        if (valExtrater != null && !valExtrater.Equals(""))
+        if (!string.IsNullOrEmpty(questionDataInterac.marge_Orbit))
         {
-            corrector.orbitMargin = float.Parse(valExtrater, NumberStyles.Any, ci);
+            corrector.orbitMargin = float.Parse(questionDataInterac.marge_Orbit);
             if (corrector.orbitMargin > 0.5f)
             {
                 corrector.orbitMargin %= 0.5f;
             }
         }
-        valExtrater = parser.getHTMLContainerContent("p", null, "Marge_Rotation");
-        if (valExtrater != null && !valExtrater.Equals(""))
+        if (!string.IsNullOrEmpty(questionDataInterac.marge_Rotation))
         {
-            corrector.rotationMargin = float.Parse(valExtrater, NumberStyles.Any, ci);
+            corrector.rotationMargin = float.Parse(questionDataInterac.marge_Rotation);
             if (corrector.rotationMargin > 0.5f)
             {
                 corrector.rotationMargin %= 0.5f;
             }
         }
-        
-        
     }
-    
+}
+
+[System.Serializable]
+public class QuestionDataInterac
+{
+    public int numQuestion;
+    public string enoncer;
+    public string bonneRepValeur_orbit;
+    public string bonneRepValeur_rotation;
+    public string marge_Orbit;
+    public string marge_Rotation;
 }
