@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class RecenterOriginScript : PlayerControl
 {
-    private Transform _origin;
+    [SerializeField] private Transform _origin;
     [SerializeField] private Transform target;
 
     protected override void ProcessingInput()

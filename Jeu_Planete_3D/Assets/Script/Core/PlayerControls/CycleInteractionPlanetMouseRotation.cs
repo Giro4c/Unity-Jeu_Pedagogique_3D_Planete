@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[Serializable]
 public class CycleInteractionPlanetMouseRotation : CycleInteractionPlanetMouse
 {
-    protected float speedRotation = 11f;
+    [SerializeField] protected float speedRotation = 11f;
     
     protected override void ProcessingInput()
     {

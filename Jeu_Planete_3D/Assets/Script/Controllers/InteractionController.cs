@@ -7,9 +7,10 @@ namespace Script.Controllers
     public class InteractionController : MonoBehaviour
     {
 
-        private InteractionChecking _interactionChecker;
-        private QuizzService _quizzService;
+        [SerializeField] private InteractionChecking _interactionChecker;
+        [SerializeField] private QuizzService _quizzService;
         private int inMemoryQuestionIndex = -1;
+        private bool inMemoryCorrectionDone = true;
 
         private void Start()
         {
@@ -24,10 +25,19 @@ namespace Script.Controllers
 
         public void ManageInteractions()
         {
-            if (_quizzService.IsQuizzStarted() && inMemoryQuestionIndex != _quizzService.indexCurrentQuestion)
+            if (_quizzService.IsQuizzStarted())
             {
-                inMemoryQuestionIndex = _quizzService.indexCurrentQuestion;
-                _interactionChecker.NewRestrictions(_quizzService.GetRestrictableToEnable(), _quizzService.GetRestrictableToDisableAndRestrict());
+                if (inMemoryQuestionIndex != _quizzService.indexCurrentQuestion)
+                {
+                    inMemoryQuestionIndex = _quizzService.indexCurrentQuestion;
+                    inMemoryCorrectionDone = _quizzService.correctionDone;
+                    _interactionChecker.NewRestrictions(_quizzService.GetRestrictableToEnable(), _quizzService.GetRestrictableToDisableAndRestrict());
+                }
+                else if (inMemoryCorrectionDone != _quizzService.correctionDone)
+                {
+                    inMemoryCorrectionDone = _quizzService.correctionDone;
+                    _interactionChecker.NewRestrictions(_quizzService.GetRestrictableToEnable(), _quizzService.GetRestrictableToDisableAndRestrict());
+                }
             }
             _interactionChecker.ManageControls();
         }

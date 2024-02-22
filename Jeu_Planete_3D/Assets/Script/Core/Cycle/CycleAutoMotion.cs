@@ -10,6 +10,7 @@ public class CycleAutoMotion : MonoBehaviour, ActivationRestrictable
     [SerializeField] protected Cycle cycle;
     private Coroutine _routine;
     public bool activationRestricted { get; set; }
+    
     public void Activate(bool activation)
     {
         enabled = activation;

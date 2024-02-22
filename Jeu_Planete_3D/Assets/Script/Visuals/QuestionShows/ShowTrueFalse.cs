@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class ShowTrueFalse : ShowQCU
 {
-    protected Cycle orbit;
-    protected Cycle rotation;
+    [SerializeField] protected Cycle orbit;
+    [SerializeField] protected Cycle rotation;
 
     public override void ShowTheQuestion(Question question)
     {

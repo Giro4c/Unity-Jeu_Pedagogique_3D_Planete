@@ -5,6 +5,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[Serializable]
 public abstract class PlayerControl: MonoBehaviour, ActivationRestrictable
 {
 
@@ -39,10 +40,10 @@ public abstract class PlayerControl: MonoBehaviour, ActivationRestrictable
     
     public string GetControlTypeSimplified()
     {
-        return type;
+        return typeSimplified;
     }
 
-    public bool GetRegisterable()
+    public bool IsRegisterable()
     {
         return registerable;
     }
@@ -141,11 +142,7 @@ public abstract class PlayerControl: MonoBehaviour, ActivationRestrictable
         finished = val;
     }
 
-    public bool IsRegisterable()
-    {
-        return registerable;
-    }
-
+    /*
     public void SetChangesAllowedForAllScriptsToEnable(bool changesAllowed)
     {
         foreach (Tuple<string, ActivationRestrictable> script in scriptsToEnable)
@@ -157,7 +154,9 @@ public abstract class PlayerControl: MonoBehaviour, ActivationRestrictable
             script.Item2.activationRestricted = !changesAllowed;
         }
     }
+    */
     
+    /*
     public void SetChangesAllowedForAllScriptsToDisable(bool changesAllowed)
     {
         foreach (Tuple<string, ActivationRestrictable> script in scriptsToDisable)
@@ -169,6 +168,7 @@ public abstract class PlayerControl: MonoBehaviour, ActivationRestrictable
             script.Item2.activationRestricted = !changesAllowed;
         }
     }
+    */
 
     /*
     public void SetChangesAllowedForAllInteractionsToDisable(bool changesAllowed)

@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[Serializable]
 public class CycleInteractionPlanetMouseOrbit : CycleInteractionPlanetMouse
 {
 
-    protected Collider planeOrbit;
+    [SerializeField] protected Collider planeOrbit;
     
     protected override void ProcessingInput()
     {

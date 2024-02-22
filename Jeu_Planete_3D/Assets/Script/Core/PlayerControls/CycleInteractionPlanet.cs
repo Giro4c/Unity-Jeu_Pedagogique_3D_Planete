@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public abstract class CycleInteractionPlanet : CycleInteraction
 {
 
-    protected Collider collider;
+    [SerializeField] protected Collider collider;
 
     // public override bool IsTriggered()
     // {

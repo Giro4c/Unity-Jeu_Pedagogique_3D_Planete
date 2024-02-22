@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public abstract class CycleInteractionPlanetMouse : CycleInteractionPlanet
 {
 
-    protected Camera mainCam;
+    [SerializeField] protected Camera mainCam;
 
     public override bool IsTriggered()
     {

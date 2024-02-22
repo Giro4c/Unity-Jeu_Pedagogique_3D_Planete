@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public abstract class CycleInteractionUI : CycleInteraction
 {
 
-    protected EventSystem _eventSys;
+    [SerializeField] protected EventSystem _eventSys;
     
     public override bool IsTriggered()
     {

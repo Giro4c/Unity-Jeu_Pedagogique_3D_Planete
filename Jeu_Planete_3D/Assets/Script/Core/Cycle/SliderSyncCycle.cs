@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Slider))]
+
 public class SliderSyncCycle : MonoBehaviour, ActivationRestrictable
 {
     [SerializeField] private Cycle sliderValue;
-    private Slider _slider;
+    [SerializeField] private Slider _slider;
 
     public bool activationRestricted { get; set; }
     public void Activate(bool activation)
@@ -16,7 +16,10 @@ public class SliderSyncCycle : MonoBehaviour, ActivationRestrictable
     // Start is called before the first frame update
     void Start()
     {
-        _slider = gameObject.GetComponent<Slider>();
+        if (_slider == null)
+        {
+            _slider = gameObject.GetComponent<Slider>();
+        }
         if (! CanBeEnabled())
         {
             enabled = false;

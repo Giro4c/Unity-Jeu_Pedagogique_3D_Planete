@@ -8,17 +8,17 @@ namespace Script.Services
     public class QuizzService : MonoBehaviour
     {
 
-        private Tuple<QuestionType, ShowQuestion>[] shows;
+        [SerializeField] private Tuple<QuestionType, ShowQuestion>[] shows;
         private IQuestionCorrector<Question> corrector;
         private Quizz quizz;
         public int indexCurrentQuestion { get; private set; } = 0;
-        private WebDatabaseAccessInterface linkWeb;
+        [SerializeField] private WebDatabaseAccessInterface linkWeb;
 
-        private GameObject startPanel;
-        private GameObject endPanel;
-        private Tuple<QuestionType, GameObject>[] questionPanels;
+        [SerializeField] private GameObject startPanel;
+        [SerializeField] private GameObject endPanel;
+        [SerializeField] private Tuple<QuestionType, GameObject>[] questionPanels;
 
-        private bool correctionDone;
+        public bool correctionDone { get; private set; } = false;
 
 
 

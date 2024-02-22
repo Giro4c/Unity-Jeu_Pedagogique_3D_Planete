@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public abstract class CycleInteraction : PlayerControl
 {
 
-    protected Cycle cycleAffected;
+    [SerializeField] protected Cycle cycleAffected;
 
     public float GetValue()
     {

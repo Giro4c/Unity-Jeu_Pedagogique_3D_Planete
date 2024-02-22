@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class CycleInteractionUISlider : CycleInteractionUI
 {
 
-    protected Slider slider;
+    [SerializeField] protected Slider slider;
     
     protected override void ProcessingInput()
     {

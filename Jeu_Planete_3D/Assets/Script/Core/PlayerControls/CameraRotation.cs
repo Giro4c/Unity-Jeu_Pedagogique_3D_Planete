@@ -9,10 +9,10 @@ public class CameraRotation : PlayerControl
     private const float MAX_BORNE_X = 310;
     private const float MIN_BORNE_X = 50;
     private const float MEDIAN_BORNE_X = MAX_BORNE_X - MIN_BORNE_X;
-    protected EventSystem _eventSys;
-    protected Camera _cam;
+    [SerializeField] protected EventSystem _eventSys;
+    [SerializeField] protected Camera _cam;
     
-    private float speed = 5;
+    [SerializeField] private float speed = 5;
 
     protected override void ProcessingInput()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class InformationDisplayer : MonoBehaviour
 {
 
-    protected TextMeshProUGUI displayText;
+    [SerializeField] protected TextMeshProUGUI displayText;
 
     public abstract void Display();
     

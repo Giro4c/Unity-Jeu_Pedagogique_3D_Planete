@@ -8,11 +8,11 @@ namespace Script.Controllers
     public class QuizzController : MonoBehaviour
     {
 
-        private QuizzService _quizzService;
+        [SerializeField] private QuizzService _quizzService;
         // private Button _quizzStarter;
-        private int questionsQCU = 0;
-        private int questionsTrueFalse = 0;
-        private int questionsManipulation = 0;
+        [SerializeField] private int questionsQCU = 0;
+        [SerializeField] private int questionsTrueFalse = 0;
+        [SerializeField] private int questionsManipulation = 0;
 
         private void Start()
         {

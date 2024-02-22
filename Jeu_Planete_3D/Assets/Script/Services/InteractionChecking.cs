@@ -6,13 +6,13 @@ namespace Script.Services
     public class InteractionChecking : MonoBehaviour
     {
 
-        private PlayerControl[] playerControls;
+        [SerializeField] private PlayerControl[] playerControls;
         private int indexCurrentActivatedControl = -1;
         
         public string[] restrictionsToEnable { get; private set; }
         public string[] restrictionsToDisable { get; private set; }
 
-        private WebDatabaseAccessInterface linkWeb;
+        [SerializeField] private WebDatabaseAccessInterface linkWeb;
 
         public void NewRestrictions(string[] resEnable, string[] resDisable)
         {
@@ -101,7 +101,7 @@ namespace Script.Services
             {
                 if (!control.IsFinished()) continue;
                 control.SetFinished(false);
-                if (control.GetRegisterable() && control.GetType().IsSubclassOf(typeof(CycleInteraction)))
+                if (control.IsRegisterable() && control.GetType().IsSubclassOf(typeof(CycleInteraction)))
                 {
                     StartCoroutine(linkWeb.AddInteraction(control.GetControlTypeSimplified(), ((CycleInteraction)control).GetValue(),
                         quizzStarted));

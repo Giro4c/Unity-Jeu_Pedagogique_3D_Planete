@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Script.Services
 {
-    public class GameService
+    public class GameService : MonoBehaviour
     {
 
-        private WebDatabaseAccessInterface linkWeb;
-        private GameObject pauseMenu;
-        private InformationDisplayer[] displayers;
+        [SerializeField] private WebDatabaseAccessInterface linkWeb;
+        [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private InformationDisplayer[] displayers;
 
         public IEnumerator StartGame(string platform)
         {

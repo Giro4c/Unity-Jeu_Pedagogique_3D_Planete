@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class CycleInteractionPlanetXROrbit : CycleInteractionPlanetXR
 {
 
-    protected Collider planeOrbit;
+    [SerializeField] protected Collider planeOrbit;
 
     protected override void ProcessingInput()
     {

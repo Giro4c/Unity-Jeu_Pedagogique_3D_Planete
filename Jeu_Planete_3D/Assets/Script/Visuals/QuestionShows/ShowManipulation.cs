@@ -7,9 +7,9 @@ using UnityEngine;
 public class ShowManipulation : ShowQuestion
 {
     
-    protected TextMeshProUGUI correctionText;
-    protected Cycle orbit;
-    protected Cycle rotation;
+    [SerializeField] protected TextMeshProUGUI correctionText;
+    [SerializeField] protected Cycle orbit;
+    [SerializeField] protected Cycle rotation;
 
     public TextMeshProUGUI GetCorrectionText()
     {

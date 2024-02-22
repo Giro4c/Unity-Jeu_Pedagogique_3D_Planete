@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ShowQuestion : MonoBehaviour
 {
-    protected TextMeshProUGUI header;
+    [SerializeField] protected TextMeshProUGUI header;
 
     public virtual void ShowTheQuestion(Question question)
     {

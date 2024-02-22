@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Image), typeof(Button))]
 public class ChoiceButton : MonoBehaviour
 {
     // Values
@@ -13,11 +14,11 @@ public class ChoiceButton : MonoBehaviour
     
     // Visual
     private Image _image;
-    private TextMeshProUGUI _text;
+    [SerializeField] private TextMeshProUGUI _text;
     private Button _button;
     
     // Colors
-    private Color _selectedColor = Color.yellow;
+    [SerializeField] private Color _selectedColor = Color.yellow;
     private Color _defaultColor;
 
     private void Start()

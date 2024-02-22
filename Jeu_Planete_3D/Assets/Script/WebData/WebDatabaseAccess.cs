@@ -8,9 +8,10 @@ using UnityEngine.Networking;
 
 namespace Script.WebData
 {
+    [Serializable]
     public class WebDatabaseAccess : WebDatabaseAccessInterface
     {
-        private WebConnection _webDatabaseConnection;
+        [SerializeField] private WebConnection _webDatabaseConnection;
         
         public IEnumerator NewGame(string platform)
         {

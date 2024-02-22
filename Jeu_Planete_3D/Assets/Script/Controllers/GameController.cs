@@ -9,10 +9,10 @@ namespace Script.Controllers
     public class GameController: MonoBehaviour
     {
 
-        private GameService _gameService;
-        private string sceneHomeName;
-        private string sceneGameName;
-        private string platform;
+        [SerializeField] private GameService _gameService;
+        [SerializeField] private string sceneHomeName;
+        [SerializeField] private string sceneGameName;
+        [SerializeField] private string platform;
 
         private void Start()
         {

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ShowQCU : ShowQuestion
 {
 
-    protected ChoiceButton[] choices;
+    [SerializeField] protected ChoiceButton[] choices;
     
     public override void ShowTheQuestion(Question question)
     {

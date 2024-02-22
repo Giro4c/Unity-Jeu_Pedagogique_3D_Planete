@@ -1,8 +1,9 @@
 using TMPro;
+using UnityEngine;
 
 public abstract class InformationCycleDisplayer : InformationDisplayer
 {
 
-    protected Cycle valueCycle;
+    [SerializeField] protected Cycle valueCycle;
     
 }

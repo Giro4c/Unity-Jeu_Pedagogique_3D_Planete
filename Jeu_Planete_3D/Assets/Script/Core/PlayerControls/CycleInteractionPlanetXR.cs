@@ -8,7 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public abstract class CycleInteractionPlanetXR : CycleInteractionPlanet
 {
 
-    protected XRRayInteractor rayInteractor;
+    [SerializeField] protected XRRayInteractor rayInteractor;
 
     public override bool IsTriggered()
     {
