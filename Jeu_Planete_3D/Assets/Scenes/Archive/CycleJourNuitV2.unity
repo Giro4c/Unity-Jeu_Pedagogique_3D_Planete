@@ -1531,7 +1531,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbitActive: 1
   orbit: {fileID: 1664544909}
-  slider: {fileID: 819750154}
 --- !u!114 &1664544909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1737,6 +1736,7 @@ MonoBehaviour:
   target: {fileID: 29077463}
   render: {fileID: 1991327954}
   rotationCycleScript: {fileID: 1991327952}
+  slider: {fileID: 819750154}
 --- !u!114 &1991327951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1750,7 +1750,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationCycleScript: {fileID: 1991327952}
-  rotationSpeedSlider: {fileID: 819750154}
 --- !u!114 &1991327952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,7 +1766,7 @@ MonoBehaviour:
   revolutionSelf:
     initialRotation: {x: 0, y: 0, z: -23}
     axis: {x: 0, y: -1, z: 0}
-  rotatePeriod: 3
+  rotatePeriod: 7
   rotateProgress: 0
 --- !u!135 &1991327953
 SphereCollider:

@@ -11,7 +11,7 @@ public class FaceSoleil : MonoBehaviour
     public RotationCycle rotationCycleScript;
     
     
-        private void OnEnable()
+    private void OnEnable()
     {
         
         mpb = new MaterialPropertyBlock ();
@@ -30,9 +30,7 @@ public class FaceSoleil : MonoBehaviour
         }
          // Ajouter un décalage de rotation supplémentaire
             
-
             render.GetPropertyBlock (mpb);
-            
             mpb.SetFloat ("_RotationProgress", rotationCycleScript.rotateProgress);
             GetComponent<Renderer>().SetPropertyBlock (mpb);
     }
