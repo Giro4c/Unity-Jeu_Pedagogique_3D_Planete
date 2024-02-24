@@ -14,10 +14,10 @@ public abstract class CycleInteractionUI : CycleInteraction
         return base.IsTriggered() && _eventSys.IsPointerOverGameObject();
     }
 
-    public override bool IsControlActive()
-    {
-        throw new System.NotImplementedException();
-    }
+    // public override bool IsControlActive()
+    // {
+    //     throw new System.NotImplementedException();
+    // }
 
 
 }

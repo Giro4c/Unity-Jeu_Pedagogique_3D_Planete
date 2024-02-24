@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quizz : MonoBehaviour
+public class Quizz
 {
     public Question[] questions { get; private set; }
     public bool started { get; set; }
@@ -16,6 +17,12 @@ public class Quizz : MonoBehaviour
     public Quizz(Question[] questions)
     {
         this.questions = questions;
+        started = false;
+    }
+    
+    public Quizz()
+    {
+        questions = Array.Empty<Question>();
         started = false;
     }
 }

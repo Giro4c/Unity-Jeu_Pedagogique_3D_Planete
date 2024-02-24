@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using Script.Core.Quizz.Questions;
+using Script.WebData;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Script.Services
@@ -8,20 +10,57 @@ namespace Script.Services
     public class QuizzService : MonoBehaviour
     {
 
-        [SerializeField] private Tuple<QuestionType, ShowQuestion>[] shows;
-        private IQuestionCorrector<Question> corrector;
-        private Quizz quizz;
-        public int indexCurrentQuestion { get; private set; } = 0;
-        [SerializeField] private WebDatabaseAccessInterface linkWeb;
-
+        private Tuple<QuestionType, ShowQuestion, GameObject>[] associationsQuestions = new Tuple<QuestionType, ShowQuestion, GameObject>[0];
+        
         [SerializeField] private GameObject startPanel;
         [SerializeField] private GameObject endPanel;
-        [SerializeField] private Tuple<QuestionType, GameObject>[] questionPanels;
-
+        
+        private IQuestionCorrector<Question> corrector;
+        private Quizz quizz = new Quizz();
+        public int indexCurrentQuestion { get; private set; } = 0;
         public bool correctionDone { get; private set; } = false;
 
+        // [SerializeField] [ExpectedType(typeof(WebDatabaseAccessInterface))]
+        // private UnityEngine.Object _linkWeb;
+        // private WebDatabaseAccessInterface linkWeb => _linkWeb as WebDatabaseAccessInterface;
+        [SerializeReference] private WebDatabaseAccess linkWeb;
 
+        
+        
+        /// <summary>
+        /// <para>
+        /// Initialize the associationsQuestions Tuple array based on the values stored in the 3 serializable arrays. The items of a Tuple number X are :<br/>
+        /// - QuestionType from associatedTypes<br/>
+        /// - ShowQuestion from associatedShows<br/>
+        /// - GameObject from associatedQuestionPanels<br/>
+        /// Each at the index X in their respective array.
+        /// </para>
+        /// </summary>
+        /// <param name="associatedTypes">Contains the type of an associated question</param>
+        /// <param name="associatedShows">Contains the show of an associated question</param>
+        /// <param name="associatedQuestionPanels">Contains the panel of an associated question</param>
+        /// <exception cref="Exception">The arrays are not of the same size. The Tuple array cannot be initialized.</exception>
+        public void Initialize(QuestionType[] associatedTypes, ShowQuestion[] associatedShows, GameObject[] associatedQuestionPanels)
+        {
+            // Verify that all arrays are of the same size. If not then throw an exception
+            if (associatedTypes.Length != associatedQuestionPanels.Length ||
+                associatedTypes.Length != associatedShows.Length)
+                throw new Exception(
+                    "Arrays associatedTypes, associatedShows and associatedQuestionPanels must be of same length.");
+            
+            // Initialize size of Tuple array
+            Tuple<QuestionType, ShowQuestion, GameObject>[] array = new Tuple<QuestionType, ShowQuestion, GameObject>[associatedTypes.Length];
+            
+            // Fill the Tuple array
+            for (int i = 0; i < associatedTypes.Length; ++i)
+            {
+                array[i] = new Tuple<QuestionType, ShowQuestion, GameObject>(associatedTypes[i],
+                    associatedShows[i], associatedQuestionPanels[i]);
+            }
 
+            associationsQuestions = array;
+        }
+        
         public IEnumerator InitQuizz(int nbQcu, int nbTrueFalse, int nbManipulation)
         {
             // Get the random question ids
@@ -37,6 +76,22 @@ namespace Script.Services
                     new CoroutineWithData<Question>(this, linkWeb.GetQuestion(qids[i]));
                 yield return dataQuestion.coroutine;
                 questions[i] = dataQuestion.result;
+            }
+            
+            DebugQuizz();
+        }
+
+        public void DebugQuizz()
+        {
+            print("Quizz Verif");
+            print(quizz.started);
+            foreach (Question q in quizz.questions)
+            {
+                print("Question :");
+                print(q.id);
+                print(q.type);
+                print(q.header);
+                print(q.GetType().Name);
             }
         }
 
@@ -88,11 +143,20 @@ namespace Script.Services
             
         }
 
+        private int GetIndexAssociation(QuestionType type)
+        {
+            for (int i = 0; i < associationsQuestions.Length; ++i)
+            {
+                if (associationsQuestions[i].Item1 == type) return i;
+            }
+            return -1;
+        }
+        
         private ShowQuestion GetAssociatedShowQuestion(QuestionType type)
         {
-            for (int i = 0; i < shows.Length; ++i)
+            for (int i = 0; i < associationsQuestions.Length; ++i)
             {
-                if (shows[i].Item1 == type) return shows[i].Item2;
+                if (associationsQuestions[i].Item1 == type) return associationsQuestions[i].Item2;
             }
 
             return null;
@@ -100,15 +164,16 @@ namespace Script.Services
         
         private void ShowAssociatedPanel(QuestionType type)
         {
-            for (int i = 0; i < shows.Length; ++i)
+            for (int i = 0; i < associationsQuestions.Length; ++i)
             {
-                questionPanels[i].Item2.SetActive(questionPanels[i].Item1 == type);
+                associationsQuestions[i].Item3.SetActive(associationsQuestions[i].Item1 == type);
             }
         }
 
         public bool NextQuestion()
         {
             ++indexCurrentQuestion;
+            correctionDone = false;
             if (indexCurrentQuestion < quizz.questions.Length)
             {
                 CurrentQuestion();

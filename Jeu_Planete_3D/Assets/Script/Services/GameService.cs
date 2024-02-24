@@ -1,4 +1,6 @@
 using System.Collections;
+using Script.WebData;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Script.Services
@@ -6,7 +8,11 @@ namespace Script.Services
     public class GameService : MonoBehaviour
     {
 
-        [SerializeField] private WebDatabaseAccessInterface linkWeb;
+        // [SerializeField] [ExpectedType(typeof(WebDatabaseAccessInterface))]
+        // private UnityEngine.Object _linkWeb;
+        // private WebDatabaseAccessInterface linkWeb => _linkWeb as WebDatabaseAccessInterface;
+        [SerializeReference] private WebDatabaseAccess linkWeb;
+        
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private InformationDisplayer[] displayers;
 

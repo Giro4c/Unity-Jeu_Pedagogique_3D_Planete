@@ -24,16 +24,26 @@ namespace Script.Controllers
             DisplaysAction();
         }
 
-        public IEnumerator StartGame()
+        public IEnumerator StartGameAction()
         {
             yield return StartCoroutine(_gameService.StartGame(platform));
             SceneManager.LoadScene(sceneGameName);
         }
 
-        public IEnumerator EndGame()
+        public void StartGame()
+        {
+            StartCoroutine(StartGameAction());
+        }
+
+        public IEnumerator EndGameAction()
         {
             yield return StartCoroutine(_gameService.EndGame());
             SceneManager.LoadScene(sceneHomeName);
+        }
+        
+        public void EndGame()
+        {
+            StartCoroutine(EndGameAction());
         }
 
         public IEnumerator HomeAction()
@@ -41,6 +51,11 @@ namespace Script.Controllers
             _gameService.Resume();
             yield return StartCoroutine(_gameService.AbortGame());
             SceneManager.LoadScene(sceneHomeName);
+        }
+        
+        public void Home()
+        {
+            StartCoroutine(HomeAction());
         }
 
         public void Pause()

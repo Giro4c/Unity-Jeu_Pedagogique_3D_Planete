@@ -8,8 +8,9 @@ using UnityEngine.Networking;
 
 namespace Script.WebData
 {
-    [Serializable]
-    public class WebDatabaseAccess : WebDatabaseAccessInterface
+    
+    [CreateAssetMenu(fileName = "DatabaseAccess", menuName = "ScriptableObjects/WebDatabaseAccess", order = 1)]
+    public class WebDatabaseAccess : ScriptableObject, WebDatabaseAccessInterface
     {
         [SerializeField] private WebConnection _webDatabaseConnection;
         

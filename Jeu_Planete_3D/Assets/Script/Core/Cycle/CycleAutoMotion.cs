@@ -9,12 +9,22 @@ public class CycleAutoMotion : MonoBehaviour, ActivationRestrictable
     private bool _active = true;
     [SerializeField] protected Cycle cycle;
     private Coroutine _routine;
+    
+    // Interface implementation ---------------
+    // [SerializeField] private string identifier = "None";
     public bool activationRestricted { get; set; }
     
     public void Activate(bool activation)
     {
         enabled = activation;
     }
+
+    // public string GetIdentifier()
+    // {
+        // return identifier;
+    // }
+    
+    // ----------------------------------------------
     
     private void Start()
     {
