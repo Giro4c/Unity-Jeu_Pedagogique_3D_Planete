@@ -1,5 +1,5 @@
             <p id="Num_Ques">60</p>
-                    <p id="Enoncer">La Terre est placée de sorte à ce qu'on soit en automne.</p>
+                    <p id="Enonce">La Terre est placée de sorte à ce qu'on soit en automne.</p>
                     <p id="Valeur_orbit">0.52</p>
                     <p id="Valeur_rotation"></p>
                     <p id="BonneRep">Faux</p>

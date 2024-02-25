@@ -505,6 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cycle: {fileID: 129132502}
+  identifier: AutoMotion Cycle Orbit Planet
 --- !u!114 &129132502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderValue: {fileID: 129132502}
   _slider: {fileID: 911829058}
+  identifier: Slider Sync Cycle Orbit
 --- !u!1 &166480061
 GameObject:
   m_ObjectHideFlags: 0
@@ -6513,8 +6515,8 @@ GameObject:
   - component: {fileID: 1260855246}
   - component: {fileID: 1260855251}
   - component: {fileID: 1260855248}
-  - component: {fileID: 1260855252}
   - component: {fileID: 1260855250}
+  - component: {fileID: 1260855252}
   m_Layer: 0
   m_Name: Services
   m_TagString: Untagged
@@ -6617,9 +6619,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControls:
-  - {fileID: 1662632584}
-  - {fileID: 1662632583}
-  - {fileID: 1662632582}
   - {fileID: 1575760492}
   - {fileID: 1575760491}
   linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
@@ -8489,8 +8488,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1575760490}
-  - component: {fileID: 1575760492}
   - component: {fileID: 1575760491}
+  - component: {fileID: 1575760492}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -8525,7 +8524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc90d785980649a8b98309fb87510073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Cycle UI Slider Rotation
+  identifier: Cycle Rotation UI Slider Windows Mouse
   typeSimplified: Slider Rotation Windows
   trigger:
     m_UseReference: 1
@@ -8541,9 +8540,10 @@ MonoBehaviour:
     m_Reference: {fileID: 5265718448923972361, guid: aeb2ed8ead87f0942a07ed3d0547153f,
       type: 3}
   registerable: 1
-  scriptsToEnable: []
-  scriptsToDisable:
+  toEnable: []
+  toDisable:
   - Slider Sync Rotation
+  - AutoMotion Cycle Rotation
   cycleAffected: {fileID: 1680164451}
   _eventSys: {fileID: 1448704258}
   slider: {fileID: 818556791}
@@ -8559,7 +8559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc90d785980649a8b98309fb87510073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Cycle UI Slider Orbit
+  identifier: Cycle Orbit UI Slider Windows Mouse
   typeSimplified: Slider Orbit Windows
   trigger:
     m_UseReference: 1
@@ -8575,9 +8575,10 @@ MonoBehaviour:
     m_Reference: {fileID: 5265718448923972361, guid: aeb2ed8ead87f0942a07ed3d0547153f,
       type: 3}
   registerable: 1
-  scriptsToEnable: []
-  scriptsToDisable:
+  toEnable: []
+  toDisable:
   - Slider Sync Orbit
+  - AutoMotion Cycle Orbit
   cycleAffected: {fileID: 129132502}
   _eventSys: {fileID: 1448704258}
   slider: {fileID: 911829058}
@@ -9247,7 +9248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113e824ce46d4bf9841a318a4e52b088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Cycle Planet Terre Mouse Rotation
+  identifier: Cycle Planet Rotation Windows Mouse
   typeSimplified: Planet Rotation Mouse
   trigger:
     m_UseReference: 1
@@ -9263,8 +9264,8 @@ MonoBehaviour:
     m_Reference: {fileID: 1299602195274936103, guid: aeb2ed8ead87f0942a07ed3d0547153f,
       type: 3}
   registerable: 1
-  scriptsToEnable: []
-  scriptsToDisable:
+  toEnable: []
+  toDisable:
   - AutoMotion Cycle Rotation
   - AutoMotion Cycle Orbit
   cycleAffected: {fileID: 1680164451}
@@ -9283,7 +9284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2349375a24b14b09b1b373f80cd3fd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Cycle Planet Terre Mouse Orbit
+  identifier: Cycle Planet Orbit Windows Mouse
   typeSimplified: Planet Orbit Mouse
   trigger:
     m_UseReference: 1
@@ -9299,8 +9300,8 @@ MonoBehaviour:
     m_Reference: {fileID: 1117931103165330845, guid: aeb2ed8ead87f0942a07ed3d0547153f,
       type: 3}
   registerable: 1
-  scriptsToEnable: []
-  scriptsToDisable:
+  toEnable: []
+  toDisable:
   - AutoMotion Cycle Orbit
   cycleAffected: {fileID: 129132502}
   collider: {fileID: 1388563907}
@@ -9318,7 +9319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ef212c3e888c04e9556e118438388d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Camera Turn
+  identifier: Camera Turn
   typeSimplified: Camera Turn
   trigger:
     m_UseReference: 1
@@ -9334,8 +9335,8 @@ MonoBehaviour:
     m_Reference: {fileID: 8434319842672042845, guid: aeb2ed8ead87f0942a07ed3d0547153f,
       type: 3}
   registerable: 0
-  scriptsToEnable: []
-  scriptsToDisable: []
+  toEnable: []
+  toDisable: []
   _eventSys: {fileID: 1448704258}
   _cam: {fileID: 366498104}
   speed: 5
@@ -9461,6 +9462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cycle: {fileID: 1680164451}
+  identifier: AutoMotion Cycle Rotation
 --- !u!114 &1680164451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9493,6 +9495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderValue: {fileID: 1680164451}
   _slider: {fileID: 818556791}
+  identifier: Slider Sync Cycle Rotation
 --- !u!1 &1683358370
 GameObject:
   m_ObjectHideFlags: 0
@@ -10879,6 +10882,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1925352110}
   - component: {fileID: 1925352109}
+  - component: {fileID: 1925352111}
+  - component: {fileID: 1925352112}
   m_Layer: 0
   m_Name: Debug
   m_TagString: Untagged
@@ -10893,7 +10898,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925352108}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66cd2e3ac601f7f4b8548a9a90fce775, type: 3}
   m_Name: 
@@ -10927,6 +10932,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1925352111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925352108}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cd2e3ac601f7f4b8548a9a90fce775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c246d5b1-13c6-47ee-ac82-2f270f5a3eb3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1117931103165330845, guid: aeb2ed8ead87f0942a07ed3d0547153f,
+      type: 3}
+  positionMouse: {x: 0, y: 0, z: 0}
+--- !u!114 &1925352112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925352108}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671e1565ace94e7e96ed1f14e9e6375a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventSystem: {fileID: 1448704258}
+  _slider: {fileID: 818556791}
+  pointerOver: {fileID: 0}
 --- !u!1 &1946092778
 GameObject:
   m_ObjectHideFlags: 0
@@ -11442,7 +11488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1974717229
 Transform:
   m_ObjectHideFlags: 0
@@ -11470,7 +11516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e054f70904797d4ea327801e18e3ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Reset Player Position XR
+  identifier: None
   typeSimplified: Reset Player Position XR
   trigger:
     m_UseReference: 1
@@ -11486,8 +11532,8 @@ MonoBehaviour:
     m_Reference: {fileID: -361763599179196745, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   registerable: 0
-  scriptsToEnable: []
-  scriptsToDisable: []
+  toEnable: []
+  toDisable: []
   _origin: {fileID: 0}
   target: {fileID: 0}
 --- !u!114 &1974717231
@@ -11502,7 +11548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1769b1abaa467cb89ffef7d5097c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Cycle Planet Terre XR Orbit
+  identifier: None
   typeSimplified: Planet Orbit XR
   trigger:
     m_UseReference: 0
@@ -11517,8 +11563,8 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   registerable: 0
-  scriptsToEnable: []
-  scriptsToDisable: []
+  toEnable: []
+  toDisable: []
   cycleAffected: {fileID: 0}
   collider: {fileID: 0}
   rayInteractor: {fileID: 0}
@@ -11535,7 +11581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e61e79266d47faad417247abafd47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Cycle Planet Terre XR Rotation
+  identifier: None
   typeSimplified: Planet Rotation XR
   trigger:
     m_UseReference: 0
@@ -11550,8 +11596,8 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   registerable: 0
-  scriptsToEnable: []
-  scriptsToDisable: []
+  toEnable: []
+  toDisable: []
   cycleAffected: {fileID: 0}
   collider: {fileID: 0}
   rayInteractor: {fileID: 0}
@@ -11567,7 +11613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e054f70904797d4ea327801e18e3ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Reset Player Position XR
+  identifier: None
   typeSimplified: Reset Player Position XR
   trigger:
     m_UseReference: 1
@@ -11583,8 +11629,8 @@ MonoBehaviour:
     m_Reference: {fileID: 3764994189258349195, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   registerable: 0
-  scriptsToEnable: []
-  scriptsToDisable: []
+  toEnable: []
+  toDisable: []
   _origin: {fileID: 0}
   target: {fileID: 0}
 --- !u!1 &1980781549
@@ -11692,6 +11738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cycle: {fileID: 1982877990}
+  identifier: None
   rotationPlanet: {fileID: 1680164451}
   orbitPlanet: {fileID: 129132502}
 --- !u!1 &1997269811

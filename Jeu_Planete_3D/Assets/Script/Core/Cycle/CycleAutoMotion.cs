@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CycleAutoMotion : MonoBehaviour, ActivationRestrictable
+public class CycleAutoMotion : MonoBehaviour, IdentifiableRestrictable
 {
     
     private bool _active = true;
@@ -11,7 +11,7 @@ public class CycleAutoMotion : MonoBehaviour, ActivationRestrictable
     private Coroutine _routine;
     
     // Interface implementation ---------------
-    // [SerializeField] private string identifier = "None";
+    [SerializeField] private string identifier = "None";
     public bool activationRestricted { get; set; }
     
     public void Activate(bool activation)
@@ -19,10 +19,10 @@ public class CycleAutoMotion : MonoBehaviour, ActivationRestrictable
         enabled = activation;
     }
 
-    // public string GetIdentifier()
-    // {
-        // return identifier;
-    // }
+    public string GetIdentifier()
+    {
+        return identifier;
+    }
     
     // ----------------------------------------------
     

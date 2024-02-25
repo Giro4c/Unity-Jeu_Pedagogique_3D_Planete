@@ -42,7 +42,8 @@ namespace Script.Services
         /// </summary>
         public void InitInteractionChecker()
         {
-            _interactionChecking.Initialize(identifiers, restrictionsActivation, scripts);
+            // _interactionChecking.Initialize(identifiers, restrictionsActivation, scripts);
+            _interactionChecking.Initialize();
         }
 
         private void Start()

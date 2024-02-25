@@ -18,6 +18,9 @@ public class CycleInteractionUISlider : CycleInteractionUI
 
     public override bool IsTriggered()
     {
+        // print(slider.gameObject);
+        // print(_eventSys.currentSelectedGameObject);
+        // print(slider.gameObject.Equals(_eventSys.currentSelectedGameObject));
         return base.IsTriggered() && slider.gameObject.Equals(_eventSys.currentSelectedGameObject);
     }
     

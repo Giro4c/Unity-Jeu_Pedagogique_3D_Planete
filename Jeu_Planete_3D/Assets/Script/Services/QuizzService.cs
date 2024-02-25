@@ -191,54 +191,54 @@ namespace Script.Services
             endPanel.SetActive(true);
         }
 
-        public string[] GetRestrictableToEnable()
-        {
-            QuestionType qType = GetCurrentQuestionType();
-            if (!correctionDone) // User can answer, correction not started yet
-            {
-                if (qType == QuestionType.Qcu)
-                {
-                    return new []{"Detector Cycle", "SubScript AutoMotion"};
-                }
-                else if (qType == QuestionType.TrueFalse)
-                {
-                    QuestionTrueFalse tmp = (QuestionTrueFalse)quizz.questions[indexCurrentQuestion];
-                    string[] array = new string[0];
-                    if (!tmp.IsOrbitFixed())
-                    {
-                        Array.Resize(ref array, array.Length + 1);
-                        array[array.Length - 1] = "Cycle Orbit";
-                    }
-                    if (!tmp.IsRotationFixed())
-                    {
-                        Array.Resize(ref array, array.Length + 1);
-                        array[array.Length - 1] = "Cycle Rotation";
-                    }
-                    return array;
-                }
-                else if (qType == QuestionType.Manipulation)
-                {
-                    return new[] { "Detector Cycle" };
-                }
-                else return new string[0];
-            }
-            else // Correction done for the current question
-            {
-                if (qType == QuestionType.Qcu)
-                {
-                    return new []{"Detector Cycle", "SubScript AutoMotion"};
-                }
-                else if (qType == QuestionType.TrueFalse)
-                {
-                    return new []{"Detector Cycle", "SubScript AutoMotion"};
-                }
-                else if (qType == QuestionType.Manipulation)
-                {
-                    return new string[0];
-                }
-                else return new string[0];
-            }
-        }
+        // public string[] GetRestrictableToEnable()
+        // {
+        //     QuestionType qType = GetCurrentQuestionType();
+        //     if (!correctionDone) // User can answer, correction not started yet
+        //     {
+        //         if (qType == QuestionType.Qcu)
+        //         {
+        //             return new []{"Detector Cycle", "SubScript AutoMotion"};
+        //         }
+        //         else if (qType == QuestionType.TrueFalse)
+        //         {
+        //             QuestionTrueFalse tmp = (QuestionTrueFalse)quizz.questions[indexCurrentQuestion];
+        //             string[] array = new string[0];
+        //             if (!tmp.IsOrbitFixed())
+        //             {
+        //                 Array.Resize(ref array, array.Length + 1);
+        //                 array[array.Length - 1] = "Cycle Orbit";
+        //             }
+        //             if (!tmp.IsRotationFixed())
+        //             {
+        //                 Array.Resize(ref array, array.Length + 1);
+        //                 array[array.Length - 1] = "Cycle Rotation";
+        //             }
+        //             return array;
+        //         }
+        //         else if (qType == QuestionType.Manipulation)
+        //         {
+        //             return new[] { "Detector Cycle" };
+        //         }
+        //         else return new string[0];
+        //     }
+        //     else // Correction done for the current question
+        //     {
+        //         if (qType == QuestionType.Qcu)
+        //         {
+        //             return new []{"Detector Cycle", "SubScript AutoMotion"};
+        //         }
+        //         else if (qType == QuestionType.TrueFalse)
+        //         {
+        //             return new []{"Detector Cycle", "SubScript AutoMotion"};
+        //         }
+        //         else if (qType == QuestionType.Manipulation)
+        //         {
+        //             return new string[0];
+        //         }
+        //         else return new string[0];
+        //     }
+        // }
         
         public string[] GetRestrictableToDisableAndRestrict()
         {

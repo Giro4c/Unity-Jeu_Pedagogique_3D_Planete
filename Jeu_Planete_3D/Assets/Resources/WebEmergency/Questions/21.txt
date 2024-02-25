@@ -1,5 +1,5 @@
             <p id="Num_Ques">21</p>
-                    <p id="Enoncer">Placer la terre en février à 18h.</p>
+                    <p id="Enonce">Placer la terre en février à 18h.</p>
                     <p id="BonneRepValeur_orbit">0.1524</p>
                     <p id="Marge_Orbit">0.04166</p>
                     <p id="BonneRepValeur_rotation">0.9024</p>

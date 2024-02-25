@@ -4,33 +4,43 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 [Serializable]
-public abstract class PlayerControl: MonoBehaviour, ActivationRestrictable
+public abstract class PlayerControl: MonoBehaviour, IdentifiableRestrictable
 {
-
-    [SerializeField] protected string type;
-    [SerializeField] protected string typeSimplified;
-    [SerializeField] protected InputActionProperty trigger;
-    protected Coroutine routine = null;
     
-    protected bool finished = false;
+    // Interface implementation ---------------
+    [SerializeField] protected string identifier = "None";
     public bool activationRestricted { get; set; } = false;
-    
-    [SerializeField] protected bool registerable;
-    
-    [SerializeField] public string[] scriptsToEnable;
-    [SerializeField] public string[] scriptsToDisable;
     
     public void Activate(bool activation)
     {
         enabled = activation;
     }
 
-    public string GetControlType()
+    public string GetIdentifier()
     {
-        return type;
+        return identifier;
     }
+
+    public bool MatchRegex(string[] identifiers)
+    {
+        return IdentifiableRestrictable.MatchRegex(GetIdentifier(), identifiers);
+    }
+
+    // ----------------------------------------------
+    [SerializeField] protected string typeSimplified;
+    [SerializeField] protected InputActionProperty trigger;
+    protected Coroutine routine = null;
+    protected bool finished = false;
+        
+    [SerializeField] protected bool registerable;
+    
+    [FormerlySerializedAs("scriptsToEnable")] [SerializeField] public string[] toEnable;
+    [FormerlySerializedAs("scriptsToDisable")] [SerializeField] public string[] toDisable;
+    
+    
     
     public string GetControlTypeSimplified()
     {

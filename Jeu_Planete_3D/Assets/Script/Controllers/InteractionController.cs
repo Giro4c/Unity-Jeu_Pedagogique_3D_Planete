@@ -15,6 +15,7 @@ namespace Script.Controllers
         private void Start()
         {
             ActivateAll();
+            
         }
 
         private void Update()
@@ -31,12 +32,12 @@ namespace Script.Controllers
                 {
                     inMemoryQuestionIndex = _quizzService.indexCurrentQuestion;
                     inMemoryCorrectionDone = _quizzService.correctionDone;
-                    _interactionChecker.NewRestrictions(_quizzService.GetRestrictableToEnable(), _quizzService.GetRestrictableToDisableAndRestrict());
+                    _interactionChecker.NewRestrictions(_quizzService.GetRestrictableToDisableAndRestrict());
                 }
                 else if (inMemoryCorrectionDone != _quizzService.correctionDone)
                 {
                     inMemoryCorrectionDone = _quizzService.correctionDone;
-                    _interactionChecker.NewRestrictions(_quizzService.GetRestrictableToEnable(), _quizzService.GetRestrictableToDisableAndRestrict());
+                    _interactionChecker.NewRestrictions(_quizzService.GetRestrictableToDisableAndRestrict());
                 }
             }
             _interactionChecker.ManageControls();
@@ -50,38 +51,11 @@ namespace Script.Controllers
 
         public void ActivateAll()
         {
-            _interactionChecker.NewRestrictions(new []{ "Detector ", "SubScript " }, new string[0]);
+            _interactionChecker.NewRestrictions(new string[0]);
         }
         public void DeactivateAll()
         {
-            _interactionChecker.NewRestrictions(new string[0], new []{ "Detector Cycle", "SubScript AutoMotion" });
-        }
-        
-        public void ActivateDetector()
-        {
-            _interactionChecker.NewRestrictions(new []{ "Detector Cycle" }, new string[0]);
-        }
-        public void DeactivateDetector()
-        {
-            _interactionChecker.NewRestrictions(new string[0], new []{ "Detector Cycle" });
-        }
-        
-        public void ActivateAutoMotion()
-        {
-            _interactionChecker.NewRestrictions(new []{ "SubScript AutoMotion" }, new string[0]);
-        }
-        public void DeactivateAutoMotion()
-        {
-            _interactionChecker.NewRestrictions(new string[0], new []{ "SubScript AutoMotion" });
-        }
-
-        public void DeactivateAllOrbitRelated()
-        {
-            _interactionChecker.NewRestrictions(new string[0], new []{ "Cycle Orbit" });
-        }
-        public void DeactivateAllRotationCycleRelated()
-        {
-            _interactionChecker.NewRestrictions(new string[0], new []{ "Cycle Rotation" });
+            _interactionChecker.NewRestrictions(new []{ "Detector Cycle", "SubScript AutoMotion" });
         }
         
     }

@@ -1,7 +1,11 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Script.WebData;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Script.Services
 {
@@ -11,121 +15,179 @@ namespace Script.Services
         [SerializeField] private PlayerControl[] playerControls;
         private int indexCurrentActivatedControl = -1;
 
-        public string[] restrictionsToEnable { get; private set; } = new string[0];
-        public string[] restrictionsToDisable { get; private set; } = new string[0];
+        public string[] restrictions { get; private set; } = new string[0];
 
-        // private IdentifiableRestrictable[] scripts;
-        private Tuple<string, Boolean, MonoBehaviour>[] associationScripts = new Tuple<string, bool, MonoBehaviour>[0];
+        private IdentifiableRestrictable[] scripts;
+        // private Tuple<string, Boolean, MonoBehaviour>[] scripts = new Tuple<string, bool, MonoBehaviour>[0];
 
-        // [SerializeField] [ExpectedType(typeof(WebDatabaseAccessInterface))]
-        // private UnityEngine.Object _linkWeb;
-        // private WebDatabaseAccessInterface linkWeb => _linkWeb as WebDatabaseAccessInterface;
         [SerializeReference] private WebDatabaseAccess linkWeb;
 
-        
+
         /// <summary>
         /// <para>
-        /// Initialize the service class based on the values stored in the 3 serializable arrays. The items of a Tuple number X are :<br/>
-        /// - string from identifiers : the identifier of a script<br/>
-        /// - bool from restrictionsActivation : whether or not the script's activation is restricted<br/>
-        /// - MonoBehavior from scripts : the script<br/>
-        /// Each at the index X in their respective array.
+        /// Initialize scripts array based on all the instances of IdentifiableRestrictable present in the active scene.<br/>
+        /// Excludes IdentifiableRestrictable classes that are subclasses of PlayerControl.
         /// </para>
         /// </summary>
-        /// <param name="identifiers">Contains the identifier of an associated script</param>
-        /// <param name="restrictionsActivation">Contains the activation restriction of an associated script</param>
-        /// <param name="scripts">Contains the associated script</param>
-        /// <exception cref="Exception">The arrays are not of the same size. The Tuple array cannot be initialized.</exception>
-        public void Initialize(string[] identifiers, bool[] restrictionsActivation, MonoBehaviour[] scripts)
+        public void Initialize()
         {
-            // Verify that all arrays are of the same size. If not then throw an exception
-            if (identifiers.Length != restrictionsActivation.Length ||
-                identifiers.Length != scripts.Length)
-                throw new Exception(
-                    "Arrays identifiers, restrictionsActivation and scripts must be of same length.");
+            IdentifiableRestrictable[] array = Array.Empty<IdentifiableRestrictable>();
             
-            // Initialize size of Tuple array
-            Tuple<string, Boolean, MonoBehaviour>[] array = new Tuple<string, Boolean, MonoBehaviour>[identifiers.Length];
+            // Get all root gameObjects of the active scene
+            List<GameObject> rootObjectsInScene = new List<GameObject>();
+            Scene scene = SceneManager.GetActiveScene();
+            scene.GetRootGameObjects(rootObjectsInScene);
             
-            // Fill the Tuple array
-            for (int i = 0; i < identifiers.Length; ++i)
+            // Look for all IdentifiableRestrictable classes in the scene
+            foreach (GameObject o in rootObjectsInScene)
             {
-                array[i] = new Tuple<string, bool, MonoBehaviour>(identifiers[i],
-                    restrictionsActivation[i], scripts[i]);
+                IdentifiableRestrictable[] added = o.GetComponentsInChildren<IdentifiableRestrictable>();
+                array = array.Concat(added).ToArray();
             }
 
-            associationScripts = array;
+            // Remove Player Controls from array
+            List<IdentifiableRestrictable> list = array.ToList();
+            while (RemoveAPlayerControl(list))
+            {
+                Debug.Log("List new size : " + list.Count);
+            }
+
+            // Set the scripts attribute to the created array
+            scripts = list.ToArray();
+            
+            // Debugging :
+            // Debug.Log("Init interactions checking. Array IdentifiableRestrictable Length : " + array.Length);
+            // foreach (IdentifiableRestrictable iRestrictable in scripts)
+            // {
+            //     Debug.Log(iRestrictable.GetType().Name);
+            // }
         }
-        
-        public void NewRestrictions(string[] resEnable, string[] resDisable)
+
+        private bool RemoveAPlayerControl(List<IdentifiableRestrictable> list)
         {
-            bool newRs = AreNewRestrictions(resEnable, resDisable);
-            restrictionsToEnable = resEnable;
-            restrictionsToDisable = resDisable;
+            foreach (IdentifiableRestrictable id in list)
+            {
+                if (id.GetType().IsSubclassOf(typeof(PlayerControl)))
+                {
+                    Debug.Log("Object of class Player Control : " + id.GetType().Name);
+                    list.Remove(id);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void NewRestrictions(string[] newRestrictions)
+        {
+            bool newRs = AreNewRestrictions(newRestrictions);
+            restrictions = newRestrictions;
             if (newRs)
             {
                 ApplyRestrictions();
             }
         }
 
-        private bool AreNewRestrictions(string[] resEnable, string[] resDisable)
+        private bool AreNewRestrictions(string[] newRestrictions)
         {
-            
             // Verify if same size
-            if (resEnable.Length != restrictionsToEnable.Length ||
-                resDisable.Length != restrictionsToDisable.Length) return true;
+            if (newRestrictions.Length != restrictions.Length) return true;
             
-            // Verify all elements identical in enable restrictions
-            for (int i = 0; i < restrictionsToEnable.Length; ++i)
+            // Verify all elements identical in restrictions
+            for (int i = 0; i < restrictions.Length; ++i)
             {
-                if (resEnable[i] != restrictionsToEnable[i]) return true;
+                if (newRestrictions[i] != restrictions[i]) return true;
             }
-            // Verify all elements identical in disable restrictions
-            for (int i = 0; i < restrictionsToDisable.Length; ++i)
-            {
-                if (resDisable[i] != restrictionsToDisable[i]) return true;
-            }
-            
             // Everything is identical
             return false;
         }
         
         public void ApplyRestrictions()
         {
-            ApplyRestrictions(true, restrictionsToEnable);
-            ApplyRestrictions(false, restrictionsToDisable);
+            ApplyRestrictions(restrictions);
         }
         
-        public void ApplyRestrictions(bool enabling, string[] restrictions)
+        // public void ApplyRestrictions(string[] restrictionsToApply)
+        // {
+        //     Debug.Log("Applying Restrictions :");
+        //     Debug.Log(restrictionsToApply);
+        //     foreach (string restrictionType in restrictionsToApply)
+        //     {
+        //         if (restrictionType.Contains("Detector"))
+        //         {
+        //             Debug.Log("Detector");
+        //             RestrictDetection(restrictionType.Replace("Detector ", "").Split(" "));
+        //         }
+        //         else if (restrictionType.Contains("SubScript"))
+        //         {
+        //             Debug.Log("SubScript");
+        //             RestrictSubscripts(restrictionType.Replace("SubScript ", "").Split(" "));
+        //             // ActivationSubScripts(enabling, restrictionType.Replace("SubScript ", "").Split(" "));
+        //         }
+        //         else
+        //         {
+        //             Debug.Log("Any");
+        //             RestrictionsAll(restrictionType.Split(" "));
+        //         }
+        //     }
+        // }
+        
+        public void ApplyRestrictions(string[] restrictionsToApply)
         {
             Debug.Log("Applying Restrictions :");
-            Debug.Log(enabling);
-            Debug.Log(restrictions);
-            foreach (string restrictionType in restrictions)
+            Debug.Log(restrictionsToApply);
+            int i = 0;
+            
+            // PlayerControls
+            foreach (PlayerControl control in playerControls)
             {
-                if (restrictionType.Contains("Detector"))
+                for (i = 0; i < restrictionsToApply.Length; ++i)
                 {
-                    Debug.Log("Detector");
-                    ActivationDetectorFor(enabling, restrictionType.Replace("Detector ", "").Split(" "));
+                    if (restrictions[i].Contains("SubScript")) continue;
+                    if (control.MatchRegex(restrictionsToApply[i].Replace("Detector", "").Split(" ")))
+                    {
+                        control.Activate(false);
+                        control.activationRestricted = true;
+                        break;
+                    }
                 }
-                else if (restrictionType.Contains("SubScript"))
+
+                if (i >= restrictionsToApply.Length)
                 {
-                    Debug.Log("SubScript");
-                    ActivationRestrictionsSubscripts(enabling, restrictionType.Replace("SubScript ", "").Split(" "));
-                    // ActivationSubScripts(enabling, restrictionType.Replace("SubScript ", "").Split(" "));
-                }
-                else
-                {
-                    Debug.Log("Any");
-                    ActivationAllFor(enabling, restrictionType.Split(" "));
+                    control.activationRestricted = false;
                 }
             }
+            
+            // Subscripts
+            foreach (IdentifiableRestrictable script in scripts)
+            {
+                for (i = 0; i < restrictionsToApply.Length; ++i)
+                {
+                    if (restrictions[i].Contains("Detector")) continue;
+                    if (script.MatchRegex(restrictionsToApply[i].Replace("SubScript", "").Split(" ")))
+                    {
+                        script.Activate(false);
+                        script.activationRestricted = true;
+                        break;
+                    }
+                }
+
+                if (i >= restrictionsToApply.Length)
+                {
+                    script.activationRestricted = false;
+                    if (CanBeActivated(script))
+                    {
+                        script.Activate(true);
+                    }
+                }
+            }
+            
         }
         
         public void ManageControls()
         {
-            Debug.Log("Index Current Activated : " + indexCurrentActivatedControl);
-            Debug.Log("Player Control : " + playerControls.Length);
+            // Debug.Log("Index Current Activated : " + indexCurrentActivatedControl);
+            // Debug.Log("Player Control : " + playerControls.Length);
 
             // ApplyRestrictions();
 
@@ -134,7 +196,7 @@ namespace Script.Services
                 if (playerControls[indexCurrentActivatedControl].IsFinished() || !playerControls[indexCurrentActivatedControl].enabled)
                 {
                     // Launch disable player control procedure
-                    EnablingPlayerControlProcedure(playerControls[indexCurrentActivatedControl], false);
+                    ActivationPlayerControl(playerControls[indexCurrentActivatedControl], false);
                 
                     // Reset the index for the current activated control
                     indexCurrentActivatedControl = -1;
@@ -155,14 +217,14 @@ namespace Script.Services
                     if (playerControls[i].IsTriggered() && !playerControls[i].enabled)
                     {
                         // Launch enable player control procedure
-                        EnablingPlayerControlProcedure(playerControls[i], true);
+                        ActivationPlayerControl(playerControls[i], true);
                         
                         // Activate the player control
-                        playerControls[i].enabled = true;
+                        // playerControls[i].enabled = true;
                         
                         // Actualize the index for the current control activated
                         indexCurrentActivatedControl = i;
-                        print("Player control activated : " + playerControls[i].GetControlType() + " // index : " + i);
+                        print("Player control activated : " + playerControls[i].GetIdentifier() + " // index : " + i);
                         
                         // Leave the loop to avoid enabling 2 controls at the same time (only 1 control activated at once)
                         break;
@@ -178,7 +240,7 @@ namespace Script.Services
             {
                 if (!control.IsFinished()) continue;
                 Debug.Log(control.IsFinished());
-                Debug.Log(control.GetControlType());
+                Debug.Log(control.GetIdentifier());
                 control.SetFinished(false);
                 if (control.IsRegisterable() && control.GetType().IsSubclassOf(typeof(CycleInteraction)))
                 {
@@ -189,11 +251,27 @@ namespace Script.Services
             }
         }
 
+        public void RestrictDetection(string[] typesRegex)
+        {
+            foreach (PlayerControl control in playerControls)
+            {
+                if (control.MatchRegex(typesRegex))
+                {
+                    control.enabled = false;
+                    control.activationRestricted = true;
+                }
+                else
+                {
+                    control.activationRestricted = false;
+                }
+            }
+        }
+        
         public void ActivationDetectorFor(bool activationDetector, string[] typesRegex)
         {
             foreach (PlayerControl control in playerControls)
             {
-                if (MatchIdentifiers(control.GetControlType(), typesRegex))
+                if (control.MatchRegex(typesRegex))
                 {
                     if (!activationDetector)
                     {
@@ -204,13 +282,13 @@ namespace Script.Services
                 }
 
             }
-
         }
         
-        // public void ActivationSubScriptsFor(bool activation, string[] typesRegex)
-        // {
-        //     SetActivation(activation, typesRegex, 2);
-        // }
+        public void RestrictionsAll(string[] typesRegex)
+        {
+            RestrictDetection(typesRegex);
+            RestrictSubscripts(typesRegex);
+        }
         
         public void ActivationAllFor(bool activation, string[] typesRegex)
         {
@@ -221,18 +299,41 @@ namespace Script.Services
         
         public void ActivationRestrictionsSubscripts(bool restricted, string[] regexIdentifiers)
         {
-            for (int i = 0; i < associationScripts.Length; ++i)
+            for (int i = 0; i < scripts.Length; ++i)
             {
-                if (MatchIdentifiers(associationScripts[i].Item1, regexIdentifiers))
+                if (scripts[i].MatchRegex(regexIdentifiers))
                 {
-                    associationScripts[i] = new Tuple<string, bool, MonoBehaviour>(associationScripts[i].Item1, restricted, associationScripts[i].Item3);
+                    scripts[i].activationRestricted = restricted;
                     if (restricted)
                     {
-                        associationScripts[i].Item3.enabled = false;
+                        scripts[i].Activate(false);
                     }
-                    else if (CanBeActivated(associationScripts[i].Item1, false))
+                    // The script is unrestricted
+                    else if (CanBeActivated(scripts[i]))
                     {
-                        associationScripts[i].Item3.enabled = true;
+                        scripts[i].Activate(true);
+                    }
+                }
+            }
+        }
+        
+        public void RestrictSubscripts(string[] regexIdentifiers)
+        {
+            foreach (IdentifiableRestrictable script in scripts)
+            {
+                if (script.MatchRegex(regexIdentifiers))
+                {
+                    script.activationRestricted = true;
+                    script.Activate(false);
+                    // The script is unrestricted
+                    
+                }
+                else
+                {
+                    script.activationRestricted = false;
+                    if (CanBeActivated(script))
+                    {
+                        script.Activate(true);
                     }
                 }
             }
@@ -240,83 +341,91 @@ namespace Script.Services
     
         public void ActivationSubScripts(bool activation, string[] regexIdentifiers)
         {
-            for (int i = 0; i < associationScripts.Length; ++i)
+            for (int i = 0; i < scripts.Length; ++i)
             {
-                if (associationScripts[i].Item2) continue;
-                if (MatchIdentifiers(associationScripts[i].Item1, regexIdentifiers))
+                if (scripts[i].activationRestricted) continue;
+                if (scripts[i].MatchRegex(regexIdentifiers))
                 {
-                    associationScripts[i].Item3.enabled = activation;
+                    scripts[i].Activate(activation);
                 }
             }
-        }
-    
-        public static bool MatchIdentifiers(string name, string[] identifiers)
-        {
-            foreach (string identifier in identifiers)
-            {
-                if (!name.Contains(identifier)) return false;
-            }
-
-            return true;
         }
 
         /// <summary>
         /// Verifies if a script whose name is put in the parameters is included in the restrictions of a player control. <br/>
         /// </summary>
-        /// <param name="name">The name associated to the script</param>
+        /// <param name="script">The script we want to verify the association</param>
         /// <param name="currentControl">The player control you want to verify uses the script</param>
         /// <returns>
         /// Returns 0 if there is no association.<br/>
         /// Returns 1 if the association is in the ToEnable array of the control.<br/>
         /// Returns 2 if the association is in the ToDisable array of the control.
         /// </returns>
-        public static int AssociatedToControl(string name, PlayerControl currentControl)
+        public static int AssociatedToControl(IdentifiableRestrictable script, PlayerControl currentControl)
         {
-            foreach (string idRegex in currentControl.scriptsToEnable)
+            foreach (string idRegex in currentControl.toEnable)
             {
-                if (MatchIdentifiers(name, idRegex.Split(" "))) return 1;
+                if (script.MatchRegex(idRegex.Split(" "))) return 1;
             }
-            foreach (string idRegex in currentControl.scriptsToDisable)
+            foreach (string idRegex in currentControl.toDisable)
             {
-                if (MatchIdentifiers(name, idRegex.Split(" "))) return 2;
+                if (script.MatchRegex(idRegex.Split(" "))) return 2;
             }
 
             return 0;
         }
 
-        public bool CanBeActivated(string nameScript, bool currentlyRestricted)
+        public bool CanBeActivated(IdentifiableRestrictable script)
         {
-            if (currentlyRestricted) return false;
+            if (script.activationRestricted) return false;
             if (indexCurrentActivatedControl != -1 && playerControls[indexCurrentActivatedControl].enabled)
             {
                 int associationToCurrentControl =
-                    AssociatedToControl(nameScript, playerControls[indexCurrentActivatedControl]);
+                    AssociatedToControl(script, playerControls[indexCurrentActivatedControl]);
                 if (associationToCurrentControl == 2) return false;
             }
 
             return true;
         }
 
-        public void EnablingPlayerControlProcedure(PlayerControl control, bool enabling)
+        public void ActivationPlayerControl(PlayerControl control, bool enabling)
         {
-            foreach (Tuple<string, Boolean, MonoBehaviour> script in associationScripts)
+            foreach (IdentifiableRestrictable script in scripts)
             {
-                if (script.Item2) continue;
-                int association = AssociatedToControl(script.Item1, control);
-                if (association == 1)
+                if (script.activationRestricted) continue;
+                int i;
+                for (i = 0; i < control.toEnable.Length; ++i)
                 {
-                    script.Item3.enabled = enabling;
+                    if (script.MatchRegex(control.toEnable[i].Split(" ")))
+                    {
+                        script.Activate(enabling);
+                        Debug.Log(script.GetIdentifier() + " affected.");
+                        break;
+                    }
                 }
-                else if (association == 2)
+                
+                if (i < control.toEnable.Length) continue;
+                Debug.Log(script.GetIdentifier() + " not in to enable list.");
+                for (i = 0; i < control.toDisable.Length; ++i)
                 {
-                    script.Item3.enabled = !enabling;
+                    if (script.MatchRegex(control.toDisable[i].Split(" ")))
+                    {
+                        script.Activate(!enabling);
+                        Debug.Log(script.GetIdentifier() + " affected.");
+                        break;
+                    }
                 }
+                if (i < control.toDisable.Length) continue;
+                Debug.Log(script.GetIdentifier() + " not in to disable list.");
+                
             }
+            Debug.Log( "Control : " + control.GetIdentifier() + " activated.");
+            control.enabled = enabling;
         }
         
-        // public void ActivationPlayerControl(PlayerControl control, bool enabling)
+        // public void EnablingPlayerControlProcedure(PlayerControl control, bool enabling)
         // {
-        //     foreach (Tuple<string, Boolean, MonoBehaviour> script in associationScripts)
+        //     foreach (Tuple<string, Boolean, MonoBehaviour> script in scripts)
         //     {
         //         if (script.Item2) continue;
         //         int association = AssociatedToControl(script.Item1, control);
@@ -331,18 +440,7 @@ namespace Script.Services
         //     }
         // }
         
-        // public void EnablingPlayerControlProcedure2(PlayerControl control, bool enabling)
-        // {
-        //     foreach (string toEnable in control.scriptsToEnable2)
-        //     {
-        //         ActivationSubScripts(enabling, toEnable.Split(" "));
-        //     }
-        //     foreach (string toDisable in control.scriptsToDisable2)
-        //     {
-        //         ActivationSubScripts(enabling, toDisable.Split(" "));
-        //     }
-        // }
-
+        
     }
     
     
