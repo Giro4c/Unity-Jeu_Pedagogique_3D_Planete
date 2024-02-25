@@ -3947,7 +3947,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 784193212}
-  - component: {fileID: 784193211}
   m_Layer: 5
   m_Name: Panel Menu Pause
   m_TagString: Untagged
@@ -3955,18 +3954,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &784193211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784193210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf5f971d5b27442958db8551a2b0eaf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &784193212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6601,7 +6588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
-  pauseMenu: {fileID: 1694776739}
+  pauseMenu: {fileID: 784193210}
   displayers:
   - {fileID: 1439746479}
   - {fileID: 1439746478}
