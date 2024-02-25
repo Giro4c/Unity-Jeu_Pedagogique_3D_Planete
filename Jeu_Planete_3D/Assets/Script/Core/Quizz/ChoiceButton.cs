@@ -13,19 +13,19 @@ public class ChoiceButton : MonoBehaviour
     public Choice choice { get; set; } = new Choice("", false);
     
     // Visual
-    private Image _image;
+    [SerializeField] private Image _image;
     [SerializeField] private TextMeshProUGUI _text;
-    private Button _button;
+    [SerializeField] private Button _button;
     
     // Colors
     [SerializeField] private Color _selectedColor = Color.yellow;
-    private Color _defaultColor;
-
+    private Color _defaultColor = Color.white;
+    
     private void Start()
     {
-        _button = gameObject.GetComponent<Button>();
-        _text = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        _image = gameObject.GetComponent<Image>();
+        // _button = gameObject.GetComponent<Button>();
+        // _text = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        // _image = gameObject.GetComponent<Image>();
         _defaultColor = _image.color;
     }
 

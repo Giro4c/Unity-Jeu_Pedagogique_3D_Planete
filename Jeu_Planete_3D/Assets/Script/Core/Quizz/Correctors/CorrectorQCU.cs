@@ -9,6 +9,8 @@ public class CorrectorQCU : QuestionCorrector<QuestionQCU>
     public CorrectorQCU(QuestionQCU question, ChoiceButton[] choices) : base(question)
     {
         this.choices = choices;
+        // DebugChoicesButtons();
+        ResetChoiceSelection();
     }
 
     public override void VerifyCorrect()
@@ -53,6 +55,21 @@ public class CorrectorQCU : QuestionCorrector<QuestionQCU>
                 choices[indexChoice].ChangeColorImage(Color.green);
             }
         }
+        // DebugChoicesButtons();
+
+    }
+
+    private void DebugChoicesButtons()
+    {
+        Debug.Log("Start Debug correction QCU");
+        Debug.Log("Verify choices array : Length = " + choices.Length);
+        foreach (ChoiceButton choice in choices)
+        {
+            Debug.Log("Value : " + choice.choice.value + " --- Correct ? " + choice.choice.correct + " --- Selected ? " + choice.selected);
+            Debug.Log("Button : " + choice.GetButton());
+        }
+        Debug.Log("End Debug correction QCU");
+
     }
 
     public void ResetChoiceSelection()
@@ -61,6 +78,15 @@ public class CorrectorQCU : QuestionCorrector<QuestionQCU>
         {
             choices[indexChoice].ActivationButton(true);
             choices[indexChoice].ResetSelection();
+        }
+    }
+    
+    public static void ResetChoicesSelection(ChoiceButton[] choiceButtons)
+    {
+        for (int indexChoice = 0; indexChoice < choiceButtons.Length; ++indexChoice)
+        {
+            choiceButtons[indexChoice].ActivationButton(true);
+            choiceButtons[indexChoice].ResetSelection();
         }
     }
     

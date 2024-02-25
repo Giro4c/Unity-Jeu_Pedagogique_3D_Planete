@@ -16,6 +16,7 @@ public class ShowQCU : ShowQuestion
         QuestionQCU questionQcu = (QuestionQCU) question;
         for (int i = 0; i < questionQcu.choices.Length; ++i)
         {
+            choices[i].choice = questionQcu.choices[i];
             choices[i].GetText().text = questionQcu.choices[i].value;
         }
         

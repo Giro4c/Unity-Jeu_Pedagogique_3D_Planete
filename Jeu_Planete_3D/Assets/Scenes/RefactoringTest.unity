@@ -2181,7 +2181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4188d0531c489bb1781b4701ae8769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 421098099}
   _text: {fileID: 1642092585}
+  _button: {fileID: 421098098}
   _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &427586037
 GameObject:
@@ -3306,7 +3308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4188d0531c489bb1781b4701ae8769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 559902602}
   _text: {fileID: 1415594436}
+  _button: {fileID: 559902601}
   _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &595972663
 GameObject:
@@ -6502,8 +6506,8 @@ GameObject:
   - component: {fileID: 1260855246}
   - component: {fileID: 1260855251}
   - component: {fileID: 1260855248}
-  - component: {fileID: 1260855250}
   - component: {fileID: 1260855252}
+  - component: {fileID: 1260855253}
   m_Layer: 0
   m_Name: Services
   m_TagString: Untagged
@@ -6541,40 +6545,6 @@ MonoBehaviour:
   startPanel: {fileID: 2052843271}
   endPanel: {fileID: 1015984656}
   linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
---- !u!114 &1260855250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260855245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2ae995c5f14efba6fc3c066aaf1781, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _quizzService: {fileID: 1260855248}
-  associatedTypes: 000000000100000002000000
-  associatedShows:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  associatedQuestionPanels:
-  - {fileID: 595972663}
-  - {fileID: 1881647925}
-  - {fileID: 997870481}
-  _interactionChecking: {fileID: 1260855252}
-  identifiers:
-  - Planet Terre Orbit AutoMotion
-  - Planet Terre Rotation AutoMotion
-  - Planet Terre Orbit UI Slider Sync
-  - Planet Terre Rotation UI Slider Sync
-  restrictionsActivation: 00000000
-  scripts:
-  - {fileID: 129132501}
-  - {fileID: 1680164450}
-  - {fileID: 129132504}
-  - {fileID: 1680164452}
 --- !u!114 &1260855251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6609,6 +6579,40 @@ MonoBehaviour:
   - {fileID: 1575760492}
   - {fileID: 1575760491}
   linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
+--- !u!114 &1260855253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260855245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2ae995c5f14efba6fc3c066aaf1781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _quizzService: {fileID: 1260855248}
+  associatedTypes: 000000000100000002000000
+  associatedShows:
+  - {fileID: 1095285418}
+  - {fileID: 1095285417}
+  - {fileID: 1095285419}
+  associatedQuestionPanels:
+  - {fileID: 595972663}
+  - {fileID: 1881647925}
+  - {fileID: 997870481}
+  _interactionChecking: {fileID: 1260855252}
+  identifiers:
+  - Planet Terre Orbit AutoMotion
+  - Planet Terre Rotation AutoMotion
+  - Planet Terre Orbit UI Slider Sync
+  - Planet Terre Rotation UI Slider Sync
+  restrictionsActivation: 00000000
+  scripts:
+  - {fileID: 129132501}
+  - {fileID: 1680164450}
+  - {fileID: 129132504}
+  - {fileID: 1680164452}
 --- !u!1 &1329836995
 GameObject:
   m_ObjectHideFlags: 0
@@ -7275,7 +7279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4188d0531c489bb1781b4701ae8769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 1443356913}
   _text: {fileID: 542050596}
+  _button: {fileID: 1443356912}
   _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1448704256
 GameObject:
@@ -7764,7 +7770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4188d0531c489bb1781b4701ae8769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 1480072637}
   _text: {fileID: 2053064275}
+  _button: {fileID: 1480072636}
   _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1505173719
 GameObject:
@@ -8173,7 +8181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4188d0531c489bb1781b4701ae8769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 1540771540}
   _text: {fileID: 1026112859}
+  _button: {fileID: 1540771539}
   _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1550917492
 GameObject:
@@ -10857,7 +10867,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4188d0531c489bb1781b4701ae8769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 1884723515}
   _text: {fileID: 934720424}
+  _button: {fileID: 1884723514}
   _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1925352108
 GameObject:

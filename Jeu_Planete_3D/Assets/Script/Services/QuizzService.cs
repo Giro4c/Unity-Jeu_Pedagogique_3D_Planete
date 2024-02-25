@@ -59,6 +59,20 @@ namespace Script.Services
             }
 
             associationsQuestions = array;
+            // DebugInitialize(array);
+        }
+
+        private void DebugInitialize(Tuple<QuestionType, ShowQuestion, GameObject>[] array)
+        {
+            Debug.Log("Start Debug Init array tuple quizz service");
+            Debug.Log("Length : " + array.Length);
+            foreach (Tuple<QuestionType, ShowQuestion, GameObject> tuple in array)
+            {
+                Debug.Log("Item 1 : " + tuple.Item1);
+                Debug.Log("Item 2 : " + tuple.Item2.GetType().Name);
+                Debug.Log("Item 3 : " + tuple.Item3);
+            }
+            Debug.Log("End Debug Init array tuple quizz service");
         }
         
         public IEnumerator InitQuizz(int nbQcu, int nbTrueFalse, int nbManipulation)
@@ -77,14 +91,16 @@ namespace Script.Services
                 yield return dataQuestion.coroutine;
                 questions[i] = dataQuestion.result;
             }
-            
-            DebugQuizz();
+
+            quizz = new Quizz(questions, false);
+            // DebugQuizz();
         }
 
         public void DebugQuizz()
         {
             print("Quizz Verif");
             print(quizz.started);
+            print(quizz.questions.Length);
             foreach (Question q in quizz.questions)
             {
                 print("Question :");
@@ -120,6 +136,7 @@ namespace Script.Services
                 QuestionQCU question = (QuestionQCU) quizz.questions[indexCurrentQuestion];
                 ShowQCU show = (ShowQCU) GetAssociatedShowQuestion(questionType);
                 show.ShowTheQuestion(question);
+                DebugShowQuestionChoicesButtons(show.GetChoices());
                 corrector = new CorrectorQCU(question, show.GetChoices());
             }
             
@@ -141,6 +158,19 @@ namespace Script.Services
             
             ShowAssociatedPanel(questionType);
             
+        }
+        
+        private void DebugShowQuestionChoicesButtons(ChoiceButton[] choices)
+        {
+            Debug.Log("Start Debug show QCU");
+            Debug.Log("Verify choices array : Length = " + choices.Length);
+            foreach (ChoiceButton choice in choices)
+            {
+                Debug.Log("Value : " + choice.choice.value + " --- Correct ? " + choice.choice.correct + " --- Selected ? " + choice.selected);
+                Debug.Log("Button : " + choice.GetButton());
+            }
+            Debug.Log("End Debug show QCU");
+
         }
 
         private int GetIndexAssociation(QuestionType type)
