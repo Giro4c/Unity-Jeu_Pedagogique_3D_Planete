@@ -23,9 +23,6 @@ public class ChoiceButton : MonoBehaviour
     
     private void Start()
     {
-        // _button = gameObject.GetComponent<Button>();
-        // _text = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        // _image = gameObject.GetComponent<Image>();
         _defaultColor = _image.color;
     }
 

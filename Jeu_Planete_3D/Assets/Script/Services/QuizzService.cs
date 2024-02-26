@@ -20,9 +20,6 @@ namespace Script.Services
         public int indexCurrentQuestion { get; private set; } = 0;
         public bool correctionDone { get; private set; } = false;
 
-        // [SerializeField] [ExpectedType(typeof(WebDatabaseAccessInterface))]
-        // private UnityEngine.Object _linkWeb;
-        // private WebDatabaseAccessInterface linkWeb => _linkWeb as WebDatabaseAccessInterface;
         [SerializeReference] private WebDatabaseAccess linkWeb;
 
         
@@ -114,6 +111,8 @@ namespace Script.Services
         public void StartQuizz()
         {
             startPanel.SetActive(false);
+            quizz.started = true;
+            correctionDone = false;
             CurrentQuestion();
         }
 
@@ -136,7 +135,7 @@ namespace Script.Services
                 QuestionQCU question = (QuestionQCU) quizz.questions[indexCurrentQuestion];
                 ShowQCU show = (ShowQCU) GetAssociatedShowQuestion(questionType);
                 show.ShowTheQuestion(question);
-                DebugShowQuestionChoicesButtons(show.GetChoices());
+                // DebugShowQuestionChoicesButtons(show.GetChoices());
                 corrector = new CorrectorQCU(question, show.GetChoices());
             }
             
@@ -272,6 +271,7 @@ namespace Script.Services
         
         public string[] GetRestrictableToDisableAndRestrict()
         {
+            if (indexCurrentQuestion < 0 || indexCurrentQuestion >= quizz.questions.Length) return new string[0];
             QuestionType qType = GetCurrentQuestionType();
             if (!correctionDone) // User can answer, correction not started yet
             {
@@ -285,13 +285,15 @@ namespace Script.Services
                     string[] array = new string[0];
                     if (tmp.IsOrbitFixed())
                     {
-                        Array.Resize(ref array, array.Length + 1);
-                        array[array.Length - 1] = "Cycle Orbit";
+                        Array.Resize(ref array, array.Length + 2);
+                        array[array.Length - 2] = "Detector Cycle Orbit";
+                        array[array.Length - 1] = "AutoMotion Cycle Orbit";
                     }
                     if (tmp.IsRotationFixed())
                     {
-                        Array.Resize(ref array, array.Length + 1);
-                        array[array.Length - 1] = "Cycle Rotation";
+                        Array.Resize(ref array, array.Length + 2);
+                        array[array.Length - 2] = "Detector Cycle Rotation";
+                        array[array.Length - 1] = "AutoMotion Cycle Rotation";
                     }
 
                     return array;
@@ -324,6 +326,7 @@ namespace Script.Services
         public void StartCorrection()
         {
             corrector.Correct();
+            correctionDone = true;
         }
 
         public void RegisterUserCurrentAnswerInDatabase()

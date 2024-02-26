@@ -49,7 +49,7 @@ namespace Script.Services
             List<IdentifiableRestrictable> list = array.ToList();
             while (RemoveAPlayerControl(list))
             {
-                Debug.Log("List new size : " + list.Count);
+                // Debug.Log("List new size : " + list.Count);
             }
 
             // Set the scripts attribute to the created array
@@ -69,7 +69,7 @@ namespace Script.Services
             {
                 if (id.GetType().IsSubclassOf(typeof(PlayerControl)))
                 {
-                    Debug.Log("Object of class Player Control : " + id.GetType().Name);
+                    // Debug.Log("Object of class Player Control : " + id.GetType().Name);
                     list.Remove(id);
                     return true;
                 }
@@ -80,11 +80,21 @@ namespace Script.Services
 
         public void NewRestrictions(string[] newRestrictions)
         {
+            
             bool newRs = AreNewRestrictions(newRestrictions);
             restrictions = newRestrictions;
             if (newRs)
             {
                 ApplyRestrictions();
+            }
+        }
+
+        private void DebugNewRestrictions(string[] newRestrictions)
+        {
+            Debug.Log("New Restrictions : ");
+            foreach (var VARIABLE in newRestrictions)
+            {
+                Debug.Log(VARIABLE);
             }
         }
 

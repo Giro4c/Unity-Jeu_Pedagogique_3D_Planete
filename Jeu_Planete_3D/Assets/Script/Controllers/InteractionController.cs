@@ -30,12 +30,14 @@ namespace Script.Controllers
             {
                 if (inMemoryQuestionIndex != _quizzService.indexCurrentQuestion)
                 {
+                    Debug.Log("New question : index = " + _quizzService.indexCurrentQuestion);
                     inMemoryQuestionIndex = _quizzService.indexCurrentQuestion;
                     inMemoryCorrectionDone = _quizzService.correctionDone;
                     _interactionChecker.NewRestrictions(_quizzService.GetRestrictableToDisableAndRestrict());
                 }
                 else if (inMemoryCorrectionDone != _quizzService.correctionDone)
                 {
+                    Debug.Log("Correction started : " + _quizzService.indexCurrentQuestion + "  " + _quizzService.correctionDone);
                     inMemoryCorrectionDone = _quizzService.correctionDone;
                     _interactionChecker.NewRestrictions(_quizzService.GetRestrictableToDisableAndRestrict());
                 }

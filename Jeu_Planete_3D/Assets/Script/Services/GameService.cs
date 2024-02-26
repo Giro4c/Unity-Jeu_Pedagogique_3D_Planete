@@ -8,9 +8,6 @@ namespace Script.Services
     public class GameService : MonoBehaviour
     {
 
-        // [SerializeField] [ExpectedType(typeof(WebDatabaseAccessInterface))]
-        // private UnityEngine.Object _linkWeb;
-        // private WebDatabaseAccessInterface linkWeb => _linkWeb as WebDatabaseAccessInterface;
         [SerializeReference] private WebDatabaseAccess linkWeb;
         
         [SerializeField] private GameObject pauseMenu;

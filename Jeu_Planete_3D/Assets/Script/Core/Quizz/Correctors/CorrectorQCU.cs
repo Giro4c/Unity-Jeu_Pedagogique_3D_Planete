@@ -9,7 +9,6 @@ public class CorrectorQCU : QuestionCorrector<QuestionQCU>
     public CorrectorQCU(QuestionQCU question, ChoiceButton[] choices) : base(question)
     {
         this.choices = choices;
-        // DebugChoicesButtons();
         ResetChoiceSelection();
     }
 
