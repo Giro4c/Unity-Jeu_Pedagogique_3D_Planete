@@ -13,6 +13,8 @@ public class CycleAutoMotion : MonoBehaviour, IdentifiableRestrictable
     // Interface implementation ---------------
     [SerializeField] private string identifier = "None";
     public bool activationRestricted { get; set; }
+    [SerializeField] private bool _defaultActivation = true;
+
     
     public void Activate(bool activation)
     {
@@ -22,6 +24,11 @@ public class CycleAutoMotion : MonoBehaviour, IdentifiableRestrictable
     public string GetIdentifier()
     {
         return identifier;
+    }
+    
+    public bool GetDefaultActivation()
+    {
+        return _defaultActivation;
     }
     
     // ----------------------------------------------

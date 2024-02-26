@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [Serializable]
-public abstract class PlayerControl_Old: MonoBehaviour, ActivationRestrictable
+public abstract class PlayerControl_Old: MonoBehaviour
 {
 
     [SerializeField] protected string type;

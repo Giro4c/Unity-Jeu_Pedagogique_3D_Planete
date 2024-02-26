@@ -13,6 +13,7 @@ public abstract class PlayerControl: MonoBehaviour, IdentifiableRestrictable
     // Interface implementation ---------------
     [SerializeField] protected string identifier = "None";
     public bool activationRestricted { get; set; } = false;
+    [SerializeField] private bool _defaultActivation = false;
     
     public void Activate(bool activation)
     {
@@ -27,6 +28,11 @@ public abstract class PlayerControl: MonoBehaviour, IdentifiableRestrictable
     public bool MatchRegex(string[] identifiers)
     {
         return IdentifiableRestrictable.MatchRegex(GetIdentifier(), identifiers);
+    }
+
+    public bool GetDefaultActivation()
+    {
+        return _defaultActivation;
     }
 
     // ----------------------------------------------

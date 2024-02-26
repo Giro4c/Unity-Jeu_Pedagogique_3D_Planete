@@ -12,13 +12,8 @@ public abstract class CycleInteractionPlanetMouse : CycleInteractionPlanet
     {
         Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        return base.IsTriggered() &&  collider.Raycast(ray, out hit, 20);
+        // Debug.Log("Hit collider ? " + collider.Raycast(ray, out hit, 200));
+        return base.IsTriggered() &&  collider.Raycast(ray, out hit, 200);
     }
-    
-    // public override bool IsControlActive()
-    // {
-    //     throw new System.NotImplementedException();
-    // }
-    
     
 }

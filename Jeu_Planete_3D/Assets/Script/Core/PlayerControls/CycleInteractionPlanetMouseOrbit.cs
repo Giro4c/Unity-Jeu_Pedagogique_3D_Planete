@@ -18,7 +18,6 @@ public class CycleInteractionPlanetMouseOrbit : CycleInteractionPlanetMouse
         {
             SetOrbitToHitPoint(hit);
         }
-        throw new System.NotImplementedException();
     }
 
     /// <summary>

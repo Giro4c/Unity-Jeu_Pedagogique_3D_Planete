@@ -15,7 +15,6 @@ public class CycleInteractionPlanetXROrbit : CycleInteractionPlanetXR
         {
             SetOrbitToHitPoint(hit);
         }
-        throw new System.NotImplementedException();
     }
 
     /// <summary>

@@ -144,8 +144,8 @@ namespace Script.Services
         
         public void ApplyRestrictions(string[] restrictionsToApply)
         {
-            Debug.Log("Applying Restrictions :");
-            Debug.Log(restrictionsToApply);
+            // Debug.Log("Applying Restrictions :");
+            // DebugNewRestrictions(restrictionsToApply);
             int i = 0;
             
             // PlayerControls
@@ -185,7 +185,7 @@ namespace Script.Services
                 if (i >= restrictionsToApply.Length)
                 {
                     script.activationRestricted = false;
-                    if (CanBeActivated(script))
+                    if (script.GetDefaultActivation() && CanBeActivated(script))
                     {
                         script.Activate(true);
                     }
@@ -211,7 +211,7 @@ namespace Script.Services
                     // Reset the index for the current activated control
                     indexCurrentActivatedControl = -1;
                 
-                    print("Control current : ended. New index : " + indexCurrentActivatedControl);
+                    // print("Control current : ended. New index : " + indexCurrentActivatedControl);
                     // ApplyRestrictions();
                 }
             }
@@ -234,7 +234,7 @@ namespace Script.Services
                         
                         // Actualize the index for the current control activated
                         indexCurrentActivatedControl = i;
-                        print("Player control activated : " + playerControls[i].GetIdentifier() + " // index : " + i);
+                        // print("Player control activated : " + playerControls[i].GetIdentifier() + " // index : " + i);
                         
                         // Leave the loop to avoid enabling 2 controls at the same time (only 1 control activated at once)
                         break;
@@ -249,8 +249,8 @@ namespace Script.Services
             foreach (PlayerControl control in playerControls)
             {
                 if (!control.IsFinished()) continue;
-                Debug.Log(control.IsFinished());
-                Debug.Log(control.GetIdentifier());
+                // Debug.Log(control.IsFinished());
+                // Debug.Log(control.GetIdentifier());
                 control.SetFinished(false);
                 if (control.IsRegisterable() && control.GetType().IsSubclassOf(typeof(CycleInteraction)))
                 {
@@ -319,7 +319,7 @@ namespace Script.Services
                         scripts[i].Activate(false);
                     }
                     // The script is unrestricted
-                    else if (CanBeActivated(scripts[i]))
+                    else if (scripts[i].GetDefaultActivation() && CanBeActivated(scripts[i]))
                     {
                         scripts[i].Activate(true);
                     }
@@ -341,7 +341,7 @@ namespace Script.Services
                 else
                 {
                     script.activationRestricted = false;
-                    if (CanBeActivated(script))
+                    if (script.GetDefaultActivation() && CanBeActivated(script))
                     {
                         script.Activate(true);
                     }
@@ -409,46 +409,29 @@ namespace Script.Services
                     if (script.MatchRegex(control.toEnable[i].Split(" ")))
                     {
                         script.Activate(enabling);
-                        Debug.Log(script.GetIdentifier() + " affected.");
+                        // Debug.Log(script.GetIdentifier() + " affected.");
                         break;
                     }
                 }
                 
                 if (i < control.toEnable.Length) continue;
-                Debug.Log(script.GetIdentifier() + " not in to enable list.");
+                // Debug.Log(script.GetIdentifier() + " not in to enable list.");
                 for (i = 0; i < control.toDisable.Length; ++i)
                 {
                     if (script.MatchRegex(control.toDisable[i].Split(" ")))
                     {
                         script.Activate(!enabling);
-                        Debug.Log(script.GetIdentifier() + " affected.");
+                        // Debug.Log(script.GetIdentifier() + " affected.");
                         break;
                     }
                 }
                 if (i < control.toDisable.Length) continue;
-                Debug.Log(script.GetIdentifier() + " not in to disable list.");
+                // Debug.Log(script.GetIdentifier() + " not in to disable list.");
                 
             }
-            Debug.Log( "Control : " + control.GetIdentifier() + " activated.");
+            // Debug.Log( "Control : " + control.GetIdentifier() + " activated.");
             control.enabled = enabling;
         }
-        
-        // public void EnablingPlayerControlProcedure(PlayerControl control, bool enabling)
-        // {
-        //     foreach (Tuple<string, Boolean, MonoBehaviour> script in scripts)
-        //     {
-        //         if (script.Item2) continue;
-        //         int association = AssociatedToControl(script.Item1, control);
-        //         if (association == 1)
-        //         {
-        //             script.Item3.enabled = enabling;
-        //         }
-        //         else if (association == 2)
-        //         {
-        //             script.Item3.enabled = !enabling;
-        //         }
-        //     }
-        // }
         
         
     }
