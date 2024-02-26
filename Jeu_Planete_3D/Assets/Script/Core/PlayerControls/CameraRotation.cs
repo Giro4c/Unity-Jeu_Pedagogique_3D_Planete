@@ -16,8 +16,12 @@ public class CameraRotation : PlayerControl
 
     protected override void ProcessingInput()
     {
-        Vector3 newAngle = transform.eulerAngles + ( speed * new Vector3(Input.GetAxis("Mouse Y"), -1 * Input.GetAxis("Mouse X"), 0));
+        Vector3 addAngle = new Vector3(Input.GetAxis("Mouse Y"), -1 * Input.GetAxis("Mouse X"), 0);
+        // Debug.Log("Angle to add to camera : " + addAngle);
+        Vector3 newAngle = _cam.transform.eulerAngles + ( speed * addAngle);
+        // Debug.Log("New camera angle : " + newAngle);
         newAngle.x = AdjustXAngleToBoundaries(newAngle.x);
+        // Debug.Log("Adjusted new camera angle : " + newAngle);
         _cam.transform.eulerAngles = newAngle;
     }
 

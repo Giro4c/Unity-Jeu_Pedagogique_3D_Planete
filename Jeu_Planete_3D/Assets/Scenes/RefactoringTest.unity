@@ -506,6 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cycle: {fileID: 129132502}
   identifier: AutoMotion Cycle Orbit Planet
+  _defaultActivation: 1
 --- !u!114 &129132502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,6 +540,7 @@ MonoBehaviour:
   sliderValue: {fileID: 129132502}
   _slider: {fileID: 911829058}
   identifier: Slider Sync Cycle Orbit
+  _defaultActivation: 1
 --- !u!1 &166480061
 GameObject:
   m_ObjectHideFlags: 0
@@ -6578,6 +6580,7 @@ MonoBehaviour:
   playerControls:
   - {fileID: 1575760492}
   - {fileID: 1575760491}
+  - {fileID: 1662632584}
   linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
 --- !u!114 &1260855253
 MonoBehaviour:
@@ -8522,6 +8525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: Cycle Rotation UI Slider Windows Mouse
+  _defaultActivation: 0
   typeSimplified: Slider Rotation Windows
   trigger:
     m_UseReference: 1
@@ -8557,6 +8561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: Cycle Orbit UI Slider Windows Mouse
+  _defaultActivation: 0
   typeSimplified: Slider Orbit Windows
   trigger:
     m_UseReference: 1
@@ -9246,6 +9251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: Cycle Planet Rotation Windows Mouse
+  _defaultActivation: 0
   typeSimplified: Planet Rotation Mouse
   trigger:
     m_UseReference: 1
@@ -9282,6 +9288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: Cycle Planet Orbit Windows Mouse
+  _defaultActivation: 0
   typeSimplified: Planet Orbit Mouse
   trigger:
     m_UseReference: 1
@@ -9317,6 +9324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: Camera Turn
+  _defaultActivation: 0
   typeSimplified: Camera Turn
   trigger:
     m_UseReference: 1
@@ -9460,6 +9468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cycle: {fileID: 1680164451}
   identifier: AutoMotion Cycle Rotation
+  _defaultActivation: 1
 --- !u!114 &1680164451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9493,6 +9502,7 @@ MonoBehaviour:
   sliderValue: {fileID: 1680164451}
   _slider: {fileID: 818556791}
   identifier: Slider Sync Cycle Rotation
+  _defaultActivation: 1
 --- !u!1 &1683358370
 GameObject:
   m_ObjectHideFlags: 0
@@ -11516,6 +11526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: None
+  _defaultActivation: 0
   typeSimplified: Reset Player Position XR
   trigger:
     m_UseReference: 1
@@ -11548,6 +11559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: None
+  _defaultActivation: 0
   typeSimplified: Planet Orbit XR
   trigger:
     m_UseReference: 0
@@ -11581,6 +11593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: None
+  _defaultActivation: 0
   typeSimplified: Planet Rotation XR
   trigger:
     m_UseReference: 0
@@ -11613,6 +11626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: None
+  _defaultActivation: 0
   typeSimplified: Reset Player Position XR
   trigger:
     m_UseReference: 1
@@ -11738,6 +11752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cycle: {fileID: 1982877990}
   identifier: None
+  _defaultActivation: 1
   rotationPlanet: {fileID: 1680164451}
   orbitPlanet: {fileID: 129132502}
 --- !u!1 &1997269811
