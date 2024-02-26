@@ -43,7 +43,7 @@ namespace Visuals.Seasons
                 {
                     _season = seasonChanger.season;
                     SetSeasonTerrain(seasonChanger.season);
-                    //print("Changement effectué.");
+                    // print("Changement effectué.");
                 }
 
                 yield return null;
@@ -63,28 +63,28 @@ namespace Visuals.Seasons
         /// <param name="season">The name of the season for the terrain environment</param>
         private void SetSeasonTerrain(Season season)
         {
-            if (season.Equals(seasonChanger.season))
+            if (season.Equals(Season.Spring))
             {
                 // Terrain : Change terrain data
                 _terrain.terrainData = dataSpring;
                 // TerrainCollider : Change terrain data
                 _terrainCollider.terrainData = dataSpring;
             }
-            else if (season.Equals(seasonChanger.season))
+            else if (season.Equals(Season.Summer))
             {
                 // Terrain : Change terrain data
                 _terrain.terrainData = dataSummer;
                 // TerrainCollider : Change terrain data
                 _terrainCollider.terrainData = dataSummer;
             }
-            else if (season.Equals(seasonChanger.season))
+            else if (season.Equals(Season.Fall))
             {
                 // Terrain : Change terrain data
                 _terrain.terrainData = dataFall;
                 // TerrainCollider : Change terrain data
                 _terrainCollider.terrainData = dataFall;
             }
-            else if (season.Equals(seasonChanger.season))
+            else if (season.Equals(Season.Winter))
             {
                 // Terrain : Change terrain data
                 _terrain.terrainData = dataWinter;

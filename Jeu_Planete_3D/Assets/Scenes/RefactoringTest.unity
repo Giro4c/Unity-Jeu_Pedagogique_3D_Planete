@@ -2019,7 +2019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9953b8fea17c4bbd89bd62009fc141b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionChecker: {fileID: 1260855252}
+  _interactionChecker: {fileID: 1260855254}
   _quizzService: {fileID: 1260855248}
 --- !u!114 &409537175
 MonoBehaviour:
@@ -6508,8 +6508,8 @@ GameObject:
   - component: {fileID: 1260855246}
   - component: {fileID: 1260855251}
   - component: {fileID: 1260855248}
-  - component: {fileID: 1260855252}
   - component: {fileID: 1260855253}
+  - component: {fileID: 1260855254}
   m_Layer: 0
   m_Name: Services
   m_TagString: Untagged
@@ -6565,23 +6565,6 @@ MonoBehaviour:
   - {fileID: 1439746479}
   - {fileID: 1439746478}
   - {fileID: 1439746477}
---- !u!114 &1260855252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260855245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb7c5825465c4ce29b36c1e0325be885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControls:
-  - {fileID: 1575760492}
-  - {fileID: 1575760491}
-  - {fileID: 1662632584}
-  linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
 --- !u!114 &1260855253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6604,7 +6587,7 @@ MonoBehaviour:
   - {fileID: 595972663}
   - {fileID: 1881647925}
   - {fileID: 997870481}
-  _interactionChecking: {fileID: 1260855252}
+  _interactionChecking: {fileID: 1260855254}
   identifiers:
   - Planet Terre Orbit AutoMotion
   - Planet Terre Rotation AutoMotion
@@ -6616,6 +6599,25 @@ MonoBehaviour:
   - {fileID: 1680164450}
   - {fileID: 129132504}
   - {fileID: 1680164452}
+--- !u!114 &1260855254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260855245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7c5825465c4ce29b36c1e0325be885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControls:
+  - {fileID: 1575760492}
+  - {fileID: 1575760491}
+  - {fileID: 1662632584}
+  - {fileID: 1662632583}
+  - {fileID: 1662632582}
+  linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
 --- !u!1 &1329836995
 GameObject:
   m_ObjectHideFlags: 0
