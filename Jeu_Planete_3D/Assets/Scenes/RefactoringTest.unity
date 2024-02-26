@@ -7124,7 +7124,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayText: {fileID: 526361480}
   valueCycle: {fileID: 129132502}
-  mois: []
+  mois:
+  - Janvier
+  - "F\xE9vrier"
+  - Mars
+  - Avril
+  - Mai
+  - Juin
+  - Juillet
+  - "Ao\xFBt"
+  - Septembre
+  - Octobre
+  - Novembre
+  - Decembre
 --- !u!114 &1439746479
 MonoBehaviour:
   m_ObjectHideFlags: 0
