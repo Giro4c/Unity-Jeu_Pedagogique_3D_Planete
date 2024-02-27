@@ -10,6 +10,9 @@ namespace Script.Services
     public class QuizzService : MonoBehaviour
     {
 
+        [SerializeField] private QuestionType[] associatedTypes;
+        [SerializeField] private ShowQuestion[] associatedShows;
+        [SerializeField] private GameObject[] associatedQuestionPanels;
         private Tuple<QuestionType, ShowQuestion, GameObject>[] associationsQuestions = new Tuple<QuestionType, ShowQuestion, GameObject>[0];
         
         [SerializeField] private GameObject startPanel;
@@ -33,11 +36,8 @@ namespace Script.Services
         /// Each at the index X in their respective array.
         /// </para>
         /// </summary>
-        /// <param name="associatedTypes">Contains the type of an associated question</param>
-        /// <param name="associatedShows">Contains the show of an associated question</param>
-        /// <param name="associatedQuestionPanels">Contains the panel of an associated question</param>
         /// <exception cref="Exception">The arrays are not of the same size. The Tuple array cannot be initialized.</exception>
-        public void Initialize(QuestionType[] associatedTypes, ShowQuestion[] associatedShows, GameObject[] associatedQuestionPanels)
+        public void Initialize()
         {
             // Verify that all arrays are of the same size. If not then throw an exception
             if (associatedTypes.Length != associatedQuestionPanels.Length ||

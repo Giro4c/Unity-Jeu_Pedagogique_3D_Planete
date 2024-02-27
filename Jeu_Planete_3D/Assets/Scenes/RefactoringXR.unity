@@ -2586,7 +2586,7 @@ PrefabInstance:
     - target: {fileID: 1984668758913251958, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668758913251958, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
@@ -2621,7 +2621,7 @@ PrefabInstance:
     - target: {fileID: 1984668759388320319, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668759388320319, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
@@ -2666,7 +2666,7 @@ PrefabInstance:
     - target: {fileID: 1984668759906836222, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668759906836222, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
@@ -2691,7 +2691,7 @@ PrefabInstance:
     - target: {fileID: 1984668759991436502, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668759991436502, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
@@ -2736,7 +2736,7 @@ PrefabInstance:
     - target: {fileID: 1984668760453204319, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760453204319, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
@@ -2761,7 +2761,7 @@ PrefabInstance:
     - target: {fileID: 1984668760497519799, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760497519799, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
@@ -2796,7 +2796,7 @@ PrefabInstance:
     - target: {fileID: 1984668760711245992, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760711245992, guid: 65eb6b98091a5734ba9d9ca871cef69a,
         type: 3}
@@ -16473,7 +16473,6 @@ GameObject:
   - component: {fileID: 2082082735}
   - component: {fileID: 2082082739}
   - component: {fileID: 2082082738}
-  - component: {fileID: 2082082737}
   - component: {fileID: 2082082740}
   m_Layer: 2
   m_Name: Services
@@ -16497,40 +16496,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1521613177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2082082737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082082734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2ae995c5f14efba6fc3c066aaf1781, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _quizzService: {fileID: 2082082738}
-  associatedTypes: 000000000100000002000000
-  associatedShows:
-  - {fileID: 2000319363}
-  - {fileID: 2000319362}
-  - {fileID: 2000319364}
-  associatedQuestionPanels:
-  - {fileID: 672537094}
-  - {fileID: 723801138}
-  - {fileID: 1202822440}
-  _interactionChecking: {fileID: 2082082740}
-  identifiers:
-  - Planet Terre Orbit AutoMotion
-  - Planet Terre Rotation AutoMotion
-  - Planet Terre Orbit UI Slider Sync
-  - Planet Terre Rotation UI Slider Sync
-  restrictionsActivation: 00000000
-  scripts:
-  - {fileID: 2026194469}
-  - {fileID: 674138890}
-  - {fileID: 2026194468}
-  - {fileID: 674138889}
 --- !u!114 &2082082738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16543,6 +16508,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbbc4c809004ae6bb22930fecafd45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedTypes: 000000000100000002000000
+  associatedShows:
+  - {fileID: 2000319363}
+  - {fileID: 2000319362}
+  - {fileID: 2000319364}
+  associatedQuestionPanels:
+  - {fileID: 672537094}
+  - {fileID: 723801138}
+  - {fileID: 1202822440}
   startPanel: {fileID: 675651045}
   endPanel: {fileID: 1216344956}
   linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}

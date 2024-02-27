@@ -14,8 +14,8 @@ namespace Script.Controllers
 
         private void Start()
         {
+            _interactionChecker.Initialize();
             ActivateAll();
-            
         }
 
         private void Update()

@@ -1970,7 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77fabcd255864866a4bdaf45b2634f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quizzService: {fileID: 1260855248}
+  _quizzService: {fileID: 0}
   questionsQCU: 3
   questionsTrueFalse: 3
   questionsManipulation: 4
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionChecker: {fileID: 1260855254}
-  _quizzService: {fileID: 1260855248}
+  _quizzService: {fileID: 0}
 --- !u!114 &409537175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6509,9 +6509,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1260855246}
   - component: {fileID: 1260855251}
-  - component: {fileID: 1260855248}
-  - component: {fileID: 1260855253}
   - component: {fileID: 1260855254}
+  - component: {fileID: 1260855255}
   m_Layer: 2
   m_Name: Services
   m_TagString: Untagged
@@ -6534,21 +6533,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1243009183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1260855248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260855245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bbbc4c809004ae6bb22930fecafd45a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPanel: {fileID: 2052843271}
-  endPanel: {fileID: 1015984656}
-  linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
 --- !u!114 &1260855251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6567,40 +6551,6 @@ MonoBehaviour:
   - {fileID: 1439746479}
   - {fileID: 1439746478}
   - {fileID: 1439746477}
---- !u!114 &1260855253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260855245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2ae995c5f14efba6fc3c066aaf1781, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _quizzService: {fileID: 1260855248}
-  associatedTypes: 000000000100000002000000
-  associatedShows:
-  - {fileID: 1095285418}
-  - {fileID: 1095285417}
-  - {fileID: 1095285419}
-  associatedQuestionPanels:
-  - {fileID: 595972663}
-  - {fileID: 1881647925}
-  - {fileID: 997870481}
-  _interactionChecking: {fileID: 1260855254}
-  identifiers:
-  - Planet Terre Orbit AutoMotion
-  - Planet Terre Rotation AutoMotion
-  - Planet Terre Orbit UI Slider Sync
-  - Planet Terre Rotation UI Slider Sync
-  restrictionsActivation: 00000000
-  scripts:
-  - {fileID: 129132501}
-  - {fileID: 1680164450}
-  - {fileID: 129132504}
-  - {fileID: 1680164452}
 --- !u!114 &1260855254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6619,6 +6569,30 @@ MonoBehaviour:
   - {fileID: 1662632584}
   - {fileID: 1662632583}
   - {fileID: 1662632582}
+  linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
+--- !u!114 &1260855255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260855245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bbbc4c809004ae6bb22930fecafd45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTypes: 000000000100000002000000
+  associatedShows:
+  - {fileID: 1095285418}
+  - {fileID: 1095285417}
+  - {fileID: 1095285419}
+  associatedQuestionPanels:
+  - {fileID: 595972663}
+  - {fileID: 1881647925}
+  - {fileID: 997870481}
+  startPanel: {fileID: 2052843271}
+  endPanel: {fileID: 1015984656}
   linkWeb: {fileID: 11400000, guid: cb787dae1f327824b8fce4b0934ee8ed, type: 2}
 --- !u!1 &1329836995
 GameObject:
@@ -10692,107 +10666,6 @@ MonoBehaviour:
   _text: {fileID: 934720424}
   _button: {fileID: 1884723514}
   _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
---- !u!1 &1925352108
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1925352110}
-  - component: {fileID: 1925352109}
-  - component: {fileID: 1925352111}
-  - component: {fileID: 1925352112}
-  m_Layer: 0
-  m_Name: Debug
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1925352109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925352108}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66cd2e3ac601f7f4b8548a9a90fce775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionProperty:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Action Property
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: f4728c13-7848-4abd-a5a2-a0f0294976a1
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 1299602195274936103, guid: aeb2ed8ead87f0942a07ed3d0547153f,
-      type: 3}
-  positionMouse: {x: 0, y: 0, z: 0}
---- !u!4 &1925352110
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925352108}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1925352111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925352108}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66cd2e3ac601f7f4b8548a9a90fce775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionProperty:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Action Property
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: c246d5b1-13c6-47ee-ac82-2f270f5a3eb3
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 1117931103165330845, guid: aeb2ed8ead87f0942a07ed3d0547153f,
-      type: 3}
-  positionMouse: {x: 0, y: 0, z: 0}
---- !u!114 &1925352112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925352108}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671e1565ace94e7e96ed1f14e9e6375a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventSystem: {fileID: 1448704258}
-  _slider: {fileID: 818556791}
-  pointerOver: {fileID: 0}
 --- !u!1 &1946092778
 GameObject:
   m_ObjectHideFlags: 0
@@ -12641,4 +12514,3 @@ SceneRoots:
   - {fileID: 47220564}
   - {fileID: 89180795}
   - {fileID: 1243009183}
-  - {fileID: 1925352110}

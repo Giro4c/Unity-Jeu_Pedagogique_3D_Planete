@@ -16,6 +16,7 @@ namespace Script.Controllers
 
         private void Start()
         {
+            _quizzService.Initialize();
             InitQuizz();
         }
 
