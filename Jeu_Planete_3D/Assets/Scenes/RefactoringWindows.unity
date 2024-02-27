@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 129132502}
   - component: {fileID: 129132501}
   - component: {fileID: 129132504}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Orbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 210241192}
   - component: {fileID: 210241191}
   m_Layer: 5
-  m_Name: Button Valider
+  m_Name: Button Validate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1007,7 +1007,7 @@ GameObject:
   - component: {fileID: 239535698}
   - component: {fileID: 239535697}
   m_Layer: 5
-  m_Name: Button Suivant
+  m_Name: Button Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1160,7 +1160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 252777125}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cycles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1936,7 +1936,7 @@ GameObject:
   - component: {fileID: 409537175}
   - component: {fileID: 409537174}
   - component: {fileID: 409537173}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Controllers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2018,7 +2018,7 @@ GameObject:
   - component: {fileID: 421098098}
   - component: {fileID: 421098101}
   m_Layer: 5
-  m_Name: Reponse 1
+  m_Name: Answer 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2166,7 +2166,7 @@ GameObject:
   - component: {fileID: 427586040}
   - component: {fileID: 427586039}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Txt Validate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2337,7 +2337,7 @@ GameObject:
   - component: {fileID: 459962959}
   - component: {fileID: 459962958}
   m_Layer: 5
-  m_Name: Button Valider
+  m_Name: Button Validate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2875,7 +2875,7 @@ GameObject:
   - component: {fileID: 542050597}
   - component: {fileID: 542050596}
   m_Layer: 5
-  m_Name: Txt Rep3
+  m_Name: Txt Answer 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3546,7 +3546,7 @@ GameObject:
   - component: {fileID: 720032448}
   - component: {fileID: 720032447}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Txt Validate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3921,7 +3921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 784193212}
   m_Layer: 5
-  m_Name: Panel Menu Pause
+  m_Name: Panel Pause Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4379,7 +4379,7 @@ GameObject:
   - component: {fileID: 934720425}
   - component: {fileID: 934720424}
   m_Layer: 5
-  m_Name: Txt Rep2
+  m_Name: Txt Answer 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4647,7 +4647,7 @@ GameObject:
   - component: {fileID: 970187921}
   - component: {fileID: 970187920}
   m_Layer: 5
-  m_Name: Titre
+  m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4781,7 +4781,7 @@ GameObject:
   - component: {fileID: 995159571}
   - component: {fileID: 995159570}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Txt Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5415,7 +5415,7 @@ GameObject:
   - component: {fileID: 1037444939}
   - component: {fileID: 1037444938}
   m_Layer: 5
-  m_Name: Txt Quiz Finished
+  m_Name: Txt Quizz Finished
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5664,7 +5664,7 @@ GameObject:
   - component: {fileID: 1095285419}
   - component: {fileID: 1095285418}
   - component: {fileID: 1095285417}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ShowQuestions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6042,7 +6042,7 @@ GameObject:
   - component: {fileID: 1126936138}
   - component: {fileID: 1126936137}
   m_Layer: 5
-  m_Name: Button Suivant
+  m_Name: Button Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6272,7 +6272,7 @@ GameObject:
   - component: {fileID: 1179952260}
   - component: {fileID: 1179952259}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Txt Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6403,7 +6403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1220388511}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6472,7 +6472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1243009183}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6512,7 +6512,7 @@ GameObject:
   - component: {fileID: 1260855248}
   - component: {fileID: 1260855253}
   - component: {fileID: 1260855254}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Services
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6665,7 +6665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1337858336}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Interactions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7024,7 +7024,7 @@ GameObject:
   - component: {fileID: 1439746479}
   - component: {fileID: 1439746478}
   - component: {fileID: 1439746477}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Informations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7114,7 +7114,7 @@ GameObject:
   - component: {fileID: 1443356912}
   - component: {fileID: 1443356915}
   m_Layer: 5
-  m_Name: Reponse 3
+  m_Name: Answer 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7605,7 +7605,7 @@ GameObject:
   - component: {fileID: 1480072636}
   - component: {fileID: 1480072639}
   m_Layer: 5
-  m_Name: Reponse 4
+  m_Name: Answer 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8165,7 +8165,7 @@ GameObject:
   - component: {fileID: 1550917495}
   - component: {fileID: 1550917494}
   m_Layer: 5
-  m_Name: Button Suivant
+  m_Name: Button Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8321,7 +8321,7 @@ GameObject:
   - component: {fileID: 1567248328}
   - component: {fileID: 1567248327}
   m_Layer: 5
-  m_Name: Titre
+  m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8366,7 +8366,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Int\xE9raction"
+  m_text: Manipulation
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8454,7 +8454,7 @@ GameObject:
   - component: {fileID: 1575760490}
   - component: {fileID: 1575760491}
   - component: {fileID: 1575760492}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8940,7 +8940,7 @@ GameObject:
   - component: {fileID: 1642092586}
   - component: {fileID: 1642092585}
   m_Layer: 5
-  m_Name: Txt Rep1
+  m_Name: Txt Answer 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9074,7 +9074,7 @@ GameObject:
   - component: {fileID: 1662632584}
   - component: {fileID: 1662632583}
   - component: {fileID: 1662632582}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9374,7 +9374,7 @@ GameObject:
   - component: {fileID: 1680164451}
   - component: {fileID: 1680164450}
   - component: {fileID: 1680164452}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9730,7 +9730,7 @@ GameObject:
   - component: {fileID: 1702693523}
   - component: {fileID: 1702693522}
   m_Layer: 5
-  m_Name: Title Slider Heure
+  m_Name: Header Hour Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9864,7 +9864,7 @@ GameObject:
   - component: {fileID: 1741704751}
   - component: {fileID: 1741704750}
   m_Layer: 5
-  m_Name: Titre
+  m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10339,7 +10339,7 @@ GameObject:
   - component: {fileID: 1876676772}
   - component: {fileID: 1876676771}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Txt Validate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10556,7 +10556,7 @@ GameObject:
   - component: {fileID: 1884723514}
   - component: {fileID: 1884723517}
   m_Layer: 5
-  m_Name: Reponse 2
+  m_Name: Answer 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11302,7 +11302,7 @@ GameObject:
   - component: {fileID: 1974717233}
   - component: {fileID: 1974717232}
   - component: {fileID: 1974717231}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: XR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11355,8 +11355,8 @@ MonoBehaviour:
   registerable: 0
   toEnable: []
   toDisable: []
-  _origin: {fileID: 0}
   target: {fileID: 0}
+  resetPosition: {fileID: 0}
 --- !u!114 &1974717231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11455,8 +11455,8 @@ MonoBehaviour:
   registerable: 0
   toEnable: []
   toDisable: []
-  _origin: {fileID: 0}
   target: {fileID: 0}
+  resetPosition: {fileID: 0}
 --- !u!1 &1980781549
 GameObject:
   m_ObjectHideFlags: 0
@@ -11470,7 +11470,7 @@ GameObject:
   - component: {fileID: 1967249839}
   - component: {fileID: 1980781550}
   m_Layer: 2
-  m_Name: OrbitPlane
+  m_Name: Plane Orbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11509,7 +11509,7 @@ GameObject:
   - component: {fileID: 1982877989}
   - component: {fileID: 1982877991}
   - component: {fileID: 1982877990}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11579,7 +11579,7 @@ GameObject:
   - component: {fileID: 1997269813}
   - component: {fileID: 1997269812}
   m_Layer: 5
-  m_Name: Button Valider
+  m_Name: Button Validate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11735,7 +11735,7 @@ GameObject:
   - component: {fileID: 2010431293}
   - component: {fileID: 2010431292}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Txt Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11947,7 +11947,7 @@ GameObject:
   - component: {fileID: 2053064276}
   - component: {fileID: 2053064275}
   m_Layer: 5
-  m_Name: Txt Rep4
+  m_Name: Txt Answer 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12210,7 +12210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2069677467}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Terre
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -3,17 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class RecenterOriginScript : PlayerControl
 {
-    [SerializeField] private Transform _origin;
+    [Tooltip("The object whose location will be changed")] 
     [SerializeField] private Transform target;
+    [Tooltip("The target reset position for the teleportation")] 
+    [SerializeField] private Transform resetPosition;
 
     protected override void ProcessingInput()
     {
-        _origin.position = target.position;
-        _origin.rotation = target.rotation;
+        target.position = resetPosition.position;
+        target.rotation = resetPosition.rotation;
     }
 
     // public override bool IsTriggered()
