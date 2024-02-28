@@ -5,7 +5,7 @@ using UnityEngine;
 public class TwoTextures : MonoBehaviour
 { public Material material1;
     public Material material2;
-    public RotationCycle cycle;
+    public Cycle cycle;
 
     void Start()
     {
@@ -92,7 +92,7 @@ public class TwoTextures : MonoBehaviour
             Vector2 uv = material.GetTextureScale("_MainTex"); // Remplacez "_MainTex" par le nom de votre propriété UV
 
             // Calcule le déplacement supplémentaire en fonction de la vitesse de rotation
-            float rotateSpeed = 1f / cycle.rotatePeriod;
+            float rotateSpeed = 1f / cycle.GetPeriod();
             float offsetAmount = rotateSpeed * Time.deltaTime;
 
             // Applique le déplacement aux coordonnées UV

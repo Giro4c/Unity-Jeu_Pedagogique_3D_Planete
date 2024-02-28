@@ -10,7 +10,7 @@ public class RotationDragXR : MonoBehaviour
 
     [SerializeField] private RotationCycle rotationCycleScript;
     private bool active = true;
-    
+
     private void Start()
     {
         if (rotationCycleScript == null)
@@ -26,6 +26,7 @@ public class RotationDragXR : MonoBehaviour
 
     private void OnEnable()
     {
+
         if (rotationCycleScript == null)
         {
             active = false;

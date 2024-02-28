@@ -26,6 +26,7 @@ public class RotationDrag : MonoBehaviour
     
     private void OnEnable()
     {
+
         if (rotationCycle == null)
         {
             active = false;
@@ -63,15 +64,12 @@ public class RotationDrag : MonoBehaviour
                 newProgress %= 1f;
             }
             rotationCycle.rotateProgress = newProgress;
-            
-            // Change object's rotation
-            rotationCycle.SetRotation();
+        
             
             yield return null;
         }
         yield return null;
     }
-    
     
 }
 */
