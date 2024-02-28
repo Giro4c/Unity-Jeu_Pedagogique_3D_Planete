@@ -10,7 +10,7 @@ public abstract class Cycle : MonoBehaviour
     [SerializeField] protected Transform cyclingObject;
     [Range(0f, 1f)] [SerializeField] protected float progress = 0f;
     [SerializeField] protected float period = 1f;
-    [SerializeField] protected const float DEFAULT_PERIOD = 1f;
+    [SerializeField] protected float DEFAULT_PERIOD = 1f;
     
     public abstract void SetOrbitingObjectInCycle();
 

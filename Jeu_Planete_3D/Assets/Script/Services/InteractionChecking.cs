@@ -254,7 +254,7 @@ namespace Script.Services
                 control.SetFinished(false);
                 if (control.IsRegisterable() && control.GetType().IsSubclassOf(typeof(CycleInteraction)))
                 {
-                    StartCoroutine(linkWeb.AddInteraction(control.GetControlTypeSimplified(), ((CycleInteraction)control).GetValue(),
+                    StartCoroutine(linkWeb.AddInteraction(control.GetControlTypeSimplified(), ((CycleInteraction)control).GetValueProgress(),
                         quizzStarted));
                 }
                     

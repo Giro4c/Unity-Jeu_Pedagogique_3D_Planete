@@ -5,15 +5,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CycleInteractionUISlider : CycleInteractionUI
+public class CycleInteractionUIPeriodSlider : CycleInteractionUIPeriod
 {
 
     [SerializeField] protected Slider slider;
-    
-    protected override void ProcessingInput()
+
+    protected override float NewPeriod()
     {
-        cycleAffected.SetProgress(slider.value);
-        cycleAffected.SetOrbitingObjectInCycle();
+        return cycleAffected.GetDefaultPeriod() / slider.value;
     }
 
     public override bool IsTriggered()

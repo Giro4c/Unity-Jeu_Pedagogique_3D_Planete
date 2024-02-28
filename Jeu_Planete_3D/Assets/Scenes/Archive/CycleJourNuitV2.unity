@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_MinValue: 1
   m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 2.8
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -920,7 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a49ad7bc8c3a46b082af2a0fbc7d3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationCycleScript: {fileID: 1991327952}
+  rotationCycle: {fileID: 0}
   orbit: {fileID: 1664544909}
   slider: {fileID: 819750154}
 --- !u!1 &936811875
@@ -1543,12 +1543,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1e4891a8c875498d1d8bfcb2d4d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitingObject: {fileID: 1991327948}
+  cyclingObject: {fileID: 0}
+  progress: 0
+  period: 1
   orbitPath:
     xAxis: 3
     yAxis: 2
-  orbitProgress: 0
-  orbitPeriod: 20
 --- !u!1 &1895059119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,9 +1734,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 29077463}
+  tmp: {fileID: 0}
   render: {fileID: 1991327954}
-  rotationCycleScript: {fileID: 1991327952}
-  slider: {fileID: 819750154}
+  rotationCycle: {fileID: 0}
 --- !u!114 &1991327951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,12 +1762,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87db832d7f264fc48ab213298e32b656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatingObject: {fileID: 1991327948}
+  cyclingObject: {fileID: 0}
+  progress: 0
+  period: 1
   revolutionSelf:
     initialRotation: {x: 0, y: 0, z: -23}
     axis: {x: 0, y: -1, z: 0}
-  rotatePeriod: 7
-  rotateProgress: 0
 --- !u!135 &1991327953
 SphereCollider:
   m_ObjectHideFlags: 0

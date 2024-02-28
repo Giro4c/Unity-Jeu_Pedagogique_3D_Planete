@@ -8,9 +8,14 @@ public abstract class CycleInteraction : PlayerControl
 
     [SerializeField] protected Cycle cycleAffected;
 
-    public float GetValue()
+    public float GetValueProgress()
     {
         return cycleAffected.GetProgress();
+    }
+    
+    public float GetValuePeriod()
+    {
+        return cycleAffected.GetPeriod();
     }
     
 }
