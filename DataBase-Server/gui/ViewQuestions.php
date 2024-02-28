@@ -10,7 +10,6 @@ class ViewQuestions extends View
         parent::__construct($layout);
 
         $this->title = 'Question';
-        $question = "Pk t gay ?";
         $json = array("Question" => $question);
         $this->content = json_encode($json, JSON_PRETTY_PRINT);
 
