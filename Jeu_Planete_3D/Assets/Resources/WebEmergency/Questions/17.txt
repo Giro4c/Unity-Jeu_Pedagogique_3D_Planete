@@ -1,5 +1,5 @@
             <p id="Num_Ques">17</p>
-                    <p id="Enoncer">Tourner la Terre de façon à ce qu'il fasse nuit.</p>
+                    <p id="Enonce">Tourner la Terre de façon à ce qu'il fasse nuit.</p>
                     <p id="BonneRepValeur_orbit"></p>
                     <p id="Marge_Orbit"></p>
                     <p id="BonneRepValeur_rotation">0</p>
