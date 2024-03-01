@@ -30,36 +30,36 @@ class DataAccess implements DataAccessInterface
 
     public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): void{
         $query = "INSERT INTO INTERACTION (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur, Date_Inte) VALUES ('$nomInteract', $valeurInteract,$isEval, '$ipJoueur', '$dateInteract')";
-        $this->executeQuery($query); // Utilisation de la méthode executeQuery pour exécuter la requête SQL
+        $this->executeQuery($query);
     }
 
-    public function addJoueur(string $ip, string $plateforme): void{
+    public function addJoueur(string $ip, string $plateforme, $data): void{
         $query = "INSERT INTO JOUEUR (Ip, Plateforme) VALUES ('$ip', '$plateforme')";
-        $this->conn->query($query);
+        $this->dataAccess->query($query);
     }
 
     public function verifyJoueurExists(string $ip): bool{
         $query = "SELECT COUNT(*) AS Counter FROM JOUEUR WHERE Ip = '$ip'";
-        return $this->conn->query($query)->fetch_assoc()["Counter"] > 0;
+        return $this->dataAccess->query($query)->fetch_assoc()["Counter"] > 0;
     }
 
     public function addNewPartie(string $ipJoueur, string $dateDeb): Partie{
         $query = "INSERT INTO PARTIE (Ip_Joueur, Date_Deb) VALUES ('$ipJoueur', '$dateDeb')";
-        $this->conn->query($query);
+        $this->dataAccess->query($query);
     }
 
     public function deleteOnGoingPartie(string $ipJoueur): void{
         $query = "DELETE FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
-        $this->conn->query($query);
+        $this->dataAccess->query($query);
     }
 
     public function abortOnGoingPartie(string $ipJoueur): void{
         $query = "UPDATE PARTIE SET Abandon = 1 WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
-        $this->conn->query($query);
+        $this->dataAccess->query($query);
     }
 
-    public function endPartie(string $ipJoueur, string $dateFin) Partie{
-        $dbQs = new DbReponseUser($this->conn);
+    public function endPartie(string $ipJoueur, string $dateFin): Partie{
+        $dbQs = new DbReponseUser($this->dataAccess);
         $idGame = $this->getPartieInProgress($ipJoueur)['Id_Partie'];
         try {
             $score = $dbQs->getPartyScore($idGame);
@@ -69,15 +69,15 @@ class DataAccess implements DataAccessInterface
         $score = round($score, 2);
         $query = "UPDATE PARTIE SET Date_Fin = '$dateFin', Moy_Questions = $score "
             . "WHERE Id_Partie = $idGame";
-        $this->conn->query($query);
+        $this->dataAccess->query($query);
 //        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = (Date_Fin - Date_Deb), Moy_Questions = $score "
 //            . "WHERE Id_Partie = $idGame";
-//        $this->conn->query($query);
+//        $this->dataAccess->query($query);
     }
 
     public function getPartieInProgress(string $ipJoueur): array|null{
         $query = "SELECT * FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
-        $result = $this->conn->query($query);
+        $result = $this->dataAccess->query($query);
         if ($result->num_rows == 0){
             return null;
         }
@@ -88,18 +88,18 @@ class DataAccess implements DataAccessInterface
 
     public function verifyPartieInProgress(string $ipJoueur): bool{
         $query = "SELECT COUNT(*) AS Counter FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
-        return $this->conn->query($query)->fetch_assoc()["Counter"] > 0;
+        return $this->dataAccess->query($query)->fetch_assoc()["Counter"] > 0;
     }
 
     public function getQuestionCorrect(int $numQues, int $idPartie): GReturn{
         $query = "SELECT * FROM REPONSE_USER WHERE Num_Ques = $numQues AND Id_Partie = $idPartie";
-        $result = $this->conn->query($query)->fetch_assoc();
+        $result = $this->dataAccess->query($query)->fetch_assoc();
         return new GReturn("ok", content: $result);
     }
 
     public function getPartyScore(int $idPartie): float {
         $query = "SELECT COUNT(*) AS Total, SUM(Reussite) AS Score FROM " . $this->dbName . " WHERE Id_Partie = $idPartie";
-        $result = $this->conn->query($query)->fetch_assoc();
+        $result = $this->dataAccess->query($query)->fetch_assoc();
         $count = $result['Total'];
 
         if ($count == 0){
@@ -120,12 +120,12 @@ class DataAccess implements DataAccessInterface
             $correct = 0;
         }
         $query = "INSERT INTO REPONSE_USER VALUES ($numQues, $idParty, '$dateDeb', '$dateFin', $correct)";
-        $this->conn->query($query);
+        $this->dataAccess->query($query);
     }
 
     public function getQBasics(int $numQues): array{
         $query = "SELECT * FROM Question WHERE Num_Ques = $numQues";
-        $basics = $this->conn->query($query)->fetch_assoc();
+        $basics = $this->dataAccess->query($query)->fetch_assoc();
         return $basics;
     }
 
@@ -159,13 +159,13 @@ class DataAccess implements DataAccessInterface
 
     public function getQQCU(int $numQues): GReturn{
         $query = "SELECT * FROM QCU WHERE Num_Ques = $numQues";
-        $result = $this->conn->query($query)->fetch_assoc();
+        $result = $this->dataAccess->query($query)->fetch_assoc();
         return new GReturn("ok", content: $result);
     }
 
     public function getRandomQQCU(int $howManyQCU = 0): array{
         $query = "SELECT Num_Ques FROM QCU";
-        $result = $this->conn->query($query)->fetch_all(MYSQLI_ASSOC);
+        $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
 
         shuffle($result);
         $result = array_slice($result, 0, $howManyQCU);
@@ -179,13 +179,13 @@ class DataAccess implements DataAccessInterface
 
     public function getQInteraction(int $numQues): GReturn{
         $query = "SELECT * FROM QUESINTERAC WHERE Num_Ques = $numQues";
-        $result = $this->conn->query($query)->fetch_assoc();
+        $result = $this->dataAccess->query($query)->fetch_assoc();
         return new GReturn("ok", content: $result);
     }
 
     public function getRandomQInterac(int $howManyInterac = 0): array{
         $query = "SELECT Num_Ques FROM QUESINTERAC";
-        $result = $this->conn->query($query)->fetch_all(MYSQLI_ASSOC);
+        $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
 
         shuffle($result);
         $result = array_slice($result, 0, $howManyInterac);
@@ -199,13 +199,13 @@ class DataAccess implements DataAccessInterface
 
     public function getQVraiFaux(int $numQues): GReturn{
         $query = "SELECT * FROM  VRAIFAUX WHERE Num_Ques = $numQues";
-        $result = $this->conn->query($query)->fetch_assoc();
+        $result = $this->dataAccess->query($query)->fetch_assoc();
         return new GReturn("ok", content: $result);
     }
 
     public function getRandomQVraiFaux(int $howManyVraiFaux = 0): array{
         $query = "SELECT Num_Ques FROM VRAIFAUX";
-        $result = $this->conn->query($query)->fetch_all(MYSQLI_ASSOC);
+        $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
 
         shuffle($result);
         $result = array_slice($result, 0, $howManyVraiFaux);
