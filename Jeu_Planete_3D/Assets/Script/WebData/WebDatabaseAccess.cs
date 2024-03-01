@@ -257,7 +257,7 @@ namespace Script.WebData
 
         public IEnumerator GetRandomQuestions(int nbQcu, int nbTrueFalse, int nbManipulation)
         {
-            string strVarURLGet = "qcm=" + nbQcu + "&interaction=" + nbManipulation + "&vraifaux=" + nbTrueFalse;
+            string strVarURLGet = "qcu=" + nbQcu + "&interaction=" + nbManipulation + "&vraifaux=" + nbTrueFalse;
             string url = _webDatabaseConnection.GetHost() + "/randomQuestions.php?" + strVarURLGet;
             Debug.Log(url);
         
@@ -287,6 +287,7 @@ namespace Script.WebData
             for (int count = 0; count < totCount; ++count)
             {
                 string extractedVal = htmlParser.getHTMLContainerContent("li", null, count.ToString());
+                Debug.Log(count);
                 Debug.Log(extractedVal);
                 list[count] = int.Parse(extractedVal);
             }

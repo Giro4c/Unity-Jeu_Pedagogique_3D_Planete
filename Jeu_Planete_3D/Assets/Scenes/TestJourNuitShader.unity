@@ -499,14 +499,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129132498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cbd18efd27a4d5491718831c619ed04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cycle: {fileID: 129132502}
   identifier: AutoMotion Cycle Orbit Planet
-  _defaultActivation: 1
+  _defaultActivation: 0
 --- !u!114 &129132502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +522,7 @@ MonoBehaviour:
   cyclingObject: {fileID: 1388563904}
   progress: 0
   period: 60
+  DEFAULT_PERIOD: 1
   orbitPath:
     xAxis: 3
     yAxis: 2
@@ -4555,7 +4556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &942436698
 Transform:
   m_ObjectHideFlags: 0
@@ -9378,14 +9379,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680164447}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cbd18efd27a4d5491718831c619ed04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cycle: {fileID: 1680164451}
   identifier: AutoMotion Cycle Rotation
-  _defaultActivation: 1
+  _defaultActivation: 0
 --- !u!114 &1680164451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9401,6 +9402,7 @@ MonoBehaviour:
   cyclingObject: {fileID: 1669234417}
   progress: 0
   period: 10
+  DEFAULT_PERIOD: 1
   revolutionSelf:
     initialRotation: {x: 0, y: 0, z: 0}
     axis: {x: 0, y: -1, z: 0}
@@ -11179,7 +11181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1974558322
 Transform:
   m_ObjectHideFlags: 0
@@ -11202,15 +11204,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974558321}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1bb911b4b98647cbb34567cd5d737f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1693524282}
-  tmp: {fileID: 1669234417}
+  cycle: {fileID: 1680164451}
+  identifier: None
+  _defaultActivation: 0
   render: {fileID: 1669234419}
-  rotationCycle: {fileID: 1982877990}
 --- !u!1 &1974717228
 GameObject:
   m_ObjectHideFlags: 0
@@ -11468,6 +11470,7 @@ MonoBehaviour:
   cyclingObject: {fileID: 1946092781}
   progress: 0
   period: 10
+  DEFAULT_PERIOD: 1
   revolutionSelf:
     initialRotation: {x: -90, y: 0, z: 0}
     axis: {x: 1, y: 0, z: 0}

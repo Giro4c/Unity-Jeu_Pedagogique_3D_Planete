@@ -6,7 +6,7 @@ using UnityEngine;
 public class CycleAutoMotion : MonoBehaviour, IdentifiableRestrictable
 {
     
-    private bool _active = true;
+    protected bool _active = true;
     [SerializeField] protected Cycle cycle;
     private Coroutine _routine;
     
@@ -43,7 +43,7 @@ public class CycleAutoMotion : MonoBehaviour, IdentifiableRestrictable
     {
         if (cycle == null)
         {
-            cycle = gameObject.GetComponent<Orbit>();
+            cycle = gameObject.GetComponent<Cycle>();
             if (cycle == null) return false;
         }
 
@@ -65,7 +65,7 @@ public class CycleAutoMotion : MonoBehaviour, IdentifiableRestrictable
         StopCoroutine(_routine);
     }
 
-    IEnumerator AnimateCycle()
+    protected virtual IEnumerator AnimateCycle()
     {
         if (cycle.GetPeriod() < 0.1f)
         {
