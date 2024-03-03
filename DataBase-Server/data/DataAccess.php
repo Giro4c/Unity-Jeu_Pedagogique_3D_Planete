@@ -2,7 +2,10 @@
 
 namespace data;
 
+use domain\Interaction;
+use domain\Joueur;
 use domain\Partie;
+use domain\UserAnswer;
 use service\DataAccessInterface;
 use utilities\CannotDoException;
 use utilities\GReturn;
@@ -28,14 +31,16 @@ class DataAccess implements DataAccessInterface
         return $this->dataAccess->query($query);
     }
 
-    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): void{
+    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction{
         $query = "INSERT INTO INTERACTION (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur, Date_Inte) VALUES ('$nomInteract', $valeurInteract,$isEval, '$ipJoueur', '$dateInteract')";
         $this->executeQuery($query);
+        return new Interaction($nomInteract, $valeurInteract,  $isEval, $ipJoueur, $dateInteract);
     }
 
-    public function addJoueur(string $ip, string $plateforme, $data): void{
+    public function addJoueur(string $ip, string $plateforme, $data): Joueur{
         $query = "INSERT INTO JOUEUR (Ip, Plateforme) VALUES ('$ip', '$plateforme')";
         $this->dataAccess->query($query);
+        return new Joueur($ip, $plateforme, $data);
     }
 
     public function verifyJoueurExists(string $ip): bool{
@@ -46,6 +51,7 @@ class DataAccess implements DataAccessInterface
     public function addNewPartie(string $ipJoueur, string $dateDeb): Partie{
         $query = "INSERT INTO PARTIE (Ip_Joueur, Date_Deb) VALUES ('$ipJoueur', '$dateDeb')";
         $this->dataAccess->query($query);
+        return new Partie($ipJoueur, $dateDeb);
     }
 
     public function deleteOnGoingPartie(string $ipJoueur): void{
@@ -73,6 +79,7 @@ class DataAccess implements DataAccessInterface
 //        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = (Date_Fin - Date_Deb), Moy_Questions = $score "
 //            . "WHERE Id_Partie = $idGame";
 //        $this->dataAccess->query($query);
+        return new Partie($ipJoueur, $dateFin);
     }
 
     public function getPartieInProgress(string $ipJoueur): array|null{
@@ -91,10 +98,10 @@ class DataAccess implements DataAccessInterface
         return $this->dataAccess->query($query)->fetch_assoc()["Counter"] > 0;
     }
 
-    public function getQuestionCorrect(int $numQues, int $idPartie): GReturn{
+    public function getQuestionCorrect(int $numQues, int $idPartie): array|null{
         $query = "SELECT * FROM REPONSE_USER WHERE Num_Ques = $numQues AND Id_Partie = $idPartie";
         $result = $this->dataAccess->query($query)->fetch_assoc();
-        return new GReturn("ok", content: $result);
+        return null;
     }
 
     public function getPartyScore(int $idPartie): float {

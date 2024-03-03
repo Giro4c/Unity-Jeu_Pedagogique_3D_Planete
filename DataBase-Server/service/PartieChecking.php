@@ -37,7 +37,7 @@ class PartieChecking
         return $data->endPartie($ipJoueur, $dateFin);
     }
 
-    public function getPartieInProgress(string $ipJoueur, $data): Partie{
+    public function getPartieInProgress(string $ipJoueur, $data): array|null{
         return $data->getPartieInProgress($ipJoueur);
     }
 
@@ -45,7 +45,7 @@ class PartieChecking
         return $data->verifyPartieInProgress($ipJoueur);
     }
 
-    public function getQuestionCorrect(int $numQues, int $idPartie, $data): UserAnswer{
+    public function getQuestionCorrect(int $numQues, int $idPartie, $data): array|null{
         return $data->getQuestionCorrect($numQues, $idPartie);
     }
 

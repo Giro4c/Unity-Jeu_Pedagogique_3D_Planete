@@ -2,11 +2,16 @@
 
 namespace service;
 
+use domain\Interaction;
+use domain\Joueur;
+use domain\Partie;
+use domain\UserAnswer;
+
 interface DataAccessInterface
 {
-    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur): Interaction;
+    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction;
 
-    public function addJoueur(string $ip, string $plateforme): Joueur;
+    public function addJoueur(string $ip, string $plateforme, $data): Joueur;
 
     public function verifyJoueurExists(string $ip): bool;
 
@@ -18,15 +23,15 @@ interface DataAccessInterface
 
     public function endPartie(string $ipJoueur, string $dateFin): Partie;
 
-    public function getPartieInProgress(string $ipJoueur): Partie;
+    public function getPartieInProgress(string $ipJoueur): array|null;
 
     public function verifyPartieInProgress(string $ipJoueur): bool;
 
-    public function getQuestionCorrect(int $numQues, int $idPartie): UserAnswer;
+    public function getQuestionCorrect(int $numQues, int $idPartie): array|null;
 
     public function getPartyScore(int $idPartie): float;
 
-    public function addQuestionAnswer(int $numQues, int $idParty, int $duration, bool $isCorrect): void;
+    public function addQuestionAnswer(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect): void;
 
     public function getQBasics(int $numQues): string;
 
