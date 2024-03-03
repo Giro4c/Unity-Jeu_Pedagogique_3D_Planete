@@ -3279,18 +3279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &292073130 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2871854915827847850, guid: 65eb6b98091a5734ba9d9ca871cef69a,
-    type: 3}
-  m_PrefabInstance: {fileID: 292073127}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &292073131 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4582428553104524465, guid: 65eb6b98091a5734ba9d9ca871cef69a,
@@ -5140,8 +5128,6 @@ GameObject:
   m_Component:
   - component: {fileID: 547067516}
   - component: {fileID: 547067517}
-  - component: {fileID: 547067519}
-  - component: {fileID: 547067518}
   m_Layer: 5
   m_Name: Month Slider
   m_TagString: Untagged
@@ -5222,34 +5208,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &547067518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547067515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ec7617f93e2004e993f6a908aaeba2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionBasedController: {fileID: 292073130}
-  sliderValue: {fileID: 0}
-  orbitAutoChanger: {fileID: 0}
---- !u!114 &547067519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547067515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43048b97cd7da494380186e49952df33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderValue: {fileID: 0}
 --- !u!1 &584470619
 GameObject:
   m_ObjectHideFlags: 0
@@ -9777,11 +9735,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1429474206}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7090622273767523933, guid: c61d29680a4153b48be69644a5ee45f0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1052881832}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c61d29680a4153b48be69644a5ee45f0, type: 3}
 --- !u!4 &1052881829 stripped
 Transform:
@@ -9801,19 +9755,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1052881828}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1052881832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052881831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf5f971d5b27442958db8551a2b0eaf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 1052881831}
 --- !u!1 &1057931960
 GameObject:
   m_ObjectHideFlags: 0
@@ -11226,8 +11167,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1153631536}
   - component: {fileID: 1153631539}
-  - component: {fileID: 1153631538}
-  - component: {fileID: 1153631537}
   m_Layer: 5
   m_Name: Speed Slider
   m_TagString: Untagged
@@ -11257,30 +11196,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1, y: -6.2}
   m_SizeDelta: {x: 230, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1153631537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153631535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22afca4b487ec6b42b2dc74f4763525c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1153631538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153631535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 163f04be1145e204ea7c0a4ba8565c78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1153631539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11325,10 +11240,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1196187552}
   m_HandleRect: {fileID: 1928311541}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13180,8 +13095,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1652192291}
   - component: {fileID: 1652192292}
-  - component: {fileID: 1652192294}
-  - component: {fileID: 1652192293}
   m_Layer: 5
   m_Name: Hour Slider
   m_TagString: Untagged
@@ -13262,34 +13175,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1652192293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652192290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22afca4b487ec6b42b2dc74f4763525c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionBasedController: {fileID: 292073130}
-  sliderValue: {fileID: 0}
-  rotaAutoChanger: {fileID: 0}
---- !u!114 &1652192294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652192290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 163f04be1145e204ea7c0a4ba8565c78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderValue: {fileID: 0}
 --- !u!1001 &1685391060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14669,7 +14554,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1789269888}
-  - component: {fileID: 1789269889}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -14698,19 +14582,6 @@ RectTransform:
   m_AnchoredPosition: {x: 111.29998, y: -38.000023}
   m_SizeDelta: {x: 352, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1789269889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789269887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b26c439724a4da7845364aa3a65821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 2142425726}
 --- !u!1 &1793504371
 GameObject:
   m_ObjectHideFlags: 0
