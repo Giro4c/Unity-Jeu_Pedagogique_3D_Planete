@@ -4,21 +4,31 @@ namespace domain;
 
 class Joueur
 {
-    protected $Ip;
-    protected $Plateforme;
+    protected string $Ip;
+    protected string $Plateforme;
 
-    public function __construct($Ip, $Plateforme)
+    /**
+     * @param string $Ip
+     * @param string $Plateforme
+     */
+    public function __construct(string $Ip, string $Plateforme)
     {
         $this->Plateforme = $Plateforme;
         $this->Ip = $Ip;
     }
 
-    public function getIp()
+    /**
+     * @return string
+     */
+    public function getIp(): string
     {
         return $this->Ip;
     }
 
-    public function getPlateforme()
+    /**
+     * @return string
+     */
+    public function getPlateforme(): string
     {
         return $this->Plateforme;
     }

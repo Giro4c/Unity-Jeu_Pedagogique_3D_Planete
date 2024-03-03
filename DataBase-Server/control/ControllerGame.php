@@ -8,23 +8,45 @@ class controllerGame
 {
     private PartieChecking $partieService;
 
+    /**
+     * @param PartieChecking $partieService
+     */
     public function __construct(PartieChecking $partieService) {
         $this->partieService = $partieService;
     }
 
+    /**
+     * @param string $ip
+     * @param string $platform
+     * @return void
+     */
     public function newPlayer(string $ip, string $platform): void {
         $this->partieService->addJoueur($ip, $platform);
     }
 
-    public function newPartie(string $ip, string $startDate): void {
-        $this->partieService->addNewPartie($ip, $startDate);
+    /**
+     * @param string $ip
+     * @param string $dateDeb
+     * @return void
+     */
+    public function newPartie(string $ip, string $dateDeb): void {
+        $this->partieService->addNewPartie($ip, $dateDeb);
     }
 
+    /**
+     * @param string $ip
+     * @return void
+     */
     public function abortPartie(string $ip): void {
         $this->partieService->abortOnGoingPartie($ip);
     }
 
-    public function endPartie(string $ip, string $endDate): void {
-        $this->partieService->endPartie($ip, $endDate);
+    /**
+     * @param string $ip
+     * @param string $dateFin
+     * @return void
+     */
+    public function endPartie(string $ip, string $dateFin): void {
+        $this->partieService->endPartie($ip, $dateFin);
     }
 }

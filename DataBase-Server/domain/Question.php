@@ -4,11 +4,16 @@ namespace domain;
 
 class Question
 {
-    protected $Num_Ques;
-    protected $Enonce;
-    protected $Type;
+    protected int $Num_Ques;
+    protected string $Enonce;
+    protected string $Type;
 
-    public function __construct($Num_Ques, $Enonce, $Type)
+    /**
+     * @param int $Num_Ques
+     * @param string $Enonce
+     * @param string $Type
+     */
+    public function __construct(int $Num_Ques, string $Enonce, string $Type)
     {
         $this->Enonce = $Enonce;
         $this->Num_Ques = $Num_Ques;
@@ -16,25 +21,25 @@ class Question
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getNumQues()
+    public function getNumQues(): int
     {
         return $this->Num_Ques;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getEnonce()
+    public function getEnonce(): string
     {
         return $this->Enonce;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->Type;
     }

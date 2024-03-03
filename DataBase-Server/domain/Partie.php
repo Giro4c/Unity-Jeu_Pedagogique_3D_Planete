@@ -4,14 +4,22 @@ namespace domain;
 
 class Partie
 {
-    protected $Id_Partie;
-    protected $Date_Deb;
-    protected $Date_Fin;
-    protected $Moy_Questions;
-    protected $Ip_Joueur;
-    protected $Abandon;
+    protected int $Id_Partie;
+    protected string $Date_Deb;
+    protected string $Date_Fin;
+    protected float $Moy_Questions;
+    protected string $Ip_Joueur;
+    protected int $Abandon;
 
-    public function __construct($Id_Partie, $Date_Deb, $Date_Fin, $Moy_Questions, $Ip_Joueur, $Abandon)
+    /**
+     * @param int $Id_Partie
+     * @param string $Date_Deb
+     * @param string $Date_Fin
+     * @param float $Moy_Questions
+     * @param string $Ip_Joueur
+     * @param int $Abandon
+     */
+    public function __construct(int $Id_Partie, string $Date_Deb, string $Date_Fin, float $Moy_Questions, string $Ip_Joueur, int $Abandon)
     {
         $this->Id_Partie = $Id_Partie;
         $this->Date_Deb = $Date_Deb;
@@ -22,49 +30,49 @@ class Partie
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getIdPartie()
+    public function getIdPartie(): int
     {
         return $this->Id_Partie;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getDateDeb()
+    public function getDateDeb(): string
     {
         return $this->Date_Deb;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getDateFin()
+    public function getDateFin(): string
     {
         return $this->Date_Fin;
     }
 
     /**
-     * @return mixed
+     * @return float
      */
-    public function getMoyQuestions()
+    public function getMoyQuestions(): float
     {
         return $this->Moy_Questions;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getIpJoueur()
+    public function getIpJoueur(): string
     {
         return $this->Ip_Joueur;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getAbandon()
+    public function getAbandon(): int
     {
         return $this->Abandon;
     }

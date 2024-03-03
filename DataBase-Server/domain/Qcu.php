@@ -4,13 +4,23 @@ namespace domain;
 
 class Qcu extends Question
 {
-    protected $Rep1;
-    protected $Rep2;
-    protected $Rep3;
-    protected $Rep4;
-    protected $BonneRep;
+    protected string $Rep1;
+    protected string $Rep2;
+    protected string $Rep3;
+    protected string $Rep4;
+    protected string $BonneRep;
 
-    public function __construct($Num_Ques, $Enonce, $Type, $Rep1, $Rep2, $Rep3, $Rep4, $BonneRep)
+    /**
+     * @param int $Num_Ques
+     * @param string $Enonce
+     * @param string $Type
+     * @param string $Rep1
+     * @param string $Rep2
+     * @param string $Rep3
+     * @param string $Rep4
+     * @param string $BonneRep
+     */
+    public function __construct(int $Num_Ques, string $Enonce, string $Type, string $Rep1, string $Rep2, string $Rep3, string $Rep4, string $BonneRep)
     {
         parent::__construct($Num_Ques, $Enonce, $Type);
         $this->Rep1 = $Rep1;
@@ -21,41 +31,41 @@ class Qcu extends Question
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getRep1()
+    public function getRep1(): string
     {
         return $this->Rep1;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getRep2()
+    public function getRep2(): string
     {
         return $this->Rep2;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getRep3()
+    public function getRep3(): string
     {
         return $this->Rep3;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getRep4()
+    public function getRep4(): string
     {
         return $this->Rep4;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getBonneRep()
+    public function getBonneRep(): string
     {
         return $this->BonneRep;
     }

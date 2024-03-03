@@ -4,11 +4,19 @@ namespace domain;
 
 class VraiFaux extends Question
 {
-    protected $Valeur_orbit;
-    protected $Valeur_rotation;
-    protected $BonneRep;
+    protected float $Valeur_orbit;
+    protected float $Valeur_rotation;
+    protected string $BonneRep;
 
-    public function __construct($Num_Ques, $Enonce, $Type, $Valeur_orbit, $Valeur_rotation, $BonneRep)
+    /**
+     * @param int $Num_Ques
+     * @param string $Enonce
+     * @param string $Type
+     * @param float $Valeur_orbit
+     * @param float $Valeur_rotation
+     * @param string $BonneRep
+     */
+    public function __construct(int $Num_Ques, string $Enonce, string $Type, float $Valeur_orbit, float $Valeur_rotation, string $BonneRep)
     {
         parent::__construct($Num_Ques, $Enonce, $Type);
         $this->Valeur_orbit = $Valeur_orbit;
@@ -16,17 +24,26 @@ class VraiFaux extends Question
         $this->Valeur_rotation = $Valeur_rotation;
     }
 
-    public function getValeurOrbit()
+    /**
+     * @return float
+     */
+    public function getValeurOrbit(): float
     {
         return $this->Valeur_orbit;
     }
 
-    public function getValeurRotation()
+    /**
+     * @return float
+     */
+    public function getValeurRotation(): float
     {
         return $this->Valeur_rotation;
     }
 
-    public function getBonneRep()
+    /**
+     * @return string
+     */
+    public function getBonneRep(): string
     {
         return $this->BonneRep;
     }

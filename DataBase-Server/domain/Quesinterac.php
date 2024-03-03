@@ -4,12 +4,21 @@ namespace domain;
 
 class Quesinterac extends Question
 {
-    protected $BonneRepValeur_orbit;
-    protected $Marge_Orbit;
-    protected $BonneRepValeur_rotation;
-    protected $Marge_Rotation;
+    protected float $BonneRepValeur_orbit;
+    protected float $Marge_Orbit;
+    protected float $BonneRepValeur_rotation;
+    protected float $Marge_Rotation;
 
-    public function __construct($Num_Ques, $Enonce, $Type, $BonneRepValeur_orbit, $Marge_Orbit, $BonneRepValeur_rotation, $Marge_Rotation)
+    /**
+     * @param int $Num_Ques
+     * @param string $Enonce
+     * @param string $Type
+     * @param float $BonneRepValeur_orbit
+     * @param float $Marge_Orbit
+     * @param float $BonneRepValeur_rotation
+     * @param float $Marge_Rotation
+     */
+    public function __construct(int $Num_Ques, string $Enonce, string $Type, float $BonneRepValeur_orbit, float $Marge_Orbit, float $BonneRepValeur_rotation, float $Marge_Rotation)
     {
         parent::__construct($Num_Ques, $Enonce, $Type);
         $this->BonneRepValeur_orbit = $BonneRepValeur_orbit;
@@ -19,33 +28,33 @@ class Quesinterac extends Question
     }
 
     /**
-     * @return mixed
+     * @return float
      */
-    public function getBonneRepValeurOrbit()
+    public function getBonneRepValeurOrbit(): float
     {
         return $this->BonneRepValeur_orbit;
     }
 
     /**
-     * @return mixed
+     * @return float
      */
-    public function getMargeOrbit()
+    public function getMargeOrbit(): float
     {
         return $this->Marge_Orbit;
     }
 
     /**
-     * @return mixed
+     * @return float
      */
-    public function getBonneRepValeurRotation()
+    public function getBonneRepValeurRotation(): float
     {
         return $this->BonneRepValeur_rotation;
     }
 
     /**
-     * @return mixed
+     * @return float
      */
-    public function getMargeRotation()
+    public function getMargeRotation(): float
     {
         return $this->Marge_Rotation;
     }
