@@ -69,7 +69,7 @@ class DataAccess implements DataAccessInterface
     }
 
     public function endPartie(string $ipJoueur, string $dateFin): Partie{
-        $dbQs = new DbReponseUser($this->dataAccess);
+        $dbQs = new UserAnswer($this->dataAccess);
         $idGame = $this->getPartieInProgress($ipJoueur)['Id_Partie'];
         try {
             $score = $dbQs->getPartyScore($idGame);

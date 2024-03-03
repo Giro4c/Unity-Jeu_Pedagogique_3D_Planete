@@ -9,6 +9,8 @@ class Interaction
     protected int $Evaluation;
     protected string $Ip_Joueur;
 
+    private string $dbName = "INTERACTION";
+
     /**
      * @param int $Id_Inte
      * @param string $Nom_Inte
@@ -23,6 +25,10 @@ class Interaction
         $this->Evaluation = $Evaluation;
         $this->Valeur_Inte = $Valeur_Inte;
         $this->Ip_Joueur = $Ip_Joueur;
+    }
+
+    public function getDbName(): string{
+        return $this->dbName;
     }
 
     /**

@@ -16,22 +16,24 @@ class ControllerQuestions
     }
 
     /**
-     * @return void
-     */
-    public function displayRandomQuestions(): void {
-        // Afficher des questions aléatoires
-        $questions = $this->questionService->getRandomQs(5, 3, 2);
-        // Afficher les questions dans la vue
-    }
-
-    /**
-     * @param int $howManyQCM
+     * @param int $howManyQCU
      * @param int $howManyInterac
      * @param int $howManyVraiFaux
-     * @return array
+     * @return string
      */
-    public function getRandomQs(int $howManyQCM, int $howManyInterac, int $howManyVraiFaux): array {
-        return $this->questionService->getRandomQs($howManyQCM, $howManyInterac, $howManyVraiFaux);
+    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): string{
+        $totalQs = $howManyQCU + $howManyInterac + $howManyVraiFaux;
+        $numQs = $this->questionService->getRandomQs($howManyQCU, $howManyInterac, $howManyVraiFaux);
+        ob_start(); ?>
+        <ul>
+            <?php for ($count = 0; $count < $totalQs; ++$count){?>
+                <li id="<?= $count ?>"><?= $numQs[$count] ?></li>
+            <?php }?>
+        </ul>
+        <?php
+        $contentHTML = ob_get_contents();
+        ob_end_clean();
+        return $contentHTML;
     }
 
     /**
@@ -39,9 +41,19 @@ class ControllerQuestions
      * @return string
      */
     public function getHTMLAttributesQ(int $numQues): string {
-        $question = $this->questionService->getQAttributes($numQues);
-        // Créer des attributs HTML à partir des données de la question
-        return "<div>{$question->getEnonce()}</div>";
+        $qAttributes = $this->questionService->getQAttributes($numQues);
+        ob_start();
+        while (true) {
+            $attribute = current($qAttributes);
+            if ($attribute == null && key($qAttributes) == null) break;
+            ?>
+            <p id="<?= key($qAttributes) ?>"><?= $attribute ?></p>
+            <?php
+            next($qAttributes);
+        }
+        $qHTML = ob_get_contents();
+        ob_end_clean();
+        return $qHTML;
     }
 
 

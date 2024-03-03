@@ -7,6 +7,7 @@ class VraiFaux extends Question
     protected float $Valeur_orbit;
     protected float $Valeur_rotation;
     protected string $BonneRep;
+    private string $dbName = "VRAIFAUX";
 
     /**
      * @param int $Num_Ques
@@ -22,6 +23,10 @@ class VraiFaux extends Question
         $this->Valeur_orbit = $Valeur_orbit;
         $this->BonneRep = $BonneRep;
         $this->Valeur_rotation = $Valeur_rotation;
+    }
+
+    public function getDbName(): string{
+        return $this->dbName;
     }
 
     /**

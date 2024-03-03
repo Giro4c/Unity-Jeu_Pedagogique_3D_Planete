@@ -10,6 +10,7 @@ class Partie
     protected float $Moy_Questions;
     protected string $Ip_Joueur;
     protected int $Abandon;
+    private string $dbName = "PARTIE";
 
     /**
      * @param int $Id_Partie
@@ -27,6 +28,10 @@ class Partie
         $this->Date_Fin = $Date_Fin;
         $this->Ip_Joueur = $Ip_Joueur;
         $this->Abandon = $Abandon;
+    }
+
+    public function getDbName(): string{
+        return $this->dbName;
     }
 
     /**

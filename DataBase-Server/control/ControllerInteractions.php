@@ -32,6 +32,14 @@ class ControllerInteractions
      * @return void
      */
     public function addInteration(string $ipJoueur, string $type, float $value, int $is_Eval, string $dateInterac): void {
-        $this->interactionService->addInteraction($type, $value, $is_Eval, $ipJoueur, $dateInterac);
+        if (in_array($type, $this->interactionTypes)){
+            $this->interactionService->addInteraction($type, $value, $is_Eval, $ipJoueur, $dateInterac);
+        }
+        else{
+            $target = "DataBase " . $this->interactionService->getDbName();
+            $action = "Register Interaction";
+            $explanation = "Interaction type not correct: " . $type;
+            throw new CannotDoException($target, $action, $explanation);
+        }
     }
 }

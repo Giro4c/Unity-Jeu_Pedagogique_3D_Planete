@@ -7,6 +7,8 @@ class Joueur
     protected string $Ip;
     protected string $Plateforme;
 
+    private string $dbName = "JOUEUR";
+
     /**
      * @param string $Ip
      * @param string $Plateforme
@@ -15,6 +17,10 @@ class Joueur
     {
         $this->Plateforme = $Plateforme;
         $this->Ip = $Ip;
+    }
+
+    public function getDbName(): string{
+        return $this->dbName;
     }
 
     /**

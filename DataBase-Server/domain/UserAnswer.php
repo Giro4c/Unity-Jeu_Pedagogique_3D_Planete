@@ -9,6 +9,7 @@ class UserAnswer
     protected string $Date_Deb;
     protected string $Date_Fin;
     protected int $Reussite;
+    private string $dbName = "REPONSE_USER";
 
     /**
      * @param int $Num_Ques
@@ -24,6 +25,10 @@ class UserAnswer
         $this->Date_Fin = $Date_Fin;
         $this->Date_Deb = $Date_Deb;
         $this->Reussite = $Reussite;
+    }
+
+    public function getDbName(): string{
+        return $this->dbName;
     }
 
     /**
