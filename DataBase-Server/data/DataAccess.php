@@ -5,7 +5,11 @@ namespace data;
 use domain\Interaction;
 use domain\Joueur;
 use domain\Partie;
+use domain\Qcu;
+use domain\Quesinterac;
+use domain\Question;
 use domain\UserAnswer;
+use domain\VraiFaux;
 use service\DataAccessInterface;
 use utilities\CannotDoException;
 use utilities\GReturn;
@@ -82,7 +86,7 @@ class DataAccess implements DataAccessInterface
         return new Partie($ipJoueur, $dateFin);
     }
 
-    public function getPartieInProgress(string $ipJoueur): array|null{
+    public function getPartieInProgress(string $ipJoueur): Partie|null{
         $query = "SELECT * FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
         $result = $this->dataAccess->query($query);
         if ($result->num_rows == 0){
@@ -98,14 +102,14 @@ class DataAccess implements DataAccessInterface
         return $this->dataAccess->query($query)->fetch_assoc()["Counter"] > 0;
     }
 
-    public function getQuestionCorrect(int $numQues, int $idPartie): array|null{
+    public function getQuestionCorrect(int $numQues, int $idPartie):  UserAnswer{
         $query = "SELECT * FROM REPONSE_USER WHERE Num_Ques = $numQues AND Id_Partie = $idPartie";
         $result = $this->dataAccess->query($query)->fetch_assoc();
-        return null;
+        return new UserAnswer("ok", $result);
     }
 
     public function getPartyScore(int $idPartie): float {
-        $query = "SELECT COUNT(*) AS Total, SUM(Reussite) AS Score FROM " . $this->dbName . " WHERE Id_Partie = $idPartie";
+        $query = "SELECT COUNT(*) AS Total, SUM(Reussite) AS Score FROM REPONSE_USER WHERE Id_Partie = $idPartie";
         $result = $this->dataAccess->query($query)->fetch_assoc();
         $count = $result['Total'];
 
@@ -130,13 +134,13 @@ class DataAccess implements DataAccessInterface
         $this->dataAccess->query($query);
     }
 
-    public function getQBasics(int $numQues): array{
+    public function getQBasics(int $numQues): string{
         $query = "SELECT * FROM Question WHERE Num_Ques = $numQues";
         $basics = $this->dataAccess->query($query)->fetch_assoc();
         return $basics;
     }
 
-    public function getQAttributes(int $numQues): array{
+    public function getQAttributes(int $numQues): Question{
         $basics = $this->getQBasics($numQues);
 
         if ($basics['Type'] == 'QCU'){
@@ -159,18 +163,18 @@ class DataAccess implements DataAccessInterface
         return $result;
     }
 
-    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
+    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): Question{
         $numQ = array_merge($this->dbQcu->getRandomQQCU($howManyQCU), $this->dbQuesinterac->getRandomQInterac($howManyInterac), $this->dbVraiFaux->getRandomQVraiFaux($howManyVraiFaux)) ;
         return $numQ;
     }
 
-    public function getQQCU(int $numQues): GReturn{
+    public function getQQCU(int $numQues): Qcu{
         $query = "SELECT * FROM QCU WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch_assoc();
-        return new GReturn("ok", content: $result);
+        return new Qcu("ok", $result);
     }
 
-    public function getRandomQQCU(int $howManyQCU = 0): array{
+    public function getRandomQQCU(int $howManyQCU = 0): Qcu{
         $query = "SELECT Num_Ques FROM QCU";
         $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
 
@@ -184,13 +188,13 @@ class DataAccess implements DataAccessInterface
         return $result;
     }
 
-    public function getQInteraction(int $numQues): GReturn{
+    public function getQInteraction(int $numQues): Quesinterac{
         $query = "SELECT * FROM QUESINTERAC WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch_assoc();
-        return new GReturn("ok", content: $result);
+        return new Quesinterac("ok", $result);
     }
 
-    public function getRandomQInterac(int $howManyInterac = 0): array{
+    public function getRandomQInterac(int $howManyInterac = 0): Quesinterac{
         $query = "SELECT Num_Ques FROM QUESINTERAC";
         $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
 
@@ -204,13 +208,13 @@ class DataAccess implements DataAccessInterface
         return $result;
     }
 
-    public function getQVraiFaux(int $numQues): GReturn{
+    public function getQVraiFaux(int $numQues): VraiFaux{
         $query = "SELECT * FROM  VRAIFAUX WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch_assoc();
-        return new GReturn("ok", content: $result);
+        return new VraiFaux("ok", $result);
     }
 
-    public function getRandomQVraiFaux(int $howManyVraiFaux = 0): array{
+    public function getRandomQVraiFaux(int $howManyVraiFaux = 0): VraiFaux{
         $query = "SELECT Num_Ques FROM VRAIFAUX";
         $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
 

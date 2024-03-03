@@ -2,6 +2,15 @@
 
 namespace service;
 
+use domain\Interaction;
+use domain\Joueur;
+use domain\Partie;
+use domain\Qcu;
+use domain\Quesinterac;
+use domain\Question;
+use domain\UserAnswer;
+use domain\VraiFaux;
+
 class PartieChecking
 {
 
@@ -37,7 +46,7 @@ class PartieChecking
         return $data->endPartie($ipJoueur, $dateFin);
     }
 
-    public function getPartieInProgress(string $ipJoueur, $data): array|null{
+    public function getPartieInProgress(string $ipJoueur, $data): Partie|null{
         return $data->getPartieInProgress($ipJoueur);
     }
 
@@ -45,7 +54,7 @@ class PartieChecking
         return $data->verifyPartieInProgress($ipJoueur);
     }
 
-    public function getQuestionCorrect(int $numQues, int $idPartie, $data): array|null{
+    public function getQuestionCorrect(int $numQues, int $idPartie, $data):  UserAnswer{
         return $data->getQuestionCorrect($numQues, $idPartie);
     }
 
@@ -69,11 +78,11 @@ class PartieChecking
         return $data->getRandomQs($howManyQCM, $howManyInterac, $howManyVraiFaux);
     }
 
-    public function getQQCU(int $numQues, $data): Qcm{
+    public function getQQCU(int $numQues, $data): Qcu{
         return $data->getQQCU($numQues);
     }
 
-    public function getRandomQQCU(int $howManyQCM, $data): Qcm{
+    public function getRandomQQCU(int $howManyQCM, $data): Qcu{
         return $data->getRandomQQCU($howManyQCM);
     }
 

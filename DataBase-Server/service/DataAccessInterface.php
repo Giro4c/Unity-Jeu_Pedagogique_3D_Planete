@@ -5,7 +5,11 @@ namespace service;
 use domain\Interaction;
 use domain\Joueur;
 use domain\Partie;
+use domain\Qcu;
+use domain\Quesinterac;
+use domain\Question;
 use domain\UserAnswer;
+use domain\VraiFaux;
 
 interface DataAccessInterface
 {
@@ -23,11 +27,11 @@ interface DataAccessInterface
 
     public function endPartie(string $ipJoueur, string $dateFin): Partie;
 
-    public function getPartieInProgress(string $ipJoueur): array|null;
+    public function getPartieInProgress(string $ipJoueur): Partie|null;
 
     public function verifyPartieInProgress(string $ipJoueur): bool;
 
-    public function getQuestionCorrect(int $numQues, int $idPartie): array|null;
+    public function getQuestionCorrect(int $numQues, int $idPartie):  UserAnswer;
 
     public function getPartyScore(int $idPartie): float;
 
@@ -39,9 +43,9 @@ interface DataAccessInterface
 
     public function getRandomQs(int $howManyQCM, int $howManyInterac, int $howManyVraiFaux): Question;
 
-    public function getQQCU(int $numQues): Qcm;
+    public function getQQCU(int $numQues): Qcu;
 
-    public function getRandomQQCU(int $howManyQCM): Qcm;
+    public function getRandomQQCU(int $howManyQCM): Qcu;
 
     public function getQInteraction(int $numQues): Quesinterac;
 
