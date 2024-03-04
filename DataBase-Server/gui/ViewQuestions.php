@@ -5,14 +5,12 @@ namespace gui;
 include_once "View.php";
 class ViewQuestions extends View
 {
-    public function __construct($layout, $question){
+    public function __construct($layout, $jsonQ){
 
         parent::__construct($layout);
 
         $this->title = 'Question';
-        $json = array("Question" => $question);
-        $this->content = json_encode($json, JSON_PRETTY_PRINT);
+        $this->content = $jsonQ;
 
-        echo (json_encode($json, JSON_PRETTY_PRINT));
     }
 }

@@ -33,21 +33,12 @@ class controllerQuestions
         return $contentHTML;
     }
 
-    public function getHTMLAttributesQ(int $numQues): string{
+    public function getJsonAttributesQ(int $numQues): false|string
+    {
         $qAttributes = $this->dbQuestion->getQAttributes($numQues);
-        ob_start();
-        while (true) {
-            $attribute = current($qAttributes);
-            if ($attribute == null && key($qAttributes) == null) break;
-            ?>
-            <p id="<?= key($qAttributes) ?>"><?= $attribute ?></p>
-            <?php
-            next($qAttributes);
-        }
-        $qHTML = ob_get_contents();
-        ob_end_clean();
-        return $qHTML;
+        return json_encode($qAttributes, JSON_PRETTY_PRINT);
     }
+
 
     public function addFinishedQuestion(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect): void{
         $this->dbReponseUser->addQuestionAnswer($numQues, $idParty, $dateDeb, $dateFin, $isCorrect);
