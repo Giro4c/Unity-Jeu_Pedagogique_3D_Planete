@@ -18,19 +18,9 @@ class controllerQuestions
         $this->dbQuestion = new DbQuestion($conn);
     }
 
-    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): string{
-        $totalQs = $howManyQCU + $howManyInterac + $howManyVraiFaux;
+    public function getJsonRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): string{
         $numQs = $this->dbQuestion->getRandomQs($howManyQCU, $howManyInterac, $howManyVraiFaux);
-        ob_start(); ?>
-        <ul>
-            <?php for ($count = 0; $count < $totalQs; ++$count){?>
-                <li id="<?= $count ?>"><?= $numQs[$count] ?></li>
-            <?php }?>
-        </ul>
-        <?php
-        $contentHTML = ob_get_contents();
-        ob_end_clean();
-        return $contentHTML;
+        return json_encode($numQs, JSON_PRETTY_PRINT);
     }
 
     public function getJsonAttributesQ(int $numQues): false|string
