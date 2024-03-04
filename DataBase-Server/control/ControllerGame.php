@@ -7,15 +7,6 @@ use service\PartieChecking;
 
 class ControllerGame
 {
-    private PartieChecking $partieService;
-
-    /**
-     * @param PartieChecking $partieService
-     */
-    public function __construct(PartieChecking $partieService) {
-        $this->partieService = $partieService;
-    }
-
     /**
      * @param string $ip
      * @param string $platform

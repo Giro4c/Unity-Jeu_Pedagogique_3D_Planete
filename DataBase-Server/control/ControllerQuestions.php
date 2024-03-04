@@ -6,15 +6,6 @@ use service\PartieChecking;
 
 class ControllerQuestions
 {
-    private PartieChecking $questionService;
-
-    /**
-     * @param PartieChecking $questionService
-     */
-    public function __construct(PartieChecking $questionService) {
-        $this->questionService = $questionService;
-    }
-
     /**
      * @param int $howManyQCU
      * @param int $howManyInterac

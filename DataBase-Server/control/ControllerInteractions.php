@@ -7,16 +7,8 @@ use service\CannotDoException;
 
 class ControllerInteractions
 {
-    private PartieChecking $interactionService;
 
     private array $interactionTypes = ["SliderOrbit", "SliderRotation", "DragOrbit", "DragRotation"];
-
-    /**
-     * @param PartieChecking $interactionService
-     */
-    public function __construct(PartieChecking $interactionService) {
-        $this->interactionService = $interactionService;
-    }
 
     /**
      * @return string[]

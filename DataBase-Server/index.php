@@ -38,9 +38,9 @@ try {
 }
 
 // initialisation des controllers
-$controllerGame = new ControllerGame($data);
-$controllerInte = new ControllerInteractions($data);
-$controllerQuestions = new ControllerQuestions($data);
+$controllerGame = new ControllerGame();
+$controllerInte = new ControllerInteractions();
+$controllerQuestions = new ControllerQuestions();
 
 // initilisation du cas d'utilisation PartieChecking
 $partieChecking = new PartieChecking();
@@ -77,7 +77,7 @@ if ('index.php/addInteraction' == $uri) {
 elseif ( '/index.php/abordOnGoingGame' == $uri){
 
     $ip = $_SERVER['REMOTE_ADDR'];
-    $partieChecking->abortOnGoingPartie($ip, $data);
+    $controllerGame->abortPartie($ip, $partieChecking, $data);
 
     $partieStatus = "Partie abandonner";
     $date = date('Y-m-d H:i:s');
