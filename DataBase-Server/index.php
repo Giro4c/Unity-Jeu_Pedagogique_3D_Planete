@@ -2,11 +2,12 @@
 
 include_once 'data/DataAccess.php';
 
-include_once 'controllers/controllerGame.php';
-include_once 'controllers/controllerInteractions.php';
-include_once 'controllers/controllerQuestions.php';
+include_once 'control/ControllerGame.php';
+include_once 'control/ControllerInteractions.php';
+include_once 'control/ControllerQuestions.php';
 
 include_once 'service/PartieChecking.php';
+include_once 'service/CannotDoException.php';
 
 include_once 'gui/Layout.php';
 include_once 'gui/ViewRandomQuestion.php';
@@ -14,10 +15,11 @@ include_once 'gui/ViewInteractions.php';
 include_once 'gui/ViewPartie.php';
 include_once 'gui/ViewQuestions.php';
 
-use controllers\{controllerGame, controllerQuestions, controllerInteractions};
+use control\{ControllerGame, ControllerQuestions, ControllerInteractions};
 use data\DataAccess;
 use gui\{Layout, ViewInteractions, ViewPartie, ViewQuestions, ViewRandomQuestion};
 use service\PartieChecking;
+use service\CannotDoException;
 
 
 if (session_id() == '') {

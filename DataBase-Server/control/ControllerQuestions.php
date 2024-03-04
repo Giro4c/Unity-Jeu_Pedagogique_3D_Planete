@@ -21,7 +21,7 @@ class ControllerQuestions
      * @param int $howManyVraiFaux
      * @return string
      */
-    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0, PartieChecking $questionService, $data): string{
+    public function getRandomQs(PartieChecking $questionService, $data, int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): string{
         $totalQs = $howManyQCU + $howManyInterac + $howManyVraiFaux;
         $numQs = $questionService->getRandomQs($howManyQCU, $howManyInterac, $howManyVraiFaux, $data);
         ob_start(); ?>
