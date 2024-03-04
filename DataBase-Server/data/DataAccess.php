@@ -41,10 +41,10 @@ class DataAccess implements DataAccessInterface
         return new Interaction($nomInteract, $valeurInteract,  $isEval, $ipJoueur, $dateInteract);
     }
 
-    public function addJoueur(string $ip, string $plateforme, $data): Joueur{
+    public function addJoueur(string $ip, string $plateforme): Joueur{
         $query = "INSERT INTO JOUEUR (Ip, Plateforme) VALUES ('$ip', '$plateforme')";
         $this->dataAccess->query($query);
-        return new Joueur($ip, $plateforme, $data);
+        return new Joueur($ip, $plateforme);
     }
 
     public function verifyJoueurExists(string $ip): bool{

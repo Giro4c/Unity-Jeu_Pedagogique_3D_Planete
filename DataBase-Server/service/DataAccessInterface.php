@@ -15,7 +15,7 @@ interface DataAccessInterface
 {
     public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction;
 
-    public function addJoueur(string $ip, string $plateforme, $data): Joueur;
+    public function addJoueur(string $ip, string $plateforme): Joueur;
 
     public function verifyJoueurExists(string $ip): bool;
 
