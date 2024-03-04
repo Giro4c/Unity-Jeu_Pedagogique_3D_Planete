@@ -19,8 +19,6 @@ use control\{ControllerGame, ControllerQuestions, ControllerInteractions};
 use data\DataAccess;
 use gui\{Layout, ViewInteractions, ViewPartie, ViewQuestions, ViewRandomQuestion};
 use service\PartieChecking;
-use service\CannotDoException;
-
 
 if (session_id() == '') {
     session_start();
@@ -28,9 +26,7 @@ if (session_id() == '') {
 
 $data = null;
 try {
-    //$data = new DataAccess(new PDO('mysql:host=jeupedagogique.alwaysdata.net;db_name=jeupedagogique_bd', '331395_jeu_pedag', 'Planete-T3rr3'));
-    $data = new DataAccess(new PDO('mysql:host=127.0.0.1;dbname=jeupedagogique_bd', 'root', ''));
-
+    $data = new DataAccess(new PDO('mysql:host=mysql-jeupedagogique.alwaysdata.net;db_name=jeupedagogique_bd', '331395_jeu_pedag', 'Planete-T3rr3'));
 
 } catch (PDOException $e) {
     print "Erreur de connexion !: " . $e->getMessage() . "<br/>";
