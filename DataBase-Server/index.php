@@ -54,7 +54,7 @@ if ('/index.php/addInteraction' == $uri) {
         $dateInteract = date('Y-m-d H:i:s');
 
         try {
-            $controllerInte->addInteration($ip, $type, (float)$value, $isEval, $dateInteract, $partieChecking, $data);
+            $controllerInte->addInteration($type, (float)$value, $isEval, $ip, $dateInteract, $partieChecking, $data);
         } catch (\service\CannotDoException $e) {
             $report = $e->getReport();
             $report = str_replace('\n', '<br />', $report);
