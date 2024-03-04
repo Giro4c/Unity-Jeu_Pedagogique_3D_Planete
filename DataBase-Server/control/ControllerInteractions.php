@@ -27,19 +27,19 @@ class ControllerInteractions
 
     /**
      * @param string $ipJoueur
-     * @param string $type
+     * @param string $nomInteract
      * @param float $value
      * @param int $isEval
      * @return void
      */
-    public function addInteration(string $ipJoueur, string $type, float $value, int $is_Eval, string $dateInterac): void {
-        if (in_array($type, $this->interactionTypes)){
-            $this->interactionService->addInteraction($type, $value, $is_Eval, $ipJoueur, $dateInterac);
+    public function addInteration(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, PartieChecking $interactionService, $data): void {
+        if (in_array($nomInteract, $this->interactionTypes)){
+            $interactionService->addInteraction($nomInteract, $valeurInteract, $isEval, $ipJoueur, $data);
         }
         else{
-            $target = "DataBase " . $this->interactionService->getDbName();
+            $target = "DataBase Interaction ";
             $action = "Register Interaction";
-            $explanation = "Interaction type not correct: " . $type;
+            $explanation = "Interaction type not correct: " . $nomInteract;
             throw new CannotDoException($target, $action, $explanation);
         }
     }

@@ -21,9 +21,9 @@ class ControllerQuestions
      * @param int $howManyVraiFaux
      * @return string
      */
-    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): string{
+    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0, PartieChecking $questionService, $data): string{
         $totalQs = $howManyQCU + $howManyInterac + $howManyVraiFaux;
-        $numQs = $this->questionService->getRandomQs($howManyQCU, $howManyInterac, $howManyVraiFaux);
+        $numQs = $questionService->getRandomQs($howManyQCU, $howManyInterac, $howManyVraiFaux, $data);
         ob_start(); ?>
         <ul>
             <?php for ($count = 0; $count < $totalQs; ++$count){?>
@@ -40,8 +40,8 @@ class ControllerQuestions
      * @param int $numQues
      * @return string
      */
-    public function getHTMLAttributesQ(int $numQues): string {
-        $qAttributes = $this->questionService->getQAttributes($numQues);
+    public function getHTMLAttributesQ(int $numQues, PartieChecking $questionService, $data): string {
+        $qAttributes = $questionService->getQAttributes($numQues, $data);
         ob_start();
         while (true) {
             $attribute = current($qAttributes);
@@ -65,7 +65,7 @@ class ControllerQuestions
      * @param bool $isCorrect
      * @return void
      */
-    public function addFinishedQuestion(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect): void {
-        $this->questionService->addQuestionAnswer($numQues, $idParty, $dateDeb, $dateFin, $isCorrect);
+    public function addFinishedQuestion(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect, PartieChecking $questionService, $data): void {
+        $questionService->addQuestionAnswer($numQues, $idParty, $dateDeb, $dateFin, $isCorrect, $data);
     }
 }

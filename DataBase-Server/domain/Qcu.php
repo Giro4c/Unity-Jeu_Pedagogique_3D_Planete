@@ -9,7 +9,6 @@ class Qcu extends Question
     protected string $Rep3;
     protected string $Rep4;
     protected string $BonneRep;
-    private string $dbName = "QCU";
 
     /**
      * @param int $Num_Ques
@@ -29,10 +28,6 @@ class Qcu extends Question
         $this->Rep2 = $Rep2;
         $this->Rep4 = $Rep4;
         $this->BonneRep = $BonneRep;
-    }
-
-    public function getDbName(): string{
-        return $this->dbName;
     }
 
     /**

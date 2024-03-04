@@ -8,7 +8,6 @@ class Quesinterac extends Question
     protected float $Marge_Orbit;
     protected float $BonneRepValeur_rotation;
     protected float $Marge_Rotation;
-    private string $dbName = "QUESINTERAC";
 
     /**
      * @param int $Num_Ques
@@ -26,10 +25,6 @@ class Quesinterac extends Question
         $this->BonneRepValeur_rotation = $BonneRepValeur_rotation;
         $this->Marge_Orbit = $Marge_Orbit;
         $this->Marge_Rotation = $Marge_Rotation;
-    }
-
-    public function getDbName(): string{
-        return $this->dbName;
     }
 
     /**

@@ -62,8 +62,8 @@ class PartieChecking
         return $data->getPartyScore($idPartie);
     }
 
-    public function addQuestionAnswer(int $numQues, int $idParty, int $duration, bool $isCorrect, $data): void{
-        $data->addQuestionAnswer($numQues, $idParty, $duration, $isCorrect);
+    public function addQuestionAnswer(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect, $data): void{
+        $data->addQuestionAnswer($numQues, $idParty, $dateDeb, $dateFin, $isCorrect);
     }
 
     public function getQBasics(int $numQues, $data): string{

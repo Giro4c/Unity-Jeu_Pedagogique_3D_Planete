@@ -7,7 +7,6 @@ class Question
     protected int $Num_Ques;
     protected string $Enonce;
     protected string $Type;
-    private string $dbName = "QUESTION";
 
     /**
      * @param int $Num_Ques
@@ -19,10 +18,6 @@ class Question
         $this->Enonce = $Enonce;
         $this->Num_Ques = $Num_Ques;
         $this->Type = $Type;
-    }
-
-    public function getDbName(): string{
-        return $this->dbName;
     }
 
     /**
