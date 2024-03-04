@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DaySyncCycleHumanPlanet : CycleAutoMotion
+public class DaySyncCycleHumanPlanet : CycleAutoProgression
 {
     [SerializeField] private Cycle rotationPlanet;
     [SerializeField] private Cycle orbitPlanet;

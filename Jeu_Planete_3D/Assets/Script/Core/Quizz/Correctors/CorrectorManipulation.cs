@@ -100,13 +100,13 @@ public class CorrectorManipulation : QuestionCorrector<QuestionManipulation>
             if (question.MustVerifyOrbit())
             {
                 orbit.SetProgress(question.correctOrbit);
-                orbit.SetOrbitingObjectInCycle();
+                orbit.SetPositionAndRotationInCycle();
             }
             // Show correct rotation
             if (question.MustVerifyRotation())
             {
                 rotation.SetProgress(question.correctRotation);
-                rotation.SetOrbitingObjectInCycle();
+                rotation.SetPositionAndRotationInCycle();
             }
             
         }

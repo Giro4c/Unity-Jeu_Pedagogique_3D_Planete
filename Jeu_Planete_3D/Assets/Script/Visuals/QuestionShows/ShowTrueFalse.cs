@@ -16,13 +16,13 @@ public class ShowTrueFalse : ShowQCU
         if (questionTrueFalse.IsOrbitFixed())
         {
             orbit.SetProgress(questionTrueFalse.fixedOrbit);
-            orbit.SetOrbitingObjectInCycle();
+            orbit.SetPositionAndRotationInCycle();
         }
 
         if (questionTrueFalse.IsRotationFixed())
         {
             rotation.SetProgress(questionTrueFalse.fixedRotation);
-            rotation.SetOrbitingObjectInCycle();
+            rotation.SetPositionAndRotationInCycle();
         }
     }
     

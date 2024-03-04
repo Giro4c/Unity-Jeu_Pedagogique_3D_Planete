@@ -29,6 +29,6 @@ public class CycleInteractionPlanetMouseRotation : CycleInteractionPlanetMouse
         cycleAffected.SetProgress(newProgress);
             
         // Change object's rotation
-        cycleAffected.SetOrbitingObjectInCycle();
+        cycleAffected.SetPositionAndRotationInCycle();
     }
 }

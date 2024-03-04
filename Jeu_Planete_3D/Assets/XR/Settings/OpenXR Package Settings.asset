@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077bca9897b444788c83491c066a79b1, type: 3}
   m_Name: OpenXRExtensions Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: PICO OpenXR Features
   version: 1.0.0
   featureIdInternal: com.unity.openxr.pico.features
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa5b568c4324bd4faad2da2e7ee7e84, type: 3}
   m_Name: PICOFeature Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: PICO Support
   version: 1.0.0
   featureIdInternal: com.unity.openxr.feature.pico

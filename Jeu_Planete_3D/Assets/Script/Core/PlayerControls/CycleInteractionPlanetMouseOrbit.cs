@@ -35,7 +35,7 @@ public class CycleInteractionPlanetMouseOrbit : CycleInteractionPlanetMouse
         cycleAffected.SetProgress(newProgress);
 
         // Changes the position of the orbiting object
-        cycleAffected.SetOrbitingObjectInCycle();
+        cycleAffected.SetPositionAndRotationInCycle();
         
     }
     

@@ -728,6 +728,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76436577}
   m_CullTransparentMesh: 1
+--- !u!1 &78494931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 78494932}
+  m_Layer: 2
+  m_Name: Cycle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &78494932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78494931}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 869545368}
+  - {fileID: 1988083685}
+  - {fileID: 2033552270}
+  m_Father: {fileID: 1476952872}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &95376814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,18 +3313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &292073130 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2871854915827847850, guid: 65eb6b98091a5734ba9d9ca871cef69a,
-    type: 3}
-  m_PrefabInstance: {fileID: 292073127}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &292073131 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4582428553104524465, guid: 65eb6b98091a5734ba9d9ca871cef69a,
@@ -5140,8 +5162,6 @@ GameObject:
   m_Component:
   - component: {fileID: 547067516}
   - component: {fileID: 547067517}
-  - component: {fileID: 547067519}
-  - component: {fileID: 547067518}
   m_Layer: 5
   m_Name: Month Slider
   m_TagString: Untagged
@@ -5222,34 +5242,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &547067518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547067515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ec7617f93e2004e993f6a908aaeba2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionBasedController: {fileID: 292073130}
-  sliderValue: {fileID: 0}
-  orbitAutoChanger: {fileID: 0}
---- !u!114 &547067519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547067515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43048b97cd7da494380186e49952df33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderValue: {fileID: 0}
 --- !u!1 &584470619
 GameObject:
   m_ObjectHideFlags: 0
@@ -5975,7 +5967,6 @@ GameObject:
   - component: {fileID: 674138891}
   - component: {fileID: 674138888}
   - component: {fileID: 674138890}
-  - component: {fileID: 674138889}
   m_Layer: 2
   m_Name: Rotation
   m_TagString: Untagged
@@ -5995,29 +5986,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87db832d7f264fc48ab213298e32b656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cyclingObject: {fileID: 416707593}
+  usePosition: 0
+  useRotation: 1
   progress: 0
   period: 10
-  DEFAULT_PERIOD: 1
+  DEFAULT_PERIOD: 10
   revolutionSelf:
     initialRotation: {x: 0, y: 0, z: 0}
     axis: {x: 0, y: -1, z: 0}
---- !u!114 &674138889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674138887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19288bc385bd4a88abb3ba9986fe96f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderValue: {fileID: 674138888}
-  _slider: {fileID: 0}
-  identifier: Slider Sync Cycle Rotation
-  _defaultActivation: 1
 --- !u!114 &674138890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8499,6 +8475,69 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 864111339}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &869545367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 869545368}
+  - component: {fileID: 869545370}
+  - component: {fileID: 869545369}
+  m_Layer: 2
+  m_Name: Orbit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &869545368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869545367}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 78494932}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &869545369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869545367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19288bc385bd4a88abb3ba9986fe96f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cycle: {fileID: 2026194467}
+  _slider: {fileID: 547067517}
+  identifier: Slider Sync Cycle Orbit
+  _defaultActivation: 1
+--- !u!114 &869545370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869545367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044530b58b4b48ee852e1970a10405fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cycle: {fileID: 2026194467}
+  cyclingObject: {fileID: 11511732}
 --- !u!1 &875285682
 GameObject:
   m_ObjectHideFlags: 0
@@ -9777,11 +9816,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1429474206}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7090622273767523933, guid: c61d29680a4153b48be69644a5ee45f0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1052881832}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c61d29680a4153b48be69644a5ee45f0, type: 3}
 --- !u!4 &1052881829 stripped
 Transform:
@@ -9801,19 +9836,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1052881828}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1052881832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052881831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf5f971d5b27442958db8551a2b0eaf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 1052881831}
 --- !u!1 &1057931960
 GameObject:
   m_ObjectHideFlags: 0
@@ -11226,8 +11248,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1153631536}
   - component: {fileID: 1153631539}
-  - component: {fileID: 1153631538}
-  - component: {fileID: 1153631537}
   m_Layer: 5
   m_Name: Speed Slider
   m_TagString: Untagged
@@ -11257,30 +11277,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1, y: -6.2}
   m_SizeDelta: {x: 230, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1153631537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153631535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22afca4b487ec6b42b2dc74f4763525c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1153631538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153631535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 163f04be1145e204ea7c0a4ba8565c78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1153631539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11325,10 +11321,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1196187552}
   m_HandleRect: {fileID: 1928311541}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12768,6 +12764,7 @@ Transform:
   m_Children:
   - {fileID: 722516180}
   - {fileID: 2000319361}
+  - {fileID: 78494932}
   - {fileID: 860317188}
   m_Father: {fileID: 1521613177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13180,8 +13177,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1652192291}
   - component: {fileID: 1652192292}
-  - component: {fileID: 1652192294}
-  - component: {fileID: 1652192293}
   m_Layer: 5
   m_Name: Hour Slider
   m_TagString: Untagged
@@ -13262,34 +13257,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1652192293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652192290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22afca4b487ec6b42b2dc74f4763525c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionBasedController: {fileID: 292073130}
-  sliderValue: {fileID: 0}
-  rotaAutoChanger: {fileID: 0}
---- !u!114 &1652192294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652192290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 163f04be1145e204ea7c0a4ba8565c78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderValue: {fileID: 0}
 --- !u!1001 &1685391060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14669,7 +14636,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1789269888}
-  - component: {fileID: 1789269889}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -14698,19 +14664,6 @@ RectTransform:
   m_AnchoredPosition: {x: 111.29998, y: -38.000023}
   m_SizeDelta: {x: 352, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1789269889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789269887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b26c439724a4da7845364aa3a65821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 2142425726}
 --- !u!1 &1793504371
 GameObject:
   m_ObjectHideFlags: 0
@@ -14890,10 +14843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87db832d7f264fc48ab213298e32b656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cyclingObject: {fileID: 1946092781}
+  usePosition: 0
+  useRotation: 1
   progress: 0
   period: 10
-  DEFAULT_PERIOD: 1
+  DEFAULT_PERIOD: 10
   revolutionSelf:
     initialRotation: {x: -90, y: 0, z: 0}
     axis: {x: 1, y: 0, z: 0}
@@ -16665,6 +16619,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960360884}
   m_CullTransparentMesh: 1
+--- !u!1 &1988083684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988083685}
+  - component: {fileID: 1988083687}
+  - component: {fileID: 1988083686}
+  m_Layer: 2
+  m_Name: Rotation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1988083685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988083684}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 78494932}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1988083686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988083684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19288bc385bd4a88abb3ba9986fe96f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cycle: {fileID: 674138888}
+  _slider: {fileID: 1652192292}
+  identifier: Slider Sync Cycle Rotation
+  _defaultActivation: 1
+--- !u!114 &1988083687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988083684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044530b58b4b48ee852e1970a10405fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cycle: {fileID: 674138888}
+  cyclingObject: {fileID: 416707593}
 --- !u!1 &2000319360
 GameObject:
   m_ObjectHideFlags: 0
@@ -16837,7 +16854,6 @@ GameObject:
   - component: {fileID: 2026194470}
   - component: {fileID: 2026194467}
   - component: {fileID: 2026194469}
-  - component: {fileID: 2026194468}
   m_Layer: 2
   m_Name: Orbit
   m_TagString: Untagged
@@ -16857,29 +16873,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1e4891a8c875498d1d8bfcb2d4d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cyclingObject: {fileID: 11511732}
+  usePosition: 1
+  useRotation: 0
   progress: 0
   period: 60
-  DEFAULT_PERIOD: 1
+  DEFAULT_PERIOD: 60
   orbitPath:
     xAxis: 3
     yAxis: 2
---- !u!114 &2026194468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026194466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19288bc385bd4a88abb3ba9986fe96f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderValue: {fileID: 2026194467}
-  _slider: {fileID: 0}
-  identifier: Slider Sync Cycle Orbit
-  _defaultActivation: 1
 --- !u!114 &2026194469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17044,6 +17045,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031436568}
   m_CullTransparentMesh: 1
+--- !u!1 &2033552269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2033552270}
+  - component: {fileID: 2033552271}
+  m_Layer: 2
+  m_Name: Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2033552270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033552269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 78494932}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2033552271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033552269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044530b58b4b48ee852e1970a10405fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cycle: {fileID: 1800827512}
+  cyclingObject: {fileID: 1946092781}
 --- !u!1 &2039786155
 GameObject:
   m_ObjectHideFlags: 0

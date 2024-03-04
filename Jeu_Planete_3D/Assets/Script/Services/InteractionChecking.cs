@@ -89,14 +89,14 @@ namespace Script.Services
             }
         }
 
-        private void DebugNewRestrictions(string[] newRestrictions)
-        {
-            Debug.Log("New Restrictions : ");
-            foreach (var VARIABLE in newRestrictions)
-            {
-                Debug.Log(VARIABLE);
-            }
-        }
+        // private void DebugNewRestrictions(string[] newRestrictions)
+        // {
+        //     Debug.Log("New Restrictions : ");
+        //     foreach (var VARIABLE in newRestrictions)
+        //     {
+        //         Debug.Log(VARIABLE);
+        //     }
+        // }
 
         private bool AreNewRestrictions(string[] newRestrictions)
         {

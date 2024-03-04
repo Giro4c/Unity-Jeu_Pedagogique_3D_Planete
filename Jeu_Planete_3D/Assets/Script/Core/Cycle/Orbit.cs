@@ -8,10 +8,10 @@ public class Orbit : Cycle
 {
     [SerializeField] private Ellipse orbitPath;
     
-    public override void SetOrbitingObjectInCycle()
+    public override void SetPositionAndRotationInCycle()
     {
         Vector2 orbitPos = orbitPath.Evaluate(progress);
-        cyclingObject.localPosition = new Vector3(orbitPos.x, 0, orbitPos.y);
+        _cyclePosition = new Vector3(orbitPos.x, 0, orbitPos.y);
     }
 
     public Ellipse GetOrbitPath()

@@ -8,9 +8,9 @@ public class RotationCycle : Cycle
 {
     [SerializeField] private RevolutionSelf revolutionSelf;
     
-    public override void SetOrbitingObjectInCycle()
+    public override void SetPositionAndRotationInCycle()
     {
-        cyclingObject.localRotation = revolutionSelf.Evaluate(progress);
+        _cycleRotation = revolutionSelf.Evaluate(progress);
     }
 
     public RevolutionSelf GetRevolutionSelf()

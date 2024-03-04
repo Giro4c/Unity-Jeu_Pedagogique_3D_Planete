@@ -7,17 +7,21 @@ using UnityEngine;
 public abstract class Cycle : MonoBehaviour
 {
     
-    [SerializeField] protected Transform cyclingObject;
+    // [SerializeField] protected Transform cyclingObject;
+    protected Vector3 _cyclePosition = Vector3.zero;
+    [SerializeField] protected bool usePosition = false;
+    protected Quaternion _cycleRotation = new Quaternion(0, 0, 0, 0);
+    [SerializeField] protected bool useRotation = false;
     [Range(0f, 1f)] [SerializeField] protected float progress = 0f;
     [SerializeField] protected float period = 1f;
     [SerializeField] protected float DEFAULT_PERIOD = 1f;
     
-    public abstract void SetOrbitingObjectInCycle();
+    public abstract void SetPositionAndRotationInCycle();
 
-    public Transform GetCyclingObject()
-    {
-        return cyclingObject;
-    }
+    // public Transform GetCyclingObject()
+    // {
+    //     return cyclingObject;
+    // }
     
     public float GetProgress()
     {
@@ -43,6 +47,25 @@ public abstract class Cycle : MonoBehaviour
     {
         period = val;
     }
-    
+
+    public Vector3 GetPosition()
+    {
+        return _cyclePosition;
+    }
+
+    public Quaternion GetRotation()
+    {
+        return _cycleRotation;
+    }
+
+    public bool UsePosition()
+    {
+        return usePosition;
+    }
+
+    public bool UseRotation()
+    {
+        return useRotation;
+    }
 
 }

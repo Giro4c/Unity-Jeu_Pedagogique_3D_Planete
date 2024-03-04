@@ -18,4 +18,14 @@ public abstract class CyclesInteraction : PlayerControl
         return progresses;
     }
     
+    public float[] GetValuesPeriod()
+    {
+        float[] periods = new float[cyclesAffected.Length];
+        for (int i = 0; i < cyclesAffected.Length; ++i)
+        {
+            periods[i] = cyclesAffected[i].GetPeriod();
+        }
+        return periods;
+    }
+    
 }

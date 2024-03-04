@@ -32,7 +32,7 @@ public class CycleInteractionPlanetXROrbit : CycleInteractionPlanetXR
         cycleAffected.SetProgress(newProgress);
 
         // Changes the position of the orbiting object
-        cycleAffected.SetOrbitingObjectInCycle();
+        cycleAffected.SetPositionAndRotationInCycle();
         
     }
     

@@ -10,7 +10,7 @@ public abstract class CycleInteractionUIProgress : CycleInteractionUI
     protected override void ProcessingInput()
     {
         cycleAffected.SetProgress(NewProgress());
-        cycleAffected.SetOrbitingObjectInCycle();
+        cycleAffected.SetPositionAndRotationInCycle();
     }
 
     protected abstract float NewProgress();

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class FaceSoleil : CycleAutoMotion
+public class FaceSoleil : CycleAutoProgression
 {
     
     [SerializeField] private Renderer render;

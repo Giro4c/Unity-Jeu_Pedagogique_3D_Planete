@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CycleAutoMotion : MonoBehaviour, IdentifiableRestrictable
+public class CycleAutoProgression : MonoBehaviour, IdentifiableRestrictable
 {
     
     protected bool _active = true;
@@ -55,7 +55,7 @@ public class CycleAutoMotion : MonoBehaviour, IdentifiableRestrictable
         _active = CanBeEnabled();
         enabled = _active;
         if (!enabled) return;
-        cycle.SetOrbitingObjectInCycle();
+        cycle.SetPositionAndRotationInCycle();
         _routine = StartCoroutine(AnimateCycle());
     }
 
@@ -67,14 +67,14 @@ public class CycleAutoMotion : MonoBehaviour, IdentifiableRestrictable
 
     protected virtual IEnumerator AnimateCycle()
     {
-        if (cycle.GetPeriod() < 0.1f)
-        {
-            cycle.SetPeriod(0.1f);
-        }
+        // if (cycle.GetPeriod() < 0.1f)
+        // {
+        //     cycle.SetPeriod(0.1f);
+        // }
         while (_active)
         {
             UpdateProgress();
-            cycle.SetOrbitingObjectInCycle();
+            cycle.SetPositionAndRotationInCycle();
             yield return null;
         }
     }
