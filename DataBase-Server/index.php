@@ -187,7 +187,7 @@ elseif ( '/index.php/randomQuestions' == $uri){
         $nbVraiFaux = 0;
     }
 
-    $jsonRandQ = $controllerQuestions->getJsonRandomQs($nbQCU, $nbInteraction, $nbVraiFaux, $partieChecking, $data);
+    $jsonRandQ = $controllerQuestions->getJsonRandomQs($partieChecking, $data, $nbQCU, $nbInteraction, $nbVraiFaux);
 
     $layout = new Layout('gui/layout.html');
     $viewRandomQs = new ViewRandomQuestion($layout, $jsonRandQ);

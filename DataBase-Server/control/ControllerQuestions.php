@@ -12,7 +12,7 @@ class ControllerQuestions
      * @param int $howManyVraiFaux
      * @return string
      */
-    public function getJsonRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0, PartieChecking $questionService, $data): string{
+    public function getJsonRandomQs(PartieChecking $questionService, $data, int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): string{
         $numQs = $questionService->getRandomQs($howManyQCU, $howManyInterac, $howManyVraiFaux, $data);
         return json_encode($numQs, JSON_PRETTY_PRINT);
     }
