@@ -2,9 +2,9 @@
 
 include_once 'data/DataAccess.php';
 
-include_once 'controllers/controllerGame.php';
-include_once 'controllers/controllerInteractions.php';
-include_once 'controllers/controllerQuestions.php';
+include_once 'control/ControllerGame.php';
+include_once 'control/ControllerInteractions.php';
+include_once 'control/ControllerQuestions.php';
 
 include_once 'service/PartieChecking.php';
 
@@ -14,7 +14,7 @@ include_once 'gui/ViewInteractions.php';
 include_once 'gui/ViewPartie.php';
 include_once 'gui/ViewQuestions.php';
 
-use controllers\{controllerGame, controllerQuestions, controllerInteractions};
+use control\{ControllerGame, ControllerQuestions, ControllerInteractions};
 use data\DataAccess;
 use gui\{Layout, ViewInteractions, ViewPartie, ViewQuestions, ViewRandomQuestion};
 use service\PartieChecking;
@@ -26,7 +26,9 @@ if (session_id() == '') {
 
 $data = null;
 try {
-    $data = new DataAccess(new PDO('mysql-jeupedagogique.alwaysdata.net', '331395_jeu_pedag', 'Planete-T3rr3', 'jeupedagogique_bd'));
+    //$data = new DataAccess(new PDO('mysql:host=jeupedagogique.alwaysdata.net;db_name=jeupedagogique_bd', '331395_jeu_pedag', 'Planete-T3rr3'));
+    $data = new DataAccess(new PDO('mysql:host=127.0.0.1;dbname=jeupedagogique_bd', 'root', ''));
+
 
 } catch (PDOException $e) {
     print "Erreur de connexion !: " . $e->getMessage() . "<br/>";
@@ -54,8 +56,8 @@ if ('index.php/addInteraction' == $uri) {
         $dateInteract = date('Y-m-d H:i:s');
 
         try {
-            $controllerInte->addInteration($ip, $type, (float)$value, $isEval, $dateInteract);
-        } catch (\utilities\CannotDoException $e) {
+            $controllerInte->addInteration($ip, $type, (float)$value, $isEval, $dateInteract, $partieChecking, $data);
+        } catch (\service\CannotDoException $e) {
             $report = $e->getReport();
             $report = str_replace('\n', '<br />', $report);
             echo '<p>', $report, '</p>';
@@ -73,7 +75,7 @@ if ('index.php/addInteraction' == $uri) {
 elseif ( '/index.php/abordOnGoingGame' == $uri){
 
     $ip = $_SERVER['REMOTE_ADDR'];
-    $controllerGame->abortPartie($ip);
+    $partieChecking->abortOnGoingPartie($ip, $data);
 
     $partieStatus = "Partie abandonner";
     $date = date('Y-m-d H:i:s');
@@ -89,15 +91,15 @@ elseif ( '/index.php/NewGame' == $uri){
         $plateforme = $_GET['plateforme'];
         $date = date('Y-m-d H:i:s');
         try{
-            $controllerGame->newPlayer($ip, $plateforme);
-        } catch (\utilities\CannotDoException $e){
+            $controllerGame->newPlayer($ip, $plateforme, $partieChecking, $data);
+        } catch (\service\CannotDoException $e){
             $report = $e->getReport();
             $report = str_replace( '\n', '<br />', $report );
             echo '<p>', $report, '</p>';
         }
         try{
-            $controllerGame->newPartie($ip, $date);
-        } catch (\utilities\CannotDoException $e){
+            $controllerGame->newPartie($ip, $date, $partieChecking, $data);
+        } catch (\service\CannotDoException $e){
             $report = $e->getReport();
             $report = str_replace( '\n', '<br />', $report );
             echo '<p>', $report, '</p>';
@@ -121,7 +123,7 @@ elseif ( '/index.php/QuestionAnswer' == $uri){
     if (isset($_GET['qid']) && $data->verifyPartieInProgress($ip) && isset($_GET['correct']) && isset($_GET['start'])){
         $dateFin = date('Y-m-d H:i:s');
         $dateDeb = $_GET['start'];
-        $controllerQuestions->addFinishedQuestion($_GET['qid'], $data->getPartieInProgress($ip)['Id_Partie'], $dateDeb, $dateFin, $_GET['correct']);
+        $controllerQuestions->addFinishedQuestion($_GET['qid'], $data->getPartieInProgress($ip)['Id_Partie'], $dateDeb, $dateFin, $_GET['correct'], $partieChecking, $data);
     }
     else{
         echo "URL not complete, cannot add question answer to database";
@@ -132,14 +134,14 @@ elseif ( '/index.php/endGame' == $uri){
     $date = date('Y-m-d H:i:s');
 
     try{
-        $controllerGame->endPartie($ip, $date);
+        $controllerGame->endPartie($ip, $date, $partieChecking, $data);
 
         $partieStatus = "Fin de partie";
         $layout = new Layout('gui/layout.html');
         $viewPartie = new ViewPartie($layout, $partieStatus, $ip, $date);
 
         $viewPartie->display();
-    } catch (\utilities\CannotDoException $e){
+    } catch (\service\CannotDoException $e){
         $report = $e->getReport();
         $report = str_replace( '\n', '<br />', $report );
         echo '<p>', $report, '</p>';
@@ -150,7 +152,7 @@ elseif ( '/index.php/question' == $uri){
 
     // See if there is an indicated question in the url
     if (isset($_GET['qid'])){
-        $jsonQ = $controllerQuestions->getJsonAttributesQ($_GET['qid']);
+        $jsonQ = $controllerQuestions->getJsonAttributesQ($_GET['qid'], $partieChecking, $data);
 
         $layout = new Layout('gui/layout.html');
         $viewQuestion = new ViewQuestions($layout, $jsonQ);
@@ -183,7 +185,7 @@ elseif ( '/index.php/randomQuestions' == $uri){
         $nbVraiFaux = 0;
     }
 
-    $jsonRandQ = $controllerQuestions->getJsonRandomQs($nbQCU, $nbInteraction, $nbVraiFaux);
+    $jsonRandQ = $controllerQuestions->getJsonRandomQs($nbQCU, $nbInteraction, $nbVraiFaux, $partieChecking, $data);
 
     $layout = new Layout('gui/layout.html');
     $viewRandomQs = new ViewRandomQuestion($layout, $jsonRandQ);

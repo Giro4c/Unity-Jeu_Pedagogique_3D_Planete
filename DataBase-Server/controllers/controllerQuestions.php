@@ -23,7 +23,7 @@ class controllerQuestions
         return json_encode($numQs, JSON_PRETTY_PRINT);
     }
 
-    public function getJsonAttributesQ(int $numQues): false|string
+    public function getJsonAttributesQ(int $numQues): string
     {
         $qAttributes = $this->dbQuestion->getQAttributes($numQues);
         return json_encode($qAttributes, JSON_PRETTY_PRINT);

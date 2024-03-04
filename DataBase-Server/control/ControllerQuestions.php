@@ -21,39 +21,18 @@ class ControllerQuestions
      * @param int $howManyVraiFaux
      * @return string
      */
-    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0, PartieChecking $questionService, $data): string{
-        $totalQs = $howManyQCU + $howManyInterac + $howManyVraiFaux;
+    public function getJsonRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0, PartieChecking $questionService, $data): string{
         $numQs = $questionService->getRandomQs($howManyQCU, $howManyInterac, $howManyVraiFaux, $data);
-        ob_start(); ?>
-        <ul>
-            <?php for ($count = 0; $count < $totalQs; ++$count){?>
-                <li id="<?= $count ?>"><?= $numQs[$count] ?></li>
-            <?php }?>
-        </ul>
-        <?php
-        $contentHTML = ob_get_contents();
-        ob_end_clean();
-        return $contentHTML;
+        return json_encode($numQs, JSON_PRETTY_PRINT);
     }
 
     /**
      * @param int $numQues
      * @return string
      */
-    public function getHTMLAttributesQ(int $numQues, PartieChecking $questionService, $data): string {
+    public function getJsonAttributesQ(int $numQues, PartieChecking $questionService, $data): string {
         $qAttributes = $questionService->getQAttributes($numQues, $data);
-        ob_start();
-        while (true) {
-            $attribute = current($qAttributes);
-            if ($attribute == null && key($qAttributes) == null) break;
-            ?>
-            <p id="<?= key($qAttributes) ?>"><?= $attribute ?></p>
-            <?php
-            next($qAttributes);
-        }
-        $qHTML = ob_get_contents();
-        ob_end_clean();
-        return $qHTML;
+        return json_encode($qAttributes, JSON_PRETTY_PRINT);
     }
 
 

@@ -18,8 +18,8 @@ class PartieChecking
     {
         $data->executeQuery($query);
     }
-    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, $data): Interaction{
-        return $data->addInteraction($nomInteract, $valeurInteract, $isEval, $ipJoueur);
+    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInterac, $data): Interaction{
+        return $data->addInteraction($nomInteract, $valeurInteract, $isEval, $ipJoueur, $dateInterac);
     }
 
     public function addJoueur(string $ip, string $plateforme, $data): Joueur{

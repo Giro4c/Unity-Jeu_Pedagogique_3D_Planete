@@ -32,9 +32,9 @@ class ControllerInteractions
      * @param int $isEval
      * @return void
      */
-    public function addInteration(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, PartieChecking $interactionService, $data): void {
+    public function addInteration(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInterac, PartieChecking $interactionService, $data): void {
         if (in_array($nomInteract, $this->interactionTypes)){
-            $interactionService->addInteraction($nomInteract, $valeurInteract, $isEval, $ipJoueur, $data);
+            $interactionService->addInteraction($nomInteract, $valeurInteract, $isEval, $ipJoueur, $dateInterac, $data);
         }
         else{
             $target = "DataBase Interaction ";
