@@ -3,6 +3,7 @@
 namespace control;
 
 use service\PartieChecking;
+use service\CannotDoException;
 
 class ControllerInteractions
 {

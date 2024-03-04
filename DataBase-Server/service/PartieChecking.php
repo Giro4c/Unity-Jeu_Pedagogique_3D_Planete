@@ -101,7 +101,6 @@ class PartieChecking
     public function getRandomQVraiFaux(int $howManyVraiFaux, $data): VraiFaux{
         return $data->getRandomQVraiFaux($howManyVraiFaux);
     }
-
 }
 
 
