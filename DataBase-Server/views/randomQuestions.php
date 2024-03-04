@@ -25,4 +25,4 @@ else{
 }
 //var_dump($nbVraiFaux);
 
-echo $controller->getRandomQs($nbQCU, $nbInteraction, $nbVraiFaux);
+echo $controller->getJsonRandomQs($nbQCU, $nbInteraction, $nbVraiFaux);

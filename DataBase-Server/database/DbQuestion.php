@@ -27,8 +27,7 @@ class DbQuestion
 
     public function getQBasics(int $numQues): array{
         $query = "SELECT * FROM " . $this->dbName . " WHERE Num_Ques = $numQues";
-        $basics = $this->conn->query($query)->fetch_assoc();
-        return $basics;
+        return $this->conn->query($query)->fetch_assoc();
     }
 
     public function getQAttributes(int $numQues): array{
@@ -55,8 +54,7 @@ class DbQuestion
     }
 
     public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
-        $numQ = array_merge($this->dbQcu->getRandomQQCU($howManyQCU), $this->dbQuesinterac->getRandomQInterac($howManyInterac), $this->dbVraiFaux->getRandomQVraiFaux($howManyVraiFaux)) ;
-        return $numQ;
+        return array_merge($this->dbQcu->getRandomQQCU($howManyQCU), $this->dbQuesinterac->getRandomQInterac($howManyInterac), $this->dbVraiFaux->getRandomQVraiFaux($howManyVraiFaux));
     }
 
 }

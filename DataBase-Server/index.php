@@ -152,10 +152,10 @@ elseif ( '/index.php/question' == $uri){
 
     // See if there is an indicated question in the url
     if (isset($_GET['qid'])){
-        $question = $controllerQuestions->getHTMLAttributesQ($_GET['qid']);
+        $jsonQ = $controllerQuestions->getJsonAttributesQ($_GET['qid']);
 
         $layout = new Layout('gui/layout.html');
-        $viewQuestion = new ViewQuestions($layout, $question);
+        $viewQuestion = new ViewQuestions($layout, $jsonQ);
 
         $viewQuestion->display();
     }
@@ -185,10 +185,10 @@ elseif ( '/index.php/randomQuestions' == $uri){
         $nbVraiFaux = 0;
     }
 
-    $nbRandomQs = $controllerQuestions->getRandomQs($nbQCU, $nbInteraction, $nbVraiFaux);
+    $jsonRandQ = $controllerQuestions->getJsonRandomQs($nbQCU, $nbInteraction, $nbVraiFaux);
 
     $layout = new Layout('gui/layout.html');
-    $viewRandomQs = new ViewRandomQuestion($layout, $nbRandomQs);
+    $viewRandomQs = new ViewRandomQuestion($layout, $jsonRandQ);
 
     $viewRandomQs->display();
 }
