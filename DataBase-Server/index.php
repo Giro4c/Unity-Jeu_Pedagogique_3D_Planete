@@ -44,7 +44,7 @@ $partieChecking = new PartieChecking();
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-if ('index.php/addInteraction' == $uri) {
+if ('/index.php/addInteraction' == $uri) {
 
     if (isset($_GET["type"]) && isset($_GET["value"]) && isset($_GET["isEval"])) {
         $ip = $_SERVER['REMOTE_ADDR'];
