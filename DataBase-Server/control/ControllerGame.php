@@ -2,6 +2,7 @@
 
 namespace control;
 
+use service\CannotDoException;
 use service\PartieChecking;
 
 class ControllerGame
