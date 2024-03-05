@@ -30,13 +30,8 @@ class DataAccess implements DataAccessInterface
         $this->dataAccess = null;
     }
 
-    public function executeQuery(string $query)
-    {
-        return $this->dataAccess->query($query);
-    }
-
     public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction{
-        $query = "INSERT INTO INTERACTION (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur, Date_Inte) VALUES ('$nomInteract', $valeurInteract,$isEval, '$ipJoueur', '$dateInteract')";
+        $query = "INSERT INTO INTERACTION (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur, Date_Inte) VALUES ($nomInteract, $valeurInteract,$isEval, $ipJoueur, $dateInteract)";
         $this->dataAccess->query($query);
         return new Interaction($nomInteract, $valeurInteract,  $isEval, $ipJoueur, $dateInteract);
     }
