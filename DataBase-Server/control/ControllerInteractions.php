@@ -20,7 +20,7 @@ class ControllerInteractions
     /**
      * @param string $ipJoueur
      * @param string $nomInteract
-     * @param float $value
+     * @param float $valeurInteract
      * @param int $isEval
      * @return void
      */

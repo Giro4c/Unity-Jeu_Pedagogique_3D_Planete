@@ -12,11 +12,11 @@ class PartieChecking
     {
         $data->executeQuery($query);
     }
-    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInterac, $data): Interaction|null{
+    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInterac, $data): Interaction|False{
         return $data->addInteraction($nomInteract, $valeurInteract, $isEval, $ipJoueur, $dateInterac);
     }
 
-    public function addJoueur(string $ip, string $plateforme, $data): Joueur{
+    public function addJoueur(string $ip, string $plateforme, $data): Joueur|False{
         return $data->addJoueur($ip, $plateforme);
     }
 
@@ -24,7 +24,7 @@ class PartieChecking
         return $data->verifyJoueurExists($ip);
     }
 
-    public function addNewPartie(string $ipJoueur, string $dateDeb, $data): Partie{
+    public function addNewPartie(string $ipJoueur, string $dateDeb, $data): Partie|False{
         return $data->addNewPartie($ipJoueur, $dateDeb);
     }
 

@@ -47,10 +47,12 @@ class DataAccess implements DataAccessInterface
         else return false;
     }
 
-    public function addJoueur(string $ip, string $plateforme): Joueur{
+    public function addJoueur(string $ip, string $plateforme): Joueur|False{
         $query = "INSERT INTO JOUEUR (Ip, Plateforme) VALUES ('$ip', '$plateforme')";
-        $this->dataAccess->query($query);
-        return new Joueur($ip, $plateforme);
+        if($this->dataAccess->query($query)){
+            return new Joueur($ip, $plateforme);
+        }
+        else return false;
     }
 
     public function verifyJoueurExists(string $ip): bool{
@@ -58,10 +60,12 @@ class DataAccess implements DataAccessInterface
         return $this->dataAccess->query($query)->fetch_assoc()["Counter"] > 0;
     }
 
-    public function addNewPartie(string $ipJoueur, string $dateDeb): Partie{
+    public function addNewPartie(string $ipJoueur, string $dateDeb): Partie|False{
         $query = "INSERT INTO PARTIE (Ip_Joueur, Date_Deb) VALUES ('$ipJoueur', '$dateDeb')";
-        $this->dataAccess->query($query);
-        return new Partie($dateDeb, $ipJoueur, 0);
+        if($this->dataAccess->query($query)){
+            return new Partie($dateDeb, $ipJoueur, 0);
+        }
+        else return false;
     }
 
     public function deleteOnGoingPartie(string $ipJoueur): void{

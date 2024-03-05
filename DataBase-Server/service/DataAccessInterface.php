@@ -8,17 +8,17 @@ interface DataAccessInterface
 {
     public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction|False;
 
-    public function addJoueur(string $ip, string $plateforme): Joueur;
+    public function addJoueur(string $ip, string $plateforme): Joueur|False;
 
     public function verifyJoueurExists(string $ip): bool;
 
-    public function addNewPartie(string $ipJoueur, string $dateDeb): Partie;
+    public function addNewPartie(string $ipJoueur, string $dateDeb): Partie|False;
 
     public function deleteOnGoingPartie(string $ipJoueur): void;
 
     public function abortOnGoingPartie(string $ipJoueur): void;
 
-    public function endPartie(string $ipJoueur, string $dateFin): Partie;
+    public function endPartie(string $ipJoueur, string $dateFin): Partie|False;
 
     public function getPartieInProgress(string $ipJoueur): Partie|null;
 
