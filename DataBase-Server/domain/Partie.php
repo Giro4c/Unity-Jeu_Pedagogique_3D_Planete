@@ -7,7 +7,7 @@ class Partie
     protected int|null $Id_Partie;
     protected string $Date_Deb;
     protected string $Date_Fin;
-    protected float $Moy_Questions;
+    protected float|null $Moy_Questions;
     protected string $Ip_Joueur;
     protected int $Abandon;
 
