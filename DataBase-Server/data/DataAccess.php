@@ -137,21 +137,20 @@ class DataAccess implements DataAccessInterface
 
     public function getQBasics(int $numQues): string{
         $query = "SELECT * FROM Question WHERE Num_Ques = $numQues";
-        $basics = $this->dataAccess->query($query)->fetch_assoc();
-        return $basics;
+        return $this->dataAccess->query($query)->fetch_assoc();
     }
 
     public function getQAttributes(int $numQues): Question{
         $basics = $this->getQBasics($numQues);
 
         if ($basics['Type'] == 'QCU'){
-            $result = $this->dbQcu->getQQCU($numQues)->getContent();
+            $result = $this->dataAccess->getQQCU($numQues)->getContent();
         }
         else if ($basics['Type'] == 'QUESINTERAC'){
-            $result = $this->dbQuesinterac->getQInteraction($numQues)->getContent();
+            $result = $this->dataAccess->getQInteraction($numQues)->getContent();
         }
         else if ($basics['Type'] == 'VRAIFAUX'){
-            $result = $this->dbVraiFaux->getQVraiFaux($numQues)->getContent();
+            $result = $this->dataAccess->getQVraiFaux($numQues)->getContent();
         }
         while (true) {
             $attribute = current($basics);
@@ -165,7 +164,7 @@ class DataAccess implements DataAccessInterface
     }
 
     public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): Question{
-        $numQ = array_merge($this->dbQcu->getRandomQQCU($howManyQCU), $this->dbQuesinterac->getRandomQInterac($howManyInterac), $this->dbVraiFaux->getRandomQVraiFaux($howManyVraiFaux)) ;
+        $numQ = array_merge($this->dataAccess->getRandomQQCU($howManyQCU), $this->dbQuesinterac->getRandomQInterac($howManyInterac), $this->dbVraiFaux->getRandomQVraiFaux($howManyVraiFaux)) ;
         return $numQ;
     }
 
