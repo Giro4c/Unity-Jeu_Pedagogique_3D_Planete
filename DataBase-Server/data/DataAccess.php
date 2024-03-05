@@ -117,7 +117,7 @@ class DataAccess implements DataAccessInterface
         return new UserAnswer($numQues, $idPartie, $Date_Deb, $Date_Fin, $Reussite);
     }
 
-    public function getPartyScore(int $idPartie): float {
+    public function getPartyScore(int $idPartie): float|False {
         $query = "SELECT COUNT(*) AS Total, SUM(Reussite) AS Score FROM REPONSE_USER WHERE Id_Partie = $idPartie";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
         $count = $result['Total'];
@@ -143,9 +143,13 @@ class DataAccess implements DataAccessInterface
         $this->dataAccess->query($query);
     }
 
-    public function getQBasics(int $numQues): string{
+    public function getQBasics(int $numQues): array|False{
         $query = "SELECT * FROM QUESTION WHERE Num_Ques = $numQues";
-        return $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
+        $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
+        if ($result){
+            return $result;
+        }
+        else return false;
     }
 
     public function getQAttributes(int $numQues): Question{

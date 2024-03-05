@@ -26,11 +26,11 @@ interface DataAccessInterface
 
     public function getQuestionCorrect(int $numQues, int $idPartie):  UserAnswer;
 
-    public function getPartyScore(int $idPartie): float;
+    public function getPartyScore(int $idPartie): float|False;
 
     public function addQuestionAnswer(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect): void;
 
-    public function getQBasics(int $numQues): string;
+    public function getQBasics(int $numQues): array|False;
 
     public function getQAttributes(int $numQues): Question;
 

@@ -52,7 +52,7 @@ class PartieChecking
         return $data->getQuestionCorrect($numQues, $idPartie);
     }
 
-    public function getPartyScore(int $idPartie, $data): float{
+    public function getPartyScore(int $idPartie, $data): float|False{
         return $data->getPartyScore($idPartie);
     }
 
@@ -60,7 +60,7 @@ class PartieChecking
         $data->addQuestionAnswer($numQues, $idParty, $dateDeb, $dateFin, $isCorrect);
     }
 
-    public function getQBasics(int $numQues, $data): string{
+    public function getQBasics(int $numQues, $data): array|False{
         return $data->getQBasics($numQues);
     }
 
@@ -68,7 +68,7 @@ class PartieChecking
         return $data->getQAttributes($numQues);
     }
 
-    public function getRandomQs(int $howManyQCM, int $howManyInterac, int $howManyVraiFaux, $data): Question{
+    public function getRandomQs(int $howManyQCM, int $howManyInterac, int $howManyVraiFaux, $data): array{
         return $data->getRandomQs($howManyQCM, $howManyInterac, $howManyVraiFaux);
     }
 
@@ -76,7 +76,7 @@ class PartieChecking
         return $data->getQQCU($numQues);
     }
 
-    public function getRandomQQCU(int $howManyQCM, $data): Qcu{
+    public function getRandomQQCU(int $howManyQCM, $data): array|False{
         return $data->getRandomQQCU($howManyQCM);
     }
 
@@ -84,7 +84,7 @@ class PartieChecking
         return $data->getQInteraction($numQues);
     }
 
-    public function getRandomQInterac(int $howManyInterac, $data): Quesinterac{
+    public function getRandomQInterac(int $howManyInterac, $data): array|False{
         return $data->getRandomQInterac($howManyInterac);
     }
 
