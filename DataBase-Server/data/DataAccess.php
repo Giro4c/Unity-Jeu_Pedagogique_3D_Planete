@@ -2,19 +2,20 @@
 
 namespace data;
 
-use domain\Interaction;
-use domain\Joueur;
-use domain\Partie;
-use domain\Qcu;
-use domain\Quesinterac;
-use domain\Question;
-use domain\UserAnswer;
-use domain\VraiFaux;
-use service\DataAccessInterface;
-use utilities\CannotDoException;
-use utilities\GReturn;
+use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, Question, UserAnswer, VraiFaux};
+use service\{DataAccessInterface, CannotDoException};
+
+include_once 'domain/Interaction.php';
+include_once 'domain/Joueur.php';
+include_once 'domain/Partie.php';
+include_once 'domain/Qcu.php';
+include_once 'domain/Quesinterac.php';
+include_once 'domain/Question.php';
+include_once 'domain/UserAnswer.php';
+include_once 'domain/VraiFaux.php';
 
 include_once 'service/DataAccessInterface.php';
+include_once 'service/CannotDoException.php';
 
 class DataAccess implements DataAccessInterface
 {
@@ -30,8 +31,13 @@ class DataAccess implements DataAccessInterface
         $this->dataAccess = null;
     }
 
+    public function executeQuery(string $query)
+    {
+        return $this->dataAccess->query($query);
+    }
+
     public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction{
-        $query = "INSERT INTO INTERACTION (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur, Date_Inte) VALUES ($nomInteract, $valeurInteract,$isEval, $ipJoueur, $dateInteract)";
+        $query = "INSERT INTO INTERACTION (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur, Date_Inte) VALUES ('$nomInteract', $valeurInteract,$isEval, '$ipJoueur', '$dateInteract')";
         $this->dataAccess->query($query);
         return new Interaction($nomInteract, $valeurInteract,  $isEval, $ipJoueur, $dateInteract);
     }
