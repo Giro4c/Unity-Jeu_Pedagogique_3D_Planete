@@ -46,5 +46,5 @@ interface DataAccessInterface
 
     public function getQVraiFaux(int $numQues): VraiFaux;
 
-    public function getRandomQVraiFaux(int $howManyVraiFaux): VraiFaux;
+    public function getRandomQVraiFaux(int $howManyVraiFaux): array|False;
 }
