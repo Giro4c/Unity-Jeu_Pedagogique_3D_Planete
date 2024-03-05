@@ -56,7 +56,7 @@ class DataAccess implements DataAccessInterface
     public function addNewPartie(string $ipJoueur, string $dateDeb): Partie{
         $query = "INSERT INTO PARTIE (Ip_Joueur, Date_Deb) VALUES ('$ipJoueur', '$dateDeb')";
         $this->dataAccess->query($query);
-        return new Partie($dateDeb, null, null, $ipJoueur, 0 );
+        return new Partie($dateDeb, $ipJoueur, 0);
     }
 
     public function deleteOnGoingPartie(string $ipJoueur): void{
@@ -159,9 +159,8 @@ class DataAccess implements DataAccessInterface
         return new Question($numQues, $basics['Enonce'], $basics['Type']);
     }
 
-    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): Question{
-        $numQ = array_merge($this->dataAccess->getRandomQQCU($howManyQCU), $this->dbQuesinterac->getRandomQInterac($howManyInterac), $this->dbVraiFaux->getRandomQVraiFaux($howManyVraiFaux)) ;
-        return $numQ;
+    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
+        return array_merge($this->dataAccess->getRandomQQCU($howManyQCU), $this->dataAccess->getRandomQInterac($howManyInterac), $this->dataAccess->getRandomQVraiFaux($howManyVraiFaux));
     }
 
     public function getQQCU(int $numQues): Qcu{

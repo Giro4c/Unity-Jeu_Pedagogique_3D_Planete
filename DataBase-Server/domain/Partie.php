@@ -4,7 +4,7 @@ namespace domain;
 
 class Partie
 {
-    protected int $Id_Partie;
+    protected int|null $Id_Partie;
     protected string $Date_Deb;
     protected string $Date_Fin;
     protected float $Moy_Questions;
@@ -12,14 +12,14 @@ class Partie
     protected int $Abandon;
 
     /**
-     * @param int $Id_Partie
      * @param string $Date_Deb
-     * @param string $Date_Fin
-     * @param float $Moy_Questions
      * @param string $Ip_Joueur
      * @param int $Abandon
+     * @param string|null $Date_Fin
+     * @param float|null $Moy_Questions
+     * @param int|null $Id_Partie
      */
-    public function __construct(int $Id_Partie, string $Date_Deb, string $Date_Fin, float $Moy_Questions, string $Ip_Joueur, int $Abandon)
+    public function __construct(string $Date_Deb, string $Ip_Joueur, int $Abandon, string|null $Date_Fin = null, float|null $Moy_Questions = null, int|null $Id_Partie = null)
     {
         $this->Id_Partie = $Id_Partie;
         $this->Date_Deb = $Date_Deb;
@@ -30,9 +30,9 @@ class Partie
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getIdPartie(): int
+    public function getIdPartie(): int|null
     {
         return $this->Id_Partie;
     }
@@ -100,17 +100,17 @@ class Partie
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDateFin(): string
+    public function getDateFin(): string|null
     {
         return $this->Date_Fin;
     }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getMoyQuestions(): float
+    public function getMoyQuestions(): float|null
     {
         return $this->Moy_Questions;
     }
