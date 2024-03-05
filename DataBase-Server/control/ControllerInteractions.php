@@ -25,10 +25,7 @@ class ControllerInteractions
      * @return void
      */
     public function addInteration(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInterac, PartieChecking $interactionService, $data): void {
-        if (in_array($nomInteract, $this->interactionTypes)){
-            $interactionService->addInteraction($nomInteract, $valeurInteract, $isEval, $ipJoueur, $dateInterac, $data);
-        }
-        else{
+        if (!$interactionService->addInteraction($nomInteract, $valeurInteract, $isEval, $ipJoueur, $dateInterac, $data)){
             $target = "DataBase Interaction ";
             $action = "Register Interaction";
             $explanation = "Interaction type not correct: " . $nomInteract;

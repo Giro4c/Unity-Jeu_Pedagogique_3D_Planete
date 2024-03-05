@@ -2,6 +2,8 @@
 
 namespace domain;
 
+include_once 'domain/Question.php';
+
 class Quesinterac extends Question
 {
     protected float $BonneRepValeur_orbit;

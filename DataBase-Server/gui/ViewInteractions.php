@@ -9,9 +9,9 @@ class ViewInteractions extends View
 
         parent::__construct($layout);
 
-        $this->title = 'Interaction';
+        $this->title = 'Ajout Interaction';
 
-        $this->content = "<p>L'interaction $interaction à bien était enregistré</p>";
+        $this->content = "<p>L'interaction $interaction à bien été enregistrée</p>";
 
     }
 }

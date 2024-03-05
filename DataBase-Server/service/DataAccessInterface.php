@@ -6,7 +6,7 @@ use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, Question, UserAnswer,
 
 interface DataAccessInterface
 {
-    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction;
+    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction|False;
 
     public function addJoueur(string $ip, string $plateforme): Joueur;
 

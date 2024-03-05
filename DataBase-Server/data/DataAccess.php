@@ -4,6 +4,7 @@ namespace data;
 
 use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, Question, UserAnswer, VraiFaux};
 use service\{DataAccessInterface, CannotDoException};
+use PDO;
 
 include_once 'domain/Interaction.php';
 include_once 'domain/Joueur.php';
@@ -19,11 +20,13 @@ include_once 'service/CannotDoException.php';
 
 class DataAccess implements DataAccessInterface
 {
-    protected $dataAccess = null;
+    protected PDO|null $dataAccess = null;
 
-    public function __construct($dataAccess)
+    public function __construct(PDO $dataAccess)
     {
         $this->dataAccess = $dataAccess;
+        // Debug de dataAccess
+        var_dump($dataAccess);
     }
 
     public function __destruct()
@@ -36,10 +39,12 @@ class DataAccess implements DataAccessInterface
         return $this->dataAccess->query($query);
     }
 
-    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction{
+    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction|False{
         $query = "INSERT INTO INTERACTION (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur, Date_Inte) VALUES ('$nomInteract', $valeurInteract,$isEval, '$ipJoueur', '$dateInteract')";
-        $this->dataAccess->query($query);
-        return new Interaction($nomInteract, $valeurInteract,  $isEval, $ipJoueur, $dateInteract);
+        if ($this->dataAccess->query($query)){
+            return new Interaction($nomInteract, $valeurInteract,  $isEval, $ipJoueur, $dateInteract);
+        }
+        else return false;
     }
 
     public function addJoueur(string $ip, string $plateforme): Joueur{
@@ -132,7 +137,7 @@ class DataAccess implements DataAccessInterface
     }
 
     public function getQBasics(int $numQues): string{
-        $query = "SELECT * FROM Question WHERE Num_Ques = $numQues";
+        $query = "SELECT * FROM QUESTION WHERE Num_Ques = $numQues";
         return $this->dataAccess->query($query)->fetch_assoc();
     }
 
@@ -159,7 +164,7 @@ class DataAccess implements DataAccessInterface
         return new Question($numQues, $basics['Enonce'], $basics['Type']);
     }
 
-    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): Question{
+    public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
         $numQ = array_merge($this->dataAccess->getRandomQQCU($howManyQCU), $this->dataAccess->getRandomQInterac($howManyInterac), $this->dataAccess->getRandomQVraiFaux($howManyVraiFaux)) ;
         return new Question();
     }

@@ -12,7 +12,7 @@ class PartieChecking
     {
         $data->executeQuery($query);
     }
-    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInterac, $data): Interaction{
+    public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInterac, $data): Interaction|null{
         return $data->addInteraction($nomInteract, $valeurInteract, $isEval, $ipJoueur, $dateInterac);
     }
 

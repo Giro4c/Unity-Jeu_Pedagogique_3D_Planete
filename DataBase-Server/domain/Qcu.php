@@ -2,6 +2,8 @@
 
 namespace domain;
 
+include_once 'domain/Question.php';
+
 class Qcu extends Question
 {
     protected string $Rep1;

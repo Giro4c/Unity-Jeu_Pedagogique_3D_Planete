@@ -2,6 +2,8 @@
 
 namespace domain;
 
+include_once 'domain/Question.php';
+
 class VraiFaux extends Question
 {
     protected float $Valeur_orbit;

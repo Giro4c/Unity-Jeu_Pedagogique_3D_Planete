@@ -1,32 +1,45 @@
 <?php
 
+//use PDO;
+
 include_once 'data/DataAccess.php';
+use data\DataAccess;
 
 include_once 'control/ControllerGame.php';
 include_once 'control/ControllerInteractions.php';
 include_once 'control/ControllerQuestions.php';
+use control\{ControllerGame, ControllerQuestions, ControllerInteractions};
 
 include_once 'service/PartieChecking.php';
+include_once 'service/DataAccessInterface.php';
 include_once 'service/CannotDoException.php';
+use service\{PartieChecking, DataAccessInterface, CannotDoException};
 
 include_once 'gui/Layout.php';
 include_once 'gui/ViewRandomQuestion.php';
 include_once 'gui/ViewInteractions.php';
 include_once 'gui/ViewPartie.php';
 include_once 'gui/ViewQuestions.php';
-
-use control\{ControllerGame, ControllerQuestions, ControllerInteractions};
-use data\DataAccess;
 use gui\{Layout, ViewInteractions, ViewPartie, ViewQuestions, ViewRandomQuestion};
-use service\PartieChecking;
 
-if (session_id() == '') {
+include_once 'domain/Interaction.php';
+include_once 'domain/Joueur.php';
+include_once 'domain/Partie.php';
+include_once 'domain/Question.php';
+include_once 'domain/Qcu.php';
+include_once 'domain/Quesinterac.php';
+include_once 'domain/UserAnswer.php';
+include_once 'domain/VraiFaux.php';
+use domain\{Interaction, Joueur, Partie, Question, Qcu, Quesinterac, UserAnswer, VraiFaux};
+
+
+//if (!session_id()) {
     session_start();
-}
+//}
 
 $data = null;
 try {
-    $data = new DataAccess(new PDO('mysql:host=mysql-jeupedagogique.alwaysdata.net;db_name=jeupedagogique_bd', '331395_jeu_pedag', 'Planete-T3rr3'));
+    $data = new DataAccess(new \PDO('mysql:host=mysql-jeupedagogique.alwaysdata.net;dbname=jeupedagogique_bd', '331395_jeu_pedag', 'Planete-T3rr3'));
 
 } catch (PDOException $e) {
     print "Erreur de connexion !: " . $e->getMessage() . "<br/>";
@@ -43,6 +56,7 @@ $partieChecking = new PartieChecking();
 
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+//var_dump($uri);
 
 if ('/index.php/addInteraction' == $uri) {
 
@@ -70,7 +84,7 @@ if ('/index.php/addInteraction' == $uri) {
         echo "URL not complete, cannot register new interaction.";
     }
 }
-elseif ( '/index.php/abordOnGoingGame' == $uri){
+else if ( '/index.php/abordOnGoingGame' == $uri){
 
     $ip = $_SERVER['REMOTE_ADDR'];
     $controllerGame->abortPartie($ip, $partieChecking, $data);
