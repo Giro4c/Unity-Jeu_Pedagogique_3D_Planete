@@ -3,7 +3,7 @@
 namespace data;
 
 use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, Question, UserAnswer, VraiFaux};
-use service\{DataAccessInterface, CannotDoException};
+use service\{DataAccessInterface, CannotDoException, PartieChecking};
 use PDO;
 
 include_once 'domain/Interaction.php';
@@ -57,7 +57,7 @@ class DataAccess implements DataAccessInterface
 
     public function verifyJoueurExists(string $ip): bool{
         $query = "SELECT COUNT(*) AS Counter FROM JOUEUR WHERE Ip = '$ip'";
-        return $this->dataAccess->query($query)->fetch_assoc()["Counter"] > 0;
+        return $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC)["Counter"] > 0;
     }
 
     public function addNewPartie(string $ipJoueur, string $dateDeb): Partie|False{
@@ -78,45 +78,48 @@ class DataAccess implements DataAccessInterface
         $this->dataAccess->query($query);
     }
 
-    public function endPartie(string $ipJoueur, string $dateFin): Partie{
+    public function endPartie(string $ipJoueur, string $dateFin): Partie|False{
         $idGame = $this->getPartieInProgress($ipJoueur)['Id_Partie'];
         try {
-            $score = $this->dataAccess->getPartyScore($idGame);
-        } catch (CannotDoException $e) {
+            $score = $this->getPartyScore($idGame);
+        } catch (CannotDoException) {
             $score = 0;
         }
         $score = round($score, 2);
         $query = "UPDATE PARTIE SET Date_Fin = '$dateFin', Moy_Questions = $score "
             . "WHERE Id_Partie = $idGame";
-        $this->dataAccess->query($query);
-        return new Partie($ipJoueur, $ipJoueur, 0, $dateFin, null, null);
+        if($this->dataAccess->query($query)){
+            return new Partie($dateDeb, 0, $dateFin, $score);
+        }
+        else return false;
     }
 
     public function getPartieInProgress(string $ipJoueur): Partie|null{
         $query = "SELECT * FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
         $result = $this->dataAccess->query($query);
-        if ($result->num_rows == 0){
+        if ($result->rowCount() == 0){
             return null;
         }
         else {
-            return $result->fetch_assoc();
+            return $result->fetch(PDO::FETCH_ASSOC);
         }
     }
 
     public function verifyPartieInProgress(string $ipJoueur): bool{
         $query = "SELECT COUNT(*) AS Counter FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
-        return $this->dataAccess->query($query)->fetch_assoc()["Counter"] > 0;
+        return $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC)["Counter"] > 0;
     }
 
     public function getQuestionCorrect(int $numQues, int $idPartie):  UserAnswer{
         $query = "SELECT * FROM REPONSE_USER WHERE Num_Ques = $numQues AND Id_Partie = $idPartie";
-        $result = $this->dataAccess->query($query)->fetch_assoc();
+        $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
+        $Date_Fin = date('Y-m-d H:i:s');
         return new UserAnswer($numQues, $idPartie, $Date_Deb, $Date_Fin, $Reussite);
     }
 
     public function getPartyScore(int $idPartie): float {
         $query = "SELECT COUNT(*) AS Total, SUM(Reussite) AS Score FROM REPONSE_USER WHERE Id_Partie = $idPartie";
-        $result = $this->dataAccess->query($query)->fetch_assoc();
+        $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
         $count = $result['Total'];
 
         if ($count == 0){
@@ -142,7 +145,7 @@ class DataAccess implements DataAccessInterface
 
     public function getQBasics(int $numQues): string{
         $query = "SELECT * FROM QUESTION WHERE Num_Ques = $numQues";
-        return $this->dataAccess->query($query)->fetch_assoc();
+        return $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getQAttributes(int $numQues): Question{
@@ -169,12 +172,12 @@ class DataAccess implements DataAccessInterface
     }
 
     public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
-        return array_merge($this->dataAccess->getRandomQQCU($howManyQCU), $this->dataAccess->getRandomQInterac($howManyInterac), $this->dataAccess->getRandomQVraiFaux($howManyVraiFaux));
+        return array_merge($this->getRandomQQCU($howManyQCU), $this->getRandomQInterac($howManyInterac), $this->getRandomQVraiFaux($howManyVraiFaux));
     }
 
     public function getQQCU(int $numQues): Qcu{
         $query = "SELECT * FROM QCU WHERE Num_Ques = $numQues";
-        $result = $this->dataAccess->query($query)->fetch_assoc();
+        $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
         return new Qcu(
             $numQues,
             $result['Enonce'],
@@ -187,49 +190,55 @@ class DataAccess implements DataAccessInterface
         );
     }
 
-    public function getRandomQQCU(int $howManyQCU = 0): Qcu{
+    public function getRandomQQCU(int $howManyQCU = 0): array|False{
         $query = "SELECT Num_Ques FROM QCU";
-        $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
+        $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
+        if($result){
+            shuffle($result);
+            $result = array_slice($result, 0, $howManyQCU);
+            // Remove arrays of size 1
+            for ($count = 0; $count < $howManyQCU; ++$count){
+                $result[$count] = $result[$count]['Num_Ques'];
+            }
 
-        shuffle($result);
-        $result = array_slice($result, 0, $howManyQCU);
-        // Remove arrays of size 1
-        for ($count = 0; $count < $howManyQCU; ++$count){
-            $result[$count] = $result[$count]['Num_Ques'];
+            return $result;
         }
+        else return false;
 
-        return $result;
     }
 
     public function getQInteraction(int $numQues): Quesinterac{
         $query = "SELECT * FROM QUESINTERAC WHERE Num_Ques = $numQues";
-        $result = $this->dataAccess->query($query)->fetch_assoc();
+        $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
         return new Quesinterac($numQues);
     }
 
-    public function getRandomQInterac(int $howManyInterac = 0): Quesinterac{
+    public function getRandomQInterac(int $howManyInterac = 0): array|False{
         $query = "SELECT Num_Ques FROM QUESINTERAC";
-        $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
+        $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
+        if($result){
+            shuffle($result);
+            $result = array_slice($result, 0, $howManyInterac);
+            // Remove arrays of size 1
+            for ($count = 0; $count < $howManyInterac; ++$count){
+                $result[$count] = $result[$count]['Num_Ques'];
+            }
 
-        shuffle($result);
-        $result = array_slice($result, 0, $howManyInterac);
-        // Remove arrays of size 1
-        for ($count = 0; $count < $howManyInterac; ++$count){
-            $result[$count] = $result[$count]['Num_Ques'];
+            return $result;
         }
+        else return false;
 
-        return $result;
     }
 
     public function getQVraiFaux(int $numQues): VraiFaux{
         $query = "SELECT * FROM  VRAIFAUX WHERE Num_Ques = $numQues";
-        $result = $this->dataAccess->query($query)->fetch_assoc();
-        return new VraiFaux("ok", $result);
+        $result = $this->dataAccess->query($query)->fetchAll();
+        return new VraiFaux();
     }
 
     public function getRandomQVraiFaux(int $howManyVraiFaux = 0): array|False{
         $query = "SELECT Num_Ques FROM VRAIFAUX";
-        $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
+        $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
         if ($result){
             shuffle($result);
             $result = array_slice($result, 0, $howManyVraiFaux);
@@ -237,7 +246,6 @@ class DataAccess implements DataAccessInterface
             for ($count = 0; $count < $howManyVraiFaux; ++$count){
                 $result[$count] = $result[$count]['Num_Ques'];
             }
-
             return $result;
         }
         else return false;
