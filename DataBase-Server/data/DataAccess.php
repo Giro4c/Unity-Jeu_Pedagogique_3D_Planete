@@ -56,7 +56,7 @@ class DataAccess implements DataAccessInterface
     public function addNewPartie(string $ipJoueur, string $dateDeb): Partie{
         $query = "INSERT INTO PARTIE (Ip_Joueur, Date_Deb) VALUES ('$ipJoueur', '$dateDeb')";
         $this->dataAccess->query($query);
-        return new Partie($ipJoueur, $dateDeb);
+        return new Partie($dateDeb, null, null, $ipJoueur, 0 );
     }
 
     public function deleteOnGoingPartie(string $ipJoueur): void{
