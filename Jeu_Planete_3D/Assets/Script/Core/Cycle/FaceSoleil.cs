@@ -10,6 +10,7 @@ public class FaceSoleil : CycleAutoProgression
     
     [SerializeField] private Renderer render;
     private MaterialPropertyBlock mpb;
+    
 
     public override bool CanBeEnabled()
     {
@@ -22,11 +23,17 @@ public class FaceSoleil : CycleAutoProgression
         mpb = new MaterialPropertyBlock ();
         while (_active)
         {
+            float adjustedProgress = Remap(cycle.GetProgress(), 0f, 1f, -1f, 1f);
             render.GetPropertyBlock (mpb);
-            mpb.SetFloat ("_RotationProgress", - cycle.GetProgress());
+            mpb.SetFloat ("_RotationProgress", adjustedProgress);
             render.SetPropertyBlock (mpb);
             yield return null;
         }
+    }
+        // Fonction pour remapper une valeur d'une plage à une autre
+    private float Remap(float value, float from1, float to1, float from2, float to2)
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
 
     // void Update()
