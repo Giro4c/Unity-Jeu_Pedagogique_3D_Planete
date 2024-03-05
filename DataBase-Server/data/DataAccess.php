@@ -171,7 +171,16 @@ class DataAccess implements DataAccessInterface
     public function getQQCU(int $numQues): Qcu{
         $query = "SELECT * FROM QCU WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch_assoc();
-        return new Qcu("ok", $result);
+        return new Qcu(
+            $numQues,
+            $result['Enonce'],
+            $result['Type'],
+            $result['Rep1'],
+            $result['Rep2'],
+            $result['Rep3'],
+            $result['Rep4'],
+            $result['BonneRep']
+        );
     }
 
     public function getRandomQQCU(int $howManyQCU = 0): Qcu{
