@@ -8,6 +8,7 @@ class Interaction
     protected float $Valeur_Inte;
     protected int $Evaluation;
     protected string $Ip_Joueur;
+    protected string $Date_Inte;
 
     /**
      * @param int $Id_Inte
@@ -15,14 +16,16 @@ class Interaction
      * @param float $Valeur_Inte
      * @param int $Evaluation
      * @param string $Ip_Joueur
+     * @param string $Date_Inte
      */
-    public function __construct(int $Id_Inte, string $Nom_Inte, float $Valeur_Inte, int $Evaluation, string $Ip_Joueur)
+    public function __construct(int $Id_Inte, string $Nom_Inte, float $Valeur_Inte, int $Evaluation, string $Ip_Joueur, string $Date_Inte)
     {
         $this->Id_Inte = $Id_Inte;
         $this->Nom_Inte = $Nom_Inte;
         $this->Evaluation = $Evaluation;
         $this->Valeur_Inte = $Valeur_Inte;
         $this->Ip_Joueur = $Ip_Joueur;
+        $this->Date_Inte = $Date_Inte;
     }
 
     /**
@@ -64,4 +67,13 @@ class Interaction
     {
         return $this->Ip_Joueur;
     }
+
+    /**
+     * @return string
+     */
+    public function getDateInte(): string
+    {
+        return $this->Date_Inte;
+    }
+
 }

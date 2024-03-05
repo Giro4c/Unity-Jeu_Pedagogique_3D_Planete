@@ -56,7 +56,7 @@ class DataAccess implements DataAccessInterface
     public function addNewPartie(string $ipJoueur, string $dateDeb): Partie{
         $query = "INSERT INTO PARTIE (Ip_Joueur, Date_Deb) VALUES ('$ipJoueur', '$dateDeb')";
         $this->dataAccess->query($query);
-        return new Partie($ipJoueur, $dateDeb);
+        return new Partie($dateDeb, null, null, $ipJoueur, 0 );
     }
 
     public function deleteOnGoingPartie(string $ipJoueur): void{
@@ -70,10 +70,9 @@ class DataAccess implements DataAccessInterface
     }
 
     public function endPartie(string $ipJoueur, string $dateFin): Partie{
-        $dbQs = new UserAnswer($this->dataAccess);
         $idGame = $this->getPartieInProgress($ipJoueur)['Id_Partie'];
         try {
-            $score = $dbQs->getPartyScore($idGame);
+            $score = $this->dataAccess->getPartyScore($idGame);
         } catch (CannotDoException $e) {
             $score = 0;
         }
@@ -81,9 +80,6 @@ class DataAccess implements DataAccessInterface
         $query = "UPDATE PARTIE SET Date_Fin = '$dateFin', Moy_Questions = $score "
             . "WHERE Id_Partie = $idGame";
         $this->dataAccess->query($query);
-//        $query = "UPDATE " . $this->dbName . " SET Date_Fin = '$dateFin', Duree_Par = (Date_Fin - Date_Deb), Moy_Questions = $score "
-//            . "WHERE Id_Partie = $idGame";
-//        $this->dataAccess->query($query);
         return new Partie($ipJoueur, $dateFin);
     }
 
