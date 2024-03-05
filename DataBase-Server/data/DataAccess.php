@@ -102,7 +102,7 @@ class DataAccess implements DataAccessInterface
     public function getQuestionCorrect(int $numQues, int $idPartie):  UserAnswer{
         $query = "SELECT * FROM REPONSE_USER WHERE Num_Ques = $numQues AND Id_Partie = $idPartie";
         $result = $this->dataAccess->query($query)->fetch_assoc();
-        return new UserAnswer("ok", $result);
+        return new UserAnswer($numQues, $idPartie, $Date_Deb, $Date_Fin, $Reussite);
     }
 
     public function getPartyScore(int $idPartie): float {
@@ -156,7 +156,7 @@ class DataAccess implements DataAccessInterface
 
             next($basics);
         }
-        return $result;
+        return new Question($numQues, $basics['Enonce'], $basics['Type']);
     }
 
     public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): Question{
