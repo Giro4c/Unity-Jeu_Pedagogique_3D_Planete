@@ -85,7 +85,7 @@ class DataAccess implements DataAccessInterface
         $query = "UPDATE PARTIE SET Date_Fin = '$dateFin', Moy_Questions = $score "
             . "WHERE Id_Partie = $idGame";
         $this->dataAccess->query($query);
-        return new Partie($ipJoueur, $dateFin);
+        return new Partie($ipJoueur, $ipJoueur, 0, $dateFin, null, null);
     }
 
     public function getPartieInProgress(string $ipJoueur): Partie|null{
@@ -165,8 +165,7 @@ class DataAccess implements DataAccessInterface
     }
 
     public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
-        $numQ = array_merge($this->dataAccess->getRandomQQCU($howManyQCU), $this->dataAccess->getRandomQInterac($howManyInterac), $this->dataAccess->getRandomQVraiFaux($howManyVraiFaux)) ;
-        return new Question();
+        return array_merge($this->dataAccess->getRandomQQCU($howManyQCU), $this->dataAccess->getRandomQInterac($howManyInterac), $this->dataAccess->getRandomQVraiFaux($howManyVraiFaux));
     }
 
     public function getQQCU(int $numQues): Qcu{
@@ -201,7 +200,7 @@ class DataAccess implements DataAccessInterface
     public function getQInteraction(int $numQues): Quesinterac{
         $query = "SELECT * FROM QUESINTERAC WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch_assoc();
-        return new Quesinterac("ok", $result);
+        return new Quesinterac($numQues);
     }
 
     public function getRandomQInterac(int $howManyInterac = 0): Quesinterac{
