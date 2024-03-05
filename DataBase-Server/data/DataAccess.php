@@ -223,17 +223,19 @@ class DataAccess implements DataAccessInterface
         return new VraiFaux("ok", $result);
     }
 
-    public function getRandomQVraiFaux(int $howManyVraiFaux = 0): VraiFaux{
+    public function getRandomQVraiFaux(int $howManyVraiFaux = 0): array|False{
         $query = "SELECT Num_Ques FROM VRAIFAUX";
         $result = $this->dataAccess->query($query)->fetch_all(MYSQLI_ASSOC);
+        if ($result){
+            shuffle($result);
+            $result = array_slice($result, 0, $howManyVraiFaux);
+            // Remove arrays of size 1
+            for ($count = 0; $count < $howManyVraiFaux; ++$count){
+                $result[$count] = $result[$count]['Num_Ques'];
+            }
 
-        shuffle($result);
-        $result = array_slice($result, 0, $howManyVraiFaux);
-        // Remove arrays of size 1
-        for ($count = 0; $count < $howManyVraiFaux; ++$count){
-            $result[$count] = $result[$count]['Num_Ques'];
+            return $result;
         }
-
-        return $result;
+        else return false;
     }
 }
