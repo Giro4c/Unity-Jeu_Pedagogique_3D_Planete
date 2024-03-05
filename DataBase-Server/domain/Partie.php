@@ -46,6 +46,60 @@ class Partie
     }
 
     /**
+     * @param int $Id_Partie
+     * @return void
+     */
+    public function setIdPartie(int $Id_Partie): void
+    {
+        $this->Id_Partie = $Id_Partie;
+    }
+
+    /**
+     * @param string $Date_Deb
+     * @return void
+     */
+    public function setDateDeb(string $Date_Deb): void
+    {
+        $this->Date_Deb = $Date_Deb;
+    }
+
+    /**
+     * @param string $Date_Fin
+     * @return void
+     */
+    public function setDateFin(string $Date_Fin): void
+    {
+        $this->Date_Fin = $Date_Fin;
+    }
+
+    /**
+     * @param float $Moy_Questions
+     * @return void
+     */
+    public function setMoyQuestions(float $Moy_Questions): void
+    {
+        $this->Moy_Questions = $Moy_Questions;
+    }
+
+    /**
+     * @param string $Ip_Joueur
+     * @return void
+     */
+    public function setIpJoueur(string $Ip_Joueur): void
+    {
+        $this->Ip_Joueur = $Ip_Joueur;
+    }
+
+    /**
+     * @param int $Abandon
+     * @return void
+     */
+    public function setAbandon(int $Abandon): void
+    {
+        $this->Abandon = $Abandon;
+    }
+
+    /**
      * @return string
      */
     public function getDateFin(): string
