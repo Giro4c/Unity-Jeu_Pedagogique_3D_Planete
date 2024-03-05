@@ -120,16 +120,19 @@ class DataAccess implements DataAccessInterface
     public function getPartyScore(int $idPartie): float|False {
         $query = "SELECT COUNT(*) AS Total, SUM(Reussite) AS Score FROM REPONSE_USER WHERE Id_Partie = $idPartie";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
-        $count = $result['Total'];
+        if ($result){
+            $count = $result['Total'];
 
-        if ($count == 0){
-            $target = "DataBase REPONSE_USER";
-            $action = "Calculate score for game party.";
-            $explanation = "Game party $idPartie has no questions answered.";
-            throw new CannotDoException($target, $action, $explanation);
+            if ($count == 0){
+                $target = "DataBase REPONSE_USER";
+                $action = "Calculate score for game party.";
+                $explanation = "Game party $idPartie has no questions answered.";
+                throw new CannotDoException($target, $action, $explanation);
+            }
+
+            return $result['Score'] * (10 / $count);
         }
-
-        return $result['Score'] * (10 / $count);
+        else return False;
     }
 
     public function addQuestionAnswer(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect): void{
