@@ -3,7 +3,7 @@
 namespace domain;
 class Interaction
 {
-    protected int $Id_Inte;
+    protected int|null $Id_Inte;
     protected string $Nom_Inte;
     protected float $Valeur_Inte;
     protected int $Evaluation;
@@ -11,14 +11,14 @@ class Interaction
     protected string $Date_Inte;
 
     /**
-     * @param int $Id_Inte
+     * @param int|null $Id_Inte
      * @param string $Nom_Inte
      * @param float $Valeur_Inte
      * @param int $Evaluation
      * @param string $Ip_Joueur
      * @param string $Date_Inte
      */
-    public function __construct(int $Id_Inte, string $Nom_Inte, float $Valeur_Inte, int $Evaluation, string $Ip_Joueur, string $Date_Inte)
+    public function __construct(string $Nom_Inte, float $Valeur_Inte, int $Evaluation, string $Ip_Joueur, string $Date_Inte, int|null $Id_Inte = null)
     {
         $this->Id_Inte = $Id_Inte;
         $this->Nom_Inte = $Nom_Inte;
@@ -29,9 +29,9 @@ class Interaction
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getIdInte(): int
+    public function getIdInte(): int|null
     {
         return $this->Id_Inte;
     }
