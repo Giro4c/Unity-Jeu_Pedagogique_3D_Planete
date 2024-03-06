@@ -2,7 +2,7 @@
 
 namespace service;
 
-use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, Question, UserAnswer, VraiFaux};
+use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, UserAnswer, VraiFaux};
 
 interface DataAccessInterface
 {

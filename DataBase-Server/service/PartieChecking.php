@@ -2,21 +2,11 @@
 
 namespace service;
 
-use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, Question, UserAnswer, VraiFaux};
+use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, UserAnswer, VraiFaux};
 
 
 class PartieChecking
 {
-
-    /**
-     * @param string $query
-     * @param $data
-     * @return void
-     */
-    public function executeQuery(string $query, $data)
-    {
-        $data->executeQuery($query);
-    }
 
     /**
      * @param string $nomInteract

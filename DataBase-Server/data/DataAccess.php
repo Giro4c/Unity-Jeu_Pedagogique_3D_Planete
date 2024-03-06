@@ -2,8 +2,8 @@
 
 namespace data;
 
-use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, Question, UserAnswer, VraiFaux};
-use service\{DataAccessInterface, CannotDoException, PartieChecking};
+use domain\{Interaction, Joueur, Partie, Qcu, Quesinterac, UserAnswer, VraiFaux};
+use service\{DataAccessInterface, CannotDoException};
 use PDO;
 
 include_once 'domain/Interaction.php';
@@ -41,15 +41,6 @@ class DataAccess implements DataAccessInterface
     public function __destruct()
     {
         $this->dataAccess = null;
-    }
-
-    /**
-     * @param string $query
-     * @return false|\PDOStatement
-     */
-    public function executeQuery(string $query)
-    {
-        return $this->dataAccess->query($query);
     }
 
     /**
@@ -241,7 +232,7 @@ class DataAccess implements DataAccessInterface
      * @param int $numQues
      * @return QCU | VraiFaux | QuesInterac| False
      */
-    public function getQAttributes(int $numQues): QCU | VraiFaux | QuesInterac| False{
+    public function getQAttributes(int $numQues): QCU | VraiFaux | QuesInterac | False{
         $basics = $this->getQBasics($numQues);
 
         if ($basics['Type'] == 'QCU'){
@@ -342,7 +333,7 @@ class DataAccess implements DataAccessInterface
      */
     public function getQVraiFaux(int $numQues): VraiFaux|False{
         $query = "SELECT * FROM  VRAIFAUX WHERE Num_Ques = $numQues";
-        $result = $this->dataAccess->query($query)->fetchAll();
+        $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
         if($result){
             $basics = $this->getQBasics($numQues);
             return new VraiFaux($numQues, $basics['Enonce'], $basics['Type'], $result['Valeur_orbit'], $result['Valeur_rotation'], $result['BonneRep']);
