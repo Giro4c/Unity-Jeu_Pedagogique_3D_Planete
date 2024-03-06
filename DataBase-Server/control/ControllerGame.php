@@ -5,11 +5,20 @@ namespace control;
 use service\CannotDoException;
 use service\PartieChecking;
 
+/**
+ * Class ControllerGame
+ * @package control
+ */
 class ControllerGame
 {
     /**
-     * @param string $ip
-     * @param string $platform
+     * Registers a new player.
+     *
+     * @param string $ip The IP address of the player.
+     * @param string $platform The platform of the player.
+     * @param PartieChecking $partieService An instance of PartieChecking service.
+     * @param mixed $data Additional data.
+     * @throws CannotDoException If the player already exists.
      * @return void
      */
     public function newPlayer(string $ip, string $platform, PartieChecking $partieService, $data): void {
@@ -25,8 +34,13 @@ class ControllerGame
     }
 
     /**
-     * @param string $ip
-     * @param string $dateDeb
+     * Registers a new game.
+     *
+     * @param string $ip The IP address of the player.
+     * @param string $dateDeb The start date of the game.
+     * @param PartieChecking $partieService An instance of PartieChecking service.
+     * @param mixed $data Additional data.
+     * @throws CannotDoException If there is already a game in progress.
      * @return void
      */
     public function newPartie(string $ip, string $dateDeb, PartieChecking $partieService, $data): void {
@@ -42,7 +56,11 @@ class ControllerGame
     }
 
     /**
-     * @param string $ip
+     * Aborts an ongoing game.
+     *
+     * @param string $ip The IP address of the player.
+     * @param PartieChecking $partieService An instance of PartieChecking service.
+     * @param mixed $data Additional data.
      * @return void
      */
     public function abortPartie(string $ip, PartieChecking $partieService, $data): void {
@@ -50,8 +68,13 @@ class ControllerGame
     }
 
     /**
-     * @param string $ip
-     * @param string $dateFin
+     * Ends an ongoing game.
+     *
+     * @param string $ip The IP address of the player.
+     * @param string $dateFin The end date of the game.
+     * @param PartieChecking $partieService An instance of PartieChecking service.
+     * @param mixed $data Additional data.
+     * @throws CannotDoException If there is no game in progress.
      * @return void
      */
     public function endPartie(string $ip, string $dateFin, PartieChecking $partieService, $data): void {

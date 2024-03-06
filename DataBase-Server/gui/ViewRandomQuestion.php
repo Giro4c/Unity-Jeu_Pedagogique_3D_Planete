@@ -3,10 +3,17 @@
 namespace gui;
 
 include_once "View.php";
+
 class ViewRandomQuestion extends View
 {
-    public function __construct($layout, $jsonRandQ){
-
+    /**
+     * Constructs a new ViewRandomQuestion instance.
+     *
+     * @param Layout $layout The layout to use for displaying content.
+     * @param mixed $jsonRandQ The random question data to display.
+     */
+    public function __construct($layout, $jsonRandQ)
+    {
         parent::__construct($layout);
 
         $this->title = 'Random question';

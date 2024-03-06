@@ -2,6 +2,9 @@
 
 namespace domain;
 
+/**
+ * Represents a game party.
+ */
 class Partie
 {
     protected int|null $Id_Partie;
@@ -12,12 +15,14 @@ class Partie
     protected int $Abandon;
 
     /**
-     * @param string $Date_Deb
-     * @param string $Ip_Joueur
-     * @param int $Abandon
-     * @param string|null $Date_Fin
-     * @param float|null $Moy_Questions
-     * @param int|null $Id_Partie
+     * Constructs a new Partie instance.
+     *
+     * @param string $Date_Deb The start date of the party.
+     * @param string $Ip_Joueur The IP address of the player.
+     * @param int $Abandon Indicates if the party was abandoned.
+     * @param string|null $Date_Fin The end date of the party. Default is null.
+     * @param float|null $Moy_Questions The average score of the questions. Default is null.
+     * @param int|null $Id_Partie The ID of the party. Default is null.
      */
     public function __construct(string $Date_Deb, string $Ip_Joueur, int $Abandon, string|null $Date_Fin = null, float|null $Moy_Questions = null, int|null $Id_Partie = null)
     {
@@ -30,7 +35,9 @@ class Partie
     }
 
     /**
-     * @return int|null
+     * Gets the ID of the party.
+     *
+     * @return int|null The ID of the party.
      */
     public function getIdPartie(): int|null
     {
@@ -38,7 +45,9 @@ class Partie
     }
 
     /**
-     * @return string
+     * Gets the start date of the party.
+     *
+     * @return string The start date of the party.
      */
     public function getDateDeb(): string
     {
@@ -46,7 +55,9 @@ class Partie
     }
 
     /**
-     * @param int $Id_Partie
+     * Sets the ID of the party.
+     *
+     * @param int $Id_Partie The ID of the party.
      * @return void
      */
     public function setIdPartie(int $Id_Partie): void
@@ -55,7 +66,9 @@ class Partie
     }
 
     /**
-     * @param string $Date_Deb
+     * Sets the start date of the party.
+     *
+     * @param string $Date_Deb The start date of the party.
      * @return void
      */
     public function setDateDeb(string $Date_Deb): void
@@ -64,7 +77,9 @@ class Partie
     }
 
     /**
-     * @param string $Date_Fin
+     * Sets the end date of the party.
+     *
+     * @param string $Date_Fin The end date of the party.
      * @return void
      */
     public function setDateFin(string $Date_Fin): void
@@ -73,7 +88,9 @@ class Partie
     }
 
     /**
-     * @param float $Moy_Questions
+     * Sets the average score of the questions.
+     *
+     * @param float $Moy_Questions The average score of the questions.
      * @return void
      */
     public function setMoyQuestions(float $Moy_Questions): void
@@ -82,7 +99,9 @@ class Partie
     }
 
     /**
-     * @param string $Ip_Joueur
+     * Sets the IP address of the player.
+     *
+     * @param string $Ip_Joueur The IP address of the player.
      * @return void
      */
     public function setIpJoueur(string $Ip_Joueur): void
@@ -91,7 +110,9 @@ class Partie
     }
 
     /**
-     * @param int $Abandon
+     * Sets the indication if the party was abandoned.
+     *
+     * @param int $Abandon Indicates if the party was abandoned.
      * @return void
      */
     public function setAbandon(int $Abandon): void
@@ -100,7 +121,9 @@ class Partie
     }
 
     /**
-     * @return string|null
+     * Gets the end date of the party.
+     *
+     * @return string|null The end date of the party.
      */
     public function getDateFin(): string|null
     {
@@ -108,7 +131,9 @@ class Partie
     }
 
     /**
-     * @return float|null
+     * Gets the average score of the questions.
+     *
+     * @return float|null The average score of the questions.
      */
     public function getMoyQuestions(): float|null
     {
@@ -116,7 +141,9 @@ class Partie
     }
 
     /**
-     * @return string
+     * Gets the IP address of the player.
+     *
+     * @return string The IP address of the player.
      */
     public function getIpJoueur(): string
     {
@@ -124,7 +151,9 @@ class Partie
     }
 
     /**
-     * @return int
+     * Gets the indication if the party was abandoned.
+     *
+     * @return int Indicates if the party was abandoned.
      */
     public function getAbandon(): int
     {
