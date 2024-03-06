@@ -9,10 +9,10 @@ include_once 'domain/Question.php';
  */
 class Quesinterac extends Question
 {
-    public float $BonneRepValeur_orbit;
-    public float $Marge_Orbit;
-    public float $BonneRepValeur_rotation;
-    public float $Marge_Rotation;
+    public float|null $BonneRepValeur_orbit;
+    public float|null $Marge_Orbit;
+    public float|null $BonneRepValeur_rotation;
+    public float|null $Marge_Rotation;
 
     /**
      * Constructs a new Quesinterac instance.
@@ -20,12 +20,12 @@ class Quesinterac extends Question
      * @param int $Num_Ques The question number.
      * @param string $Enonce The question statement.
      * @param string $Type The type of question.
-     * @param float $BonneRepValeur_orbit The correct value for orbit interaction.
-     * @param float $Marge_Orbit The margin for orbit interaction.
-     * @param float $BonneRepValeur_rotation The correct value for rotation interaction.
-     * @param float $Marge_Rotation The margin for rotation interaction.
+     * @param float|null $BonneRepValeur_orbit The correct value for orbit interaction.
+     * @param float|null $Marge_Orbit The margin for orbit interaction.
+     * @param float|null $BonneRepValeur_rotation The correct value for rotation interaction.
+     * @param float|null $Marge_Rotation The margin for rotation interaction.
      */
-    public function __construct(int $Num_Ques, string $Enonce, string $Type, float $BonneRepValeur_orbit, float $Marge_Orbit, float $BonneRepValeur_rotation, float $Marge_Rotation)
+    public function __construct(int $Num_Ques, string $Enonce, string $Type, float|null $BonneRepValeur_orbit, float|null $Marge_Orbit, float|null $BonneRepValeur_rotation, float|null $Marge_Rotation)
     {
         parent::__construct($Num_Ques, $Enonce, $Type);
         $this->BonneRepValeur_orbit = $BonneRepValeur_orbit;
@@ -37,9 +37,9 @@ class Quesinterac extends Question
     /**
      * Gets the correct value for orbit interaction.
      *
-     * @return float The correct value for orbit interaction.
+     * @return float|null The correct value for orbit interaction.
      */
-    public function getBonneRepValeurOrbit(): float
+    public function getBonneRepValeurOrbit(): float|null
     {
         return $this->BonneRepValeur_orbit;
     }
@@ -47,9 +47,9 @@ class Quesinterac extends Question
     /**
      * Gets the margin for orbit interaction.
      *
-     * @return float The margin for orbit interaction.
+     * @return float|null The margin for orbit interaction.
      */
-    public function getMargeOrbit(): float
+    public function getMargeOrbit(): float|null
     {
         return $this->Marge_Orbit;
     }
@@ -57,9 +57,9 @@ class Quesinterac extends Question
     /**
      * Gets the correct value for rotation interaction.
      *
-     * @return float The correct value for rotation interaction.
+     * @return float|null The correct value for rotation interaction.
      */
-    public function getBonneRepValeurRotation(): float
+    public function getBonneRepValeurRotation(): float|null
     {
         return $this->BonneRepValeur_rotation;
     }
@@ -67,9 +67,9 @@ class Quesinterac extends Question
     /**
      * Gets the margin for rotation interaction.
      *
-     * @return float The margin for rotation interaction.
+     * @return float|null The margin for rotation interaction.
      */
-    public function getMargeRotation(): float
+    public function getMargeRotation(): float|null
     {
         return $this->Marge_Rotation;
     }

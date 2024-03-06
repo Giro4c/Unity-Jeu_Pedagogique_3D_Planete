@@ -1,3 +1,0 @@
-Add Interaction :
-http://localhost:63343/DataBase-Server/index.php/addInteraction?type=Test&value=0&isEval=0
-
