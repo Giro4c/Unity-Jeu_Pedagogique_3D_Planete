@@ -178,71 +178,73 @@ class DataAccess implements DataAccessInterface
         return array_merge($this->getRandomQQCU($howManyQCU), $this->getRandomQInterac($howManyInterac), $this->getRandomQVraiFaux($howManyVraiFaux));
     }
 
-    public function getQQCU(int $numQues): Qcu{
+    public function getQQCU(int $numQues): Qcu|False{
         $query = "SELECT * FROM QCU WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
-        return new Qcu(
-            $numQues,
-            $result['Enonce'],
-            $result['Type'],
-            $result['Rep1'],
-            $result['Rep2'],
-            $result['Rep3'],
-            $result['Rep4'],
-            $result['BonneRep']
-        );
+        if($result){
+            $basics = $this->getQBasics($numQues);
+            return new Qcu(
+                $numQues,
+                $basics['Enonce'],
+                $basics['Type'],
+                $result['Rep1'],
+                $result['Rep2'],
+                $result['Rep3'],
+                $result['Rep4'],
+                $result['BonneRep']
+            );
+        }
+        else return false;
     }
 
-    public function getRandomQQCU(int $howManyQCU = 0): array|False{
+    public function getRandomQQCU(int $howManyQCU = 0): array{
         $query = "SELECT Num_Ques FROM QCU";
         $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
-        if($result){
-            shuffle($result);
-            $result = array_slice($result, 0, $howManyQCU);
-            // Remove arrays of size 1
-            for ($count = 0; $count < $howManyQCU; ++$count){
-                $result[$count] = $result[$count]['Num_Ques'];
-            }
 
-            return $result;
+        shuffle($result);
+        $result = array_slice($result, 0, $howManyQCU);
+        // Remove arrays of size 1
+        for ($count = 0; $count < $howManyQCU; ++$count){
+            $result[$count] = $result[$count]['Num_Ques'];
         }
-        else return false;
-
+        return $result;
     }
 
-    public function getQInteraction(int $numQues): Quesinterac{
+    public function getQInteraction(int $numQues): Quesinterac|False{
         $query = "SELECT * FROM QUESINTERAC WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
-        return new Quesinterac($numQues, $result['BonneRepValeur_orbit'], $result['Marge_Orbit'], $result['BonneRepValeur_rotation'], $result['Marge_Rotation']);
-    }
-
-    public function getRandomQInterac(int $howManyInterac = 0): array|False{
-        $query = "SELECT Num_Ques FROM QUESINTERAC";
-        $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
         if($result){
-            shuffle($result);
-            $result = array_slice($result, 0, $howManyInterac);
-            // Remove arrays of size 1
-            for ($count = 0; $count < $howManyInterac; ++$count){
-                $result[$count] = $result[$count]['Num_Ques'];
-            }
-
-            return $result;
+            $basics = $this->getQBasics($numQues);
+            return new Quesinterac($numQues, $basics['Enonce'], $basics['Type'], $result['BonneRepValeur_orbit'], $result['Marge_Orbit'], $result['BonneRepValeur_rotation'], $result['Marge_Rotation']);
         }
         else return false;
-
     }
 
-    public function getQVraiFaux(int $numQues): VraiFaux{
+    public function getRandomQInterac(int $howManyInterac = 0): array{
+        $query = "SELECT Num_Ques FROM QUESINTERAC";
+        $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
+        shuffle($result);
+        $result = array_slice($result, 0, $howManyInterac);
+        // Remove arrays of size 1
+        for ($count = 0; $count < $howManyInterac; ++$count){
+            $result[$count] = $result[$count]['Num_Ques'];
+        }
+        return $result;
+    }
+
+    public function getQVraiFaux(int $numQues): VraiFaux|False{
         $query = "SELECT * FROM  VRAIFAUX WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetchAll();
-        return new VraiFaux();
+        if($result){
+            $basics = $this->getQBasics($numQues);
+            return new VraiFaux($numQues, $basics['Enonce'], $basics['Type'], $result['Valeur_orbit'], $result['Valeur_rotation'], $result['BonneRep']);
+        }
+        else return false;
     }
 
-    public function getRandomQVraiFaux(int $howManyVraiFaux = 0): array|False{
+    public function getRandomQVraiFaux(int $howManyVraiFaux = 0): array{
         $query = "SELECT Num_Ques FROM VRAIFAUX";
         $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
-        if ($result){
             shuffle($result);
             $result = array_slice($result, 0, $howManyVraiFaux);
             // Remove arrays of size 1
@@ -250,7 +252,5 @@ class DataAccess implements DataAccessInterface
                 $result[$count] = $result[$count]['Num_Ques'];
             }
             return $result;
-        }
-        else return false;
     }
 }

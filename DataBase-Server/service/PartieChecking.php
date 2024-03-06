@@ -72,27 +72,27 @@ class PartieChecking
         return $data->getRandomQs($howManyQCM, $howManyInterac, $howManyVraiFaux);
     }
 
-    public function getQQCU(int $numQues, $data): Qcu{
+    public function getQQCU(int $numQues, $data): Qcu|False{
         return $data->getQQCU($numQues);
     }
 
-    public function getRandomQQCU(int $howManyQCM, $data): array|False{
+    public function getRandomQQCU(int $howManyQCM, $data): array{
         return $data->getRandomQQCU($howManyQCM);
     }
 
-    public function getQInteraction(int $numQues, $data): Quesinterac{
+    public function getQInteraction(int $numQues, $data): Quesinterac|False{
         return $data->getQInteraction($numQues);
     }
 
-    public function getRandomQInterac(int $howManyInterac, $data): array|False{
+    public function getRandomQInterac(int $howManyInterac, $data): array{
         return $data->getRandomQInterac($howManyInterac);
     }
 
-    public function getQVraiFaux(int $numQues, $data): VraiFaux{
+    public function getQVraiFaux(int $numQues, $data): VraiFaux|False{
         return $data->getQVraiFaux($numQues);
     }
 
-    public function getRandomQVraiFaux(int $howManyVraiFaux, $data): array|False{
+    public function getRandomQVraiFaux(int $howManyVraiFaux, $data): array{
         return $data->getRandomQVraiFaux($howManyVraiFaux);
     }
 }

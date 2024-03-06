@@ -36,15 +36,15 @@ interface DataAccessInterface
 
     public function getRandomQs(int $howManyQCU, int $howManyInterac, int $howManyVraiFaux): array;
 
-    public function getQQCU(int $numQues): Qcu;
+    public function getQQCU(int $numQues): Qcu|False;
 
-    public function getRandomQQCU(int $howManyQCU): array|False;
+    public function getRandomQQCU(int $howManyQCU): array;
 
-    public function getQInteraction(int $numQues): Quesinterac;
+    public function getQInteraction(int $numQues): Quesinterac|False;
 
-    public function getRandomQInterac(int $howManyInterac): array|False;
+    public function getRandomQInterac(int $howManyInterac): array;
 
-    public function getQVraiFaux(int $numQues): VraiFaux;
+    public function getQVraiFaux(int $numQues): VraiFaux|False;
 
-    public function getRandomQVraiFaux(int $howManyVraiFaux): array|False;
+    public function getRandomQVraiFaux(int $howManyVraiFaux): array;
 }
