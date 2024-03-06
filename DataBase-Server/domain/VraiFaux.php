@@ -9,8 +9,8 @@ include_once 'domain/Question.php';
  */
 class VraiFaux extends Question
 {
-    public float $Valeur_orbit;
-    public float $Valeur_rotation;
+    public float|null $Valeur_orbit;
+    public float|null $Valeur_rotation;
     public string $BonneRep;
 
     /**
