@@ -14,7 +14,7 @@ class ViewPartie extends View
      * @param string $ip The IP address associated with the game.
      * @param string $date The date of the game.
      */
-    public function __construct($layout, $partieStatus, $ip, $date)
+    public function __construct($layout, string $partieStatus, string $ip, string $date)
     {
         parent::__construct($layout);
 

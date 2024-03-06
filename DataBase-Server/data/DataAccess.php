@@ -284,7 +284,7 @@ class DataAccess implements DataAccessInterface
      */
     public function getRandomQQCU(int $howManyQCU = 0): array{
         $query = "SELECT Num_Ques FROM QCU";
-        $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
+        $result = $this->dataAccess->query($query)->fetchAll();
 
         shuffle($result);
         $result = array_slice($result, 0, $howManyQCU);
@@ -315,7 +315,7 @@ class DataAccess implements DataAccessInterface
      */
     public function getRandomQInterac(int $howManyInterac = 0): array{
         $query = "SELECT Num_Ques FROM QUESINTERAC";
-        $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
+        $result = $this->dataAccess->query($query)->fetchAll();
         shuffle($result);
         $result = array_slice($result, 0, $howManyInterac);
         // Remove arrays of size 1
@@ -345,7 +345,7 @@ class DataAccess implements DataAccessInterface
      */
     public function getRandomQVraiFaux(int $howManyVraiFaux = 0): array{
         $query = "SELECT Num_Ques FROM VRAIFAUX";
-        $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
+        $result = $this->dataAccess->query($query)->fetchAll();
             shuffle($result);
             $result = array_slice($result, 0, $howManyVraiFaux);
             // Remove arrays of size 1

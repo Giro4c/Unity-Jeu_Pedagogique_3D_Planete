@@ -12,7 +12,7 @@ class ViewInteractions extends View
      * @param Layout $layout The layout to use for displaying content.
      * @param string $interaction The interaction to display in the view.
      */
-    public function __construct($layout, $interaction)
+    public function __construct($layout, string $interaction)
     {
         parent::__construct($layout);
 

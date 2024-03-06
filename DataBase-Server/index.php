@@ -1,7 +1,5 @@
 <?php
 
-//use PDO;
-
 include_once 'data/DataAccess.php';
 use data\DataAccess;
 
@@ -192,5 +190,5 @@ elseif ( '/index.php/randomQuestions' == $uri){
 }
 else {
     header('Status: 404 Not Found');
-    echo '<html><body><h1>My Page NotFound</h1></body></html>';
+    echo '<html><body><h1>Page Not Found</h1></body></html>';
 }
