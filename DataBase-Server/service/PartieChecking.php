@@ -81,9 +81,9 @@ class PartieChecking
     /**
      * @param string $ipJoueur
      * @param $data
-     * @return Partie|null
+     * @return Partie|False
      */
-    public function getPartieInProgress(string $ipJoueur, $data): Partie|null{
+    public function getPartieInProgress(string $ipJoueur, $data): Partie|False{
         return $data->getPartieInProgress($ipJoueur);
     }
 

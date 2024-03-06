@@ -57,9 +57,9 @@ interface DataAccessInterface
 
     /**
      * @param string $ipJoueur
-     * @return Partie|null
+     * @return Partie|False
      */
-    public function getPartieInProgress(string $ipJoueur): Partie|null;
+    public function getPartieInProgress(string $ipJoueur): Partie|False;
 
     /**
      * @param string $ipJoueur

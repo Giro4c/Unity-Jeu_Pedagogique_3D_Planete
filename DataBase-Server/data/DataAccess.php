@@ -136,17 +136,17 @@ class DataAccess implements DataAccessInterface
 
     /**
      * @param string $ipJoueur
-     * @return Partie|null
+     * @return Partie|False
      */
-    public function getPartieInProgress(string $ipJoueur): Partie|null{
+    public function getPartieInProgress(string $ipJoueur): Partie|False{
         $query = "SELECT * FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
         $result = $this->dataAccess->query($query);
         if ($result->rowCount() == 0){
-            return null;
+            return false;
         }
         else {
             $partie = $result->fetch(PDO::FETCH_ASSOC);
-            return new Partie($partie['Date_Deb'], $ipJoueur, 0);
+            return new Partie($partie['Date_Deb'], $ipJoueur, 0, null, null, $partie['Id_Partie']);
         }
     }
 
