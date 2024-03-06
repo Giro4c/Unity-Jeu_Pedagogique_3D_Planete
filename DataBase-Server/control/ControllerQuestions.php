@@ -35,7 +35,7 @@ class ControllerQuestions
      */
     public function getJsonAttributesQ(int $numQues, PartieChecking $questionService, mixed $data): string {
         $qAttributes = $questionService->getQAttributes($numQues, $data);
-        var_dump(json_encode($qAttributes->getEnonce(), JSON_PRETTY_PRINT));
+        var_dump(json_encode($qAttributes, JSON_PRETTY_PRINT));
 
         return json_encode($questionService->getQAttributes($numQues, $data), JSON_PRETTY_PRINT);
     }
