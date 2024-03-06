@@ -13,7 +13,7 @@ use control\{ControllerGame, ControllerQuestions, ControllerInteractions};
 include_once 'service/PartieChecking.php';
 include_once 'service/DataAccessInterface.php';
 include_once 'service/CannotDoException.php';
-use service\{PartieChecking, DataAccessInterface, CannotDoException};
+use service\{PartieChecking};
 
 include_once 'gui/Layout.php';
 include_once 'gui/ViewRandomQuestion.php';
@@ -22,20 +22,7 @@ include_once 'gui/ViewPartie.php';
 include_once 'gui/ViewQuestions.php';
 use gui\{Layout, ViewInteractions, ViewPartie, ViewQuestions, ViewRandomQuestion};
 
-include_once 'domain/Interaction.php';
-include_once 'domain/Joueur.php';
-include_once 'domain/Partie.php';
-include_once 'domain/Question.php';
-include_once 'domain/Qcu.php';
-include_once 'domain/Quesinterac.php';
-include_once 'domain/UserAnswer.php';
-include_once 'domain/VraiFaux.php';
-use domain\{Interaction, Joueur, Partie, Question, Qcu, Quesinterac, UserAnswer, VraiFaux};
-
-
-//if (!session_id()) {
-    session_start();
-//}
+session_start();
 
 $data = null;
 try {
@@ -56,7 +43,6 @@ $partieChecking = new PartieChecking();
 
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-//var_dump($uri);
 
 if ('/index.php/addInteraction' == $uri) {
 

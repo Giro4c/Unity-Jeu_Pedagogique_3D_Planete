@@ -31,8 +31,6 @@ class DataAccess implements DataAccessInterface
     public function __construct(PDO $dataAccess)
     {
         $this->dataAccess = $dataAccess;
-        // Debug de dataAccess
-        var_dump($dataAccess);
     }
 
     /**
