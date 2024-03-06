@@ -34,6 +34,9 @@ class ControllerQuestions
      * @return string JSON containing attributes of the question.
      */
     public function getJsonAttributesQ(int $numQues, PartieChecking $questionService, mixed $data): string {
+        $qAttributes = $questionService->get($numQues, $data);
+        var_dump(json_encode($qAttributes->getEnonce(), JSON_PRETTY_PRINT));
+
         return json_encode($questionService->getQAttributes($numQues, $data), JSON_PRETTY_PRINT);
     }
 
