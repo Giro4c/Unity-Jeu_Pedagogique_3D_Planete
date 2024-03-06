@@ -9,11 +9,11 @@ include_once 'domain/Question.php';
  */
 class Qcu extends Question
 {
-    protected string $Rep1;
-    protected string $Rep2;
-    protected string $Rep3;
-    protected string $Rep4;
-    protected string $BonneRep;
+    public string $Rep1;
+    public string $Rep2;
+    public string $Rep3;
+    public string $Rep4;
+    public string $BonneRep;
 
     /**
      * Constructs a new Qcu instance.

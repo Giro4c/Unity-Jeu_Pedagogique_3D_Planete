@@ -9,9 +9,9 @@ include_once 'domain/Question.php';
  */
 class VraiFaux extends Question
 {
-    protected float $Valeur_orbit;
-    protected float $Valeur_rotation;
-    protected string $BonneRep;
+    public float $Valeur_orbit;
+    public float $Valeur_rotation;
+    public string $BonneRep;
 
     /**
      * Constructs a new VraiFaux instance.

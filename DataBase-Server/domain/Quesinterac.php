@@ -9,10 +9,10 @@ include_once 'domain/Question.php';
  */
 class Quesinterac extends Question
 {
-    protected float $BonneRepValeur_orbit;
-    protected float $Marge_Orbit;
-    protected float $BonneRepValeur_rotation;
-    protected float $Marge_Rotation;
+    public float $BonneRepValeur_orbit;
+    public float $Marge_Orbit;
+    public float $BonneRepValeur_rotation;
+    public float $Marge_Rotation;
 
     /**
      * Constructs a new Quesinterac instance.

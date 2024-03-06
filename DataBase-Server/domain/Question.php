@@ -7,9 +7,9 @@ namespace domain;
  */
 class Question
 {
-    protected int $Num_Ques;
-    protected string $Enonce;
-    protected string $Type;
+    public int $Num_Ques;
+    public string $Enonce;
+    public string $Type;
 
     /**
      * Constructs a new Question instance.
