@@ -19,11 +19,11 @@ class VraiFaux extends Question
      * @param int $Num_Ques The question number.
      * @param string $Enonce The statement of the question.
      * @param string $Type The type of the question.
-     * @param float $Valeur_orbit The orbit value.
-     * @param float $Valeur_rotation The rotation value.
+     * @param float|null $Valeur_orbit The orbit value.
+     * @param float|null $Valeur_rotation The rotation value.
      * @param string $BonneRep The correct answer.
      */
-    public function __construct(int $Num_Ques, string $Enonce, string $Type, float $Valeur_orbit, float $Valeur_rotation, string $BonneRep)
+    public function __construct(int $Num_Ques, string $Enonce, string $Type, float|null $Valeur_orbit, float|null $Valeur_rotation, string $BonneRep)
     {
         parent::__construct($Num_Ques, $Enonce, $Type);
         $this->Valeur_orbit = $Valeur_orbit;
@@ -34,9 +34,9 @@ class VraiFaux extends Question
     /**
      * Gets the orbit value.
      *
-     * @return float The orbit value.
+     * @return float|null The orbit value.
      */
-    public function getValeurOrbit(): float
+    public function getValeurOrbit(): float|null
     {
         return $this->Valeur_orbit;
     }
@@ -44,9 +44,9 @@ class VraiFaux extends Question
     /**
      * Gets the rotation value.
      *
-     * @return float The rotation value.
+     * @return float|null The rotation value.
      */
-    public function getValeurRotation(): float
+    public function getValeurRotation(): float|null
     {
         return $this->Valeur_rotation;
     }
