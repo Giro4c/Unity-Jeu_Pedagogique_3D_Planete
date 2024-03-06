@@ -33,7 +33,7 @@ class ControllerQuestions
      * @param mixed $data Additional data.
      * @return string JSON containing attributes of the question.
      */
-    public function getJsonAttributesQ(int $numQues, PartieChecking $questionService, $data): string {
+    public function getJsonAttributesQ(int $numQues, PartieChecking $questionService, mixed $data): string {
         $qAttributes = $questionService->getQAttributes($numQues, $data);
         return json_encode($qAttributes, JSON_PRETTY_PRINT);
     }
@@ -50,7 +50,7 @@ class ControllerQuestions
      * @param mixed $data Additional data.
      * @return void
      */
-    public function addFinishedQuestion(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect, PartieChecking $questionService, $data): void {
+    public function addFinishedQuestion(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect, PartieChecking $questionService, mixed $data): void {
         $questionService->addQuestionAnswer($numQues, $idParty, $dateDeb, $dateFin, $isCorrect, $data);
     }
 }

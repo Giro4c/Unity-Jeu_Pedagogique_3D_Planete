@@ -121,7 +121,7 @@ elseif ( '/index.php/QuestionAnswer' == $uri){
     if (isset($_GET['qid']) && $data->verifyPartieInProgress($ip) && isset($_GET['correct']) && isset($_GET['start'])){
         $dateFin = date('Y-m-d H:i:s');
         $dateDeb = $_GET['start'];
-        $controllerQuestions->addFinishedQuestion($_GET['qid'], $data->getPartieInProgress($ip)['Id_Partie'], $dateDeb, $dateFin, $_GET['correct'], $partieChecking, $data);
+        $controllerQuestions->addFinishedQuestion($_GET['qid'], $data->getPartieInProgress($ip)->getIdPartie(), $dateDeb, $dateFin, $_GET['correct'], $partieChecking, $data);
     }
     else{
         echo "URL not complete, cannot add question answer to database";
