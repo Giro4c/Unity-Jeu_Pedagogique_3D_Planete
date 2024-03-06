@@ -20,7 +20,7 @@ class ControllerQuestions
      * @param int $howManyVraiFaux The number of true/false questions.
      * @return string JSON containing random questions.
      */
-    public function getJsonRandomQs(PartieChecking $questionService, $data, int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): string {
+    public function getJsonRandomQs(PartieChecking $questionService, mixed $data, int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): string {
         $numQs = $questionService->getRandomQs($howManyQCU, $howManyInterac, $howManyVraiFaux, $data);
         return json_encode($numQs, JSON_PRETTY_PRINT);
     }
@@ -35,6 +35,7 @@ class ControllerQuestions
      */
     public function getJsonAttributesQ(int $numQues, PartieChecking $questionService, mixed $data): string {
         $qAttributes = $questionService->getQAttributes($numQues, $data);
+        var_dump($qAttributes);
         return json_encode($qAttributes, JSON_PRETTY_PRINT);
     }
 

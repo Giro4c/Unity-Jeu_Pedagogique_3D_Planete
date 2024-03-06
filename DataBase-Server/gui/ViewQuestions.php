@@ -12,7 +12,7 @@ class ViewQuestions extends View
      * @param Layout $layout The layout to use for displaying content.
      * @param string $jsonQ The JSON string representing the questions.
      */
-    public function __construct($layout, $jsonQ)
+    public function __construct($layout, string $jsonQ)
     {
         parent::__construct($layout);
 
