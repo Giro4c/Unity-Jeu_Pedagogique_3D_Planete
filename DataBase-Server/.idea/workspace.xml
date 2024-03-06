@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd0d1fea-564f-43e4-b056-0111022f438c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Settings/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Settings/URP-Balanced.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/Settings/URP-Performant.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/XR/Settings/OpenXR Editor Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/XR/Settings/OpenXR Editor Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/XR/Settings/OpenXR Package Settings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/Assets/XR/Settings/OpenXR Package Settings.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jeu_Planete_3D/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Jeu_Planete_3D/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+    <list default="true" id="cd0d1fea-564f-43e4-b056-0111022f438c" name="Changes" comment="Add PHPDoc">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +33,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Refactoring-Unity-2",
+    "git-widget-placeholder": "ServicesUnityTests",
     "last_opened_file_path": "C:/Users/Camille (HorsCo)/Desktop/Git Repositories/Unity-Jeu_Pedagogique_3D_Planete/DataBase-Server",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -73,6 +68,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add PHPDoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add PHPDoc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
