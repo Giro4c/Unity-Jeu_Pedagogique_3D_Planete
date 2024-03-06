@@ -20,8 +20,14 @@ include_once 'service/CannotDoException.php';
 
 class DataAccess implements DataAccessInterface
 {
+    /**
+     * @var PDO|null
+     */
     protected PDO|null $dataAccess = null;
 
+    /**
+     * @param PDO $dataAccess
+     */
     public function __construct(PDO $dataAccess)
     {
         $this->dataAccess = $dataAccess;
@@ -29,16 +35,31 @@ class DataAccess implements DataAccessInterface
         var_dump($dataAccess);
     }
 
+    /**
+     * Destructs the DataAccess instance.
+     */
     public function __destruct()
     {
         $this->dataAccess = null;
     }
 
+    /**
+     * @param string $query
+     * @return false|\PDOStatement
+     */
     public function executeQuery(string $query)
     {
         return $this->dataAccess->query($query);
     }
 
+    /**
+     * @param string $nomInteract
+     * @param float $valeurInteract
+     * @param int $isEval
+     * @param string $ipJoueur
+     * @param string $dateInteract
+     * @return Interaction|False
+     */
     public function addInteraction(string $nomInteract, float $valeurInteract, int $isEval, string $ipJoueur, string $dateInteract): Interaction|False{
         $query = "INSERT INTO INTERACTION (Nom_Inte, Valeur_Inte, Evaluation, Ip_Joueur, Date_Inte) VALUES ('$nomInteract', $valeurInteract,$isEval, '$ipJoueur', '$dateInteract')";
         if ($this->dataAccess->query($query)){
@@ -47,6 +68,11 @@ class DataAccess implements DataAccessInterface
         else return false;
     }
 
+    /**
+     * @param string $ip
+     * @param string $plateforme
+     * @return Joueur|False
+     */
     public function addJoueur(string $ip, string $plateforme): Joueur|False{
         $query = "INSERT INTO JOUEUR (Ip, Plateforme) VALUES ('$ip', '$plateforme')";
         if($this->dataAccess->query($query)){
@@ -55,11 +81,20 @@ class DataAccess implements DataAccessInterface
         else return false;
     }
 
+    /**
+     * @param string $ip
+     * @return bool
+     */
     public function verifyJoueurExists(string $ip): bool{
         $query = "SELECT COUNT(*) AS Counter FROM JOUEUR WHERE Ip = '$ip'";
         return $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC)["Counter"] > 0;
     }
 
+    /**
+     * @param string $ipJoueur
+     * @param string $dateDeb
+     * @return Partie|False
+     */
     public function addNewPartie(string $ipJoueur, string $dateDeb): Partie|False{
         $query = "INSERT INTO PARTIE (Ip_Joueur, Date_Deb) VALUES ('$ipJoueur', '$dateDeb')";
         if($this->dataAccess->query($query)){
@@ -68,16 +103,29 @@ class DataAccess implements DataAccessInterface
         else return false;
     }
 
+    /**
+     * @param string $ipJoueur
+     * @return void
+     */
     public function deleteOnGoingPartie(string $ipJoueur): void{
         $query = "DELETE FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL";
         $this->dataAccess->query($query);
     }
 
+    /**
+     * @param string $ipJoueur
+     * @return void
+     */
     public function abortOnGoingPartie(string $ipJoueur): void{
         $query = "UPDATE PARTIE SET Abandon = 1 WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
         $this->dataAccess->query($query);
     }
 
+    /**
+     * @param string $ipJoueur
+     * @param string $dateFin
+     * @return Partie|False
+     */
     public function endPartie(string $ipJoueur, string $dateFin): Partie|False{
         $idGame = $this->getPartieInProgress($ipJoueur)['Id_Partie'];
         try {
@@ -94,6 +142,10 @@ class DataAccess implements DataAccessInterface
         else return false;
     }
 
+    /**
+     * @param string $ipJoueur
+     * @return Partie|null
+     */
     public function getPartieInProgress(string $ipJoueur): Partie|null{
         $query = "SELECT * FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
         $result = $this->dataAccess->query($query);
@@ -105,11 +157,20 @@ class DataAccess implements DataAccessInterface
         }
     }
 
+    /**
+     * @param string $ipJoueur
+     * @return bool
+     */
     public function verifyPartieInProgress(string $ipJoueur): bool{
         $query = "SELECT COUNT(*) AS Counter FROM PARTIE WHERE Ip_Joueur = '$ipJoueur' AND Date_Fin IS NULL AND Abandon = 0";
         return $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC)["Counter"] > 0;
     }
 
+    /**
+     * @param int $numQues
+     * @param int $idPartie
+     * @return UserAnswer
+     */
     public function getQuestionCorrect(int $numQues, int $idPartie):  UserAnswer{
         $query = "SELECT * FROM REPONSE_USER WHERE Num_Ques = $numQues AND Id_Partie = $idPartie";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
@@ -117,6 +178,11 @@ class DataAccess implements DataAccessInterface
         return new UserAnswer($numQues, $idPartie, $Date_Deb, $Date_Fin, $Reussite);
     }
 
+    /**
+     * @param int $idPartie
+     * @return float|False
+     * @throws CannotDoException
+     */
     public function getPartyScore(int $idPartie): float|False {
         $query = "SELECT COUNT(*) AS Total, SUM(Reussite) AS Score FROM REPONSE_USER WHERE Id_Partie = $idPartie";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
@@ -135,6 +201,14 @@ class DataAccess implements DataAccessInterface
         else return False;
     }
 
+    /**
+     * @param int $numQues
+     * @param int $idParty
+     * @param string $dateDeb
+     * @param string $dateFin
+     * @param bool $isCorrect
+     * @return void
+     */
     public function addQuestionAnswer(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect): void{
         if ($isCorrect){
             $correct = 1;
@@ -146,6 +220,10 @@ class DataAccess implements DataAccessInterface
         $this->dataAccess->query($query);
     }
 
+    /**
+     * @param int $numQues
+     * @return array|False
+     */
     public function getQBasics(int $numQues): array|False{
         $query = "SELECT * FROM QUESTION WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
@@ -155,6 +233,10 @@ class DataAccess implements DataAccessInterface
         else return false;
     }
 
+    /**
+     * @param int $numQues
+     * @return Question
+     */
     public function getQAttributes(int $numQues): Question{
         $basics = $this->getQBasics($numQues);
 
@@ -178,10 +260,20 @@ class DataAccess implements DataAccessInterface
         return new Question($numQues, $basics['Enonce'], $basics['Type']);
     }
 
+    /**
+     * @param int $howManyQCU
+     * @param int $howManyInterac
+     * @param int $howManyVraiFaux
+     * @return array
+     */
     public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
         return array_merge($this->getRandomQQCU($howManyQCU), $this->getRandomQInterac($howManyInterac), $this->getRandomQVraiFaux($howManyVraiFaux));
     }
 
+    /**
+     * @param int $numQues
+     * @return Qcu
+     */
     public function getQQCU(int $numQues): Qcu{
         $query = "SELECT * FROM QCU WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
@@ -197,6 +289,10 @@ class DataAccess implements DataAccessInterface
         );
     }
 
+    /**
+     * @param int $howManyQCU
+     * @return array|False
+     */
     public function getRandomQQCU(int $howManyQCU = 0): array|False{
         $query = "SELECT Num_Ques FROM QCU";
         $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
@@ -214,12 +310,20 @@ class DataAccess implements DataAccessInterface
 
     }
 
+    /**
+     * @param int $numQues
+     * @return Quesinterac
+     */
     public function getQInteraction(int $numQues): Quesinterac{
         $query = "SELECT * FROM QUESINTERAC WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
         return new Quesinterac($numQues);
     }
 
+    /**
+     * @param int $howManyInterac
+     * @return array|False
+     */
     public function getRandomQInterac(int $howManyInterac = 0): array|False{
         $query = "SELECT Num_Ques FROM QUESINTERAC";
         $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);
@@ -237,12 +341,20 @@ class DataAccess implements DataAccessInterface
 
     }
 
+    /**
+     * @param int $numQues
+     * @return VraiFaux
+     */
     public function getQVraiFaux(int $numQues): VraiFaux{
         $query = "SELECT * FROM  VRAIFAUX WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetchAll();
         return new VraiFaux();
     }
 
+    /**
+     * @param int $howManyVraiFaux
+     * @return array|False
+     */
     public function getRandomQVraiFaux(int $howManyVraiFaux = 0): array|False{
         $query = "SELECT Num_Ques FROM VRAIFAUX";
         $result = $this->dataAccess->query($query)->fetchAll(MYSQLI_ASSOC);

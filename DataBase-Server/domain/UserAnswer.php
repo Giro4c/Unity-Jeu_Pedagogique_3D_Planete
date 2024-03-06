@@ -2,6 +2,9 @@
 
 namespace domain;
 
+/**
+ * Represents a user's answer to a question.
+ */
 class UserAnswer
 {
     protected int $Num_Ques;
@@ -11,11 +14,13 @@ class UserAnswer
     protected int $Reussite;
 
     /**
-     * @param int $Num_Ques
-     * @param int $Id_Partie
-     * @param string $Date_Deb
-     * @param string $Date_Fin
-     * @param int $Reussite
+     * Constructs a new UserAnswer instance.
+     *
+     * @param int $Num_Ques The question number.
+     * @param int $Id_Partie The ID of the game party.
+     * @param string $Date_Deb The start date of the answer.
+     * @param string $Date_Fin The end date of the answer.
+     * @param int $Reussite The success status of the answer.
      */
     public function __construct(int $Num_Ques, int $Id_Partie, string $Date_Deb, string $Date_Fin, int $Reussite)
     {
@@ -27,7 +32,9 @@ class UserAnswer
     }
 
     /**
-     * @return int
+     * Gets the question number.
+     *
+     * @return int The question number.
      */
     public function getNumQues(): int
     {
@@ -35,7 +42,9 @@ class UserAnswer
     }
 
     /**
-     * @return int
+     * Gets the ID of the game party.
+     *
+     * @return int The ID of the game party.
      */
     public function getIdPartie(): int
     {
@@ -43,7 +52,9 @@ class UserAnswer
     }
 
     /**
-     * @return string
+     * Gets the start date of the answer.
+     *
+     * @return string The start date of the answer.
      */
     public function getDateDeb(): string
     {
@@ -51,7 +62,9 @@ class UserAnswer
     }
 
     /**
-     * @return string
+     * Gets the end date of the answer.
+     *
+     * @return string The end date of the answer.
      */
     public function getDateFin(): string
     {
@@ -59,7 +72,9 @@ class UserAnswer
     }
 
     /**
-     * @return int
+     * Gets the success status of the answer.
+     *
+     * @return int The success status of the answer.
      */
     public function getReussite(): int
     {

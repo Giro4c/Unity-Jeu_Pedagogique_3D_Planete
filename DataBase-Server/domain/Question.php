@@ -2,6 +2,9 @@
 
 namespace domain;
 
+/**
+ * Represents a generic question.
+ */
 class Question
 {
     protected int $Num_Ques;
@@ -9,9 +12,11 @@ class Question
     protected string $Type;
 
     /**
-     * @param int $Num_Ques
-     * @param string $Enonce
-     * @param string $Type
+     * Constructs a new Question instance.
+     *
+     * @param int $Num_Ques The question number.
+     * @param string $Enonce The question statement.
+     * @param string $Type The type of question.
      */
     public function __construct(int $Num_Ques, string $Enonce, string $Type)
     {
@@ -21,7 +26,9 @@ class Question
     }
 
     /**
-     * @return int
+     * Gets the question number.
+     *
+     * @return int The question number.
      */
     public function getNumQues(): int
     {
@@ -29,7 +36,9 @@ class Question
     }
 
     /**
-     * @return string
+     * Gets the question statement.
+     *
+     * @return string The question statement.
      */
     public function getEnonce(): string
     {
@@ -37,7 +46,9 @@ class Question
     }
 
     /**
-     * @return string
+     * Gets the type of question.
+     *
+     * @return string The type of question.
      */
     public function getType(): string
     {

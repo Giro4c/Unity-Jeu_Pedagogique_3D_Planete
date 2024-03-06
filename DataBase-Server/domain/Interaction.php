@@ -1,6 +1,11 @@
 <?php
 
 namespace domain;
+
+/**
+ * Class Interaction
+ * @package domain
+ */
 class Interaction
 {
     protected int|null $Id_Inte;
@@ -11,12 +16,14 @@ class Interaction
     protected string $Date_Inte;
 
     /**
-     * @param int|null $Id_Inte
-     * @param string $Nom_Inte
-     * @param float $Valeur_Inte
-     * @param int $Evaluation
-     * @param string $Ip_Joueur
-     * @param string $Date_Inte
+     * Interaction constructor.
+     *
+     * @param string $Nom_Inte The name of the interaction.
+     * @param float $Valeur_Inte The value of the interaction.
+     * @param int $Evaluation The evaluation of the interaction.
+     * @param string $Ip_Joueur The IP address of the player.
+     * @param string $Date_Inte The date of the interaction.
+     * @param int|null $Id_Inte The ID of the interaction.
      */
     public function __construct(string $Nom_Inte, float $Valeur_Inte, int $Evaluation, string $Ip_Joueur, string $Date_Inte, int|null $Id_Inte = null)
     {
@@ -29,7 +36,9 @@ class Interaction
     }
 
     /**
-     * @return int|null
+     * Gets the ID of the interaction.
+     *
+     * @return int|null The ID of the interaction.
      */
     public function getIdInte(): int|null
     {
@@ -37,7 +46,9 @@ class Interaction
     }
 
     /**
-     * @return string
+     * Gets the name of the interaction.
+     *
+     * @return string The name of the interaction.
      */
     public function getNomInte(): string
     {
@@ -45,7 +56,9 @@ class Interaction
     }
 
     /**
-     * @return float
+     * Gets the value of the interaction.
+     *
+     * @return float The value of the interaction.
      */
     public function getValeurInte(): float
     {
@@ -53,7 +66,9 @@ class Interaction
     }
 
     /**
-     * @return int
+     * Gets the evaluation of the interaction.
+     *
+     * @return int The evaluation of the interaction.
      */
     public function getEvaluation(): int
     {
@@ -61,7 +76,9 @@ class Interaction
     }
 
     /**
-     * @return string
+     * Gets the IP address of the player.
+     *
+     * @return string The IP address of the player.
      */
     public function getIpJoueur(): string
     {
@@ -69,11 +86,12 @@ class Interaction
     }
 
     /**
-     * @return string
+     * Gets the date of the interaction.
+     *
+     * @return string The date of the interaction.
      */
     public function getDateInte(): string
     {
         return $this->Date_Inte;
     }
-
 }
