@@ -79,7 +79,8 @@ class DataAccess implements DataAccessInterface
     }
 
     public function endPartie(string $ipJoueur, string $dateFin): Partie|False{
-        $idGame = $this->getPartieInProgress($ipJoueur)['Id_Partie'];
+        $partie = $this->getPartieInProgress($ipJoueur);
+        $idGame = $partie->getIdPartie();
         try {
             $score = $this->getPartyScore($idGame);
         } catch (CannotDoException) {
@@ -89,7 +90,9 @@ class DataAccess implements DataAccessInterface
         $query = "UPDATE PARTIE SET Date_Fin = '$dateFin', Moy_Questions = $score "
             . "WHERE Id_Partie = $idGame";
         if($this->dataAccess->query($query)){
-            return new Partie($dateDeb, 0, $dateFin, $score);
+            $partie->setDateFin($dateFin);
+            $partie->setMoyQuestions($score);
+            return $partie;
         }
         else return false;
     }
@@ -101,7 +104,8 @@ class DataAccess implements DataAccessInterface
             return null;
         }
         else {
-            return $result->fetch(PDO::FETCH_ASSOC);
+            $partie = $result->fetch(PDO::FETCH_ASSOC);
+            return new Partie($partie['Date_Deb'], $ipJoueur, 0);
         }
     }
 
@@ -114,7 +118,7 @@ class DataAccess implements DataAccessInterface
         $query = "SELECT * FROM REPONSE_USER WHERE Num_Ques = $numQues AND Id_Partie = $idPartie";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
         $Date_Fin = date('Y-m-d H:i:s');
-        return new UserAnswer($numQues, $idPartie, $Date_Deb, $Date_Fin, $Reussite);
+        return new UserAnswer($numQues, $idPartie, $result['Date_Deb'], $Date_Fin, $result['Reussite']);
     }
 
     public function getPartyScore(int $idPartie): float|False {
@@ -155,27 +159,19 @@ class DataAccess implements DataAccessInterface
         else return false;
     }
 
-    public function getQAttributes(int $numQues): Question{
+    public function getQAttributes(int $numQues): QCU | VraiFaux | QuesInterac| False{
         $basics = $this->getQBasics($numQues);
 
         if ($basics['Type'] == 'QCU'){
-            $result = $this->dataAccess->getQQCU($numQues)->getContent();
+            return $this->getQQCU($numQues);
         }
         else if ($basics['Type'] == 'QUESINTERAC'){
-            $result = $this->dataAccess->getQInteraction($numQues)->getContent();
+            return $this->getQInteraction($numQues);
         }
         else if ($basics['Type'] == 'VRAIFAUX'){
-            $result = $this->dataAccess->getQVraiFaux($numQues)->getContent();
+            return $this->getQVraiFaux($numQues);
         }
-        while (true) {
-            $attribute = current($basics);
-            if ($attribute == null && key($basics) == null) break;
-
-            $result[key($basics)] = $attribute;
-
-            next($basics);
-        }
-        return new Question($numQues, $basics['Enonce'], $basics['Type']);
+        else return false;
     }
 
     public function getRandomQs(int $howManyQCU = 0, int $howManyInterac = 0, int $howManyVraiFaux = 0): array{
@@ -217,7 +213,7 @@ class DataAccess implements DataAccessInterface
     public function getQInteraction(int $numQues): Quesinterac{
         $query = "SELECT * FROM QUESINTERAC WHERE Num_Ques = $numQues";
         $result = $this->dataAccess->query($query)->fetch(PDO::FETCH_ASSOC);
-        return new Quesinterac($numQues);
+        return new Quesinterac($numQues, $result['BonneRepValeur_orbit'], $result['Marge_Orbit'], $result['BonneRepValeur_rotation'], $result['Marge_Rotation']);
     }
 
     public function getRandomQInterac(int $howManyInterac = 0): array|False{

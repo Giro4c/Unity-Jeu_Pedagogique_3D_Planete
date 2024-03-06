@@ -64,7 +64,7 @@ class PartieChecking
         return $data->getQBasics($numQues);
     }
 
-    public function getQAttributes(int $numQues, $data): Question{
+    public function getQAttributes(int $numQues, $data): QCU | VraiFaux | QuesInterac| False{
         return $data->getQAttributes($numQues);
     }
 

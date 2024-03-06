@@ -32,7 +32,7 @@ interface DataAccessInterface
 
     public function getQBasics(int $numQues): array|False;
 
-    public function getQAttributes(int $numQues): Question;
+    public function getQAttributes(int $numQues): QCU | VraiFaux | QuesInterac| False;
 
     public function getRandomQs(int $howManyQCU, int $howManyInterac, int $howManyVraiFaux): array;
 
