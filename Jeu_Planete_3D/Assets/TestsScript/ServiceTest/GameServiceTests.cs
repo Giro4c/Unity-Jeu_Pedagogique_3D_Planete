@@ -18,12 +18,7 @@ namespace Script.Services.Tests
             gameService = gameObject.AddComponent<GameService>();
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            // Détruire l'instance de GameService après chaque test
-            Object.Destroy(gameService.gameObject);
-        }
+        
 
         [UnityTest]
         public IEnumerator StartGameTest()
