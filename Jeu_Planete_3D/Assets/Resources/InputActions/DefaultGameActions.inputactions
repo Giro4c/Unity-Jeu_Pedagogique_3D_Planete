@@ -854,6 +854,174 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "XR",
+            "id": "e7c5fe1f-d2f8-4864-858b-b40571325ab8",
+            "actions": [
+                {
+                    "name": "Slider Right",
+                    "type": "Button",
+                    "id": "cf83edf0-1567-48b0-ba66-dd8881b2e9bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Slider Left",
+                    "type": "Button",
+                    "id": "afb181dd-5414-49a2-af76-57701181d814",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Orbit Right",
+                    "type": "Button",
+                    "id": "5f49dab7-9cd8-493f-8cd2-0cca611b325a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Orbit Left",
+                    "type": "Button",
+                    "id": "757de9a7-6944-4cf0-87f6-26061ce74cf0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Reset Position Right",
+                    "type": "Button",
+                    "id": "616cb54f-1627-4e3a-86f8-997dae564c9b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reset Position Left",
+                    "type": "Button",
+                    "id": "0c3e1529-9cd1-4c4d-b5ca-ac02b3d3fcce",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotationSelf Right",
+                    "type": "Button",
+                    "id": "81bb6748-52bb-4192-9ae6-1587280f7ef5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotationSelf Left",
+                    "type": "Button",
+                    "id": "352f7c73-fa6f-4a67-93d6-14a67b7c53d6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c7527fab-dfbb-4c44-be4c-225cb9e17d8f",
+                    "path": "<XRController>{RightHand}/{GripButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "RotationSelf Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "65b8236b-b297-416d-aeca-cc649c9bdca0",
+                    "path": "<XRController>/primary2DAxisClick",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset Position Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e7fc505-97bd-4214-9caa-b4a64f154e61",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Orbit Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f333ed1-5df7-45b4-b666-a72782abf201",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Slider Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c80ac65-5292-4096-bc23-4868ac3e69c3",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Slider Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a187c6d8-562b-4671-8210-7b08d146a3c7",
+                    "path": "<XRController>{LeftHand}/{GripButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "RotationSelf Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "741f29cb-dddb-424b-8d33-cea6d746a34d",
+                    "path": "<XRController>/primary2DAxisClick",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset Position Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d40ee2b8-03f3-4226-8a73-45abee1a82a8",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Orbit Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

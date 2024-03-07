@@ -521,8 +521,8 @@ MonoBehaviour:
   usePosition: 1
   useRotation: 0
   progress: 0
-  period: 60
-  DEFAULT_PERIOD: 60
+  period: 3650
+  DEFAULT_PERIOD: 3650
   orbitPath:
     xAxis: 3
     yAxis: 2
@@ -10850,7 +10850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 830ca5880da35423287807fb4d68c805, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba9c84c525e6b4eaa8cb5103f2ce7a4e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

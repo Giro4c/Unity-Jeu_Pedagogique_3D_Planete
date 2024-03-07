@@ -1,11 +1,8 @@
 namespace Script.WebData
 {
     [System.Serializable]
-    public class QuestionQCUReadModel
+    public class QuestionQCUReadModel : QuestionReadModel
     {
-        public int Num_Ques;
-        public string Enonce;
-        public string Type;
         public string Rep1;
         public string Rep2;
         public string Rep3;
