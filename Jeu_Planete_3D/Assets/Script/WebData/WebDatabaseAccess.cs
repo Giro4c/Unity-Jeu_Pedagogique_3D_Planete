@@ -105,7 +105,7 @@ namespace Script.WebData
             UnityWebRequest wwwInteract = UnityWebRequest.Get(url);
             yield return wwwInteract.SendWebRequest();
             // Created var to store the html content shower will have to parse through
-            string webPage = "";
+            string jsonString = "";
             // Checks if error
             if (wwwInteract.error != null)
             {
@@ -113,35 +113,35 @@ namespace Script.WebData
                 /* In case of emergency if its impossible to connect to the host since the start,
                  read the expected html page content for a known question and store the value for later used*/
                 TextAsset questionTextAsset = Resources.Load<TextAsset>("WebEmergency/Questions/" + qid);
-                webPage = questionTextAsset.text;
+                jsonString = questionTextAsset.text;
             }
             else // No error, Web Page is loaded
             {
                 Debug.Log(wwwInteract.downloadHandler.text); // le texte de la page
-                webPage = wwwInteract.downloadHandler.text;
+                jsonString = wwwInteract.downloadHandler.text;
             }
             
-            // Init du htmlParser
-            StringHTMLParser htmlParser = new StringHTMLParser(webPage);
+            // Init du JsonParser
+            QuestionData questionData = JsonUtility.FromJson<QuestionData>(jsonString);
+            Debug.Log(questionData);
+            //string type = htmlParser.getHTMLContainerContent("p", null, "Type");
+            //string header = htmlParser.getHTMLContainerContent("p", null, "Enonce");
             
-            string type = htmlParser.getHTMLContainerContent("p", null, "Type");
-            string header = htmlParser.getHTMLContainerContent("p", null, "Enonce");
-            
-            if (type.Equals("QCU")) // Question of type QCU or TrueFalse
+            if (questionData.Type.Equals("QCU")) // Question of type QCU or TrueFalse
             {
-                string correctAnswer = htmlParser.getHTMLContainerContent("p", null, "BonneRep");
+                QuestionQCU questionQCU = JsonUtility.FromJson<QuestionQCU>(jsonString);
+                string correctAnswer = questionQCU.BonneRep;
                 Choice[] choices = new Choice[4];
-                for (int i = 1; i <= choices.Length; ++i)
-                {
-                    string val = htmlParser.getHTMLContainerContent("p", null, "Rep" + i);
-                    choices[i - 1] = new Choice(val, val.Equals(correctAnswer));
-                }
+                choices[0] = questionQCU.Rep1;
+                choices[1] = questionQCU.Rep2;
+                choices[2] = questionQCU.Rep3;
+                choices[3] = questionQCU.Rep4;
 
-                yield return new QuestionQCU(qid, QuestionType.Qcu, header, choices);
+                yield return new QuestionQCU(questionQCU.Num_Ques, questionQCU.Type, questionQCU.Enonce, choices);
                 
             }
             
-            else if (type.Equals("QUESINTERAC")) // Question of type Manipulation
+            else if (questionData.Type.Equals("QUESINTERAC")) // Question of type Manipulation
             {
                 // Change Culture info for String to float conversions
                 CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
@@ -324,4 +324,23 @@ namespace Script.WebData
 public class QuestionRandom
 {
     public int[] list;
+}
+
+[System.Serializable]
+public class QuestionData
+{
+    public string Type;
+}
+
+[System.Serializable]
+public class QuestionQCU
+{
+    public int Num_Ques;
+    public string Enonce;
+    public string Type;
+    public string Rep1;
+    public string Rep2;
+    public string Rep3;
+    public string Rep4;
+    public string BonneRep;
 }
