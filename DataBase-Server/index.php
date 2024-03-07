@@ -182,7 +182,7 @@ elseif ( '/index.php/randomQuestions' == $uri){
     }
 
     $jsonRandQ = $controllerQuestions->getJsonRandomQs($partieChecking, $data, $nbQCU, $nbInteraction, $nbVraiFaux);
-
+    
     $layout = new Layout('gui/layoutJson.html');
     $viewRandomQs = new ViewRandomQuestion($layout, $jsonRandQ);
 
