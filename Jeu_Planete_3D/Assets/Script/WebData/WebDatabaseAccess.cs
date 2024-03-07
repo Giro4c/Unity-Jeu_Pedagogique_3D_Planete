@@ -281,6 +281,7 @@ namespace Script.WebData
             }
         
             QuestionRandom questionRandom = JsonUtility.FromJson<QuestionRandom>(jsonString);
+            Debug.Log(questionRandom);
 
             yield return questionRandom;
 
@@ -322,5 +323,5 @@ namespace Script.WebData
 [System.Serializable]
 public class QuestionRandom
 {
-    public int[] values;
+    public int[] list;
 }
