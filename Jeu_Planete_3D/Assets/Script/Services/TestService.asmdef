@@ -1,0 +1,24 @@
+{
+    "name": "TestService",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fc1e6d128b33f4b15b47b469b49088fa",
+        "GUID:fbc55817ae4ce4ad8a3bca5c6334ecfa",
+        "GUID:6ba0f879933784bba82a5b9952079d72",
+        "GUID:34c9364263c3a4dc39e838d81d2d0a0a",
+        "GUID:c8ffc10b862d24bde8fd168023a5c809",
+        "GUID:d745c1a1835cd4a1cb97b48f2c780278",
+        "GUID:3df930ab713ce4f148b00b467e3489d0",
+        "GUID:dea78bf61e34d4e97802cfab9cc4fcec",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

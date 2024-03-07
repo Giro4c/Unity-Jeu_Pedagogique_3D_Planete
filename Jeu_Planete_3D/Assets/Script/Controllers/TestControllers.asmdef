@@ -1,0 +1,16 @@
+{
+    "name": "TestControllers",
+    "rootNamespace": "",
+    "references": [
+        "GUID:17c441cdeb2ab40cda2b046c96cf7b65"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

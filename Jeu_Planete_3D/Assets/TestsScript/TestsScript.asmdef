@@ -4,12 +4,7 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "AxeEllispe",
-        "TestCycle",
-        "Unity.TextMeshPro.Editor.Tests",
-        "Unity.TextMeshPro",
-        "Unity.TextMeshPro.Editor",
-        "Unity.TextMeshPro.Tests"
+        "AxeEllispe"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

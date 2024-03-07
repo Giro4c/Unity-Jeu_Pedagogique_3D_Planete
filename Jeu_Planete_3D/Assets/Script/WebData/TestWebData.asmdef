@@ -1,0 +1,17 @@
+{
+    "name": "TestWebData",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6ba0f879933784bba82a5b9952079d72",
+        "GUID:0bf8abc77ded2437fbcc47f930f65ce8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

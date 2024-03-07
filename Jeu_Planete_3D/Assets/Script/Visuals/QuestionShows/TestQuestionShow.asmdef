@@ -1,0 +1,18 @@
+{
+    "name": "TestQuestion",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6ba0f879933784bba82a5b9952079d72",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:dea78bf61e34d4e97802cfab9cc4fcec"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

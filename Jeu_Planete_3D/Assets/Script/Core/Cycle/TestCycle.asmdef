@@ -1,0 +1,16 @@
+{
+    "name": "TestCycle",
+    "rootNamespace": "",
+    "references": [
+        "GUID:34c9364263c3a4dc39e838d81d2d0a0a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
