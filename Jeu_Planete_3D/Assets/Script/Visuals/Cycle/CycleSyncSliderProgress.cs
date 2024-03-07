@@ -34,7 +34,7 @@ public class CycleSyncSliderProgress : CycleSync, IdentifiableRestrictable
         return base.CanBeEnabled() && _slider != null;
     }
     
-    protected override void SyncTransform()
+    protected override void SyncWithCycle()
     {
         _slider.value = cycle.GetProgress();
     }

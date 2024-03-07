@@ -12,7 +12,7 @@ public class CycleSyncTransform : CycleSync
         return base.CanBeEnabled() && cyclingObject != null;
     }
     
-    protected override void SyncTransform()
+    protected override void SyncWithCycle()
     {
         if (cycle.UsePosition())
         {

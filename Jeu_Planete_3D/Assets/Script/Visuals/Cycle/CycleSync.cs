@@ -14,12 +14,12 @@ public abstract class CycleSync : MonoBehaviour
             Debug.Log("CycleSync script missing references");
             enabled = false;
         }
-        SyncTransform();
+        SyncWithCycle();
     }
 
     private void Update()
     {
-        SyncTransform();
+        SyncWithCycle();
     }
 
     private void OnEnable()
@@ -32,6 +32,6 @@ public abstract class CycleSync : MonoBehaviour
         return !(cycle == null);
     }
 
-    protected abstract void SyncTransform();
+    protected abstract void SyncWithCycle();
 
 }

@@ -19,7 +19,7 @@ public class CycleSyncRenderer : CycleSync
         return base.CanBeEnabled();
     }
     
-    protected override void SyncTransform()
+    protected override void SyncWithCycle()
     {
         float adjustedProgress = Remap(cycle.GetProgress(), 0f, 1f, -1f, 1f);
         renderer.GetPropertyBlock (mpb);
