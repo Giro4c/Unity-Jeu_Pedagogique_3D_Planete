@@ -17,7 +17,7 @@ namespace Script.WebData
         [Serializable]
         private class QuestionRandom
         {
-            public int[] values;
+            public int[] list;
         }
         
         public IEnumerator NewGame(string platform)
