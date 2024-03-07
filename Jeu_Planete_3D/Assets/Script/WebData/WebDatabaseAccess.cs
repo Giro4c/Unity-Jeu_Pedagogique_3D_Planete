@@ -264,7 +264,7 @@ namespace Script.WebData
             UnityWebRequest wwwInteract = UnityWebRequest.Get(url);
             yield return wwwInteract.SendWebRequest();
         
-            string webPage = "";
+            string jsonString = "";
             // Checks if error
             if (wwwInteract.error != null)
             {
@@ -272,27 +272,17 @@ namespace Script.WebData
                 /* In case of emergency if its impossible to connect to the host since the start,
                  read the expected html page content for a known question and store the value for later used*/
                 TextAsset questionTextAsset = Resources.Load<TextAsset>("WebEmergency/initQuizz");
-                webPage = questionTextAsset.text;
+                jsonString = questionTextAsset.text;
             }
             else // No error, Web Page is loaded
             {
                 Debug.Log(wwwInteract.downloadHandler.text); // le texte de la page
-                webPage = wwwInteract.downloadHandler.text;
+                jsonString = wwwInteract.downloadHandler.text;
             }
         
-            StringHTMLParser htmlParser = new StringHTMLParser(webPage);
-            int totCount = nbQcu + nbManipulation + nbTrueFalse;
-            int[] list = new int[totCount];
-            
-            for (int count = 0; count < totCount; ++count)
-            {
-                string extractedVal = htmlParser.getHTMLContainerContent("li", null, count.ToString());
-                Debug.Log(count);
-                Debug.Log(extractedVal);
-                list[count] = int.Parse(extractedVal);
-            }
+            QuestionRandom questionRandom = JsonUtility.FromJson<QuestionRandom>(jsonString);
 
-            yield return list;
+            yield return questionRandom;
 
         }
 
@@ -328,4 +318,9 @@ namespace Script.WebData
             }
         }
     }
+}
+[System.Serializable]
+public class QuestionRandom
+{
+    public int[] values;
 }
