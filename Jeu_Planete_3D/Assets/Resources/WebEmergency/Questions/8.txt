@@ -1,8 +1,1 @@
-            <p id="Num_Ques">8</p>
-                    <p id="Enoncer">Placer la Terre en hiver.</p>
-                    <p id="BonneRepValeur_orbit">0.125</p>
-                    <p id="Marge_Orbit">0.125</p>
-                    <p id="BonneRepValeur_rotation"></p>
-                    <p id="Marge_Rotation"></p>
-                    <p id="Type">QUESINTERAC</p>
-        
+{"Num_Ques":8,"Enonce":"Placer la Terre en hiver.","Type":"QUESINTERAC","BonneRepValeur_orbit":0.125,"Marge_Orbit":0.125,"BonneRepValeur_rotation":-1,"Marge_Rotation":-1}

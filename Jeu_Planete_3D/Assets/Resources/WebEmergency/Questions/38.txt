@@ -1,8 +1,1 @@
-            <p id="Num_Ques">38</p>
-                    <p id="Enoncer">Placer la Terre en mars à 12h.</p>
-                    <p id="BonneRepValeur_orbit">0.23573</p>
-                    <p id="Marge_Orbit">0.04166</p>
-                    <p id="BonneRepValeur_rotation">0.73573</p>
-                    <p id="Marge_Rotation">0.04166</p>
-                    <p id="Type">QUESINTERAC</p>
-        
+{"Num_Ques":38,"Enonce":"Placer la Terre en mars à 12h.","Type":"QUESINTERAC","BonneRepValeur_orbit":0.23573,"Marge_Orbit":0.04166,"BonneRepValeur_rotation":0.73573,"Marge_Rotation":0.04166}

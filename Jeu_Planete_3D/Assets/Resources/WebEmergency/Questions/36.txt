@@ -1,7 +1,1 @@
-            <p id="Num_Ques">36</p>
-                    <p id="Enoncer">D'après la visualisation, nous sommes en novembre à 22h.</p>
-                    <p id="Valeur_orbit">0.792</p>
-                    <p id="Valeur_rotation">0.8</p>
-                    <p id="BonneRep">Faux</p>
-                    <p id="Type">VRAIFAUX</p>
-        
+{"Num_Ques":36,"Enonce":"D'après la visualisation, nous sommes en novembre à 22h.","Type":"VRAIFAUX","Valeur_orbit":0.792,"Valeur_rotation":0.8,"BonneRep":"Faux"}
