@@ -282,6 +282,7 @@ namespace Script.WebData
             }
         
             QuestionRandom questionRandom = JsonUtility.FromJson<QuestionRandom>(jsonString);
+            Debug.Log(questionRandom);
 
             yield return questionRandom;
 

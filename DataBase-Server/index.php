@@ -150,7 +150,7 @@ elseif ( '/index.php/question' == $uri){
     if (isset($_GET['qid'])){
         $jsonQ = $controllerQuestions->getJsonAttributesQ($_GET['qid'], $partieChecking, $data);
 
-        $layout = new Layout('gui/layout.html');
+        $layout = new Layout('gui/layoutJson.html');
         $viewQuestion = new ViewQuestions($layout, $jsonQ);
 
         $viewQuestion->display();
@@ -182,8 +182,8 @@ elseif ( '/index.php/randomQuestions' == $uri){
     }
 
     $jsonRandQ = $controllerQuestions->getJsonRandomQs($partieChecking, $data, $nbQCU, $nbInteraction, $nbVraiFaux);
-
-    $layout = new Layout('gui/layout.html');
+    
+    $layout = new Layout('gui/layoutJson.html');
     $viewRandomQs = new ViewRandomQuestion($layout, $jsonRandQ);
 
     $viewRandomQs->display();
