@@ -68,7 +68,7 @@ if ('/index.php/addInteraction' == $uri) {
         echo "URL not complete, cannot register new interaction.";
     }
 }
-else if ( '/index.php/abordOnGoingGame' == $uri){
+else if ( '/index.php/abortOnGoingGame' == $uri){
 
     $ip = $_SERVER['REMOTE_ADDR'];
     $controllerGame->abortPartie($ip, $partieChecking, $data);

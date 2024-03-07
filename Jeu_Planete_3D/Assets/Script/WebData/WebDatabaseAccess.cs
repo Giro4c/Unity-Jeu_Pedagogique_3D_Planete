@@ -22,7 +22,7 @@ namespace Script.WebData
         
         public IEnumerator NewGame(string platform)
         {
-            string url = _webDatabaseConnection.GetHost() + "NewGame?plateforme=" + platform;
+            string url = _webDatabaseConnection.GetHost() + "/NewGame?plateforme=" + platform;
             Debug.Log(url);
         
             UnityWebRequest wwwNewGame = UnityWebRequest.Get(url);
