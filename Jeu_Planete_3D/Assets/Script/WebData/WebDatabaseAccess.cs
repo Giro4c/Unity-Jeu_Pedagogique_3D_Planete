@@ -128,130 +128,46 @@ namespace Script.WebData
             }
             
             // Init du JsonParser
-            QuestionData questionData = JsonUtility.FromJson<QuestionData>(jsonString);
-            Debug.Log(questionData);
+            QuestionReadModel questionReadModel = JsonUtility.FromJson<QuestionReadModel>(jsonString);
+            Debug.Log(questionReadModel);
             //string type = htmlParser.getHTMLContainerContent("p", null, "Type");
             //string header = htmlParser.getHTMLContainerContent("p", null, "Enonce");
             
-            if (questionData.Type.Equals("QCU")) // Question of type QCU or TrueFalse
+            if (questionReadModel.Type.Equals("QCU")) // Question of type QCU with 4 choices
             {
-                QuestionQCU questionQCU = JsonUtility.FromJson<QuestionQCU>(jsonString);
-                string correctAnswer = questionQCU.BonneRep;
+                QuestionQCUReadModel qcuReadModel = JsonUtility.FromJson<QuestionQCUReadModel>(jsonString);
                 Choice[] choices = new Choice[4];
-                choices[0] = questionQCU.Rep1;
-                choices[1] = questionQCU.Rep2;
-                choices[2] = questionQCU.Rep3;
-                choices[3] = questionQCU.Rep4;
-
-                yield return new QuestionQCU(questionQCU.Num_Ques, questionQCU.Type, questionQCU.Enonce, choices);
+                choices[0] = new Choice(qcuReadModel.Rep1, qcuReadModel.Rep1 == qcuReadModel.BonneRep) ;
+                choices[1] = new Choice(qcuReadModel.Rep2, qcuReadModel.Rep2 == qcuReadModel.BonneRep) ;
+                choices[2] = new Choice(qcuReadModel.Rep3, qcuReadModel.Rep3 == qcuReadModel.BonneRep) ;
+                choices[3] = new Choice(qcuReadModel.Rep4, qcuReadModel.Rep4 == qcuReadModel.BonneRep) ;
                 
+                yield return new QuestionQCU(qcuReadModel.Num_Ques, QuestionType.Qcu, qcuReadModel.Enonce, choices);
             }
             
-            else if (questionData.Type.Equals("QUESINTERAC")) // Question of type Manipulation
+            else if (questionReadModel.Type.Equals("QUESINTERAC")) // Question of type Manipulation
             {
+                QuestionManipulationReadModel manipulationReadModel = JsonUtility.FromJson<QuestionManipulationReadModel>(jsonString);
                 // Change Culture info for String to float conversions
-                CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
-                ci.NumberFormat.CurrencyDecimalSeparator = ".";
+                // CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+                // ci.NumberFormat.CurrencyDecimalSeparator = ".";
 
-                // Correct Orbit
-                string valExtractor = htmlParser.getHTMLContainerContent("p", null, "BonneRepValeur_orbit");
-                float correctOrbit;
-                if (valExtractor != null && !valExtractor.Equals(""))
-                {
-                    correctOrbit = float.Parse(valExtractor, NumberStyles.Any, ci);
-                    correctOrbit %= 1f;
-                }
-                else
-                {
-                    correctOrbit = -1;
-                }
-                
-                // Correct Rotation
-                valExtractor = htmlParser.getHTMLContainerContent("p", null, "BonneRepValeur_rotation");
-                float correctRotation;
-                if (valExtractor != null && !valExtractor.Equals(""))
-                {
-                    correctRotation = float.Parse(valExtractor, NumberStyles.Any, ci);
-                    correctRotation %= 1f;
-                }
-                else
-                {
-                    correctRotation = -1;
-                }
-                
-                // Margin Orbit
-                valExtractor = htmlParser.getHTMLContainerContent("p", null, "Marge_Orbit");
-                float orbitMargin;
-                if (valExtractor != null && !valExtractor.Equals(""))
-                {
-                    orbitMargin = float.Parse(valExtractor, NumberStyles.Any, ci);
-                    if (orbitMargin > 0.5f)
-                    {
-                        orbitMargin %= 0.5f;
-                    }
-                }
-                else
-                {
-                    orbitMargin = -1;
-                }
-                
-                // Margin Rotation
-                valExtractor = htmlParser.getHTMLContainerContent("p", null, "Marge_Rotation");
-                float rotationMargin;
-                if (valExtractor != null && !valExtractor.Equals(""))
-                {
-                    rotationMargin = float.Parse(valExtractor, NumberStyles.Any, ci);
-                    if (rotationMargin > 0.5f)
-                    {
-                        rotationMargin %= 0.5f;
-                    }
-                }
-                else
-                {
-                    rotationMargin = -1;
-                }
-
-                yield return new QuestionManipulation(qid, QuestionType.Manipulation, header, correctOrbit, correctRotation, orbitMargin,
-                    rotationMargin);
+                yield return new QuestionManipulation(manipulationReadModel.Num_Ques, QuestionType.Manipulation, manipulationReadModel.Enonce, 
+                    manipulationReadModel.BonneRepValeur_orbit, manipulationReadModel.BonneRepValeur_rotation, 
+                    manipulationReadModel.Marge_Orbit, manipulationReadModel.Marge_Rotation);
             }
             
-            else if (type.Equals("VRAIFAUX")) // Question of type TrueFalse
+            else if (questionReadModel.Type.Equals("VRAIFAUX")) // Question of type TrueFalse
             {
-                string correctAnswer = htmlParser.getHTMLContainerContent("p", null, "BonneRep");
+                QuestionTrueFalseReadModel trueFalseReadModel = JsonUtility.FromJson<QuestionTrueFalseReadModel>(jsonString);
                 Choice[] choices = {new Choice("Vrai", false), new Choice("Faux", false)};
                 for (int i = 0; i < choices.Length; ++i)
                 {
-                    choices[i].correct = choices[i].value.Equals(correctAnswer);
-                }
-                // Change Culture info for String to float conversions
-                CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
-                ci.NumberFormat.CurrencyDecimalSeparator = ".";
-
-                // Fixed Orbit
-                string valExtractor = htmlParser.getHTMLContainerContent("p", null, "Valeur_orbit");
-                float fixedOrbit;
-                if (valExtractor != null && !valExtractor.Equals(""))
-                {
-                    fixedOrbit = float.Parse(valExtractor, NumberStyles.Any, ci);
-                }
-                else
-                {
-                    fixedOrbit = -1;
+                    choices[i].correct = choices[i].value.Equals(trueFalseReadModel.BonneRep);
                 }
                 
-                // Fixed Rotation
-                valExtractor = htmlParser.getHTMLContainerContent("p", null, "Valeur_rotation");
-                float fixedRotation;
-                if (valExtractor != null && !valExtractor.Equals(""))
-                {
-                    fixedRotation = float.Parse(valExtractor, NumberStyles.Any, ci);
-                }
-                else
-                {
-                    fixedRotation = -1;
-                }
-                
-                yield return new QuestionTrueFalse(qid, QuestionType.TrueFalse, header, choices, fixedOrbit, fixedRotation);
+                yield return new QuestionTrueFalse(trueFalseReadModel.Num_Ques, QuestionType.TrueFalse, trueFalseReadModel.Enonce, 
+                    choices, trueFalseReadModel.Valeur_orbit, trueFalseReadModel.Valeur_rotation);
             }
             
         }
@@ -284,7 +200,7 @@ namespace Script.WebData
             QuestionRandom questionRandom = JsonUtility.FromJson<QuestionRandom>(jsonString);
             Debug.Log(questionRandom);
 
-            yield return questionRandom;
+            yield return questionRandom.list;
 
         }
         
@@ -317,21 +233,6 @@ namespace Script.WebData
         }
     }
 }
-[System.Serializable]
-public class QuestionData
-{
-    public string Type;
-}
 
-[System.Serializable]
-public class QuestionQCU
-{
-    public int Num_Ques;
-    public string Enonce;
-    public string Type;
-    public string Rep1;
-    public string Rep2;
-    public string Rep3;
-    public string Rep4;
-    public string BonneRep;
-}
+
+

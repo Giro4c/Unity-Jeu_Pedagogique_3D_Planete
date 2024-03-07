@@ -36,7 +36,8 @@ class ControllerQuestions
      * @return string JSON containing attributes of the question.
      */
     public function getJsonAttributesQ(int $numQues, PartieChecking $questionService, mixed $data): string {
-        return json_encode($questionService->getQAttributes($numQues, $data), JSON_UNESCAPED_UNICODE);
+        $json = json_encode($questionService->getQAttributes($numQues, $data), JSON_UNESCAPED_UNICODE);
+        return preg_replace('/null/', '-1', $json);
     }
 
     /**
