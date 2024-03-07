@@ -1,0 +1,6 @@
+{
+    "name": "ControllersTest",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "name": "WebDataTest",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

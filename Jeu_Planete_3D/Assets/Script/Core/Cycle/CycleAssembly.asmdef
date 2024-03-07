@@ -1,0 +1,16 @@
+{
+    "name": "CycleAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b36b5e8367c844e5082ec11c6d944250"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
