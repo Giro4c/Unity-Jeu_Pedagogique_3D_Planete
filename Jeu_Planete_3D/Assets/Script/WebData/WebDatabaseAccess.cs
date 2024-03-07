@@ -16,7 +16,7 @@ namespace Script.WebData
         
         public IEnumerator NewGame(string platform)
         {
-            string url = _webDatabaseConnection.GetHost() + "NewGame/?plateforme=" + platform;
+            string url = _webDatabaseConnection.GetHost() + "NewGame?plateforme=" + platform;
             Debug.Log(url);
         
             UnityWebRequest wwwNewGame = UnityWebRequest.Get(url);
@@ -250,11 +250,6 @@ namespace Script.WebData
             
         }
 
-        // public CoroutineWithData<Question> GetQuestionData(int qid)
-        // {
-        //     throw new System.NotImplementedException();
-        // }
-
         public IEnumerator GetRandomQuestions(int nbQcu, int nbTrueFalse, int nbManipulation)
         {
             string strVarURLGet = "qcu=" + nbQcu + "&interaction=" + nbManipulation + "&vraifaux=" + nbTrueFalse;
@@ -295,11 +290,7 @@ namespace Script.WebData
             yield return list;
 
         }
-
-        // public CoroutineWithData<int[]> GetRandomQuestionsData(int nbQcu, int nbTrueFalse, int nbManipulation)
-        // {
-        //     throw new System.NotImplementedException();
-        // }
+        
 
         public IEnumerator AddUserAnswer(int qid, string dateStart, bool correct)
         {
