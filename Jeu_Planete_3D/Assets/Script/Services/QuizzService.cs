@@ -331,7 +331,7 @@ namespace Script.Services
 
         public void RegisterUserCurrentAnswerInDatabase()
         {
-            StartCoroutine(linkWeb.AddUserAnswer(quizz.questions[indexCurrentQuestion].id, corrector.startTime.ToString("u"),
+            StartCoroutine(linkWeb.AddUserAnswer(quizz.questions[indexCurrentQuestion].id, corrector.startTime.ToString("u").Replace("Z", ""),
                 corrector.correct));
         }
 

@@ -130,8 +130,6 @@ namespace Script.WebData
             // Init du JsonParser
             QuestionReadModel questionReadModel = JsonUtility.FromJson<QuestionReadModel>(jsonString);
             Debug.Log(questionReadModel);
-            //string type = htmlParser.getHTMLContainerContent("p", null, "Type");
-            //string header = htmlParser.getHTMLContainerContent("p", null, "Enonce");
             
             if (questionReadModel.Type.Equals("QCU")) // Question of type QCU with 4 choices
             {
@@ -148,9 +146,6 @@ namespace Script.WebData
             else if (questionReadModel.Type.Equals("QUESINTERAC")) // Question of type Manipulation
             {
                 QuestionManipulationReadModel manipulationReadModel = JsonUtility.FromJson<QuestionManipulationReadModel>(jsonString);
-                // Change Culture info for String to float conversions
-                // CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
-                // ci.NumberFormat.CurrencyDecimalSeparator = ".";
 
                 yield return new QuestionManipulation(manipulationReadModel.Num_Ques, QuestionType.Manipulation, manipulationReadModel.Enonce, 
                     manipulationReadModel.BonneRepValeur_orbit, manipulationReadModel.BonneRepValeur_rotation, 
