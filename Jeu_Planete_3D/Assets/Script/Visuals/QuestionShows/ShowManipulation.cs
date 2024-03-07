@@ -25,5 +25,19 @@ public class ShowManipulation : ShowQuestion
     {
         return rotation;
     }
+    
+    public TextMeshProUGUI GetCorrectionTextAccess()
+    {
+        return correctionText;
+    }
 
+    public Cycle GetCorrectionOrbitAccess()
+    {
+        return orbit;
+    }
+
+    public Cycle GetCorrectionRotationAccess()
+    {
+        return rotation;
+    }
 }
