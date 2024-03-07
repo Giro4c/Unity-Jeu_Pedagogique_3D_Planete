@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1543,9 +1543,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1e4891a8c875498d1d8bfcb2d4d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cyclingObject: {fileID: 0}
+  usePosition: 0
+  useRotation: 0
   progress: 0
   period: 1
+  DEFAULT_PERIOD: 1
   orbitPath:
     xAxis: 3
     yAxis: 2
@@ -1733,10 +1735,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bb911b4b98647cbb34567cd5d737f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 29077463}
-  tmp: {fileID: 0}
+  cycle: {fileID: 0}
+  identifier: None
+  _defaultActivation: 1
   render: {fileID: 1991327954}
-  rotationCycle: {fileID: 0}
 --- !u!114 &1991327951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,9 +1764,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87db832d7f264fc48ab213298e32b656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cyclingObject: {fileID: 0}
+  usePosition: 0
+  useRotation: 0
   progress: 0
   period: 1
+  DEFAULT_PERIOD: 1
   revolutionSelf:
     initialRotation: {x: 0, y: 0, z: -23}
     axis: {x: 0, y: -1, z: 0}
