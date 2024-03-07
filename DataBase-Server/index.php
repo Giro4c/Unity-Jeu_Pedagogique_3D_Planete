@@ -73,7 +73,7 @@ else if ( '/index.php/abordOnGoingGame' == $uri){
     $ip = $_SERVER['REMOTE_ADDR'];
     $controllerGame->abortPartie($ip, $partieChecking, $data);
 
-    $partieStatus = "Partie abandonner";
+    $partieStatus = "Partie abandonnée";
     $date = date('Y-m-d H:i:s');
     $layout = new Layout('gui/layout.html');
     $viewPartie = new ViewPartie($layout, $partieStatus, $ip, $date);

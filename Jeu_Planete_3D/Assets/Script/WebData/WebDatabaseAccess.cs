@@ -14,6 +14,12 @@ namespace Script.WebData
     {
         [SerializeField] private WebConnection _webDatabaseConnection;
         
+        [Serializable]
+        private class QuestionRandom
+        {
+            public int[] values;
+        }
+        
         public IEnumerator NewGame(string platform)
         {
             string url = _webDatabaseConnection.GetHost() + "NewGame?plateforme=" + platform;
@@ -309,9 +315,4 @@ namespace Script.WebData
             }
         }
     }
-}
-[System.Serializable]
-public class QuestionRandom
-{
-    public int[] values;
 }

@@ -52,4 +52,6 @@ class ControllerQuestions
     public function addFinishedQuestion(int $numQues, int $idParty, string $dateDeb, string $dateFin, bool $isCorrect, PartieChecking $questionService, mixed $data): void {
         $questionService->addQuestionAnswer($numQues, $idParty, $dateDeb, $dateFin, $isCorrect, $data);
     }
+
+
 }
