@@ -1,8 +1,1 @@
-            <p id="Num_Ques">21</p>
-                    <p id="Enonce">Placer la terre en février à 18h.</p>
-                    <p id="BonneRepValeur_orbit">0.1524</p>
-                    <p id="Marge_Orbit">0.04166</p>
-                    <p id="BonneRepValeur_rotation">0.9024</p>
-                    <p id="Marge_Rotation">0.04166</p>
-                    <p id="Type">QUESINTERAC</p>
-        
+{"Num_Ques":21,"Enonce":"Placer la terre en février à 18h.","Type":"QUESINTERAC","BonneRepValeur_orbit":0.1524,"Marge_Orbit":0.04166,"BonneRepValeur_rotation":0.9024,"Marge_Rotation":0.04166}

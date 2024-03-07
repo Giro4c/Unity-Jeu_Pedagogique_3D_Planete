@@ -1,9 +1,2 @@
-            <p id="Num_Ques">41</p>
-                    <p id="Enonce">Où apparaît le Soleil dans le ciel et où disparaît-il ?</p>
-                    <p id="Rep1">Il apparait à l'Est et disparai à l'Ouest</p>
-                    <p id="Rep2">Il apparait au Sud et disparai au Nord</p>
-                    <p id="Rep3">Il apparait à l'Ouest et disparai au Sud</p>
-                    <p id="Rep4">Il apparait au Nord et disparai à l'Est</p>
-                    <p id="BonneRep">Il apparait à l'Est et disparai à l'Ouest</p>
-                    <p id="Type">QCU</p>
+{"Num_Ques":41,"Enonce":"Où apparaît le Soleil dans le ciel et où disparaît-il ?","Type":"QCU","Rep1":"Il apparait à l'Est et disparai à l'Ouest","Rep2":"Il apparait au Sud et disparai au Nord","Rep3":"Il apparait à l'Ouest et disparai au Sud","Rep4":"Il apparait au Nord et disparai à l'Est","BonneRep":"Il apparaît à l'Est et disparai à l'Ouest"}
         
