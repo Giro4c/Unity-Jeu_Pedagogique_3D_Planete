@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1946092780}
-  m_IndirectSpecularColor: {r: 0.18376434, g: 0.22913474, b: 0.30448985, a: 1}
+  m_IndirectSpecularColor: {r: 0.18376389, g: 0.22913414, b: 0.30448887, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -518,12 +518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1e4891a8c875498d1d8bfcb2d4d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cyclingObject: {fileID: 1388563904}
-  usePosition: 1
+  usePosition: 0
   useRotation: 0
   progress: 0
-  period: 60
-  DEFAULT_PERIOD: 60
+  period: 1
+  DEFAULT_PERIOD: 1
   orbitPath:
     xAxis: 3
     yAxis: 2
@@ -2742,12 +2741,6 @@ PrefabInstance:
 --- !u!4 &499978539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010892824412, guid: 5ed4ce1f9abfa944fb0462b08c373c93,
-    type: 3}
-  m_PrefabInstance: {fileID: 499978538}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &499978540 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000012464414300, guid: 5ed4ce1f9abfa944fb0462b08c373c93,
     type: 3}
   m_PrefabInstance: {fileID: 499978538}
   m_PrefabAsset: {fileID: 0}
@@ -5637,6 +5630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be992b78527e4f59908f67e7b3f2774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasToHide: {fileID: 0}
 --- !u!114 &1069389232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5766,10 +5760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1d32655b10baa4f94eb00a6dfd29b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: {fileID: 1414342651}
-  choices:
-  - {fileID: 559902605}
-  - {fileID: 1540771543}
+  header: {fileID: 0}
+  choices: []
   orbit: {fileID: 129132502}
   rotation: {fileID: 1680164451}
 --- !u!114 &1095285418
@@ -5784,12 +5776,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20377b3466e865c4ca3e1488dfdc26ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: {fileID: 1636693895}
-  choices:
-  - {fileID: 421098101}
-  - {fileID: 1884723517}
-  - {fileID: 1443356915}
-  - {fileID: 1480072639}
+  header: {fileID: 0}
+  choices: []
 --- !u!114 &1095285419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5802,10 +5790,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6c317d741161649a68a0cc6ecc3edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: {fileID: 544496667}
-  correctionText: {fileID: 762128363}
-  orbit: {fileID: 129132502}
-  rotation: {fileID: 1680164451}
+  header: {fileID: 0}
+  correctionText: {fileID: 0}
+  orbit: {fileID: 0}
+  rotation: {fileID: 0}
 --- !u!1 &1118611312
 GameObject:
   m_ObjectHideFlags: 0
@@ -8104,6 +8092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be992b78527e4f59908f67e7b3f2774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasToHide: {fileID: 0}
 --- !u!1 &1531087330
 GameObject:
   m_ObjectHideFlags: 0
@@ -8152,10 +8141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b28c0fb8d9134d608218e43089e0f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snow: {fileID: 499978540}
-  rain: {fileID: 2103298981}
-  soundRain: {fileID: 8300000, guid: e60b9243727bbb5428fbb3e7f7fe44cd, type: 3}
-  seasons: {fileID: 1531087334}
+  snow: {fileID: 0}
+  rain: {fileID: 0}
+  soundRain: {fileID: 0}
+  seasons: {fileID: 0}
 --- !u!114 &1531087333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8168,7 +8157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50dbda62115f4a5caf4a813cba061234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seasonChanger: {fileID: 1531087334}
+  seasonChanger: {fileID: 0}
   dataWinter: {fileID: 15600000, guid: bf1bc124a2e167f43938f8200ab02d2f, type: 2}
   dataSpring: {fileID: 15600000, guid: 5a894970b914a39449a212d97049ec3b, type: 2}
   dataSummer: {fileID: 15600000, guid: 08d5272069f6915409ad161303ead188, type: 2}
@@ -8185,7 +8174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590805cb6b823964e8e3d1e0504f21fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cycleYear: {fileID: 129132502}
+  cycleYear: {fileID: 0}
 --- !u!154 &1531087335
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -9660,27 +9649,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ef212c3e888c04e9556e118438388d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  identifier: Camera Turn
+  identifier: None
   _defaultActivation: 0
-  typeSimplified: Camera Turn
+  typeSimplified: 
   trigger:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
-      m_Name: Trigger
+      m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 43a29213-f75f-45ec-b862-52d554854dd4
+      m_Id: f067d23f-8cbe-4953-a9da-c351e75bdb92
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 8434319842672042845, guid: aeb2ed8ead87f0942a07ed3d0547153f,
-      type: 3}
+    m_Reference: {fileID: 0}
   registerable: 0
   toEnable: []
   toDisable: []
-  _eventSys: {fileID: 1448704258}
-  _cam: {fileID: 366498104}
+  _eventSys: {fileID: 0}
+  _cam: {fileID: 0}
   speed: 5
 --- !u!1 &1663556969
 GameObject:
@@ -9901,12 +9889,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87db832d7f264fc48ab213298e32b656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cyclingObject: {fileID: 1669234417}
   usePosition: 0
-  useRotation: 1
+  useRotation: 0
   progress: 0
-  period: 10
-  DEFAULT_PERIOD: 10
+  period: 1
+  DEFAULT_PERIOD: 1
   revolutionSelf:
     initialRotation: {x: 0, y: 0, z: 0}
     axis: {x: 0, y: -1, z: 0}
@@ -12013,12 +12000,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87db832d7f264fc48ab213298e32b656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cyclingObject: {fileID: 1946092781}
   usePosition: 0
-  useRotation: 1
+  useRotation: 0
   progress: 0
-  period: 10
-  DEFAULT_PERIOD: 10
+  period: 1
+  DEFAULT_PERIOD: 1
   revolutionSelf:
     initialRotation: {x: -90, y: 0, z: 0}
     axis: {x: 1, y: 0, z: 0}
@@ -12034,10 +12020,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a86e4247f65544a19057e4836482981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cycle: {fileID: 1982877990}
+  cycle: {fileID: 0}
   identifier: None
   _defaultActivation: 1
-  rotationPlanet: {fileID: 1680164451}
+  rotationPlanet: {fileID: 0}
   orbitPlanet: {fileID: 129132502}
 --- !u!1 &1997269811
 GameObject:
@@ -12756,6 +12742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be992b78527e4f59908f67e7b3f2774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasToHide: {fileID: 0}
 --- !u!114 &2091756669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12967,12 +12954,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2103298979}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2103298981 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000011296922826, guid: 5d00af152b0756b4d958edc9145555c4,
-    type: 3}
-  m_PrefabInstance: {fileID: 2103298979}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2136313374
 GameObject:
   m_ObjectHideFlags: 0
@@ -13023,6 +13004,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b26c439724a4da7845364aa3a65821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
+  elapsedTime: 0
 --- !u!1 &2145136584
 GameObject:
   m_ObjectHideFlags: 0
