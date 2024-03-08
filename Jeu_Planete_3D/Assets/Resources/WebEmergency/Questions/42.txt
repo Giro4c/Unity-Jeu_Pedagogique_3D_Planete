@@ -1,0 +1,2 @@
+{"Num_Ques":42,"Enonce":"Quel est l'angle d'inclinaison axiale de la Terre par rapport a son plan orbital autour du Soleil ?","Type":"QCU","Rep1":"0 degrés","Rep2":" 23.5 degrés","Rep3":"45 degrés","Rep4":" 90 degrés","BonneRep":" 23.5 degrés"
+        
