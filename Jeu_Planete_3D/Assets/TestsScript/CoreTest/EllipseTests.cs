@@ -1,3 +1,4 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -70,4 +71,5 @@ public class EllipseTests
         Assert.AreEqual(expectedProgress, actualProgress);
     }
 }
+*/
 

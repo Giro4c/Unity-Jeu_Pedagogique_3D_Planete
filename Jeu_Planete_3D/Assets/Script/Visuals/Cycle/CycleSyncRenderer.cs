@@ -10,7 +10,6 @@ public class CycleSyncRenderer : CycleSync
     
     [SerializeField] protected Renderer renderer;
     private MaterialPropertyBlock mpb;
-    
 
     protected override bool CanBeEnabled()
     {
