@@ -2,6 +2,8 @@ using System.Collections;
 using Script.WebData;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Script.Services
 {
@@ -11,11 +13,24 @@ namespace Script.Services
         [SerializeReference] private WebDatabaseAccess linkWeb;
         
         [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private Slider loadIndicator;
         [SerializeField] private InformationDisplayer[] displayers;
 
         public IEnumerator StartGame(string platform)
         {
             return linkWeb.NewGame(platform);
+        }
+
+        public IEnumerator Load(string sceneName)
+        {
+            AsyncOperation loader = SceneManager.LoadSceneAsync(sceneName);
+            while (!loader.isDone)
+            {
+                float progress = Mathf.Clamp01(loader.progress / 0.9f);
+                Debug.Log(progress);
+                loadIndicator.value = progress;
+                yield return null;
+            }
         }
         
         public IEnumerator AbortGame()
