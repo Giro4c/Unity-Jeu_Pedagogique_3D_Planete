@@ -27,7 +27,7 @@ namespace Script.Controllers
         public IEnumerator StartGameAction()
         {
             yield return StartCoroutine(_gameService.StartGame(platform));
-            SceneManager.LoadScene(sceneGameName);
+            StartCoroutine(_gameService.Load(sceneGameName));
         }
 
         public void StartGame()
