@@ -1,0 +1,318 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3445451573057508790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 436158282457869320}
+  - component: {fileID: 674304811860308703}
+  - component: {fileID: 3999137582485454394}
+  - component: {fileID: 3935768150523094913}
+  m_Layer: 2
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &436158282457869320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3445451573057508790}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 784422799474063775}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &674304811860308703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3445451573057508790}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc90d785980649a8b98309fb87510073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: Cycle Rotation UI Slider Windows Mouse
+  _defaultActivation: 0
+  typeSimplified: Slider Rotation Windows
+  trigger:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b2344dd1-fd11-4992-a370-e13fdf179715
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 5265718448923972361, guid: aeb2ed8ead87f0942a07ed3d0547153f,
+      type: 3}
+  registerable: 1
+  toEnable: []
+  toDisable:
+  - Slider Sync Rotation
+  - AutoMotion Cycle Rotation
+  cycleAffected: {fileID: 0}
+  _eventSys: {fileID: 0}
+  slider: {fileID: 0}
+--- !u!114 &3999137582485454394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3445451573057508790}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc90d785980649a8b98309fb87510073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: Cycle Orbit UI Slider Windows Mouse
+  _defaultActivation: 0
+  typeSimplified: Slider Orbit Windows
+  trigger:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f24920e6-f4d1-413e-abc3-11a129a59f94
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 5265718448923972361, guid: aeb2ed8ead87f0942a07ed3d0547153f,
+      type: 3}
+  registerable: 1
+  toEnable: []
+  toDisable:
+  - Slider Sync Orbit
+  - AutoMotion Cycle Orbit
+  cycleAffected: {fileID: 0}
+  _eventSys: {fileID: 0}
+  slider: {fileID: 0}
+--- !u!114 &3935768150523094913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3445451573057508790}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d463a32f7a254b74aa04508b7a6c296f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: Cycles UI Slider Speed Period Windows
+  _defaultActivation: 0
+  typeSimplified: Slider Speed
+  trigger:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: e91d17d3-9e7b-450c-9fe7-db6a2755068c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 5265718448923972361, guid: aeb2ed8ead87f0942a07ed3d0547153f,
+      type: 3}
+  registerable: 0
+  toEnable: []
+  toDisable: []
+  cyclesAffected:
+  - {fileID: 0}
+  - {fileID: 0}
+  _eventSys: {fileID: 0}
+  slider: {fileID: 0}
+--- !u!1 &6462395570760462858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 784422799474063775}
+  m_Layer: 2
+  m_Name: WindowsInteractions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &784422799474063775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462395570760462858}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6439451493030469430}
+  - {fileID: 436158282457869320}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7855616776065782302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6439451493030469430}
+  - component: {fileID: 3292685891241545493}
+  - component: {fileID: 6752154257171924266}
+  - component: {fileID: 2129817375143270685}
+  m_Layer: 2
+  m_Name: Mouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6439451493030469430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855616776065782302}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 784422799474063775}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3292685891241545493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855616776065782302}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ef212c3e888c04e9556e118438388d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: Camera Turn
+  _defaultActivation: 0
+  typeSimplified: Camera Turn
+  trigger:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 43a29213-f75f-45ec-b862-52d554854dd4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8434319842672042845, guid: aeb2ed8ead87f0942a07ed3d0547153f,
+      type: 3}
+  registerable: 0
+  toEnable: []
+  toDisable: []
+  _eventSys: {fileID: 0}
+  _cam: {fileID: 0}
+  speed: 5
+--- !u!114 &6752154257171924266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855616776065782302}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2349375a24b14b09b1b373f80cd3fd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: Cycle Planet Orbit Windows Mouse
+  _defaultActivation: 0
+  typeSimplified: Planet Orbit Mouse
+  trigger:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3e7785c8-cec8-4f36-b0ae-4adea38a6ac1
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1117931103165330845, guid: aeb2ed8ead87f0942a07ed3d0547153f,
+      type: 3}
+  registerable: 1
+  toEnable: []
+  toDisable:
+  - AutoMotion Cycle Orbit
+  cycleAffected: {fileID: 0}
+  collider: {fileID: 0}
+  mainCam: {fileID: 0}
+  planeOrbit: {fileID: 0}
+--- !u!114 &2129817375143270685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855616776065782302}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113e824ce46d4bf9841a318a4e52b088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: Cycle Planet Rotation Windows Mouse
+  _defaultActivation: 0
+  typeSimplified: Planet Rotation Mouse
+  trigger:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 9f72bf97-e62f-499b-9bac-8171058f7cb5
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1299602195274936103, guid: aeb2ed8ead87f0942a07ed3d0547153f,
+      type: 3}
+  registerable: 1
+  toEnable: []
+  toDisable:
+  - AutoMotion Cycle Rotation
+  - AutoMotion Cycle Orbit
+  cycleAffected: {fileID: 0}
+  collider: {fileID: 0}
+  mainCam: {fileID: 0}
+  speedRotation: 11
